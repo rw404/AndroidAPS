@@ -1,0 +1,102 @@
+{
+  "source_commit": "85188ab811f45041b3ace609fbf2c3e1d564ff06",
+  "baseline_commit": "48f9f6c",
+  "branch": "improve/quiet-pump-overview",
+  "build": "BUILD SUCCESSFUL",
+  "variant": "fullDebug",
+  "toolchain": {
+    "jdk": "Temurin 21.0.12.1",
+    "gradle": "9.0.0",
+    "kotlin": "2.2.21",
+    "compile_sdk": 36,
+    "build_tools": "35.0.0",
+    "min_sdk": 31,
+    "target_sdk": 32
+  },
+  "tests": {
+    "tests": 72,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "modules": {
+    "plugins/aps": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "implementation": {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "plugins/main": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "apk": {
+    "file": "AndroidAPS-quiet-pump-debug.apk",
+    "bytes": 142304393,
+    "sha256": "88c6aa713f8dcd7a1994c3ea0e10b68fb82651dac66fb97f36571dafe433bb7e",
+    "package": "info.nightscout.androidaps",
+    "version": "3.4.2.6",
+    "signing": "Debug test certificate, verified APK v2 signature",
+    "zip_alignment": "Verified with zipalign -c -P 16 4"
+  },
+  "execution_options": {
+    "gradle_heap": "3g",
+    "gradle_workers": 2,
+    "parallel_projects": false,
+    "kotlin_execution_strategy": "in-process",
+    "ksp_incremental": false,
+    "test_forks": 1,
+    "test_heap": "512m"
+  },
+  "source_sha256": {
+    "app/src/main/kotlin/app/aaps/activities/MyPreferenceFragment.kt": "000f8253a75776af200105ea206dbd7764a4c730f42f0c1891a05c8b6066a65a",
+    "app/src/main/kotlin/app/aaps/receivers/KeepAliveWorker.kt": "692ee9935fea645e077dfe9c89717cf71046a9c7f4fc326e55f38263154c7082",
+    "app/src/main/kotlin/app/aaps/receivers/PumpConnectionRecovery.kt": "64fdcfe6d0c984821a7833dd045c45523c09c8018a7eeeda90538b596f69d238",
+    "app/src/main/kotlin/app/aaps/receivers/PumpConnectionReminderPolicy.kt": "4f9bc659eac8a1ef49f12e508a1ecf3e0c49079e3065fa518d9b148538204e26",
+    "app/src/main/res/values/strings.xml": "31cf9012375f6a8139fab66b3e892bfe6da66f054316297342ede59709f84d35",
+    "app/src/test/kotlin/app/aaps/receivers/KeepAliveWorkerTest.kt": "dc5c0c81b31dca0c3c9eeebd2a6bc609d5fd5faa55f57f0fb39109297a4760c1",
+    "app/src/test/kotlin/app/aaps/receivers/PumpConnectionRecoveryTest.kt": "684ee026edac37dc54780a15da16f96d291b86839a56dc46cb04e8e454b196bb",
+    "app/src/test/kotlin/app/aaps/receivers/PumpConnectionReminderPolicyTest.kt": "88ff07bf6d50ed3df10a24231e1c6a0a427728c0cbc62652d3ecef5a780197b8",
+    "core/interfaces/src/main/kotlin/app/aaps/core/interfaces/notifications/Notification.kt": "8af98d96ff6267e7d594868dc2bddeafc073b06bc2553624036198a2394bbcea",
+    "core/keys/src/main/kotlin/app/aaps/core/keys/BooleanKey.kt": "62d8c3279e74837a162a60e2aa7f59acb7bbcf8b0eb40112770e3eac343db817",
+    "core/keys/src/main/kotlin/app/aaps/core/keys/LongNonKey.kt": "8f61dff21a29ed70799b9d16963ca4cf439619ed867f6e6e37bf2e0ab849e180",
+    "core/ui/src/main/res/values/strings.xml": "78e96b93d2be633faaf4b14bf4c1dd2b298051418ee3e7fa4229ba978b33749a",
+    "implementation/src/main/kotlin/app/aaps/implementation/queue/commands/CommandSMBBolus.kt": "f6e9267ad045795e61c8e83c3fdee9deab56b549592eff4e22c4f17637750c4d",
+    "implementation/src/test/kotlin/app/aaps/implementation/queue/commands/CommandSMBBolusTest.kt": "4fcde8813003fa1ed2caea5b53b6b600361e4a798423333499952e1a5dfdd11b",
+    "plugins/aps/src/test/kotlin/app/aaps/plugins/aps/openAPSSMB/DetermineBasalSMBTest.kt": "dc4a52d87795e3ebf5115aae284598a33d83870c8c54a3056f4c41bb2cfde057",
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/OverviewFragment.kt": "4b5feea920d99802a020e1c1cb0019a9d4188d35a77c28aba843f9a3b8c4678b",
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/OverviewPlugin.kt": "73cef1e8fb347b2c4b2a0f69f1ea98bd6d09c226d0cc5c352c825634ffdf4f6f",
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/notifications/NotificationDeliveryPolicy.kt": "28e1939c26c826ddecead0fa3895b5c45e718ecb06e9562a4b447010bff7aaf0",
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/notifications/NotificationStore.kt": "6002e49f2ff085b0717d820a373c432136d2e3824f0444648d7f0d6fe2ce6d66",
+    "plugins/main/src/main/res/layout-land/overview_info_layout.xml": "47ee84b688a2342a538109f0fdef5365fe3dc99597f3f00bc7aeba013fc0e554",
+    "plugins/main/src/main/res/layout/overview_fragment.xml": "c20f41b73b04de7de46710cd7f47aece4bffe6fdd33cfda64169a7a48789392c",
+    "plugins/main/src/main/res/layout/overview_graphs_layout.xml": "9f880ae9ca29e25620f020cb00c1c582219aa848e5d29a00ad1b588b3d011543",
+    "plugins/main/src/main/res/layout/overview_info_layout.xml": "1ee756c18ca1a2385306db8087bd7dacd5e21c7ee0f0815ea4e46f97bc196b61",
+    "plugins/main/src/main/res/layout/overview_statuslights_layout.xml": "e37061e68fcc99dafc6cdd26daf303844366f653f3171268cfd42c12b1134d56",
+    "plugins/main/src/main/res/values/notification_strings.xml": "b9e1c9f84d8821f524c6e6e63e10dfe18431ed91f5a57f2f3c492cac4759af0b",
+    "plugins/main/src/main/res/values/overview_strings.xml": "03aac38fe7808d33fece6ce0465e575867e49224641f90afc3206280c46b5787",
+    "plugins/main/src/main/res/values/overview_styles.xml": "05ee694e375f197f014da06af920fda51f998b7af1c77820de5180b8cd017236",
+    "plugins/main/src/test/kotlin/app/aaps/plugins/main/general/overview/notifications/NotificationDeliveryPolicyTest.kt": "ab057b52760ff8c2e4e699894f6b244cbe593c5c6987054abc6c501d9a7e08b7"
+  },
+  "limitations": [
+    "JVM unit tests use mocked collaborators; no real pump, CGM or clinical outcome validation.",
+    "APK was built and its signature/alignment verified; no device or emulator run was performed.",
+    "System notification channel silence and Bluetooth settings action still require device verification.",
+    "Insulin calculation formula and dosing parameters were preserved."
+  ]
+}

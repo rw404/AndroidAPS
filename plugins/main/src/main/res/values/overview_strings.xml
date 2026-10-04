@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="overview_last_delta">Last delta</string>
+    <string name="overview_fifteen_minute_delta">15 minute delta</string>
+    <string name="overview_forty_minute_delta">40 minute delta</string>
+    <string name="overview_enter_insulin">Enter insulin</string>
+    <string name="overview_enter_carbs">Enter carbs</string>
+    <string name="overview_enter_carbs_description">Enter carbohydrates and an optional insulin dose</string>
+    <string name="overview_record_carbs">Record carbs</string>
+    <string name="overview_record_carbs_summary">Show the separate carbohydrate entry, including time, extended carbs and reminders.</string>
+    <string name="overview_insulin_action_unavailable">Enter insulin. An active profile is required.</string>
+    <string name="overview_carbs_action_unavailable">Enter carbs. An active profile and an available pump are required.</string>
+</resources>

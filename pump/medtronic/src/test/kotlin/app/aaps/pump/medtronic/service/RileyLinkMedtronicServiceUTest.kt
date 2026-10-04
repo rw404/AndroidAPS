@@ -101,6 +101,29 @@ class RileyLinkMedtronicServiceUTest : TestBaseWithProfile() {
     }
 
     @Test
+    fun `722 configuration selects the real driver and US radio frequency`() {
+        setupValidConfiguration()
+        whenever(preferences.get(MedtronicStringPreferenceKey.PumpType)).thenReturn("722")
+
+        assertThat(service.verifyConfiguration(forceRileyLinkAddressRenewal = false)).isTrue()
+        assertThat(medtronicPumpStatus.medtronicDeviceType).isEqualTo(MedtronicDeviceType.Medtronic_722)
+        assertThat(medtronicPumpStatus.pumpType).isEqualTo(PumpType.MEDTRONIC_522_722)
+        assertThat(medtronicPumpStatus.reservoirFullUnits).isEqualTo(300)
+        assertThat(rileyLinkServiceData.rileyLinkTargetFrequency).isEqualTo(RileyLinkTargetFrequency.MedtronicUS)
+    }
+
+    @Test
+    fun `722 worldwide configuration uses its own radio frequency`() {
+        setupValidConfiguration()
+        whenever(preferences.get(MedtronicStringPreferenceKey.PumpType)).thenReturn("722")
+        whenever(preferences.get(MedtronicStringPreferenceKey.PumpFrequency)).thenReturn("medtronic_pump_frequency_worldwide")
+
+        assertThat(service.verifyConfiguration(forceRileyLinkAddressRenewal = false)).isTrue()
+        assertThat(medtronicPumpStatus.medtronicDeviceType).isEqualTo(MedtronicDeviceType.Medtronic_722)
+        assertThat(rileyLinkServiceData.rileyLinkTargetFrequency).isEqualTo(RileyLinkTargetFrequency.MedtronicWorldWide)
+    }
+
+    @Test
     fun `test verifyConfiguration with invalid serial number format returns false`() {
         setupValidConfiguration()
         whenever(preferences.get(MedtronicStringPreferenceKey.Serial)).thenReturn("12345") // Too short

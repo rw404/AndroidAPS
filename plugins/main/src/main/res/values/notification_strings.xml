@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quiet_informational_notifications">Quiet informational notifications</string>
+    <string name="quiet_informational_notifications_summary">Keep routine confirmations, announcements and algorithm fallback information in the app instead of the notification tray. Pump connection reminders and safety warnings remain enabled.</string>
+</resources>

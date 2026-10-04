@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites tests="72" failures="0" errors="0" skipped="0">
+  <testsuite name="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:24:29.593Z" hostname="89637a327f7c" time="4.299">
+    <testcase name="predicted low glucose disables SMB even when current glucose is high()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="3.917" />
+    <testcase name="SMB interval preserves the existing strict six second tolerance boundary()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.021" />
+    <testcase name="[1] 9.0" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.019" />
+    <testcase name="[2] 38.0" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.018" />
+    <testcase name="noisy CGM suppresses SMB and shortens an existing zero temp()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005" />
+    <testcase name="SMB interval is clamped to existing one to ten minute bounds()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.016" />
+    <testcase name="IOB above its limit prevents a microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.006" />
+    <testcase name="large glucose jump disables SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.013" />
+    <testcase name="flat CGM suppresses SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003" />
+    <testcase name="low glucose suspends basal without a microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.01" />
+    <testcase name="recent or future bolus prevents another SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.01" />
+    <testcase name="sub increment insulin requirement produces no microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.007" />
+    <testcase name="microbolus respects remaining IOB budget()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.004" />
+    <testcase name="SMB basal cap and UAM basal cap are respected independently()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.025" />
+    <testcase name="high temporary target overrides always enabled preference()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.012" />
+    <testcase name="[1] 0.0" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.009" />
+    <testcase name="[2] 1.0" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005" />
+    <testcase name="[3] 2.0" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005" />
+    <testcase name="[4] 2.5" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.006" />
+    <testcase name="[1] 0.05" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.009" />
+    <testcase name="[2] 0.1" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.006" />
+    <testcase name="[3] 0.25" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.027" />
+    <testcase name="[1] 780000" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.009" />
+    <testcase name="[2] -360000" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003" />
+    <testcase name="SMB permission gate overrides always enabled preference()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005" />
+  </testsuite>
+  <testsuite name="app.aaps.implementation.queue.commands.CommandSMBBolusTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:24:36.718Z" hostname="89637a327f7c" time="4.217">
+    <testcase name="missingDeliveryTimestampNeverReachesPump()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="4.109" />
+    <testcase name="historyLookupDelayDoesNotExtendRequestLifetime()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.019" />
+    <testcase name="freshRequestPreservesAmountAndPumpResultUsingOneClockReading()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.041" />
+    <testcase name="frequencyRejectsLastMillisecondButAllowsExactBoundaryAndLater()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.012" />
+    <testcase name="bolusDiscoveredAfterEnqueueIsRejectedOutsideFrequencyWindow()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.008" />
+    <testcase name="nonPositiveOrNonFiniteInsulinNeverReachesPump()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.008" />
+    <testcase name="requestExpiresAtExactlySixtySeconds()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.008" />
+    <testcase name="bolusDiscoveredAfterEnqueueIsRejectedInsideFrequencyWindow()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.006" />
+  </testsuite>
+  <testsuite name="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:25:25.951Z" hostname="89637a327f7c" time="0.204">
+    <testcase name="connection reminders always pass()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.19" />
+    <testcase name="pump warnings and Bluetooth failures pass despite informational severity()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.005" />
+    <testcase name="normal and urgent messages always pass even for informational IDs()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.001" />
+    <testcase name="quiet mode suppresses routine confirmations but keeps them available in app()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.002" />
+    <testcase name="turning quiet mode off restores ordinary notifications()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.001" />
+    <testcase name="sound carrying and unknown messages are preserved()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.receivers.KeepAliveWorkerTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:42:31.148Z" hostname="89637a327f7c" time="6.201">
+    <testcase name="checkAPS schedules device status upload if BG is missing()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="5.861" />
+    <testcase name="fresh pump data dismisses only the quiet reminder and clears its persisted stage()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.084" />
+    <testcase name="quiet connection mode replaces only the generic connection alarm()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.049" />
+    <testcase name="rejected ordinary status requests cannot supply evidence for a connection failure reminder()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.029" />
+    <testcase name="recovery is persisted only after the command queue accepts the status request()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.02" />
+    <testcase name="checkPump does nothing if mode is DISCONNECTED_PUMP()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.021" />
+    <testcase name="checkPump sends profile switch event if profile is mismatched()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.019" />
+    <testcase name="databaseCleanup does NOT run if it was run less than a day ago()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.02" />
+    <testcase name="accepted recovery skips the ordinary status request in the same keepalive pass()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.024" />
+    <testcase name="checkPump requests status when connection is outdated()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.02" />
+    <testcase name="quiet connection reminders persist deduplication across worker instances()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.014" />
+    <testcase name="disabling reminders dismisses them but preserves deduplication without generating notifications()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.014" />
+    <testcase name="legacy pump unreachable alarm remains available when quiet mode is disabled()" classname="app.aaps.receivers.KeepAliveWorkerTest" time="0.015" />
+  </testsuite>
+  <testsuite name="app.aaps.receivers.PumpConnectionRecoveryTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:42:37.354Z" hostname="89637a327f7c" time="0.105">
+    <testcase name="queued or executing commands including treatments and disconnect defer recovery()" classname="app.aaps.receivers.PumpConnectionRecoveryTest" time="0.098" />
+    <testcase name="rejected status request is not reported as an accepted recovery attempt()" classname="app.aaps.receivers.PumpConnectionRecoveryTest" time="0.001" />
+    <testcase name="idle pump recovery uses the existing status command queue()" classname="app.aaps.receivers.PumpConnectionRecoveryTest" time="0.002" />
+    <testcase name="pump initialization connection handshake and busy states defer recovery()" classname="app.aaps.receivers.PumpConnectionRecoveryTest" time="0.003" />
+  </testsuite>
+  <testsuite name="app.aaps.receivers.PumpConnectionReminderPolicyTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-04T10:42:37.461Z" hostname="89637a327f7c" time="0.016">
+    <testcase name="disabled reminders intentional disconnect and client mode dismiss but preserve deduplication()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.0" />
+    <testcase name="recovery is requested at 40 minutes until an attempt is accepted()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="fresh successful read allows a new recovery attempt in the next outage()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="a stage is emitted once including after restoring persisted state()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="an attempted status read is required after the last successful connection()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="missing or future connection data cannot emit or dismiss()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.0" />
+    <testcase name="disabled mode without an existing reminder does not request dismissal()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="recent read attempt allows scheduling jitter but rejects stale attempts()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="a late scheduler emits only the current stage()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="reenabling during the same outage does not replay the reminder()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="each stage begins at its exact boundary()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="regressing timestamps preserve the episode()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.0" />
+    <testcase name="fresh recovery is independent of read attempt freshness()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.0" />
+    <testcase name="an older cached read does not confirm recovery or replay a stage()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="a recent successful read dismisses the reminder and restarts thresholds()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.001" />
+    <testcase name="clock rollback cannot masquerade as a fresh successful connection()" classname="app.aaps.receivers.PumpConnectionReminderPolicyTest" time="0.0" />
+  </testsuite>
+</testsuites>

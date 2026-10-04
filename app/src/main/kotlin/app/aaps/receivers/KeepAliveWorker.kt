@@ -21,15 +21,19 @@ import app.aaps.core.interfaces.db.PersistenceLayer
 import app.aaps.core.interfaces.iob.IobCobCalculator
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.logging.LTag
+import app.aaps.core.interfaces.notifications.Notification
 import app.aaps.core.interfaces.plugin.ActivePlugin
 import app.aaps.core.interfaces.profile.ProfileFunction
 import app.aaps.core.interfaces.queue.Command
 import app.aaps.core.interfaces.queue.CommandQueue
 import app.aaps.core.interfaces.resources.ResourceHelper
 import app.aaps.core.interfaces.rx.bus.RxBus
+import app.aaps.core.interfaces.rx.events.EventDismissNotification
+import app.aaps.core.interfaces.rx.events.EventNewNotification
 import app.aaps.core.interfaces.rx.events.EventProfileSwitchChanged
 import app.aaps.core.interfaces.utils.DateUtil
 import app.aaps.core.interfaces.utils.fabric.FabricPrivacy
+import app.aaps.core.keys.BooleanKey
 import app.aaps.core.keys.LongNonKey
 import app.aaps.core.keys.interfaces.Preferences
 import app.aaps.core.objects.profile.ProfileSealed
@@ -71,6 +75,7 @@ class KeepAliveWorker(
         private var lastReadStatus: Long = 0
         private var lastRun: Long = 0
         private var lastIobUpload: Long = 0
+        private val pumpConnectionReminderPolicy = PumpConnectionReminderPolicy()
 
         const val KA_0 = "KeepAlive"
         private const val KA_5 = "KeepAlive_5"
@@ -188,12 +193,15 @@ class KeepAliveWorker(
     @VisibleForTesting
     fun checkPump() {
         val pump = activePlugin.activePump
+        val lastConnection = pump.lastDataTime
+        val now = dateUtil.now()
+        val recoveryRequested = checkPumpConnectionReminder(lastConnection, now, lastReadStatus)
+        val quietConnectionMode = preferences.get(BooleanKey.AlertPumpConnectionReminders)
+        if (quietConnectionMode) rxBus.send(EventDismissNotification(Notification.PUMP_UNREACHABLE))
         val ps = profileFunction.getRequestedProfile() ?: return
         val requestedProfile = ProfileSealed.PS(ps, activePlugin)
         val runningProfile = profileFunction.getProfile()
-        val lastConnection = pump.lastDataTime
-        val now = dateUtil.now()
-        val isStatusOutdated = lastConnection + STATUS_UPDATE_FREQUENCY < now
+        val isStatusOutdated = lastConnection + STATUS_UPDATE_FREQUENCY <= now
         val isBasalOutdated = abs(requestedProfile.getBasal() - pump.baseBasalRate) > pump.pumpDescription.basalStep
         aapsLogger.debug(LTag.CORE, "Last connection: " + dateUtil.dateAndTimeString(lastConnection))
         // Sometimes it can happen that keepalive is not triggered every 5 minutes as it should.
@@ -207,7 +215,7 @@ class KeepAliveWorker(
         // last read status attempt and the current time can be slightly over 5 minutes (for example,
         // 300041 milliseconds instead of exactly 300000). Add 30 extra seconds to allow for
         // plenty of tolerance.
-        if (lastReadStatus != 0L && (now - lastReadStatus).coerceIn(minimumValue = 0, maximumValue = null) <= T.secs(5 * 60 + 30).msecs()) {
+        if (!quietConnectionMode && lastReadStatus != 0L && (now - lastReadStatus).coerceIn(minimumValue = 0, maximumValue = null) <= T.secs(5 * 60 + 30).msecs()) {
             localAlertUtils.checkPumpUnreachableAlarm(lastConnection, isStatusOutdated, loop.runningMode == RM.Mode.DISCONNECTED_PUMP)
         }
         if (loop.runningMode == RM.Mode.DISCONNECTED_PUMP) {
@@ -224,11 +232,50 @@ class KeepAliveWorker(
         ) {
             rxBus.send(EventProfileSwitchChanged())
         } else if (isStatusOutdated && !pump.isBusy()) {
-            lastReadStatus = now
-            commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.keepalive_status_outdated), null)
+            if (!recoveryRequested && commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.keepalive_status_outdated), null)) {
+                lastReadStatus = now
+            }
         } else if (isBasalOutdated && !pump.isBusy()) {
-            lastReadStatus = now
-            commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.keepalive_basal_outdated), null)
+            if (!recoveryRequested && commandQueue.readStatus(rh.gs(app.aaps.core.ui.R.string.keepalive_basal_outdated), null)) {
+                lastReadStatus = now
+            }
         }
+    }
+
+    @VisibleForTesting
+    internal fun checkPumpConnectionReminder(lastConnection: Long, now: Long, lastReadAttempt: Long): Boolean = synchronized(pumpConnectionReminderPolicy) {
+        val state = PumpConnectionReminderPolicy.State(
+            lastConnection = preferences.get(LongNonKey.PumpConnectionReminderLastConnection),
+            lastReminderMinutes = preferences.get(LongNonKey.PumpConnectionReminderLastMinutes).toInt(),
+            recoveryAttempted = preferences.get(LongNonKey.PumpConnectionReminderRecoveryAttempted) != 0L
+        )
+        val decision = pumpConnectionReminderPolicy.evaluate(
+            state = state,
+            now = now,
+            lastConnection = lastConnection,
+            lastReadAttempt = lastReadAttempt,
+            enabled = preferences.get(BooleanKey.AlertPumpConnectionReminders),
+            disconnected = loop.runningMode == RM.Mode.DISCONNECTED_PUMP,
+            pumpMode = !config.AAPSCLIENT && (config.APS || config.PUMPCONTROL)
+        )
+        val recoveryRequested = decision.requestRecovery && PumpConnectionRecovery.requestStatus(
+            activePlugin.activePump, commandQueue, rh.gs(app.aaps.core.ui.R.string.pump_connection_recovery)
+        )
+        if (recoveryRequested) lastReadStatus = now
+        val nextState = if (recoveryRequested) decision.state.copy(recoveryAttempted = true) else decision.state
+        if (nextState != state) {
+            preferences.put(LongNonKey.PumpConnectionReminderLastConnection, nextState.lastConnection)
+            preferences.put(LongNonKey.PumpConnectionReminderLastMinutes, nextState.lastReminderMinutes.toLong())
+            preferences.put(LongNonKey.PumpConnectionReminderRecoveryAttempted, if (nextState.recoveryAttempted) 1L else 0L)
+        }
+        if (decision.dismiss) rxBus.send(EventDismissNotification(Notification.PUMP_CONNECTION_REMINDER))
+        decision.reminderMinutes?.let { minutes ->
+            rxBus.send(
+                EventNewNotification(
+                    Notification(Notification.PUMP_CONNECTION_REMINDER, rh.gs(app.aaps.core.ui.R.string.pump_connection_reminder, minutes), Notification.INFO)
+                )
+            )
+        }
+        recoveryRequested
     }
 }

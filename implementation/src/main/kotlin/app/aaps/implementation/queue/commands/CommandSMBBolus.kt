@@ -43,10 +43,17 @@ class CommandSMBBolus(
         val r: PumpEnactResult
         val lastBolusTime = persistenceLayer.getNewestBolus()?.timestamp ?: 0L
         aapsLogger.debug(LTag.PUMPQUEUE, "Last bolus: $lastBolusTime ${dateUtil.dateAndTimeAndSecondsString(lastBolusTime)}")
-        if (lastBolusTime != 0L && lastBolusTime + T.mins(preferences.get(IntKey.ApsMaxSmbFrequency).toLong()).msecs() > dateUtil.now()) {
+        val now = dateUtil.now()
+        if (!detailedBolusInfo.insulin.isFinite() || detailedBolusInfo.insulin <= 0.0) {
+            aapsLogger.debug(LTag.PUMPQUEUE, "Rejecting SMB, invalid insulin amount")
+            r = pumpEnactResultProvider.get().enacted(false).success(false).comment("SMB request has invalid insulin amount")
+        } else if (lastBolusTime > detailedBolusInfo.lastKnownBolusTime) {
+            aapsLogger.debug(LTag.PUMPQUEUE, "Rejecting bolus, another bolus was issued since request time")
+            r = pumpEnactResultProvider.get().enacted(false).success(false).comment("Rejecting bolus, another bolus was issued since request time")
+        } else if (lastBolusTime != 0L && lastBolusTime + T.mins(preferences.get(IntKey.ApsMaxSmbFrequency).toLong()).msecs() > now) {
             aapsLogger.debug(LTag.APS, "SMB requested but still in ${preferences.get(IntKey.ApsMaxSmbFrequency)} min interval")
             r = pumpEnactResultProvider.get().enacted(false).success(false).comment("SMB requested but still in ${preferences.get(IntKey.ApsMaxSmbFrequency)} min interval")
-        } else if (detailedBolusInfo.deliverAtTheLatest != 0L && detailedBolusInfo.deliverAtTheLatest + T.mins(1).msecs() > System.currentTimeMillis()) {
+        } else if (detailedBolusInfo.deliverAtTheLatest != 0L && detailedBolusInfo.deliverAtTheLatest + T.mins(1).msecs() > now) {
             r = activePlugin.activePump.deliverTreatment(detailedBolusInfo)
         } else {
             r = pumpEnactResultProvider.get().enacted(false).success(false).comment("SMB request too old")

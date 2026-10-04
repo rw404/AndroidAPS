@@ -146,4 +146,5 @@
     <string name="newSmbMode">Новый режим SMB:</string>
     <string name="on">ВКЛ</string>
     <string name="off">ВЫКЛ</string>
+    <string name="map_search_unavailable">Поиск на карте недоступен. Введите координаты вручную.</string>
 </resources>

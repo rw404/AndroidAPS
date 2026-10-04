@@ -20,6 +20,7 @@ enum class BooleanKey(
     GeneralSimpleMode("simple_mode", true),
     GeneralSetupWizardProcessed("startupwizard_processed", false),
     OverviewKeepScreenOn("keep_screen_on", false, calculatedDefaultValue = true),
+    OverviewQuietInformationalNotifications("quiet_informational_notifications", true),
     OverviewShowTreatmentButton("show_treatment_button", false, defaultedBySM = true, hideParentScreenIfHidden = true),
     OverviewShowWizardButton("show_wizard_button", true, defaultedBySM = true),
     OverviewShowInsulinButton("show_insulin_button", true, defaultedBySM = true),
@@ -37,6 +38,7 @@ enum class BooleanKey(
 
     AlertMissedBgReading("enable_missed_bg_readings", false),
     AlertPumpUnreachable("enable_pump_unreachable_alert", true),
+    AlertPumpConnectionReminders("enable_pump_connection_reminders", true, showInNsClientMode = false),
     AlertCarbsRequired("enable_carbs_required_alert_local", true),
     AlertUrgentAsAndroidNotification("raise_urgent_alarms_as_android_notification", true),
     AlertIncreaseVolume("gradually_increase_notification_volume", true),

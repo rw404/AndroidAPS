@@ -48,7 +48,8 @@ class FileListProviderImpl @Inject constructor(
     private val rxBus: RxBus
 ) : FileListProvider {
 
-    private val documentsPath get() = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "AAPS")
+    private val documentsPath
+        get() = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), if (config.get().FLAVOR == "healfi") "Healfi" else "AAPS")
     override val resultPath get() = File(documentsPath, File.separator + "results")
 
     val preferencesPath = "preferences"

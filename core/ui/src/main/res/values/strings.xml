@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pump_connection_bluetooth_settings">Bluetooth settings</string>
     <!--    General-->
     <string name="refresh">Refresh</string>
     <string name="error">Error</string>
@@ -9,6 +10,9 @@
     <string name="tempbasals_iobtotal_label_string">Total IOB:</string>
     <string name="tt_label">TT</string>
     <string name="pump_unreachable">Pump unreachable</string>
+    <string name="pump_connection_reminder">No pump data for at least %1$d minutes. Check the pump connection.</string>
+    <string name="pump_connection_reminders_channel">Pump connection reminders</string>
+    <string name="pump_connection_recovery">Pump connection recovery after 40 minutes</string>
     <string name="insulin_unit_shortname">U</string>
     <string name="pump_base_basal_rate">%1$.2f U/h</string>
     <string name="pump_not_initialized_profile_not_set">Pump not initialized, profile not set!</string>

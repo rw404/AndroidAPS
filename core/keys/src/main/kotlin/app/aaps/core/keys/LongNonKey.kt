@@ -12,5 +12,7 @@ enum class LongNonKey(
     BtWatchdogLastBark("bt_watchdog_last", 0L),
     ActivePumpChangeTimestamp("active_pump_change_timestamp", 0L),
     LastCleanupRun("last_cleanup_run", 0L),
+    PumpConnectionReminderLastConnection("pump_connection_reminder_last_connection", 0L, exportable = false),
+    PumpConnectionReminderLastMinutes("pump_connection_reminder_last_minutes", 0L, exportable = false),
+    PumpConnectionReminderRecoveryAttempted("pump_connection_reminder_recovery_attempted", 0L, exportable = false),
 }
-

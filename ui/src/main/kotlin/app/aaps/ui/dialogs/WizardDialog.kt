@@ -87,8 +87,6 @@ class WizardDialog : DaggerDialogFragment() {
     private var calculatedPercentage = 100
     private var calculatedCorrection = 0.0
     private var usePercentage = false
-    private var carbsPassedIntoWizard = 0.0
-    private var notesPassedIntoWizard = ""
     private var okClicked: Boolean = false // one shot guards
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var bolusStep = 0.0
@@ -128,16 +126,12 @@ class WizardDialog : DaggerDialogFragment() {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putDouble("bg_input", binding.bgInput.value)
         savedInstanceState.putDouble("carbs_input", binding.carbsInput.value)
+        savedInstanceState.putString("notes_input", binding.notesLayout.notes.text.toString())
         savedInstanceState.putDouble("correction_input", binding.correctionInput.value)
         savedInstanceState.putDouble("carb_time_input", binding.carbTimeInput.value)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        this.arguments?.let { bundle ->
-            carbsPassedIntoWizard = bundle.getDouble("carbs_input")
-            notesPassedIntoWizard = bundle.getString("notes_input") ?: ""
-        }
-
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         isCancelable = true
@@ -148,6 +142,12 @@ class WizardDialog : DaggerDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val initialInput = resolveWizardInputPrefill(
+            argumentCarbs = arguments?.getDouble("carbs_input"),
+            argumentNotes = arguments?.getString("notes_input"),
+            savedCarbs = savedInstanceState?.takeIf { it.containsKey("carbs_input") }?.getDouble("carbs_input"),
+            savedNotes = savedInstanceState?.getString("notes_input")
+        )
         loadCheckedStates()
         processCobCheckBox()
         val useSuperBolus = preferences.get(BooleanKey.OverviewUseSuperBolus)
@@ -171,9 +171,11 @@ class WizardDialog : DaggerDialogFragment() {
             )
         }
         binding.carbsInput.setParams(
-            savedInstanceState?.getDouble("carbs_input")
-                ?: 0.0, 0.0, maxCarbs.toDouble(), 1.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher
+            0.0, 0.0, maxCarbs.toDouble(), 1.0, DecimalFormat("0"), false, binding.okcancel.ok, textWatcher
         )
+        // Apply once during view setup, through the picker setter that enforces its existing limits.
+        binding.carbsInput.value = initialInput.carbs
+        binding.notesLayout.notes.setText(initialInput.notes)
 
         // If there is no BG using % lower that 100% leads to high BGs
         // because loop doesn't add missing insulin
@@ -394,13 +396,6 @@ class WizardDialog : DaggerDialogFragment() {
 
         runOnUiThread {
             _binding ?: return@runOnUiThread
-            if (carbsPassedIntoWizard != 0.0) {
-                binding.carbsInput.value = carbsPassedIntoWizard
-            }
-            if (notesPassedIntoWizard.isNotBlank()) {
-                binding.notesLayout.notes.setText(notesPassedIntoWizard)
-            }
-
             val profileList: ArrayList<CharSequence> = profileStore.getProfileList()
             profileList.add(0, rh.gs(app.aaps.core.ui.R.string.active))
             context?.let { context ->
@@ -571,3 +566,12 @@ class WizardDialog : DaggerDialogFragment() {
         }
     }
 }
+
+internal data class WizardInputPrefill(val carbs: Double, val notes: String)
+
+internal fun resolveWizardInputPrefill(
+    argumentCarbs: Double?,
+    argumentNotes: String?,
+    savedCarbs: Double?,
+    savedNotes: String?
+): WizardInputPrefill = WizardInputPrefill(savedCarbs ?: argumentCarbs ?: 0.0, savedNotes ?: argumentNotes ?: "")

@@ -164,7 +164,7 @@ class MedtronicUITask @Inject constructor(
             )
         } else {
             rxBus.send(EventMedtronicPumpValuesChanged())
-            medtronicPumpStatus.setLastCommunicationToNow()
+            // Transport validation records contact; a result can also describe a failed command.
         }
         medtronicUtil.setCurrentCommand(null)
     }

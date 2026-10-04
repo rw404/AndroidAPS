@@ -69,6 +69,14 @@ android {
             versionName = Versions.appVersion
             manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher"
         }
+        create("healfi") {
+            applicationId = "app.healfi.androidaps"
+            dimension = "standard"
+            matchingFallbacks += "full"
+            resValue("string", "app_name", "Healfi")
+            versionName = Versions.appVersion
+            manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher"
+        }
         create("pumpcontrol") {
             applicationId = "info.nightscout.aapspumpcontrol"
             dimension = "standard"

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="JUnit Jupiter" tests="39" skipped="0" failures="0" errors="0" time="1.555" hostname="89637a327f7c" timestamp="2026-10-03T21:53:30">
+  <testcase name="pump warnings and Bluetooth failures pass despite informational severity()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0">
+</testcase>
+  <testcase name="requestExpiresAtExactlySixtySeconds()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.003">
+</testcase>
+  <testcase name="eligible high glucose produces a bounded SMB including whole number deltas(double)[4]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.004">
+</testcase>
+  <testcase name="eligible high glucose produces a bounded SMB including whole number deltas(double)[3]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="bolusDiscoveredAfterEnqueueIsRejectedOutsideFrequencyWindow()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.003">
+</testcase>
+  <testcase name="predicted low glucose disables SMB even when current glucose is high()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="1.112">
+</testcase>
+  <testcase name="SMB interval is clamped to existing one to ten minute bounds()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.012">
+</testcase>
+  <testcase name="sound carrying and unknown messages are preserved()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0">
+</testcase>
+  <testcase name="normal and urgent messages always pass even for informational IDs()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0">
+</testcase>
+  <testcase name="microbolus rounds down to the pump increment(double)[1]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005">
+</testcase>
+  <testcase name="eligible high glucose produces a bounded SMB including whole number deltas(double)[2]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="microbolus rounds down to the pump increment(double)[2]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="historyLookupDelayDoesNotExtendRequestLifetime()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.006">
+</testcase>
+  <testcase name="eligible high glucose produces a bounded SMB including whole number deltas(double)[1]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.004">
+</testcase>
+  <testcase name="microbolus rounds down to the pump increment(double)[3]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="bolusDiscoveredAfterEnqueueIsRejectedInsideFrequencyWindow()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.002">
+</testcase>
+  <testcase name="large glucose jump disables SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.009">
+</testcase>
+  <testcase name="SMB interval preserves the existing strict six second tolerance boundary()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.021">
+</testcase>
+  <testcase name="freshRequestPreservesAmountAndPumpResultUsingOneClockReading()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.005">
+</testcase>
+  <testcase name="CGM error values suppress SMB(double)[1]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.012">
+</testcase>
+  <testcase name="IOB above its limit prevents a microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="CGM error values suppress SMB(double)[2]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.002">
+</testcase>
+  <testcase name="frequencyRejectsLastMillisecondButAllowsExactBoundaryAndLater()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.004">
+</testcase>
+  <testcase name="noisy CGM suppresses SMB and shortens an existing zero temp()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="microbolus respects remaining IOB budget()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="low glucose suspends basal without a microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.006">
+</testcase>
+  <testcase name="quiet mode suppresses routine confirmations but keeps them available in app()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0">
+</testcase>
+  <testcase name="high temporary target overrides always enabled preference()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005">
+</testcase>
+  <testcase name="connection reminders always pass()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0.002">
+</testcase>
+  <testcase name="turning quiet mode off restores ordinary notifications()" classname="app.aaps.plugins.main.general.overview.notifications.NotificationDeliveryPolicyTest" time="0">
+</testcase>
+  <testcase name="SMB permission gate overrides always enabled preference()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.002">
+</testcase>
+  <testcase name="flat CGM suppresses SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.002">
+</testcase>
+  <testcase name="SMB basal cap and UAM basal cap are respected independently()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.005">
+</testcase>
+  <testcase name="missingDeliveryTimestampNeverReachesPump()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.19">
+</testcase>
+  <testcase name="nonPositiveOrNonFiniteInsulinNeverReachesPump()" classname="app.aaps.implementation.queue.commands.CommandSMBBolusTest" time="0.004">
+</testcase>
+  <testcase name="recent or future bolus prevents another SMB()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.004">
+</testcase>
+  <testcase name="sub increment insulin requirement produces no microbolus()" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.003">
+</testcase>
+  <testcase name="stale and future CGM data suppress SMB and replace a high temp(long)[2]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.001">
+</testcase>
+  <testcase name="stale and future CGM data suppress SMB and replace a high temp(long)[1]" classname="app.aaps.plugins.aps.openAPSSMB.DetermineBasalSMBTest" time="0.007">
+</testcase>
+</testsuite>

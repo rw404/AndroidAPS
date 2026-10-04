@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="app.aaps.weardata.permission" />
+    <uses-permission android:name="${wearDataPermission}" />
 
     <permission
-        android:name="app.aaps.weardata.permission"
+        android:name="${wearDataPermission}"
         android:label="AAPS WEAR DATA"
         android:protectionLevel="signature" />
 
@@ -43,10 +43,10 @@
             android:name="app.aaps.plugins.sync.wear.receivers.WearDataReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="app.aaps.weardata.permission">
+            android:permission="${wearDataPermission}">
             <intent-filter>
                 <!-- Receiver from aapsclient -->
-                <action android:name="app.aaps.aapsclient.weardata" />
+                <action android:name="${wearDataAction}" />
             </intent-filter>
         </receiver>
 

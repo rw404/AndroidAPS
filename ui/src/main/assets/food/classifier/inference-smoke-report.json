@@ -1,0 +1,147 @@
+{
+  "model_sha256": "ed386d53e69bb71f637dc9794429a5332e1c7dde4481ad177934ca0cc8aaa444",
+  "dataset": "ethz/food101",
+  "dataset_revision": "83488de741c1bd1ce27aa6a2b33e19c7bdf92ca9",
+  "split": "validation",
+  "runtime": "1.23.2",
+  "input_shape": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "output_shape": [
+    1,
+    101
+  ],
+  "fixtures": [
+    {
+      "row_idx": 0,
+      "fixture_sha256": "19b917e2235c90c04a6ba0423911219e2a12d9e68c2a39bb5259c382bfede3ca",
+      "expected": "beignets",
+      "top3": [
+        {
+          "id": "beignets",
+          "score": 0.8130233883857727
+        },
+        {
+          "id": "churros",
+          "score": 0.03146159648895264
+        },
+        {
+          "id": "tiramisu",
+          "score": 0.01953386515378952
+        }
+      ],
+      "finite": true,
+      "probability_sum": 1.0
+    },
+    {
+      "row_idx": 1000,
+      "fixture_sha256": "cf9b2d023ceae4e2377717ba15b4902b0b1f401a6ff78be1491abd8fcaf0e723",
+      "expected": "bruschetta",
+      "top3": [
+        {
+          "id": "bruschetta",
+          "score": 0.9690157175064087
+        },
+        {
+          "id": "tuna_tartare",
+          "score": 0.020837469026446342
+        },
+        {
+          "id": "beef_tartare",
+          "score": 0.0042115505784749985
+        }
+      ],
+      "finite": true,
+      "probability_sum": 1.0000001192092896
+    },
+    {
+      "row_idx": 250,
+      "fixture_sha256": "14759e644a86150b3c65fdd726aa6559c3a113be8d04296bf9520f6238db90b4",
+      "expected": "prime_rib",
+      "top3": [
+        {
+          "id": "prime_rib",
+          "score": 0.40377795696258545
+        },
+        {
+          "id": "steak",
+          "score": 0.27405714988708496
+        },
+        {
+          "id": "filet_mignon",
+          "score": 0.15533243119716644
+        }
+      ],
+      "finite": true,
+      "probability_sum": 0.9999999403953552
+    },
+    {
+      "row_idx": 500,
+      "fixture_sha256": "e91de9a3d65638226398b2b4e626f1a48eb1f585e2a3d440428ecaf640c7b58e",
+      "expected": "ramen",
+      "top3": [
+        {
+          "id": "ramen",
+          "score": 0.704088032245636
+        },
+        {
+          "id": "miso_soup",
+          "score": 0.1000438779592514
+        },
+        {
+          "id": "sashimi",
+          "score": 0.03356825187802315
+        }
+      ],
+      "finite": true,
+      "probability_sum": 1.0
+    },
+    {
+      "row_idx": 750,
+      "fixture_sha256": "a5ee18feb12dd45f9c6eb32ad535a3b7031ac86e14ec6dda963415cd6041af9e",
+      "expected": "hamburger",
+      "top3": [
+        {
+          "id": "hamburger",
+          "score": 0.7582970261573792
+        },
+        {
+          "id": "pulled_pork_sandwich",
+          "score": 0.18996009230613708
+        },
+        {
+          "id": "pancakes",
+          "score": 0.04073147103190422
+        }
+      ],
+      "finite": true,
+      "probability_sum": 0.9999998807907104
+    }
+  ],
+  "note": "Smoke verification only; no general accuracy estimate. Photos not redistributed.",
+  "comparison_ort_1_30_0": {
+    "top3_ids_agree_all_fixtures": true,
+    "max_score_absolute_difference": 0.0
+  },
+  "out_of_domain_smoke": {
+    "input": "seed52 random noise, no food",
+    "top3": [
+      {
+        "id": "macarons",
+        "score": 0.045342061668634415
+      },
+      {
+        "id": "foie_gras",
+        "score": 0.04209085553884506
+      },
+      {
+        "id": "chocolate_cake",
+        "score": 0.02718309871852398
+      }
+    ],
+    "note": "Model has no unknown class and still returns dish names. Scores must remain suggestions, never food identification or nutrition values."
+  }
+}

@@ -26,8 +26,10 @@ open class WearDataReceiver : DaggerBroadcastReceiver() {
         val bundle = intent.extras ?: return
         aapsLogger.debug(LTag.WEAR, "onReceive ${intent.action} ${BundleLogger.log(bundle)}")
 
+        // Healfi receives only its own broadcasts; existing AAPS clients keep their legacy route.
+        val wearDataAction = if (config.FLAVOR == "healfi") "${config.APPLICATION_ID}.weardata" else Intents.AAPS_CLIENT_WEAR_DATA
         when (intent.action) {
-            Intents.AAPS_CLIENT_WEAR_DATA -> {
+            wearDataAction -> {
                 val client = bundle.getInt(CLIENT)
                 val data = bundle.getString(DATA)
                 if (client == 0 || data == null) {

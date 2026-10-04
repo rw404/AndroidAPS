@@ -1,0 +1,8 @@
+id	name	dataType	carbs	fiber	fat	protein	energyKcal	preparation	sourceUrl
+171287	Egg, whole, raw, fresh	sr_legacy_food	0.72	0	9.51	12.56	143	RAW	https://fdc.nal.usda.gov/food-details/171287/nutrients
+172673	Bread, egg	sr_legacy_food	47.8	2.3	6	9.5	287	UNKNOWN	https://fdc.nal.usda.gov/food-details/172673/nutrients
+169742	Rice noodles, dry	sr_legacy_food	80.18	1.6	0.56	5.95	364	UNKNOWN	https://fdc.nal.usda.gov/food-details/169742/nutrients
+170686	Buckwheat groats, roasted, cooked	sr_legacy_food	19.94	2.7	0.62	3.38	92	COOKED	https://fdc.nal.usda.gov/food-details/170686/nutrients
+173905	Cereals, oats, regular and quick, unenriched, cooked with water (includes boiling and microwaving), without salt	sr_legacy_food	12	1.7	1.52	2.54	71	COOKED	https://fdc.nal.usda.gov/food-details/173905/nutrients
+2706537	Chicken or turkey and rice, no sauce	survey_fndds_food	16.97	0.2	5.84	6.46	149	UNKNOWN	https://fdc.nal.usda.gov/food-details/2706537/nutrients
+2706784	Chicken or turkey creole, without rice	survey_fndds_food	2.99	1.1	4.22	13.8	103	UNKNOWN	https://fdc.nal.usda.gov/food-details/2706784/nutrients

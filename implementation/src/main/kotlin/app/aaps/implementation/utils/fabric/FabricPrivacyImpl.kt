@@ -7,10 +7,11 @@ import app.aaps.core.interfaces.logging.LTag
 import app.aaps.core.interfaces.rx.weardata.EventData
 import app.aaps.core.interfaces.utils.fabric.FabricPrivacy
 import app.aaps.core.keys.BooleanKey
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.google.firebase.Firebase
 import dagger.Reusable
 import java.io.ByteArrayInputStream
 import java.io.IOException
@@ -28,15 +29,21 @@ class FabricPrivacyImpl @Inject constructor(
     private val sharedPreferences: SharedPreferences // Injecting Preferences is causing circular dependencies
 ) : FabricPrivacy {
 
-    private val firebaseAnalytics: FirebaseAnalytics = Firebase.analytics
+    private val firebaseApp: FirebaseApp? = try {
+        FirebaseApp.getInstance()
+    } catch (_: IllegalStateException) {
+        null
+    }
+    private val firebaseAnalytics: FirebaseAnalytics? = firebaseApp?.let { Firebase.analytics }
+    private val firebaseCrashlytics: FirebaseCrashlytics? = firebaseApp?.let { FirebaseCrashlytics.getInstance() }
 
     init {
-        firebaseAnalytics.setAnalyticsCollectionEnabled(!java.lang.Boolean.getBoolean("disableFirebase") && fabricEnabled())
-        FirebaseCrashlytics.getInstance().isCrashlyticsCollectionEnabled = !java.lang.Boolean.getBoolean("disableFirebase") && fabricEnabled()
+        firebaseAnalytics?.setAnalyticsCollectionEnabled(!java.lang.Boolean.getBoolean("disableFirebase") && fabricEnabled())
+        firebaseCrashlytics?.isCrashlyticsCollectionEnabled = !java.lang.Boolean.getBoolean("disableFirebase") && fabricEnabled()
     }
 
     override fun setUserProperty(key: String, value: String) {
-        firebaseAnalytics.setUserProperty(key, value)
+        firebaseAnalytics?.setUserProperty(key, value)
     }
 
     // Analytics logCustom
@@ -44,7 +51,7 @@ class FabricPrivacyImpl @Inject constructor(
     override fun logCustom(name: String, event: Bundle) {
         try {
             if (fabricEnabled()) {
-                firebaseAnalytics.logEvent(name, event)
+                firebaseAnalytics?.logEvent(name, event)
             } else {
                 aapsLogger.debug(LTag.CORE, "Ignoring recently opted-out event: $event")
             }
@@ -60,7 +67,7 @@ class FabricPrivacyImpl @Inject constructor(
     fun logCustom(event: Bundle) {
         try {
             if (fabricEnabled()) {
-                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, event)
+                firebaseAnalytics?.logEvent(FirebaseAnalytics.Event.SELECT_ITEM, event)
             } else {
                 aapsLogger.debug(LTag.CORE, "Ignoring recently opted-out event: $event")
             }
@@ -75,7 +82,7 @@ class FabricPrivacyImpl @Inject constructor(
     override fun logCustom(event: String) {
         try {
             if (fabricEnabled()) {
-                firebaseAnalytics.logEvent(event, Bundle())
+                firebaseAnalytics?.logEvent(event, Bundle())
             } else {
                 aapsLogger.debug(LTag.CORE, "Ignoring recently opted-out event: $event")
             }
@@ -89,22 +96,22 @@ class FabricPrivacyImpl @Inject constructor(
     // Crashlytics log message
     override fun logMessage(message: String) {
         aapsLogger.info(LTag.CORE, "Crashlytics log message: $message")
-        FirebaseCrashlytics.getInstance().log(message)
+        firebaseCrashlytics?.log(message)
     }
 
     // Crashlytics logException
     override fun logException(throwable: Throwable) {
         aapsLogger.error("Crashlytics log exception: ", throwable)
-        FirebaseCrashlytics.getInstance().recordException(throwable)
+        firebaseCrashlytics?.recordException(throwable)
     }
 
     override fun fabricEnabled(): Boolean {
-        return sharedPreferences.getBoolean(BooleanKey.MaintenanceEnableFabric.key, true)
+        return firebaseApp != null && sharedPreferences.getBoolean(BooleanKey.MaintenanceEnableFabric.key, true)
     }
 
     override fun logWearException(wearException: EventData.WearException) {
         aapsLogger.debug(LTag.WEAR, "logWearException")
-        FirebaseCrashlytics.getInstance().apply {
+        firebaseCrashlytics?.apply {
             setCustomKey("wear_exception", true)
             setCustomKey("wear_board", wearException.board)
             setCustomKey("wear_fingerprint", wearException.fingerprint)

@@ -2,6 +2,7 @@ package app.aaps.plugins.main.skins
 
 import android.util.TypedValue.COMPLEX_UNIT_PX
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -70,9 +71,14 @@ interface SkinInterface {
 
     fun moveButtonsLayout(root: LinearLayout) {
         val buttonsLayout = root.findViewById<LinearLayout>(R.id.buttons_layout)
-        root.removeView(buttonsLayout)
         val innerLayout = root.findViewById<LinearLayout>(R.id.inner_layout)
-        innerLayout.addView(buttonsLayout)
+        // Keep the two primary actions anchored below the scrolling content,
+        // even when a small screen or landscape skin moves secondary actions.
+        for (id in listOf(R.id.accept_temp_button, R.id.user_buttons_layout, R.id.secondary_actions_layout)) {
+            val action = buttonsLayout.findViewById<View>(id) ?: continue
+            (action.parent as ViewGroup).removeView(action)
+            innerLayout.addView(action)
+        }
     }
 
 }

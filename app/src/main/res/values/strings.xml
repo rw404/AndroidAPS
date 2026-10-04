@@ -15,6 +15,8 @@
     <string name="enable_missed_bg_readings_alert">Alert if no BG data is received</string>
     <string name="enable_pump_unreachable_alert">Alert if pump is unreachable</string>
     <string name="pump_unreachable_threshold">Pump unreachable threshold [min]</string>
+    <string name="enable_pump_connection_reminders">Quiet pump connection reminders</string>
+    <string name="pump_connection_reminders_summary">One silent reminder after 20, 40 and 60 minutes without pump data, replacing the repeated connection alarm. At 40 minutes, request pump status again when the pump is idle. Glucose and pump fault alarms stay active.</string>
     <string name="enable_carbs_req_alert">Alert if carbs are required</string>
     <string name="open_navigation">Open navigation</string>
     <string name="close_navigation">Close navigation</string>

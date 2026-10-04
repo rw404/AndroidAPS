@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <!-- Healfi has no Firebase project; startup must not initialize the AAPS project. -->
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            tools:node="remove" />
+
+        <!-- These OAuth callbacks belong to the existing AAPS app registration. -->
+        <activity android:name="app.aaps.plugins.sync.openhumans.ui.OHLoginActivity">
+            <intent-filter tools:node="removeAll" />
+        </activity>
+        <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
+            <intent-filter tools:node="removeAll" />
+        </activity>
+    </application>
+
+</manifest>

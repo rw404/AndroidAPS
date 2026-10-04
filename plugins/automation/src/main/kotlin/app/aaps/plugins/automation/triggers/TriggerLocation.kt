@@ -45,10 +45,16 @@ class TriggerLocation(injector: HasAndroidInjector) : Trigger(injector), PingPla
     private val mapAction = Runnable {
         val activity = scanForActivity(context) ?: return@Runnable
 
+        val mapsApiKey = runCatching { Firebase.remoteConfig.getString(RemoteConfigKeys.KEY_MAPS_API) }.getOrNull()
+        if (mapsApiKey.isNullOrBlank()) {
+            ToastUtils.errorToast(activity, R.string.map_search_unavailable)
+            return@Runnable
+        }
+
         val builder = PingPlacePicker.Builder()
         builder
             .setAndroidApiKey(rh.gs(R.string.key_google_apis_android))
-            .setMapsApiKey(Firebase.remoteConfig.getString(RemoteConfigKeys.KEY_MAPS_API))
+            .setMapsApiKey(mapsApiKey)
             .setOnPlaceSelectedListener(this)
 
         // Set a initial location.

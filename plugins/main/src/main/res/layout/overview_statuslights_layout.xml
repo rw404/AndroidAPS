@@ -5,8 +5,6 @@
     android:id="@+id/status_lights_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="-3dp"
-    android:layout_marginBottom="-3dp"
     android:paddingTop="4dp"
     android:paddingBottom="4dp"
     app:alignContent="stretch"
@@ -20,7 +18,12 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:gravity="center"
-        tools:ignore="UseCompoundDrawables">
+        tools:ignore="UseCompoundDrawables"
+        android:minHeight="40dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <ImageView
             android:id="@+id/cannula_or_patch"
@@ -42,7 +45,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <ImageView
             android:layout_width="28dp"
@@ -73,7 +81,12 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:gravity="center"
-        tools:ignore="UseCompoundDrawables">
+        tools:ignore="UseCompoundDrawables"
+        android:minHeight="40dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <ImageView
             android:layout_width="28dp"
@@ -95,7 +108,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
 
         <ImageView
             android:layout_width="28dp"

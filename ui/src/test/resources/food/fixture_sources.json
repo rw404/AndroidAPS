@@ -1,0 +1,32 @@
+{
+  "usda": {
+    "source": "ui/src/main/assets/food/usda_foods.tsv",
+    "versions": {
+      "foundation": "2026-04-30",
+      "srLegacy": "2018-04",
+      "fndds": "2024-10-31"
+    },
+    "ids": [
+      "168878",
+      "2512381",
+      "2709077",
+      "2710105",
+      "321505",
+      "171287",
+      "172673",
+      "169742",
+      "170686",
+      "173905",
+      "2706537",
+      "2706784"
+    ],
+    "license": "CC0"
+  },
+  "openFoodFacts": {
+    "sourceUrl": "https://world.openfoodfacts.org/api/v3/product/3017620422003?fields=code,product_name,product_name_ru,nutriments,nutrition_data_per,nutrition_data_prepared,serving_size,data_quality_errors_tags",
+    "retrieved": "2026-10-04",
+    "databaseLicense": "ODbL",
+    "contentsLicense": "DbCL",
+    "barcode": "3017620422003"
+  }
+}

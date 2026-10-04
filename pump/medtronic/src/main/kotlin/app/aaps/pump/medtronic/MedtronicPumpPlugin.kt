@@ -376,7 +376,6 @@ class MedtronicPumpPlugin @Inject constructor(
         if (!doWeHaveAnyStatusNeededRefereshing(statusRefresh)) {
             return
         }
-        var resetTime = false
         if (isPumpNotReachable) {
             aapsLogger.error("Pump unreachable.")
             medtronicUtil.sendNotification(MedtronicNotificationType.PumpUnreachable, rh)
@@ -403,7 +402,6 @@ class MedtronicPumpPlugin @Inject constructor(
                     PumpDataRefreshType.PumpTime                                                   -> {
                         checkTimeAndOptionallySetTime()
                         refreshTypesNeededToReschedule.add(key)
-                        resetTime = true
                     }
 
                     PumpDataRefreshType.BatteryStatus,
@@ -411,13 +409,11 @@ class MedtronicPumpPlugin @Inject constructor(
                         rileyLinkMedtronicService?.medtronicUIComm?.executeCommand(
                             getPumpCommandForRefresh(key, medtronicUtil.medtronicPumpModel)!!)
                         refreshTypesNeededToReschedule.add(key)
-                        resetTime = true
                     }
 
                     PumpDataRefreshType.Configuration -> {
                         rileyLinkMedtronicService?.medtronicUIComm?.executeCommand(
                             getPumpCommandForRefresh(key, medtronicUtil.medtronicPumpModel)!!)
-                        resetTime = true
                     }
 
                     else -> { }
@@ -429,9 +425,6 @@ class MedtronicPumpPlugin @Inject constructor(
                 scheduleNextRefresh(refreshType2)
             }
         }
-
-        if (resetTime)
-            medtronicPumpStatus.setLastCommunicationToNow()
     }
 
 
@@ -489,7 +482,7 @@ class MedtronicPumpPlugin @Inject constructor(
             serviceTaskExecutor.startTask(wakeAndTuneTaskProvider.get())
             return true
         }
-        medtronicPumpStatus.setLastCommunicationToNow()
+        // Only validated radio responses update the last communication time.
         setRefreshButtonEnabled(true)
         if (!isRefresh) {
             pumpState = PumpDriverState.Initialized

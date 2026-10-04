@@ -446,7 +446,10 @@ class MainApp : DaggerApplication() {
     }
 
     private fun setupRemoteConfig() {
-        FirebaseApp.initializeApp(this)
+        if (FirebaseApp.initializeApp(this) == null) {
+            aapsLogger.debug("RemoteConfig is unavailable without Firebase configuration")
+            return
+        }
         Firebase.remoteConfig.also { firebaseRemoteConfig ->
 
             firebaseRemoteConfig.setConfigSettingsAsync(

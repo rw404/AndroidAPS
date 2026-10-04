@@ -9,6 +9,11 @@ plugins {
 
 android {
     namespace = "app.aaps.plugins.sync"
+
+    defaultConfig {
+        manifestPlaceholders["wearDataPermission"] = "app.aaps.weardata.permission"
+        manifestPlaceholders["wearDataAction"] = "app.aaps.aapsclient.weardata"
+    }
 }
 
 dependencies {

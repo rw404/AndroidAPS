@@ -16,6 +16,7 @@ import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.plugin.ActivePlugin
 import app.aaps.core.interfaces.profile.ProfileFunction
 import app.aaps.core.interfaces.pump.DetailedBolusInfo
+import app.aaps.core.interfaces.pump.Pump
 import app.aaps.core.interfaces.pump.PumpEnactResult
 import app.aaps.core.interfaces.pump.PumpSync
 import app.aaps.core.interfaces.queue.Callback
@@ -55,7 +56,9 @@ import org.mockito.invocation.InvocationOnMock
 import org.mockito.kotlin.any
 import org.mockito.kotlin.anyOrNull
 import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
+import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
 import java.util.Calendar
 import javax.inject.Provider
@@ -122,11 +125,13 @@ class CommandQueueImplementationTest : TestBaseWithProfile() {
                 it.rh = rh
                 it.activePlugin = activePlugin
                 it.rxBus = rxBus
+                it.pumpEnactResultProvider = pumpEnactResultProvider
             }
             if (it is CommandSMBBolus) {
                 it.aapsLogger = aapsLogger
                 it.rh = rh
                 it.activePlugin = activePlugin
+                it.pumpEnactResultProvider = pumpEnactResultProvider
             }
             if (it is CommandCustomCommand) {
                 it.aapsLogger = aapsLogger
@@ -152,6 +157,7 @@ class CommandQueueImplementationTest : TestBaseWithProfile() {
                 it.aapsLogger = aapsLogger
                 it.rh = rh
                 it.activePlugin = activePlugin
+                it.pumpEnactResultProvider = pumpEnactResultProvider
             }
             if (it is CommandClearAlarms) {
                 it.aapsLogger = aapsLogger
@@ -368,6 +374,98 @@ class CommandQueueImplementationTest : TestBaseWithProfile() {
         // then
         assertThat(queued).isFalse()
         assertThat(commandQueue.size()).isEqualTo(1)
+    }
+
+    @Test
+    fun repeatedRecoveryStatusRequestsPreserveQueuedBolusAndCoalesce() {
+        // The real queue is exercised without starting QueueWorker or executing a command.
+        // Base now() is frozen; isOlderThan() otherwise uses its real wall clock.
+        doReturn(false).whenever(dateUtil).isOlderThan(now, 15L)
+        val pump: Pump = mock()
+        whenever(activePlugin.activePump).thenReturn(pump)
+        assertThat(commandQueue.bolus(DetailedBolusInfo(), null)).isTrue()
+
+        repeat(500) { request ->
+            assertThat(commandQueue.readStatus("Recovery poll $request", null)).isEqualTo(request == 0)
+            assertThat(commandQueue.size()).isEqualTo(2)
+            assertThat(commandQueue.bolusInQueue()).isTrue()
+            assertThat(commandQueue.statusInQueue()).isTrue()
+        }
+
+        commandQueue.pickup()
+        assertThat(commandQueue.performing?.commandType).isEqualTo(Command.CommandType.BOLUS)
+        commandQueue.resetPerforming()
+        commandQueue.pickup()
+        assertThat(commandQueue.performing?.commandType).isEqualTo(Command.CommandType.READSTATUS)
+        commandQueue.resetPerforming()
+        commandQueue.pickup()
+        assertThat(commandQueue.performing).isNull()
+        assertThat(commandQueue.size()).isEqualTo(0)
+        verifyNoInteractions(pump)
+    }
+
+    @Test
+    fun repeatedSmbRequestsAreRejectedWhileManualBolusIsQueuedOrPerforming() {
+        val pump: Pump = mock()
+        whenever(activePlugin.activePump).thenReturn(pump)
+        assertThat(commandQueue.bolus(DetailedBolusInfo(), null)).isTrue()
+
+        repeat(2) { phase ->
+            repeat(250) {
+                val smb = DetailedBolusInfo().also {
+                    it.bolusType = BS.Type.SMB
+                    // The rejection must come from the manual bolus, not a stale timestamp.
+                    it.lastKnownBolusTime = Long.MAX_VALUE
+                }
+                assertThat(commandQueue.bolus(smb, null)).isFalse()
+                assertThat(commandQueue.bolusInQueue()).isTrue()
+                assertThat(commandQueue.size()).isEqualTo(if (phase == 0) 1 else 0)
+            }
+            if (phase == 0) {
+                commandQueue.pickup()
+                assertThat(commandQueue.performing?.commandType).isEqualTo(Command.CommandType.BOLUS)
+            }
+        }
+
+        commandQueue.resetPerforming()
+        commandQueue.pickup()
+        assertThat(commandQueue.performing).isNull()
+        verifyNoInteractions(pump)
+    }
+
+    @Test
+    fun repeatedClearCancelsEachPendingCommandOnceAndDoesNotReplayIt() {
+        // All polls occur at the same frozen instant, before the watchdog deadline.
+        doReturn(false).whenever(dateUtil).isOlderThan(now, 15L)
+        val pump: Pump = mock()
+        whenever(activePlugin.activePump).thenReturn(pump)
+        var cancellationCount = 0
+        val callback = object : Callback() {
+            override fun run() {
+                assertThat(result.success).isFalse()
+                cancellationCount++
+            }
+        }
+
+        repeat(100) { cycle ->
+            assertThat(commandQueue.bolus(DetailedBolusInfo(), callback)).isTrue()
+            assertThat(commandQueue.readStatus("Recovery cycle $cycle", callback)).isTrue()
+            repeat(5) {
+                assertThat(commandQueue.readStatus("Duplicate recovery poll", null)).isFalse()
+            }
+            assertThat(commandQueue.size()).isEqualTo(2)
+
+            commandQueue.clear()
+            commandQueue.clear()
+            assertThat(cancellationCount).isEqualTo((cycle + 1) * 2)
+            assertThat(commandQueue.size()).isEqualTo(0)
+            assertThat(commandQueue.bolusInQueue()).isFalse()
+            assertThat(commandQueue.statusInQueue()).isFalse()
+            commandQueue.pickup()
+            assertThat(commandQueue.performing).isNull()
+        }
+
+        verifyNoInteractions(pump)
     }
 
     @Test

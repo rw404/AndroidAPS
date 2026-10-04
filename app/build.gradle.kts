@@ -1,3 +1,5 @@
+import com.google.gms.googleservices.GoogleServicesPlugin
+import com.google.gms.googleservices.GoogleServicesTask
 import org.gradle.kotlin.dsl.debugImplementation
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -97,6 +99,8 @@ android {
 
         // For Dagger injected instrumentation tests in app module
         testInstrumentationRunner = "app.aaps.runners.InjectedTestRunner"
+        manifestPlaceholders["wearDataPermission"] = "app.aaps.weardata.permission"
+        manifestPlaceholders["wearDataAction"] = "app.aaps.aapsclient.weardata"
     }
 
     flavorDimensions.add("standard")
@@ -109,6 +113,17 @@ android {
             versionName = Versions.appVersion
             manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher"
             manifestPlaceholders["appIconRound"] = "@mipmap/ic_launcher_round"
+        }
+        create("healfi") {
+            applicationId = "app.healfi.androidaps"
+            dimension = "standard"
+            matchingFallbacks += "full"
+            resValue("string", "app_name", "Healfi")
+            versionName = Versions.appVersion
+            manifestPlaceholders["appIcon"] = "@mipmap/ic_launcher"
+            manifestPlaceholders["appIconRound"] = "@mipmap/ic_launcher_round"
+            manifestPlaceholders["wearDataPermission"] = "app.healfi.androidaps.weardata.permission"
+            manifestPlaceholders["wearDataAction"] = "app.healfi.androidaps.weardata"
         }
         create("pumpcontrol") {
             applicationId = "info.nightscout.aapspumpcontrol"
@@ -142,6 +157,29 @@ android {
     buildFeatures {
         dataBinding = true
         buildConfig = true
+    }
+}
+
+// Healfi has its own package and no Firebase project. Never reuse the AAPS client config.
+// The plugin configures its task lazily during variant registration, so this override
+// must be registered afterwards, before Gradle snapshots task inputs.
+afterEvaluate {
+    tasks.withType<GoogleServicesTask>().configureEach {
+        if (name.startsWith("processHealfi")) {
+            googleServicesJsonFiles.set(emptyList())
+            googleServicesJsonFiles.disallowChanges()
+            missingGoogleServicesStrategy.set(GoogleServicesPlugin.MissingGoogleServicesStrategy.IGNORE)
+            missingGoogleServicesStrategy.disallowChanges()
+            doFirst {
+                // IGNORE returns before the plugin clears outputs. Clear stale AAPS
+                // resources ourselves so an earlier build cannot configure Firebase.
+                val generatedResources = outputDirectory.get().asFile
+                project.delete(generatedResources, gmpAppId.get().asFile)
+                check(generatedResources.mkdirs() || generatedResources.isDirectory) {
+                    "Cannot create empty Healfi Google Services resource directory"
+                }
+            }
+        }
     }
 }
 
@@ -231,4 +269,3 @@ if (!gitAvailable()) {
 if (isMaster() && !allCommitted()) {
     throw GradleException("There are uncommitted changes. Clone sources again as described in wiki and do not allow gradle update")
 }
-

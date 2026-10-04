@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "dataset": "USDA FoodData Central: Foundation, SR Legacy and FNDDS",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "provenanceUrl": "https://fdc.nal.usda.gov/",
+  "downloadPage": "https://fdc.nal.usda.gov/download-datasets",
+  "generatedAtUtc": "2026-10-04T12:16:48+00:00",
+  "asset": "usda_foods.tsv",
+  "assetSha256": "8c05047351a0cfe9c2279a8c34a31e84ed30dec340df601973e5ccd378a30b47",
+  "assetBytes": 2129048,
+  "columns": [
+    "id",
+    "name",
+    "dataType",
+    "carbs",
+    "fiber",
+    "fat",
+    "protein",
+    "energyKcal",
+    "preparation",
+    "sourceUrl"
+  ],
+  "foodCount": 13694,
+  "foodsWithCarbs": 13591,
+  "preparationCounts": {
+    "COOKED": 2946,
+    "RAW": 1688,
+    "UNKNOWN": 9060
+  },
+  "basis": "per 100 g edible portion; not per serving or per 100 ml",
+  "carbohydrate": {
+    "nutrientId": 1005,
+    "name": "Carbohydrate, by difference",
+    "unit": "g",
+    "convention": "USDA total carbohydrate includes dietary fiber; no EU available-carbohydrate conversion"
+  },
+  "nutrientIds": {
+    "carbs": 1005,
+    "fiber": 1079,
+    "fat": 1004,
+    "protein": 1003,
+    "energyKcal": 1008,
+    "energyGeneral": 2047,
+    "energySpecific": 2048
+  },
+  "energyPriority": [
+    1008,
+    2048,
+    2047
+  ],
+  "missingValues": "Empty TSV cells mean unknown, never zero. Source zeros remain zero.",
+  "invalidValues": "Non-finite/negative nutrients and macros >100 g/100 g are unknown; original amounts and IDs remain in each source's invalidNutrientValues. No clipping to zero or 100. Energy kcal is not capped at 100.",
+  "preparationInference": "Explicit raw or cooking words only; ambiguous raw+cooked and negated cooking are UNKNOWN. No recipe or food-name assumptions.",
+  "sources": [
+    {
+      "name": "USDA Foundation Foods",
+      "dataType": "foundation_food",
+      "nutrientKey": "id",
+      "version": "2026-04-30",
+      "sha256": "70457ee9d9342f43bda2010318c85f04210c689fdeb9cd2da4c513b0e8dbc655",
+      "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_foundation_food_csv_2026-04-30.zip",
+      "archiveBytes": 3825741,
+      "archiveSha256": "70457ee9d9342f43bda2010318c85f04210c689fdeb9cd2da4c513b0e8dbc655",
+      "foodCount": 469,
+      "foodsWithCarbs": 367,
+      "nonCatalogSupportingRowsByType": {
+        "agricultural_acquisition": 810,
+        "market_acquisition": 7577,
+        "sample_food": 4079,
+        "sub_sample_food": 75055
+      },
+      "duplicateEqualNutrientRows": 0,
+      "invalidNutrientValues": [
+        {
+          "fdcId": "2727566",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.47505",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727567",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.17255",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727568",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.45875",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727569",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.42825",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727570",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.2508",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727571",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.14955",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727575",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.5625",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2727576",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.705",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2747656",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.0602",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        },
+        {
+          "fdcId": "2747673",
+          "nutrientId": 1005,
+          "sourceNutrientKey": "1005",
+          "rawAmount": "-0.1045",
+          "reason": "Non-finite, unparseable or outside physical range (macros: 0..100 g/100 g; energy: nonnegative) retained as unknown"
+        }
+      ],
+      "sourceNutrientKeyToCanonicalId": {
+        "2047": "2047",
+        "2048": "2048",
+        "1003": "1003",
+        "1004": "1004",
+        "1005": "1005",
+        "1008": "1008",
+        "1079": "1079"
+      }
+    },
+    {
+      "name": "USDA SR Legacy",
+      "dataType": "sr_legacy_food",
+      "nutrientKey": "id",
+      "version": "2018-04",
+      "sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0",
+      "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archiveBytes": 6074592,
+      "archiveSha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0",
+      "foodCount": 7793,
+      "foodsWithCarbs": 7793,
+      "nonCatalogSupportingRowsByType": {},
+      "duplicateEqualNutrientRows": 0,
+      "invalidNutrientValues": [],
+      "sourceNutrientKeyToCanonicalId": {
+        "2047": "2047",
+        "2048": "2048",
+        "1003": "1003",
+        "1004": "1004",
+        "1005": "1005",
+        "1008": "1008",
+        "1079": "1079"
+      }
+    },
+    {
+      "name": "USDA FNDDS",
+      "dataType": "survey_fndds_food",
+      "nutrientKey": "nutrient_nbr",
+      "version": "2024-10-31",
+      "sha256": "5ccc25ec2777a8982fbb61378a42f415316173eb11e48c9a8ba4cb19f5a4f29c",
+      "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_survey_food_csv_2024-10-31.zip",
+      "archiveBytes": 3325692,
+      "archiveSha256": "5ccc25ec2777a8982fbb61378a42f415316173eb11e48c9a8ba4cb19f5a4f29c",
+      "foodCount": 5432,
+      "foodsWithCarbs": 5431,
+      "nonCatalogSupportingRowsByType": {},
+      "duplicateEqualNutrientRows": 0,
+      "invalidNutrientValues": [],
+      "sourceNutrientKeyToCanonicalId": {
+        "957": "2047",
+        "958": "2048",
+        "203": "1003",
+        "204": "1004",
+        "205": "1005",
+        "208": "1008",
+        "291": "1079"
+      }
+    }
+  ]
+}

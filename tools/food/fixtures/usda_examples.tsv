@@ -1,0 +1,5 @@
+id	name	dataType	carbs	fiber	fat	protein	energyKcal	preparation	sourceUrl
+168878	Rice, white, long-grain, regular, enriched, cooked	sr_legacy_food	28.17	0.4	0.28	2.69	130	COOKED	https://fdc.nal.usda.gov/food-details/168878/nutrients
+2512381	Rice, white, long grain, unenriched, raw	foundation_food	80.31315	0.1488	1.033	7.03885	369.637321	RAW	https://fdc.nal.usda.gov/food-details/2512381/nutrients
+2710105	Soup, borscht	survey_fndds_food	3.9	0.8	0.37	0.52	20	UNKNOWN	https://fdc.nal.usda.gov/food-details/2710105/nutrients
+2727566	Chicken, drumstick, meat and skin, raw	foundation_food			5.94	18.35625	130.121544	RAW	https://fdc.nal.usda.gov/food-details/2727566/nutrients

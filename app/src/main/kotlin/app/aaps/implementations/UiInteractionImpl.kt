@@ -30,6 +30,7 @@ import app.aaps.ui.dialogs.CarbsDialog
 import app.aaps.ui.dialogs.CareDialog
 import app.aaps.ui.dialogs.ExtendedBolusDialog
 import app.aaps.ui.dialogs.FillDialog
+import app.aaps.ui.dialogs.FoodEntryDialog
 import app.aaps.ui.dialogs.InsulinDialog
 import app.aaps.ui.dialogs.LoopDialog
 import app.aaps.ui.dialogs.ProfileSwitchDialog
@@ -94,6 +95,10 @@ class UiInteractionImpl @Inject constructor(
         LoopDialog()
             .also { it.arguments = Bundle().also { bundle -> bundle.putInt("showOkCancel", showOkCancel) } }
             .show(fragmentManager, "LoopDialog")
+    }
+
+    override fun runFoodEntryDialog(fragmentManager: FragmentManager) {
+        FoodEntryDialog().show(fragmentManager, "FoodEntryDialog")
     }
 
     override fun runProfileSwitchDialog(fragmentManager: FragmentManager, profileName: String?) {

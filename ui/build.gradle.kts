@@ -25,6 +25,14 @@ dependencies {
     testImplementation(project(":shared:tests"))
 
     api(libs.androidx.core)
+    implementation(libs.androidx.activity)
+    implementation(libs.com.google.code.gson)
+    implementation(libs.com.squareup.okhttp3.okhttp)
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation(libs.kotlinx.coroutines.android)
+    implementation("cz.adaptech.tesseract4android:tesseract4android:4.9.0")
+    implementation("com.google.zxing:core:3.5.4")
+    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.23.2")
     ksp(libs.com.google.dagger.compiler)
     ksp(libs.com.google.dagger.android.processor)
 }

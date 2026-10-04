@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
@@ -255,6 +256,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         binding.buttonsLayout.calibrationButton.setOnClickListener(this)
         binding.buttonsLayout.cgmButton.setOnClickListener(this)
         binding.buttonsLayout.insulinButton.setOnClickListener(this)
+        binding.buttonsLayout.mealEntryButton.setOnClickListener(this)
         binding.buttonsLayout.carbsButton.setOnClickListener(this)
         binding.buttonsLayout.quickWizardButton.setOnClickListener(this)
         binding.buttonsLayout.quickWizardButton.setOnLongClickListener(this)
@@ -425,7 +427,18 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 R.id.treatment_button    -> protectionCheck.queryProtection(
                     activity,
                     ProtectionCheck.Protection.BOLUS,
-                    UIRunnable { if (isAdded) uiInteraction.runTreatmentDialog(childFragmentManager) })
+                    UIRunnable {
+                        if (isAdded && !childFragmentManager.isStateSaved && isReadyForTreatment())
+                            uiInteraction.runTreatmentDialog(childFragmentManager)
+                    })
+
+                R.id.meal_entry_button   -> protectionCheck.queryProtection(
+                    activity,
+                    ProtectionCheck.Protection.BOLUS,
+                    UIRunnable {
+                        if (isAdded && !childFragmentManager.isStateSaved && isReadyForTreatment())
+                            uiInteraction.runFoodEntryDialog(childFragmentManager)
+                    })
 
                 R.id.wizard_button       -> protectionCheck.queryProtection(
                     activity,
@@ -435,7 +448,10 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 R.id.insulin_button      -> protectionCheck.queryProtection(
                     activity,
                     ProtectionCheck.Protection.BOLUS,
-                    UIRunnable { if (isAdded) uiInteraction.runInsulinDialog(childFragmentManager) })
+                    UIRunnable {
+                        if (isAdded && !childFragmentManager.isStateSaved && profileFunction.getProfile() != null)
+                            uiInteraction.runInsulinDialog(childFragmentManager)
+                    })
 
                 R.id.quick_wizard_button -> protectionCheck.queryProtection(activity, ProtectionCheck.Protection.BOLUS, UIRunnable { if (isAdded) onClickQuickWizard() })
                 R.id.carbs_button        -> protectionCheck.queryProtection(
@@ -518,6 +534,11 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 aapsLogger.debug(LTag.CORE, "Error opening CGM app")
             }
         }
+    }
+
+    private fun isReadyForTreatment(): Boolean {
+        val pump = activePlugin.activePump
+        return profileFunction.getProfile() != null && pump.isInitialized() && !pump.isSuspended() && loop.runningMode != RM.Mode.DISCONNECTED_PUMP
     }
 
     override fun onLongClick(v: View): Boolean {
@@ -610,27 +631,39 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             }
 
             // **** Various treatment buttons ****
+            val treatmentAvailable = profile != null && pump.isInitialized() && !pump.isSuspended() && loop.runningMode != RM.Mode.DISCONNECTED_PUMP
             binding.buttonsLayout.carbsButton.visibility =
                 (profile != null && preferences.get(BooleanKey.OverviewShowCarbsButton)).toVisibility()
-            binding.buttonsLayout.treatmentButton.visibility = (loop.runningMode != RM.Mode.DISCONNECTED_PUMP && !pump.isSuspended() && pump.isInitialized() && profile != null
-                && preferences.get(BooleanKey.OverviewShowTreatmentButton)).toVisibility()
+            binding.buttonsLayout.treatmentButton.visibility = (treatmentAvailable && preferences.get(BooleanKey.OverviewShowTreatmentButton)).toVisibility()
+            // A disabled placeholder keeps the action visible while the real
+            // SingleClickButton retains its readiness gate and tap guard.
+            binding.buttonsLayout.mealEntryButton.visibility = treatmentAvailable.toVisibility()
+            binding.buttonsLayout.mealUnavailableButton.visibility = treatmentAvailable.not().toVisibility()
             binding.buttonsLayout.wizardButton.visibility = (loop.runningMode != RM.Mode.DISCONNECTED_PUMP && !pump.isSuspended() && pump.isInitialized() && profile != null
                 && preferences.get(BooleanKey.OverviewShowWizardButton)).toVisibility()
-            binding.buttonsLayout.insulinButton.visibility = (profile != null && preferences.get(BooleanKey.OverviewShowInsulinButton)).toVisibility()
+            binding.buttonsLayout.insulinActionContainer.visibility = View.VISIBLE
+            binding.buttonsLayout.insulinButton.visibility = (profile != null).toVisibility()
+            binding.buttonsLayout.insulinUnavailableButton.visibility = (profile == null).toVisibility()
             if (loop.runningMode == RM.Mode.DISCONNECTED_PUMP || pump.isSuspended() || !pump.isInitialized()) {
                 setRibbon(
                     binding.buttonsLayout.insulinButton,
                     app.aaps.core.ui.R.attr.ribbonTextWarningColor,
                     app.aaps.core.ui.R.attr.ribbonWarningColor,
-                    rh.gs(app.aaps.core.ui.R.string.overview_insulin_label)
+                    rh.gs(R.string.overview_enter_insulin)
                 )
+                binding.buttonsLayout.insulinButton.backgroundTintList = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonWarningColor))
+                binding.buttonsLayout.insulinButton.iconTint = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor))
+                binding.buttonsLayout.insulinButton.strokeColor = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor))
             } else {
                 setRibbon(
                     binding.buttonsLayout.insulinButton,
                     app.aaps.core.ui.R.attr.icBolusColor,
-                    app.aaps.core.ui.R.attr.ribbonDefaultColor,
-                    rh.gs(app.aaps.core.ui.R.string.overview_insulin_label)
+                    com.google.android.material.R.attr.colorSurface,
+                    rh.gs(R.string.overview_enter_insulin)
                 )
+                binding.buttonsLayout.insulinButton.backgroundTintList = ColorStateList.valueOf(rh.gac(context, com.google.android.material.R.attr.colorSurface))
+                binding.buttonsLayout.insulinButton.iconTint = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.icBolusColor))
+                binding.buttonsLayout.insulinButton.strokeColor = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.icBolusColor))
             }
 
             // **** Calibration & CGM buttons ****
@@ -855,6 +888,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         runOnUiThread {
             _binding ?: return@runOnUiThread
             binding.infoLayout.bg.text = profileUtil.fromMgdlToStringInUnits(lastBg?.recalculated)
+            binding.infoLayout.bgUnits.text = rh.gs(if (profileUtil.units == GlucoseUnit.MGDL) app.aaps.core.ui.R.string.mgdl else app.aaps.core.ui.R.string.mmol)
             binding.infoLayout.bg.setTextColor(lastBgColor)
             trendArrow?.let { binding.infoLayout.arrow.setImageResource(it.directionToIcon()) }
             binding.infoLayout.arrow.visibility = (trendArrow != null).toVisibilityKeepSpace()

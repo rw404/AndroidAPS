@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>AAPS — концепт обзора</title>
+  <style>
+    :root{--canvas:#f2f4f7;--surface:#fff;--surface-soft:#f5f7fa;--text:#1b2332;--muted:#69768a;--line:#e6eaf0;--blue:#2465e8;--blue-soft:#edf3ff;--green:#207964;--green-soft:#edf7f2;--amber:#83561d;--amber-soft:#fcf5e9;--red:#ad4c37;--red-soft:#fff2ed;--shadow:0 26px 70px #24365b14}
+    *{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;-webkit-font-smoothing:antialiased}button{font:inherit;cursor:pointer;color:inherit}button:focus-visible{outline:3px solid var(--blue);outline-offset:4px}button:disabled{cursor:default}svg{display:block}button svg{pointer-events:none}.board{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 414px;gap:100px;padding:62px 40px 72px;align-items:start}.brand{display:flex;align-items:center;gap:12px;letter-spacing:-.7px;font-size:22px;font-weight:720}.brand-mark{width:34px;height:34px;border-radius:11px;background:var(--blue);display:grid;place-items:center;color:white}.eyebrow{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--muted)}.intro{margin-top:71px}.intro h1{font-weight:660;font-size:49px;line-height:1.1;letter-spacing:-2.4px;margin:18px 0 21px}.intro h1 span{color:var(--blue)}.intro p{font-size:17px;line-height:1.7;color:var(--muted);max-width:390px;margin:0}.scenario-heading{margin:46px 0 15px;display:flex;align-items:center;gap:10px}.tiny-rule{height:1px;background:var(--line);flex:1}.scenarios{display:flex;flex-direction:column;gap:8px}.scenario{border:1px solid transparent;border-radius:14px;text-align:left;padding:12px 14px;display:flex;align-items:center;gap:13px;background:transparent;transition:background .2s,border-color .2s}.scenario:hover{background:var(--surface)}.scenario[aria-pressed="true"]{background:var(--surface);border-color:var(--line);box-shadow:0 4px 16px #26375b05}.scenario-dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}.scenario[data-state="20"] .scenario-dot{background:#99a4b5}.scenario[data-state="40"] .scenario-dot{background:#c6a369}.scenario[data-state="60"] .scenario-dot{background:#d48a71}.scenario-title{font-size:14px;font-weight:600}.scenario-subtitle{font-size:12px;color:var(--muted);margin-top:4px}.scenario-check{margin-left:auto;color:var(--blue);opacity:0}.scenario[aria-pressed="true"] .scenario-check{opacity:1}.quiet-note{border-top:1px solid var(--line);margin-top:24px;padding-top:20px;display:flex;gap:10px;color:var(--muted);font-size:12px;line-height:1.7}.quiet-note svg{flex:none;margin-top:2px}.prototype-note{margin-top:24px;display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px}.theme-toggle{border:1px solid var(--line);background:var(--surface);border-radius:50%;padding:8px}
+    .device{border:1px solid #dce2ea;border-radius:41px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden;position:relative;padding-top:2px}.status-bar{height:45px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;font-weight:650;font-size:13px}.system-icons{display:flex;align-items:center;gap:5px}.app-header{display:flex;align-items:center;justify-content:space-between;padding:21px 24px 12px}.app-header .eyebrow{letter-spacing:1.2px;font-size:10px}.app-header h2{font-size:25px;font-weight:660;letter-spacing:-.9px;margin:6px 0 0}.avatar{height:39px;width:39px;border:1px solid var(--line);background:var(--surface-soft);border-radius:50%;font-weight:600;font-size:13px;color:var(--muted)}.app-body{padding:0 22px 19px}.glucose-section{padding:12px 2px 7px}.glucose-top{display:flex;align-items:center;justify-content:space-between}.glucose-number{display:flex;align-items:center;gap:12px;font-size:65px;line-height:1.1;font-weight:560;letter-spacing:-3px;font-variant-numeric:tabular-nums}.trend-arrow{font-size:35px;color:var(--green);font-weight:400;letter-spacing:0}.glucose-unit{font-size:12px;color:var(--muted);margin-top:6px}.glucose-meta{text-align:right;color:var(--muted);font-size:11px;line-height:1.9;padding-top:7px}.glucose-meta strong{color:var(--green);display:block;font-size:12px;font-weight:600}.delta{color:var(--text);font-weight:600}.glucose-freshness{display:flex;align-items:center;gap:5px;justify-content:flex-end}.fresh-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}.chart-heading{display:flex;justify-content:space-between;align-items:center;margin:20px 0 4px}.chart-legend{display:flex;gap:13px;color:var(--muted);font-size:10px}.legend-item{display:flex;align-items:center;gap:5px}.legend-line{height:2px;width:10px;background:var(--blue);border-radius:2px}.legend-line.forecast{background:#9bb7f2}.range-switch{background:var(--surface-soft);padding:3px;border-radius:8px;display:flex;gap:2px}.range-switch button{font-size:10px;padding:4px 8px;border:0;border-radius:5px;background:transparent;color:var(--muted)}.range-switch button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px #1f34591a}.chart{width:100%;height:178px;overflow:visible}.chart text{fill:var(--muted);font-size:10px;font-family:inherit}.chart-grid{stroke:var(--line);stroke-width:1}.chart-target{fill:var(--green-soft)}.chart-now{stroke:#bdc8d9;stroke-width:1;stroke-dasharray:3 4}.chart-history{stroke:var(--blue);fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.chart-forecast{stroke:#9bb7f2;fill:none;stroke-width:2;stroke-dasharray:3 5;stroke-linecap:round}.chart-point{fill:var(--blue)}.chart-current{fill:var(--blue);stroke:var(--surface);stroke-width:3}.chart-caption{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:10px;padding:0 1px;margin:-2px 0 21px}.range-label{color:var(--green)}
+    .loop-card{display:flex;align-items:center;gap:12px;padding:15px 14px;background:var(--surface-soft);border:1px solid var(--line);border-radius:16px}.loop-orbit{width:35px;height:35px;flex:none;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;color:var(--green);position:relative}.loop-orbit:after{content:"";position:absolute;right:-3px;top:3px;width:6px;height:6px;border-radius:50%;border:2px solid var(--surface-soft);background:currentColor}.loop-title{font-weight:600;font-size:13px}.loop-detail{color:var(--muted);font-size:10px;margin-top:5px}.loop-chevron{margin-left:auto;color:var(--muted);background:transparent;border:0;padding:8px 0 8px 8px}.notice{background:var(--surface-soft);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-top:10px;display:none;align-items:flex-start;gap:10px}.notice-icon{flex:none;color:var(--muted);margin-top:1px}.notice-copy{flex:1}.notice-title{font-size:12px;font-weight:600;line-height:1.4}.notice-desc{color:var(--muted);font-size:10px;line-height:1.55;margin-top:4px}.notice-action{border:0;background:transparent;color:var(--blue);font-size:10px;font-weight:650;padding:0;margin-top:7px}.notice[data-level="40"]{background:var(--amber-soft);border-color:#ebddc4}.notice[data-level="40"] .notice-icon{color:var(--amber)}.notice[data-level="60"]{background:var(--red-soft);border-color:#f2d9d0}.notice[data-level="60"] .notice-icon{color:var(--red)}.notice[data-level="recovered"]{background:var(--green-soft);border-color:#d7eadd}.notice[data-level="recovered"] .notice-icon{color:var(--green)}.notice-dismiss{border:0;background:transparent;padding:1px 0 4px 4px;color:var(--muted)}
+    .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0 16px}.metric-card{padding:14px 14px 12px;border:1px solid var(--line);border-radius:16px;background:var(--surface);text-align:left}.metric-label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}.metric-label svg{width:14px;height:14px;color:var(--blue)}.metric-card.cob .metric-label svg{color:#ad824f}.metric-value{display:block;margin:12px 0 7px;font-size:27px;font-weight:580;letter-spacing:-.8px}.metric-value small{font-size:11px;font-weight:400;letter-spacing:0;color:var(--muted);margin-left:3px}.metric-sub{color:var(--muted);font-size:10px}.metric-mini{display:block;height:4px;background:var(--surface-soft);border-radius:3px;margin-top:13px;overflow:hidden}.metric-mini span{display:block;width:36%;height:100%;border-radius:3px;background:#8dadf2}.metric-card.cob .metric-mini span{background:#d9bd92;width:22%}.section-heading{display:flex;justify-content:space-between;align-items:center;margin:0 1px 9px}.section-heading h3{font-size:12px;font-weight:650;margin:0}.section-heading button{font-size:10px;color:var(--muted);background:transparent;border:0;padding:3px 0}.pump-card{display:flex;align-items:center;gap:10px;padding:12px 0 14px;border-bottom:1px solid var(--line)}.pump-icon{width:31px;height:36px;border:1.5px solid #bdc7d4;border-radius:7px;position:relative;display:grid;place-items:center;color:var(--muted)}.pump-icon:before{content:"";position:absolute;top:-4px;left:10px;width:9px;height:3px;border-radius:2px;background:#bdc7d4}.pump-icon svg{width:17px;height:17px}.pump-name{font-size:11px;font-weight:600}.pump-detail{font-size:10px;color:var(--muted);margin-top:4px}.pump-reservoir{margin-left:auto;text-align:right;font-size:12px;font-weight:600}.pump-reservoir small{font-weight:400;color:var(--muted);font-size:10px;display:block;margin-top:4px}.secondary-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.secondary-actions button{height:41px;border:1px solid var(--line);border-radius:11px;background:var(--surface);font-size:11px;display:flex;align-items:center;justify-content:center;gap:7px}.secondary-actions svg{width:15px;height:15px;color:var(--muted)}.bottom-nav{border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:13px 9px 8px;background:var(--surface)}.nav-item{border:0;background:transparent;color:var(--muted);font-size:9px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 9px}.nav-item svg{height:20px;width:20px}.nav-item.active{color:var(--blue)}.home-indicator{width:106px;height:4px;border-radius:3px;background:var(--text);margin:11px auto 8px}.demo-tag{font-size:9px;text-align:center;letter-spacing:1.1px;color:var(--muted);text-transform:uppercase;padding-top:12px}.phone-footer{font-size:11px;line-height:1.8;text-align:center;color:var(--muted);margin-top:19px}
+    .modal-scrim{position:fixed;inset:0;background:#15203970;display:none;align-items:center;justify-content:center;padding:22px;z-index:20;backdrop-filter:blur(4px)}.modal-scrim.open{display:flex}.dialog{background:var(--surface);border:1px solid var(--line);border-radius:23px;max-width:390px;width:100%;padding:25px;box-shadow:var(--shadow)}.dialog h2{font-size:21px;letter-spacing:-.6px;font-weight:620;margin:10px 0 12px}.dialog p{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 15px}.dialog-list{border-top:1px solid var(--line);margin:0 0 19px}.dialog-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0;color:var(--muted);font-size:12px}.dialog-row strong{color:var(--text);font-weight:600}.dialog-actions{display:flex;gap:8px}.dialog button{padding:10px 14px;border-radius:10px;background:var(--surface-soft);border:1px solid var(--line);font-size:12px;flex:1}.dialog button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    body.dark{--canvas:#111923;--surface:#192332;--surface-soft:#202c3d;--text:#edf2fa;--muted:#a6b3c7;--line:#2d3a4d;--blue:#8ab1ff;--blue-soft:#233858;--green:#8bd3b6;--green-soft:#21392f;--amber:#e8c291;--amber-soft:#3b3227;--red:#f1b29d;--red-soft:#3e2d2a;--shadow:0 26px 70px #0004}body.dark .brand-mark{background:#346eda}body.dark .device{border-color:#3b4758}body.dark .notice[data-level="40"]{border-color:#66523b}body.dark .notice[data-level="60"]{border-color:#704b40}body.dark .notice[data-level="recovered"]{border-color:#3e5a49}body.dark .dialog button.primary{background:#346eda;border-color:#346eda}
+    @media(max-width:950px){.board{gap:38px;padding:40px 28px;grid-template-columns:1fr 390px}.intro h1{font-size:40px}.intro{margin-top:48px}.intro p{font-size:15px}}
+    @media(max-width:760px){.board{display:flex;flex-direction:column;align-items:center;padding:25px 20px;gap:22px}.presentation{width:min(100%,414px)}.intro{margin-top:25px}.intro h1{font-size:32px;letter-spacing:-1.2px;margin:10px 0}.intro p{font-size:13px}.scenario-heading{margin:22px 0 10px}.scenarios{display:flex;flex-direction:row;flex-wrap:wrap;gap:6px}.scenario{padding:9px 10px;border-color:var(--line);gap:7px}.scenario-title{font-size:11px}.scenario-subtitle,.scenario-check,.quiet-note,.prototype-note{display:none}.scenario-dot{width:6px;height:6px}.phone-column{width:min(100%,414px)}.device{border-radius:30px}.phone-footer{margin-top:10px;font-size:10px}}
+    @media(max-width:450px){.board{padding:20px 0 0;gap:18px}.presentation{padding:0 20px}.brand{font-size:18px}.brand-mark{width:29px;height:29px}.intro h1{font-size:29px}.intro p{display:none}.intro{margin-top:20px}.scenario-heading{margin-top:20px}.phone-column{width:100%}.device{border-radius:26px 26px 0 0;border-left:0;border-right:0;box-shadow:none}.phone-footer{padding:0 18px 12px;background:var(--surface);margin:0}.app-header{padding-top:15px}.app-body{padding:0 20px 17px}.glucose-number{font-size:60px}.intro .eyebrow{font-size:9px}}
+    .device{display:flex;flex-direction:column;height:940px}.status-bar,.app-header,.bottom-nav,.home-indicator{flex-shrink:0}.app-body{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent}.treatment-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;padding:15px 20px;border-top:1px solid var(--line);background:var(--surface);flex-shrink:0}.treatment-button{display:flex;align-items:center;justify-content:center;gap:9px;min-height:62px;padding:10px;border:1px solid var(--line);border-radius:15px;background:var(--surface-soft);text-align:left}.treatment-button.insulin{background:var(--blue-soft);border-color:transparent;color:var(--blue)}.treatment-button svg{width:21px;height:21px;flex-shrink:0}.treatment-button.carbs svg{color:#ad824f}.treatment-button span{display:block;font-size:10px;line-height:1.6;color:var(--muted)}.treatment-button strong{display:block;font-size:13px;font-weight:650;line-height:1.45}.treatment-button:hover{border-color:var(--blue)}.entry-dialog{max-height:calc(100dvh - 44px);overflow-y:auto}.entry-fields{display:grid;gap:15px;margin:20px 0}.entry-field label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}.entry-input{display:flex;align-items:center;border:1px solid var(--line);border-radius:13px;background:var(--surface-soft);padding:0 14px;gap:10px}.entry-input:focus-within{border-color:var(--blue);outline:2px solid var(--blue-soft)}.entry-input input{width:100%;min-width:0;border:0;background:transparent;color:var(--text);font:inherit;font-size:28px;font-weight:550;padding:14px 0;outline:none;font-variant-numeric:tabular-nums}.entry-input input::placeholder{color:var(--muted);opacity:.55}.entry-input span{color:var(--muted);font-size:13px;flex-shrink:0}.entry-dialog .entry-hint{font-size:11px;line-height:1.6;margin-top:8px}.entry-dialog .entry-error{color:var(--red);font-size:12px;margin:0 0 16px}.entry-summary{border-top:1px solid var(--line);margin:20px 0}.entry-result{text-align:center;padding:12px 0 20px}.entry-success{margin:0 auto 17px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green)}.entry-dialog button{min-height:44px}.entry-dialog [hidden]{display:none!important}
+    .entry-food-link{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--blue-soft);text-decoration:none;color:var(--blue);font-size:12px;font-weight:600}.entry-food-link span{display:block;font-size:10px;font-weight:400;color:var(--muted);margin-top:4px}.entry-food-link svg{width:22px;height:22px;flex-shrink:0}.entry-food-link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+    @media(max-width:450px){.device{height:min(940px,100svh);min-height:560px}.entry-scrim{align-items:flex-end;padding:12px}.entry-dialog{padding:22px;border-radius:23px}.treatment-actions{padding:13px 16px;gap:8px}.treatment-button{gap:7px}.treatment-button strong{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><defs>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 13h4l3-7 5 13 3-7h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-bell-off" viewBox="0 0 24 24"><path d="M9 4a6 6 0 0 1 9 5v5l2 3H9M6 7a6 6 0 0 0 0 2v5l-2 3h1m5 3h4M3 3l18 18"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 7 3-3a5 5 0 0 1 7 7l-3 3M14 17l-3 3a5 5 0 0 1-7-7l3-3m1 6 8-8"/></symbol>
+    <symbol id="i-link-off" viewBox="0 0 24 24"><path d="m10 7 3-3a5 5 0 0 1 7 7l-1 1M14 17l-3 3a5 5 0 0 1-7-7l1-1m3 4 2-2m4-4 2-2M3 3l18 18"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c-2 4-7 8-7 12a7 7 0 0 0 14 0c0-4-5-8-7-12Z"/></symbol>
+    <symbol id="i-carbs" viewBox="0 0 24 24"><path d="M7 20c-2 0-4-3-4-6 0-4 3-6 5-6 2 0 3 1 4 1s2-1 4-1c2 0 5 2 5 6 0 3-2 6-4 6s-3-1-5-1-3 1-5 1Zm5-11c-1-3 0-5 3-6m-3 4c-3 0-5-1-5-4 3 0 5 1 5 4Z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="m3 15 5-5 4 4 7-9m-4 0h4v4M3 20h18"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 0 7M4 3v6h6m2-3v6l4 2"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M10 7h4m-4 10h4"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15A9 9 0 0 1 9 4a9 9 0 1 0 11 11Z"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M16 3H5v18h14V9l-3-6ZM8 8h5m-5 5h8m-8 4h6"/></symbol>
+  </defs></svg>
+  <main class="board">
+    <section class="presentation" aria-label="Сценарии макета">
+      <div class="brand"><span class="brand-mark"><svg width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wave"/></svg></span>AAPS<span style="font-weight:400;color:var(--muted);font-size:12px;letter-spacing:0;margin-left:6px">design study / 01</span></div>
+      <div class="intro"><div class="eyebrow">Меньше шума. Больше ясности.</div><h1>Самое важное.<br><span>С первого взгляда.</span></h1><p>Глюкоза, работа контура и связь с помпой — в спокойном интерфейсе с понятной иерархией.</p></div>
+      <div class="scenario-heading"><span class="eyebrow">Попробуйте состояния</span><span class="tiny-rule"></span></div>
+      <div class="scenarios">
+        <button class="scenario" data-state="connected" aria-pressed="true"><span class="scenario-dot"></span><span><span class="scenario-title">Всё подключено</span><span class="scenario-subtitle" style="display:block">Обзор без лишних уведомлений</span></span><span class="scenario-check">✓</span></button>
+        <button class="scenario" data-state="20" aria-pressed="false"><span class="scenario-dot"></span><span><span class="scenario-title">20 минут</span><span class="scenario-subtitle" style="display:block">Тихое сообщение о потере связи</span></span><span class="scenario-check">✓</span></button>
+        <button class="scenario" data-state="40" aria-pressed="false"><span class="scenario-dot"></span><span><span class="scenario-title">40 минут</span><span class="scenario-subtitle" style="display:block">Следующий шаг — проверить подключение</span></span><span class="scenario-check">✓</span></button>
+        <button class="scenario" data-state="60" aria-pressed="false"><span class="scenario-dot"></span><span><span class="scenario-title">60 минут</span><span class="scenario-subtitle" style="display:block">Явный статус без повторяющегося шума</span></span><span class="scenario-check">✓</span></button>
+        <button class="scenario" data-state="recovered" aria-pressed="false"><span class="scenario-dot"></span><span><span class="scenario-title">Связь восстановлена</span><span class="scenario-subtitle" style="display:block">Сообщение можно сразу закрыть</span></span><span class="scenario-check">✓</span></button>
+      </div>
+      <div class="quiet-note"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bell-off"/></svg><span>Один статус обновляется на отметках 20, 40 и 60 минут. Критические предупреждения остаются отдельными.</span></div>
+      <div class="prototype-note"><span>Интерактивный макет · все данные демонстрационные</span><button class="theme-toggle" aria-label="Переключить светлую и тёмную тему" aria-pressed="false"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-moon"/></svg></button></div>
+    </section>
+    <section class="phone-column" aria-label="Предварительный вид приложения">
+      <div class="device">
+        <div class="status-bar" aria-hidden="true"><span>13:42</span><div class="system-icons"><svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><rect x="0" y="7" width="2" height="4" rx=".5"/><rect x="4" y="5" width="2" height="6" rx=".5"/><rect x="8" y="3" width="2" height="8" rx=".5"/><rect x="12" width="2" height="11" rx=".5"/></svg><svg width="16" height="12" viewBox="0 0 18 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 4a11 11 0 0 1 14 0M5 7a6 6 0 0 1 8 0m-5 3h2"/></svg><svg width="23" height="12" viewBox="0 0 26 13"><rect x="1" y="1" width="21" height="11" rx="3" fill="none" stroke="currentColor"/><rect x="3" y="3" width="17" height="7" rx="1" fill="currentColor"/><path d="M24 4v5" stroke="currentColor" stroke-width="2"/></svg></div></div>
+        <header class="app-header"><div><div class="eyebrow">Суббота, 3 октября</div><h2>Обзор</h2></div><button class="avatar" data-detail="profile" aria-label="Открыть демонстрационный профиль">A</button></header>
+        <div class="app-body">
+          <section class="glucose-section" aria-label="Глюкоза 6,8 миллимоль на литр, медленно снижается">
+            <div class="glucose-top"><div><div class="glucose-number">6,8<span class="trend-arrow" aria-hidden="true">→</span></div><div class="glucose-unit">ммоль/л</div></div><div class="glucose-meta"><strong>В целевом диапазоне</strong><div><span class="delta">−0,1</span> за 5 минут</div><div class="glucose-freshness"><span class="fresh-dot"></span>1 минуту назад</div></div></div>
+            <div class="chart-heading"><div class="chart-legend"><span class="legend-item"><span class="legend-line"></span>Глюкоза</span><span class="legend-item"><span class="legend-line forecast"></span>Прогноз</span></div><div class="range-switch" aria-label="Диапазон графика"><button data-range="3" aria-pressed="true">3 ч</button><button data-range="6" aria-pressed="false">6 ч</button><button data-range="12" aria-pressed="false">12 ч</button></div></div>
+            <svg class="chart" viewBox="0 0 365 178" role="img" aria-label="Демонстрационный график глюкозы за 3 часа, текущая глюкоза 6,8 ммоль/л"><rect class="chart-target" x="0" y="69.2" width="330" height="33.5" rx="5"/><path class="chart-grid" d="M0 29h330M0 69.2h330M0 109.4h330"/><text x="343" y="33">10</text><text x="343" y="73.2">7</text><text x="343" y="113.4">4</text><path class="chart-now" d="M248 13v129"/><g id="chart-series"></g><text class="time-label" id="time-start" x="0" y="162">10:42</text><text class="time-label" id="time-mid" x="95" y="162">12:12</text><text x="226" y="162">Сейчас</text><text x="300" y="162">14:42</text></svg>
+            <div class="chart-caption"><span class="range-label">Цель 4,5–7,0 ммоль/л</span><span>Данные сенсора · демо</span></div>
+          </section>
+          <section class="loop-card" aria-label="Состояние контура"><div class="loop-orbit"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use id="loop-symbol" href="#i-check"/></svg></div><div><div class="loop-title" id="loop-title">Контур работает</div><div class="loop-detail" id="loop-detail">Последний расчёт · 1 минуту назад</div></div><button class="loop-chevron" data-detail="loop" aria-label="Подробнее о состоянии контура"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-chevron"/></svg></button></section>
+          <section class="notice" id="connection-notice" aria-live="polite" aria-atomic="true"><svg class="notice-icon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use id="notice-symbol" href="#i-link-off"/></svg><div class="notice-copy"><div class="notice-title" id="notice-title"></div><div class="notice-desc" id="notice-desc"></div><button class="notice-action" id="notice-action">Проверить связь</button></div><button class="notice-dismiss" id="notice-dismiss" aria-label="Скрыть сообщение о восстановлении связи" hidden><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><use href="#i-close"/></svg></button></section>
+          <div class="metric-grid"><button class="metric-card" data-detail="iob"><span class="metric-label"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-drop"/></svg>Активный инсулин</span><span class="metric-value">1,24<small>ед.</small></span><span class="metric-sub">IOB · болюс + базал</span><span class="metric-mini"><span></span></span></button><button class="metric-card cob" data-detail="cob"><span class="metric-label"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-carbs"/></svg>Активные углеводы</span><span class="metric-value">12<small>г</small></span><span class="metric-sub">COB · оценка усвоения</span><span class="metric-mini"><span></span></span></button></div>
+          <section aria-label="Состояние помпы"><div class="section-heading"><h3>Помпа</h3><button data-detail="pump">Подробнее</button></div><div class="pump-card"><div class="pump-icon"><svg fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><use href="#i-wave"/></svg></div><div><div class="pump-name" id="pump-name">Подключена</div><div class="pump-detail" id="pump-detail">Последняя связь · 13:41</div></div><div class="pump-reservoir">124 ед.<small id="pump-reservoir-note">В резервуаре</small></div></div></section>
+          <div class="secondary-actions"><button data-detail="activity"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-activity"/></svg>Активность</button><button data-detail="history"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-note"/></svg>Записи</button></div>
+          <div class="demo-tag">Демонстрационные данные</div>
+        </div>
+        <div class="treatment-actions" aria-label="Ввод инсулина и углеводов">
+          <button class="treatment-button insulin" data-entry="insulin" aria-label="Ввести инсулин"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-drop"/></svg><div><span>Ввести</span><strong>инсулин</strong></div></button>
+          <button class="treatment-button carbs" data-entry="carbs" aria-label="Ввести углеводы"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-carbs"/></svg><div><span>Ввести</span><strong>углеводы</strong></div></button>
+        </div>
+        <nav class="bottom-nav" aria-label="Основная навигация"><button class="nav-item active" aria-current="page" data-detail="overview"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-wave"/></svg>Обзор</button><button class="nav-item" data-detail="history"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-history"/></svg>История</button><button class="nav-item" data-detail="pump"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-device"/></svg>Устройства</button><button class="nav-item" data-detail="profile"><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-person"/></svg>Профиль</button></nav><div class="home-indicator" aria-hidden="true"></div>
+      </div><div class="phone-footer">Дизайн-концепт. Управление помпой и отправка доз недоступны.</div>
+    </section>
+  </main>
+  <div class="modal-scrim" id="modal"><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1"><div class="eyebrow">Демонстрационный экран</div><h2 id="dialog-title"></h2><p id="dialog-description"></p><div class="dialog-list" id="dialog-list"></div><div class="dialog-actions"><button id="dialog-close">Закрыть</button><button class="primary" id="dialog-recover" hidden>Имитировать восстановление</button></div></section></div>
+  <div class="modal-scrim entry-scrim" id="entry-modal">
+    <section class="dialog entry-dialog" role="dialog" aria-modal="true" aria-labelledby="entry-title" aria-describedby="entry-description" tabindex="-1">
+      <div class="eyebrow">Демонстрационный ввод</div>
+      <h2 id="entry-title"></h2><p id="entry-description"></p>
+      <form id="entry-form" novalidate>
+        <a class="entry-food-link" id="entry-food-link" href="food-entry-prototype.html" hidden><svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-carbs"/></svg><div>Подобрать еду<span>Фото, описание или название продукта</span></div></a>
+        <div class="entry-fields">
+          <div class="entry-field" id="entry-carbs-field"><label for="entry-carbs">Углеводы</label><div class="entry-input"><input id="entry-carbs" name="carbs" type="text" inputmode="numeric" autocomplete="off" placeholder="0" aria-describedby="entry-error"><span>г</span></div></div>
+          <div class="entry-field"><label for="entry-insulin">Инсулин</label><div class="entry-input"><input id="entry-insulin" name="insulin" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="entry-dose-hint entry-error"><span>ед.</span></div><p class="entry-hint" id="entry-dose-hint"></p></div>
+        </div>
+        <p class="entry-error" id="entry-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button type="button" id="entry-cancel">Отмена</button><button class="primary" type="submit" id="entry-next">Продолжить</button></div>
+      </form>
+      <div id="entry-review" hidden><div class="entry-summary" id="entry-summary"></div><p>Проверьте значения. Подтверждение добавит только демонстрационную запись.</p><div class="dialog-actions"><button id="entry-back">Изменить</button><button class="primary" id="entry-confirm">Подтвердить</button></div></div>
+      <div id="entry-result" class="entry-result" role="status" hidden><div class="entry-success"><svg width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></div><p id="entry-result-text"></p><div class="dialog-actions"><button id="entry-done">Готово</button></div></div>
+    </section>
+  </div>
+  <script>
+    'use strict';
+    const $ = (selector) => document.querySelector(selector);
+    let currentState = 'connected';
+    let lastFocused = null;
+    let entryType = 'insulin';
+    let entryValues = null;
+    let entryOpener = null;
+    const demoEntries = [];
+    const states = {
+      connected: { loop: 'Контур работает', detail: 'Последний расчёт · 1 минуту назад', pump: 'Подключена', last: 'Последняя связь · 13:41' },
+      '20': { loop: 'Нет связи с помпой', detail: 'Доставка команд не подтверждена', pump: 'Нет связи · 20 минут', last: 'Последняя связь · 13:22', title: 'Не удаётся подключиться уже 20 минут', description: 'Попытки подключения продолжаются.', action: 'Подробнее о связи' },
+      '40': { loop: 'Нет связи с помпой', detail: 'Доставка команд не подтверждена', pump: 'Нет связи · 40 минут', last: 'Последняя связь · 13:02', title: 'Нет подключения уже 40 минут', description: 'Запрашиваем статус через штатное подключение. Если связи нет, проверьте Bluetooth.', action: 'Проверить связь' },
+      '60': { loop: 'Нет связи с помпой', detail: 'Доставка команд не подтверждена', pump: 'Нет связи · 60 минут', last: 'Последняя связь · 12:42', title: 'Помпа недоступна уже 60 минут', description: 'Проверьте состояние помпы и её подключение.', action: 'Проверить связь' },
+      recovered: { loop: 'Контур работает', detail: 'Последний расчёт · только что', pump: 'Подключена', last: 'Последняя связь · 13:42', title: 'Связь с помпой восстановлена', description: 'Состояние помпы обновлено.', action: 'Посмотреть состояние' }
+    };
+    function setState(state) {
+      currentState = state;
+      const value = states[state], disconnected = ['20','40','60'].includes(state);
+      document.querySelectorAll('.scenario').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.state === state)));
+      $('#loop-title').textContent = value.loop; $('#loop-detail').textContent = value.detail;
+      $('#loop-symbol').setAttribute('href', disconnected ? '#i-link-off' : '#i-check');
+      $('.loop-orbit').style.borderColor = disconnected ? 'var(--muted)' : 'var(--green)';
+      $('.loop-orbit').style.color = disconnected ? 'var(--muted)' : 'var(--green)';
+      $('#pump-name').textContent = value.pump; $('#pump-detail').textContent = value.last;
+      $('#pump-reservoir-note').textContent = disconnected ? 'Последние данные' : 'В резервуаре';
+      const notice = $('#connection-notice'); notice.style.display = state === 'connected' ? 'none' : 'flex'; notice.dataset.level = state;
+      $('#notice-title').textContent = value.title || ''; $('#notice-desc').textContent = value.description || '';
+      $('#notice-action').textContent = value.action || ''; $('#notice-dismiss').hidden = state !== 'recovered';
+      $('#notice-symbol').setAttribute('href', state === 'recovered' ? '#i-check' : '#i-link-off');
+    }
+    const details = {
+      overview: { title: 'Все данные в одном обзоре', description: 'Демонстрация спокойного dashboard: глюкоза, состояние контура, активный инсулин и углеводы, связь с помпой.', rows: [['Данные','Демонстрационные'],['Единицы глюкозы','ммоль/л']] },
+      loop: { title: 'Состояние контура', description: 'Статус соединения с помпой показан отдельно от свежести данных сенсора. При потере связи нельзя считать, что команда доставлена.', rows: [['Режим','Демонстрационный'],['Последний расчёт','13:41']] },
+      iob: { title: 'Активный инсулин', description: 'IOB показывает оценку оставшегося действия ранее введённого инсулина. В этом макете представлены фиксированные демо-данные.', rows: [['IOB','1,24 ед.'],['От болюсов','0,96 ед.'],['От базала','0,28 ед.']] },
+      cob: { title: 'Активные углеводы', description: 'COB — оценка ещё не усвоенных углеводов. Данные представлены для проверки визуальной иерархии.', rows: [['COB','12 г'],['Последняя запись','13:10 · 24 г']] },
+      pump: { title: 'Связь с помпой', description: 'Проверьте помпу рядом с телефоном. В Android повторное чтение состояния поддерживается драйвером помпы, а настройки Bluetooth открываются отдельно.', rows: [['Соединение','Демо'],['Резервуар','124 ед.'],['Батарея','82 %']] },
+      activity: { title: 'Активность', description: 'Пример дополнительного экрана: обзор активности за день. Управление терапией в макете отсутствует.', rows: [['Шаги','4 280'],['Прогулка','12:20 · 25 минут']] },
+      history: { title: 'История', description: 'Последние события показаны как компактный журнал. Эти записи демонстрационные.', rows: [['13:41','Обновлены данные сенсора'],['13:10','Запись углеводов · 24 г'],['12:20','Прогулка · 25 минут']] },
+      profile: { title: 'Профиль', description: 'Пример экрана профиля и визуальных настроек. Параметры дозирования здесь недоступны.', rows: [['Профиль','Основной · демо'],['Единицы','ммоль/л'],['Тема','Светлая / тёмная']] }
+    };
+    function closeDialog() { $('#modal').classList.remove('open'); if(lastFocused) lastFocused.focus(); }
+    function openDialog(type) {
+      const content = details[type]; lastFocused = document.activeElement;
+      $('#dialog-title').textContent = content.title; $('#dialog-description').textContent = content.description;
+      $('#dialog-list').replaceChildren();
+      const rows = type === 'history' ? [...demoEntries, ...content.rows] : content.rows;
+      rows.forEach(([label,value]) => { const row = document.createElement('div');row.className='dialog-row'; const left=document.createElement('span'),right=document.createElement('strong');left.textContent=label;right.textContent=value;row.append(left,right);$('#dialog-list').append(row); });
+      $('#dialog-recover').hidden = type !== 'pump' || !['20','40','60'].includes(currentState);
+      $('#modal').classList.add('open'); $('.dialog').focus();
+    }
+    function openEntry(type) {
+      entryType = type; entryValues = null; entryOpener = document.activeElement;
+      $('#entry-title').textContent = type === 'carbs' ? 'Ввести углеводы' : 'Ввести инсулин';
+      $('#entry-description').textContent = type === 'carbs' ? 'Укажите углеводы и, при необходимости, количество инсулина в этом же окне.' : 'Укажите количество инсулина для ручного болюса.';
+      $('#entry-dose-hint').textContent = type === 'carbs' ? 'Дозу вводите вручную. При 0 ед. будут записаны только углеводы.' : 'Макет показывает ввод и подтверждение. Подачи инсулина нет.';
+      $('#entry-carbs-field').hidden = type !== 'carbs';
+      $('#entry-food-link').hidden = type !== 'carbs';
+      $('#entry-carbs').value = ''; $('#entry-insulin').value = type === 'carbs' ? '0' : '';
+      $('#entry-form').hidden = false; $('#entry-review').hidden = true; $('#entry-result').hidden = true;
+      clearEntryError();
+      $('#entry-modal').classList.add('open');
+      $(type === 'carbs' ? '#entry-carbs' : '#entry-insulin').focus();
+    }
+    function closeEntry() { $('#entry-modal').classList.remove('open'); entryValues = null; if(entryOpener) entryOpener.focus(); }
+    function clearEntryError() {
+      $('#entry-error').hidden = true; $('#entry-error').textContent = '';
+      for(const id of ['#entry-carbs','#entry-insulin']) $(id).removeAttribute('aria-invalid');
+    }
+    function parseEntryValue(input) {
+      const value = input.value.trim();
+      if(!/^\d+(?:[.,]\d+)?$/.test(value)) return NaN;
+      return Number(value.replace(',','.'));
+    }
+    const formatEntryValue = value => value.toLocaleString('ru-RU', {maximumFractionDigits:10});
+    function showEntryError(field,message) {
+      $('#entry-error').textContent = message; $('#entry-error').hidden = false;
+      $(field).setAttribute('aria-invalid','true'); $(field).focus();
+    }
+    function reviewEntry(event) {
+      event.preventDefault(); clearEntryError();
+      const insulin = parseEntryValue($('#entry-insulin'));
+      const carbs = entryType === 'carbs' ? parseEntryValue($('#entry-carbs')) : 0;
+      if(entryType === 'carbs' && (!Number.isSafeInteger(carbs) || carbs <= 0)) { showEntryError('#entry-carbs','Введите целое количество углеводов больше 0 г.'); return; }
+      if(!Number.isFinite(insulin) || insulin < 0 || (entryType === 'insulin' && insulin === 0)) { showEntryError('#entry-insulin',entryType === 'carbs' ? 'Введите количество инсулина от 0 ед.' : 'Введите количество инсулина больше 0 ед.'); return; }
+      entryValues = {insulin,carbs}; $('#entry-summary').replaceChildren();
+      const rows = entryType === 'carbs' ? [['Углеводы',formatEntryValue(carbs)+' г'],['Инсулин',formatEntryValue(insulin)+' ед.']] : [['Инсулин',formatEntryValue(insulin)+' ед.']];
+      for(const [label,value] of rows) { const row=document.createElement('div');row.className='dialog-row';const left=document.createElement('span'),right=document.createElement('strong');left.textContent=label;right.textContent=value;row.append(left,right);$('#entry-summary').append(row); }
+      $('#entry-form').hidden = true; $('#entry-review').hidden = false;
+      $('#entry-title').textContent = 'Проверьте значения'; $('#entry-description').textContent = 'Запись будет добавлена в демонстрационную историю.';
+      $('#entry-back').focus();
+    }
+    function editEntry() {
+      $('#entry-form').hidden = false; $('#entry-review').hidden = true; entryValues = null;
+      $('#entry-title').textContent = entryType === 'carbs' ? 'Ввести углеводы' : 'Ввести инсулин';
+      $('#entry-description').textContent = entryType === 'carbs' ? 'Укажите углеводы и, при необходимости, количество инсулина в этом же окне.' : 'Укажите количество инсулина для ручного болюса.';
+      $(entryType === 'carbs' ? '#entry-carbs' : '#entry-insulin').focus();
+    }
+    function confirmEntry() {
+      if(!entryValues) return;
+      const insulinText = formatEntryValue(entryValues.insulin)+' ед.';
+      const value = entryType === 'carbs' ? 'Углеводы · '+formatEntryValue(entryValues.carbs)+' г'+(entryValues.insulin > 0 ? ' · инсулин '+insulinText : '') : 'Инсулин · '+insulinText;
+      demoEntries.unshift(['Демо · сейчас',value]); entryValues = null;
+      $('#entry-review').hidden = true; $('#entry-result').hidden = false;
+      $('#entry-title').textContent = 'Запись добавлена'; $('#entry-description').textContent = '';
+      $('#entry-result-text').textContent = value+'. Это демонстрационная запись; команда помпе не отправлялась.';
+      $('#entry-done').focus();
+    }
+    function drawChart(range) {
+      const values = [7.5,7.2,7.3,7.6,7.8,7.9,7.7,7.4,7.0,6.8,6.9,7.2,7.5,7.4,7.1,6.9,6.8,6.7,6.8];
+      const history = values.map((value,index) => { const adjusted = range === 3 ? value : value + Math.sin(index * .7) * (range === 6 ? .45 : .8); return [index*248/(values.length-1),29+(10-adjusted)*13.4]; });
+      const points=history.map(([x,y])=>`${x.toFixed(1)},${y.toFixed(1)}`).join(' '), lastY=history.at(-1)[1];
+      $('#chart-series').innerHTML = `<polyline class="chart-history" points="${points}"/>${history.map(([x,y])=>`<circle class="chart-point" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"/>`).join('')}<path class="chart-forecast" d="M248 ${lastY.toFixed(1)} Q280 82 325 85"/><circle class="chart-current" cx="248" cy="${lastY.toFixed(1)}" r="5"/>`;
+      $('#time-start').textContent = range === 3 ? '10:42' : range === 6 ? '07:42' : '01:42'; $('#time-mid').textContent = range === 3 ? '12:12' : range === 6 ? '10:42' : '07:42';
+      $('.chart').setAttribute('aria-label',`Демонстрационный график глюкозы за ${range} часов, текущая глюкоза 6,8 ммоль/л`);
+      document.querySelectorAll('[data-range]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.range)===range)));
+    }
+    document.querySelectorAll('.scenario').forEach(button=>button.addEventListener('click',()=>setState(button.dataset.state)));
+    document.querySelectorAll('[data-detail]').forEach(button=>button.addEventListener('click',()=>openDialog(button.dataset.detail)));
+    document.querySelectorAll('[data-range]').forEach(button=>button.addEventListener('click',()=>drawChart(Number(button.dataset.range))));
+    document.querySelectorAll('[data-entry]').forEach(button=>button.addEventListener('click',()=>openEntry(button.dataset.entry)));
+    $('#entry-form').addEventListener('submit',reviewEntry);
+    $('#entry-cancel').addEventListener('click',closeEntry); $('#entry-done').addEventListener('click',closeEntry);
+    $('#entry-back').addEventListener('click',editEntry); $('#entry-confirm').addEventListener('click',confirmEntry);
+    for(const id of ['#entry-carbs','#entry-insulin']) $(id).addEventListener('input',clearEntryError);
+    $('#entry-modal').addEventListener('click',event=>{if(event.target===$('#entry-modal'))closeEntry();});
+    $('#notice-action').addEventListener('click',()=>openDialog('pump'));
+    $('#notice-dismiss').addEventListener('click',()=>{$('#connection-notice').style.display='none';});
+    $('.theme-toggle').addEventListener('click',()=>{$('.theme-toggle').setAttribute('aria-pressed',String(document.body.classList.toggle('dark')));});
+    $('#dialog-close').addEventListener('click',closeDialog); $('#dialog-recover').addEventListener('click',()=>{setState('recovered');closeDialog();});
+    $('#modal').addEventListener('click',event=>{if(event.target===$('#modal'))closeDialog();});
+    document.addEventListener('keydown',event=>{
+      const entryOpen = $('#entry-modal').classList.contains('open');
+      const modal = entryOpen ? $('#entry-modal') : $('#modal');
+      if(!modal.classList.contains('open'))return;
+      if(event.key==='Escape') { entryOpen ? closeEntry() : closeDialog(); return; }
+      if(event.key==='Tab') {
+        const dialog=modal.querySelector('.dialog');
+        const controls=[...dialog.querySelectorAll('button,input,a[href]')].filter(control=>!control.disabled&&control.getClientRects().length>0);
+        const first=controls[0],last=controls.at(-1);
+        if(event.shiftKey&&(document.activeElement===first||document.activeElement===dialog)){event.preventDefault();last.focus();}
+        else if(!event.shiftKey&&(document.activeElement===last||document.activeElement===dialog)){event.preventDefault();first.focus();}
+      }
+    });
+    drawChart(3);
+  </script>
+</body>
+</html>

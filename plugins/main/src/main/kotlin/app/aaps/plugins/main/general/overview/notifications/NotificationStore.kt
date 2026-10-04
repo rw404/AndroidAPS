@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import android.media.RingtoneManager
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,7 @@ class NotificationStore @Inject constructor(
     companion object {
 
         private const val CHANNEL_ID = "AndroidAPS-Overview"
+        private const val CONNECTION_REMINDER_CHANNEL_ID = "AndroidAPS-Pump-Connection-Reminders"
     }
 
     inner class NotificationComparator : Comparator<Notification> {
@@ -65,11 +67,16 @@ class NotificationStore @Inject constructor(
             if (storeNotification.id == n.id) {
                 storeNotification.date = n.date
                 storeNotification.validTo = n.validTo
+                if (n.id == Notification.PUMP_CONNECTION_REMINDER) {
+                    storeNotification.text = n.text
+                    if (preferences.get(BooleanKey.AlertUrgentAsAndroidNotification)) raiseSystemNotification(n)
+                    return true
+                }
                 return false
             }
         }
         store.add(n)
-        if (preferences.get(BooleanKey.AlertUrgentAsAndroidNotification) && n !is NotificationWithAction)
+        if (preferences.get(BooleanKey.AlertUrgentAsAndroidNotification) && n !is NotificationWithAction && shouldPostSystemNotification(n))
             raiseSystemNotification(n)
         if (n.soundId != null && n.soundId != 0) uiInteraction.startAlarm(n.soundId!!, n.text)
         Collections.sort(store, NotificationComparator())
@@ -78,6 +85,8 @@ class NotificationStore @Inject constructor(
 
     @Synchronized
     fun remove(id: Int): Boolean {
+        // A reminder can survive in Android's notification tray after the process restarts.
+        if (id == Notification.PUMP_CONNECTION_REMINDER || id == Notification.PUMP_UNREACHABLE) cancelSystemNotification(id)
         for (i in store.indices) {
             if (store[i].id == id) {
                 if (store[i].soundId != null) uiInteraction.stopAlarm("Removed " + store[i].text)
@@ -96,6 +105,7 @@ class NotificationStore @Inject constructor(
             val n = store[i]
             if (n.validTo != 0L && n.validTo < System.currentTimeMillis()) {
                 if (store[i].soundId != null) uiInteraction.stopAlarm("Expired " + store[i].text)
+                if (n.id == Notification.PUMP_CONNECTION_REMINDER) cancelSystemNotification(n.id)
                 aapsLogger.debug(LTag.NOTIFICATION, "Notification expired: " + store[i].text)
                 store.removeAt(i)
                 i--
@@ -111,6 +121,10 @@ class NotificationStore @Inject constructor(
     }
 
     private fun raiseSystemNotification(n: Notification) {
+        if (n.id == Notification.PUMP_CONNECTION_REMINDER) {
+            raiseConnectionReminder(n)
+            return
+        }
         val mgr = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val largeIcon = rh.decodeResource(iconsProvider.getIcon())
         val smallIcon = iconsProvider.getNotificationIcon()
@@ -134,8 +148,48 @@ class NotificationStore @Inject constructor(
         mgr.notify(n.id, notificationBuilder.build())
     }
 
+    private fun shouldPostSystemNotification(n: Notification): Boolean =
+        NotificationDeliveryPolicy.shouldPost(
+            quietMode = preferences.get(BooleanKey.OverviewQuietInformationalNotifications),
+            id = n.id,
+            level = n.level,
+            soundId = n.soundId
+        )
+
+    private fun raiseConnectionReminder(n: Notification) {
+        val mgr = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notification = NotificationCompat.Builder(context, CONNECTION_REMINDER_CHANNEL_ID)
+            .setSmallIcon(iconsProvider.getNotificationIcon())
+            .setContentTitle(rh.gs(app.aaps.core.ui.R.string.pump_connection_reminders_channel))
+            .setContentText(n.text)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(n.text))
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setSilent(true)
+            .setOnlyAlertOnce(true)
+            .setDeleteIntent(deleteIntent(n.id))
+            .setContentIntent(notificationHolder.openAppIntent(context))
+            .addAction(
+                0,
+                rh.gs(app.aaps.core.ui.R.string.pump_connection_bluetooth_settings),
+                PendingIntent.getActivity(
+                    context,
+                    Notification.PUMP_CONNECTION_REMINDER,
+                    Intent(Settings.ACTION_BLUETOOTH_SETTINGS),
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                )
+            )
+            .build()
+        mgr.notify(n.id, notification)
+    }
+
+    private fun cancelSystemNotification(id: Int) {
+        (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).cancel(id)
+    }
+
     private fun deleteIntent(id: Int): PendingIntent {
-        val intent = Intent(DismissNotificationReceiver.ACTION).putExtra("alertID", id)
+        val intent = Intent(DismissNotificationReceiver.ACTION)
+            .setPackage(context.packageName)
+            .putExtra("alertID", id)
         return PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
@@ -143,6 +197,15 @@ class NotificationStore @Inject constructor(
         val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channel = NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_HIGH)
         mNotificationManager.createNotificationChannel(channel)
+        val reminderChannel = NotificationChannel(
+            CONNECTION_REMINDER_CHANNEL_ID,
+            rh.gs(app.aaps.core.ui.R.string.pump_connection_reminders_channel),
+            NotificationManager.IMPORTANCE_LOW
+        ).apply {
+            setSound(null, null)
+            enableVibration(false)
+        }
+        mNotificationManager.createNotificationChannel(reminderChannel)
     }
 
     @Synchronized

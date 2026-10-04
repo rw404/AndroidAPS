@@ -6,8 +6,9 @@ object InstanceId {
     var instanceId : String = ""
 
     init {
-        FirebaseInstallations.getInstance().id.addOnCompleteListener {
-            instanceId = it.result
+        // A separate build may not have a Firebase project configured.
+        runCatching { FirebaseInstallations.getInstance() }.getOrNull()?.id?.addOnCompleteListener {
+            if (it.isSuccessful) instanceId = it.result
         }
     }
 }

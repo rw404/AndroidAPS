@@ -538,6 +538,7 @@ class MyPreferenceFragment : PreferenceFragmentCompat(), OnSharedPreferenceChang
             addPreference(AdaptiveIntPreference(ctx = context, intKey = IntKey.AlertsStaleDataThreshold, title = app.aaps.plugins.sync.R.string.ns_alarm_stale_data_value_label))
             addPreference(AdaptiveSwitchPreference(ctx = context, booleanKey = BooleanKey.AlertPumpUnreachable, title = R.string.enable_pump_unreachable_alert))
             addPreference(AdaptiveIntPreference(ctx = context, intKey = IntKey.AlertsPumpUnreachableThreshold, title = R.string.pump_unreachable_threshold))
+            addPreference(AdaptiveSwitchPreference(ctx = context, booleanKey = BooleanKey.AlertPumpConnectionReminders, title = R.string.enable_pump_connection_reminders, summary = R.string.pump_connection_reminders_summary))
             addPreference(AdaptiveSwitchPreference(ctx = context, booleanKey = BooleanKey.AlertCarbsRequired, title = R.string.enable_carbs_req_alert))
             addPreference(AdaptiveSwitchPreference(ctx = context, booleanKey = BooleanKey.AlertUrgentAsAndroidNotification, title = app.aaps.core.ui.R.string.raise_notifications_as_android_notifications))
             addPreference(AdaptiveSwitchPreference(ctx = context, booleanKey = BooleanKey.AlertIncreaseVolume, title = R.string.gradually_increase_notification_volume))

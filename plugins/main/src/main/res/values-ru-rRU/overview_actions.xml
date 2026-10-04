@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="overview_enter_insulin">Ввести инсулин</string>
+    <string name="overview_enter_carbs">Ввести углеводы</string>
+    <string name="overview_enter_carbs_description">Ввести углеводы и, при необходимости, дозу инсулина</string>
+    <string name="overview_record_carbs">Записать углеводы</string>
+    <string name="overview_record_carbs_summary">Показать отдельный ввод углеводов с указанием времени, растянутыми углеводами и напоминаниями.</string>
+    <string name="overview_insulin_action_unavailable">Ввести инсулин. Необходим активный профиль.</string>
+    <string name="overview_carbs_action_unavailable">Ввести углеводы. Необходимы активный профиль и доступная помпа.</string>
+</resources>

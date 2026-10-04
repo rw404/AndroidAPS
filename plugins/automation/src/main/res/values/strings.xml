@@ -153,4 +153,5 @@
     <string name="on">ON</string>
     <string name="off">OFF</string>
 
+    <string name="map_search_unavailable">Map search is unavailable. Enter coordinates manually.</string>
 </resources>
