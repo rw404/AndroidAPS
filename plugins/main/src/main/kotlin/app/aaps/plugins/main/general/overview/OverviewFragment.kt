@@ -222,7 +222,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         moveMetric(binding.infoLayout.basalLayout, R.id.healfi_basal_card)
 
         val metrics = binding.root.findViewById<LinearLayout>(R.id.healfi_primary_metrics)
-        if (resources.configuration.fontScale >= 1.3f || resources.configuration.screenWidthDp < 340) {
+        if (resources.configuration.fontScale >= 1.3f || resources.configuration.screenWidthDp < 400) {
             metrics.orientation = LinearLayout.VERTICAL
             for (index in 0 until metrics.childCount) {
                 metrics.getChildAt(index).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
