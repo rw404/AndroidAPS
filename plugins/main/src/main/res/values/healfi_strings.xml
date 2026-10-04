@@ -30,6 +30,7 @@
     <string name="healfi_state_pump_initializing">Pump is not initialized.</string>
     <string name="healfi_state_pump_suspended">Pump delivery is suspended.</string>
     <string name="healfi_state_loop_disabled">Automatic loop is disabled.</string>
+    <string name="healfi_state_loop_disabled_title">Loop is off</string>
     <string name="healfi_state_open_loop">Basal changes require your confirmation.</string>
     <string name="healfi_state_closed_loop">Automatic loop is enabled.</string>
     <string name="healfi_state_lgs_loop">Loop mode: low glucose suspend.</string>

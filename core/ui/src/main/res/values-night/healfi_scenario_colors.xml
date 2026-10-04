@@ -11,5 +11,11 @@
     <color name="healfi_scenario_ripple">#3383C7D0</color>
     <color name="healfi_scenario_disabled_surface">#334047</color>
     <color name="healfi_scenario_disabled_ink">#8C9AA4</color>
+    <color name="healfi_scenario_warning_surface">#382A15</color>
+    <color name="healfi_scenario_warning_ink">#F2CD86</color>
+    <color name="healfi_scenario_warning_stroke">#BA9657</color>
+    <color name="healfi_scenario_stopped_surface">#3A2228</color>
+    <color name="healfi_scenario_stopped_ink">#FFAEB7</color>
+    <color name="healfi_scenario_stopped_stroke">#BB7783</color>
     <bool name="healfi_scenario_light_system_bars">false</bool>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Healfi's neutral presentation palette. Therapy and warning colors inherit AppTheme. -->
+    <!-- Named Healfi surfaces; legacy therapy/alarm attributes still inherit AppTheme. -->
     <color name="healfi_scenario_canvas">#F6F7F9</color>
     <color name="healfi_scenario_surface">#FFFFFF</color>
     <color name="healfi_scenario_ink">#17242E</color>
@@ -12,5 +12,11 @@
     <color name="healfi_scenario_ripple">#24246A77</color>
     <color name="healfi_scenario_disabled_surface">#E2E7EB</color>
     <color name="healfi_scenario_disabled_ink">#74818B</color>
+    <color name="healfi_scenario_warning_surface">#FFF4DE</color>
+    <color name="healfi_scenario_warning_ink">#8A4D00</color>
+    <color name="healfi_scenario_warning_stroke">#B7791F</color>
+    <color name="healfi_scenario_stopped_surface">#FCECEF</color>
+    <color name="healfi_scenario_stopped_ink">#A52635</color>
+    <color name="healfi_scenario_stopped_stroke">#C06C79</color>
     <bool name="healfi_scenario_light_system_bars">true</bool>
 </resources>

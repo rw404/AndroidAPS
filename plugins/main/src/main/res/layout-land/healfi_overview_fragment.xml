@@ -12,8 +12,8 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <androidx.recyclerview.widget.RecyclerView android:id="@+id/notifications" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
-            <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_data_notice_card" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:visibility="gone" app:cardBackgroundColor="?attr/ribbonWarningColor" app:strokeWidth="0dp">
-                <TextView android:id="@+id/healfi_data_notice" style="@style/HealfiScenario.Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="12dp" android:textSize="14sp" android:textColor="?attr/ribbonTextWarningColor" />
+            <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_data_notice_card" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:visibility="gone" app:cardBackgroundColor="@color/healfi_scenario_warning_surface" app:strokeColor="@color/healfi_scenario_warning_stroke" app:strokeWidth="1dp">
+                <TextView android:id="@+id/healfi_data_notice" style="@style/HealfiScenario.Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="12dp" android:textSize="14sp" android:textColor="@color/healfi_scenario_warning_ink" />
             </com.google.android.material.card.MaterialCardView>
             <LinearLayout android:id="@+id/healfi_required_actions" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
             <LinearLayout android:id="@+id/healfi_hero_graph_row" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" android:layout_marginTop="8dp">

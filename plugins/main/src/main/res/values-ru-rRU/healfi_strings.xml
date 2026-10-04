@@ -30,6 +30,7 @@
     <string name="healfi_state_pump_initializing">Помпа ещё не инициализирована.</string>
     <string name="healfi_state_pump_suspended">Подача помпы приостановлена.</string>
     <string name="healfi_state_loop_disabled">Автоматический loop отключён.</string>
+    <string name="healfi_state_loop_disabled_title">Loop отключён</string>
     <string name="healfi_state_open_loop">Изменения базала требуют подтверждения.</string>
     <string name="healfi_state_closed_loop">Автоматический loop включён.</string>
     <string name="healfi_state_lgs_loop">Режим loop: остановка при низкой глюкозе.</string>

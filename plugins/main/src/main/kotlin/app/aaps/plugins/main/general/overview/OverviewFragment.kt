@@ -1120,7 +1120,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 RM.Mode.CLOSED_LOOP_LGS -> app.aaps.core.ui.R.string.uel_lgs_loop_mode
                 RM.Mode.CLOSED_LOOP -> app.aaps.core.ui.R.string.closedloop
                 RM.Mode.OPEN_LOOP -> app.aaps.core.ui.R.string.openloop
-                RM.Mode.DISABLED_LOOP -> R.string.disabled_loop
+                RM.Mode.DISABLED_LOOP -> R.string.healfi_state_loop_disabled_title
                 RM.Mode.RESUME -> R.string.healfi_loop_details
             }
             val title = binding.root.findViewById<TextView>(R.id.healfi_state_title)
@@ -1147,12 +1147,24 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             stateCard.contentDescription = listOf(rh.gs(R.string.healfi_loop_details), title.text, detail.text).filter { it.isNotEmpty() }.joinToString(". ")
             val hasStateIssue = profileFunction.getProfile() == null || !pump.isInitialized() || pump.isSuspended() ||
                 mode == RM.Mode.DISABLED_LOOP || mode.isSuspended()
+            val showStoppedState = mode == RM.Mode.DISABLED_LOOP || mode.isSuspended() || pump.isSuspended()
             stateCard.setCardBackgroundColor(
-                if (hasStateIssue) rh.gac(context, app.aaps.core.ui.R.attr.ribbonWarningColor)
-                else resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_accent_surface, null)
+                resources.getColor(when {
+                    showStoppedState -> app.aaps.core.ui.R.color.healfi_scenario_stopped_surface
+                    hasStateIssue -> app.aaps.core.ui.R.color.healfi_scenario_warning_surface
+                    else -> app.aaps.core.ui.R.color.healfi_scenario_accent_surface
+                }, null)
             )
-            val stateTextColor = if (hasStateIssue) rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor)
-            else resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_ink, null)
+            stateCard.strokeWidth = if (hasStateIssue) resources.displayMetrics.density.toInt().coerceAtLeast(1) else 0
+            stateCard.strokeColor = resources.getColor(
+                if (showStoppedState) app.aaps.core.ui.R.color.healfi_scenario_stopped_stroke
+                else app.aaps.core.ui.R.color.healfi_scenario_warning_stroke, null
+            )
+            val stateTextColor = resources.getColor(when {
+                showStoppedState -> app.aaps.core.ui.R.color.healfi_scenario_stopped_ink
+                hasStateIssue -> app.aaps.core.ui.R.color.healfi_scenario_warning_ink
+                else -> app.aaps.core.ui.R.color.healfi_scenario_ink
+            }, null)
             title.setTextColor(stateTextColor)
             detail.setTextColor(stateTextColor)
 
