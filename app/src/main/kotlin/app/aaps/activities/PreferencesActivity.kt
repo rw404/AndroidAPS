@@ -49,11 +49,14 @@ class PreferencesActivity : DaggerAppCompatActivityWithResult(), PreferenceFragm
                 // Add menu items here
                 menuInflater.inflate(R.menu.menu_preferences, menu)
                 val searchItem = menu.findItem(R.id.menu_search)
-                searchView = searchItem.actionView as SearchView
+                searchView = binding.root.findViewById<SearchView>(R.id.healfi_settings_search)
+                    ?: searchItem.actionView as SearchView
+                if (binding.root.findViewById<SearchView>(R.id.healfi_settings_search) != null)
+                    searchItem.isVisible = false
                 searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
                     override fun onQueryTextChange(newText: String): Boolean {
-                        myPreferenceFragment?.setFilter(newText)
+                        (supportFragmentManager.findFragmentById(R.id.frame_layout) as? MyPreferenceFragment)?.setFilter(newText)
                         return false
                     }
 
@@ -81,6 +84,8 @@ class PreferencesActivity : DaggerAppCompatActivityWithResult(), PreferenceFragm
     }
 
     override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat, pref: PreferenceScreen): Boolean {
+        if (binding.root.findViewById<SearchView>(R.id.healfi_settings_search) != null)
+            searchView?.setQuery("", false)
         val fragment = MyPreferenceFragment()
         fragment.arguments = Bundle().also {
             it.putString(PreferenceFragmentCompat.ARG_PREFERENCE_ROOT, pref.key)

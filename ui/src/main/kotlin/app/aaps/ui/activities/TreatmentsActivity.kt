@@ -1,6 +1,8 @@
 package app.aaps.ui.activities
 
 import android.os.Bundle
+import android.content.Intent
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import app.aaps.core.interfaces.configuration.Config
@@ -19,6 +21,8 @@ import app.aaps.ui.activities.fragments.TreatmentsTemporaryBasalsFragment
 import app.aaps.ui.activities.fragments.TreatmentsUserEntryFragment
 import app.aaps.ui.databinding.TreatmentsFragmentBinding
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import javax.inject.Inject
 
 class TreatmentsActivity : TranslatedDaggerAppCompatActivity() {
@@ -31,7 +35,9 @@ class TreatmentsActivity : TranslatedDaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = TreatmentsFragmentBinding.inflate(layoutInflater)
+        binding = if (config.FLAVOR == "healfi")
+            TreatmentsFragmentBinding.bind(layoutInflater.inflate(R.layout.healfi_treatments_fragment, null))
+        else TreatmentsFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Use index, TabItems crashes with an id
@@ -62,6 +68,29 @@ class TreatmentsActivity : TranslatedDaggerAppCompatActivity() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+        if (config.FLAVOR == "healfi") configureHealfiHistory()
+    }
+
+    private fun configureHealfiHistory() {
+        supportActionBar?.title = rh.gs(R.string.healfi_history_title)
+        binding.root.findViewById<MaterialButton>(R.id.healfi_history_primary).setOnClickListener {
+            binding.treatmentsTabs.getTabAt(0)?.select()
+            supportActionBar?.title = rh.gs(R.string.healfi_history_title)
+        }
+        binding.root.findViewById<MaterialButton>(R.id.healfi_history_more).setOnClickListener {
+            // Keep all existing event screens and their original data/handlers;
+            // less frequent event categories are chosen by name, not tiny icons.
+            val tabs = (1 until binding.treatmentsTabs.tabCount).mapNotNull { binding.treatmentsTabs.getTabAt(it) }
+                .filter { it.view.visibility == View.VISIBLE }
+            MaterialAlertDialogBuilder(this, app.aaps.core.ui.R.style.DialogTheme)
+                .setTitle(R.string.healfi_history_other_events)
+                .setItems(tabs.map { it.contentDescription.toString() }.toTypedArray()) { _, index -> tabs[index].select() }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        }
+        binding.root.findViewById<MaterialButton>(R.id.healfi_history_glucose).setOnClickListener {
+            startActivity(Intent().setClassName(this, "app.aaps.activities.HistoryBrowseActivity"))
+        }
     }
 
     private fun setFragment(selectedFragment: Fragment) {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="healfi_overview_today">Сегодня</string>
     <string name="healfi_glucose">Глюкоза</string>
@@ -11,7 +11,7 @@
     <string name="healfi_profile">Профиль</string>
     <string name="healfi_target">Цель</string>
     <string name="healfi_glucose_history">История глюкозы</string>
-    <string name="healfi_more_controls">Другие действия</string>
+    <string name="healfi_more_controls">Подробности и другие действия</string>
     <string name="healfi_reservoir">Резервуар</string>
     <string name="healfi_sensor">Сенсор</string>
     <string name="healfi_pump_battery">Батарея помпы</string>
@@ -19,4 +19,21 @@
     <string name="healfi_insulin_age">Инсулин</string>
     <string name="healfi_controls_expanded">Дополнительные действия открыты</string>
     <string name="healfi_controls_collapsed">Дополнительные действия скрыты</string>
+    <string name="healfi_iob_short">IOB</string>
+    <string name="healfi_cob_short">COB</string>
+    <string name="healfi_basal_short">Базал</string>
+    <string name="healfi_loop_details">Состояние loop</string>
+    <string name="healfi_state_no_profile">Нет активного профиля.</string>
+    <string name="healfi_state_no_glucose">Показания глюкозы ещё не получены.</string>
+    <string name="healfi_state_stale_glucose">Показание глюкозы устарело. Проверьте источник глюкозы.</string>
+    <string name="healfi_state_pump_initializing">Помпа ещё не инициализирована.</string>
+    <string name="healfi_state_pump_suspended">Подача помпы приостановлена.</string>
+    <string name="healfi_state_loop_disabled">Автоматический loop отключён.</string>
+    <string name="healfi_state_open_loop">Изменения базала требуют подтверждения.</string>
+    <string name="healfi_state_closed_loop">Автоматический loop включён.</string>
+    <string name="healfi_state_lgs_loop">Режим loop: остановка при низкой глюкозе.</string>
+    <string name="healfi_state_loop_paused">Loop временно приостановлен.</string>
+    <string name="healfi_state_pump_disconnected">Помпа отключена в настройках loop.</string>
+    <string name="healfi_state_superbolus">Включён режим суперболюса.</string>
+    <string name="healfi_glucose_changes">Изменения глюкозы</string>
 </resources>

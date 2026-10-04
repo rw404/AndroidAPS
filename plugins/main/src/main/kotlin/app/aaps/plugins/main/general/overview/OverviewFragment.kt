@@ -222,7 +222,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         moveMetric(binding.infoLayout.basalLayout, R.id.healfi_basal_card)
 
         val metrics = binding.root.findViewById<LinearLayout>(R.id.healfi_primary_metrics)
-        if (resources.configuration.fontScale >= 1.3f || resources.configuration.screenWidthDp < 400) {
+        if (resources.configuration.fontScale >= 1.3f) {
             metrics.orientation = LinearLayout.VERTICAL
             for (index in 0 until metrics.childCount) {
                 metrics.getChildAt(index).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
@@ -238,12 +238,37 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         }
         binding.infoLayout.asLayout.visibility = View.VISIBLE
 
-        // Open-loop approval and user automation controls stay directly available.
+        // Keep the original loop/quality controls and their handlers. The text
+        // summary adds an explanation without introducing a new loop action.
+        val stateRow = binding.root.findViewById<LinearLayout>(R.id.healfi_state_row)
+        val modeLayout = binding.infoLayout.apsModeLayout
+        (modeLayout.parent as ViewGroup).removeView(modeLayout)
+        stateRow.addView(modeLayout, 0, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+            it.marginEnd = rh.dpToPx(8)
+        })
+        val quality = binding.infoLayout.bgQuality
+        (quality.parent as ViewGroup).removeView(quality)
+        stateRow.addView(quality, stateRow.childCount - 1, LinearLayout.LayoutParams(rh.dpToPx(48), rh.dpToPx(48)))
+        binding.root.findViewById<View>(R.id.healfi_state_card).setOnClickListener {
+            binding.infoLayout.apsMode.performClick()
+        }
+
+        // Open-loop approval is a required action, not a detail to disclose.
+        val required = binding.root.findViewById<LinearLayout>(R.id.healfi_required_actions)
         for (action in listOf(binding.buttonsLayout.acceptTempButton, binding.buttonsLayout.userButtonsLayout)) {
             (action.parent as ViewGroup).removeView(action)
-            binding.innerLayout.addView(action, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+            required.addView(action, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+                it.topMargin = rh.dpToPx(8)
+            })
         }
         val secondary = binding.root.findViewById<LinearLayout>(R.id.healfi_secondary_controls)
+        val deltas = binding.infoLayout.deltasLayout
+        (deltas.parent as ViewGroup).removeView(deltas)
+        binding.root.findViewById<LinearLayout>(R.id.healfi_delta_details).addView(
+            deltas, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+                it.topMargin = rh.dpToPx(8)
+            }
+        )
         val actions = binding.buttonsLayout.secondaryActionsLayout
         (actions.parent as ViewGroup).removeView(actions)
         secondary.addView(actions, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
@@ -261,7 +286,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
 
         val version = binding.infoLayout.version
         (version.parent as ViewGroup).removeView(version)
-        binding.innerLayout.addView(version, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+        secondary.addView(version, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
             it.topMargin = rh.dpToPx(12)
         })
         version.visibility = View.VISIBLE
@@ -301,7 +326,6 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             connect(info.arrowsLayout.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
             connect(info.arrowsLayout.id, ConstraintSet.TOP, info.bg.id, ConstraintSet.BOTTOM, rh.dpToPx(8))
             constrainWidth(info.arrowsLayout.id, 0)
-            connect(info.deltasLayout.id, ConstraintSet.TOP, info.arrowsLayout.id, ConstraintSet.BOTTOM, rh.dpToPx(12))
             applyTo(info.root)
         }
         stackRows(info.deltasLayout, 8)
@@ -359,7 +383,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         binding.graphsLayout.bgGraph.gridLabelRenderer?.gridColor = rh.gac(context, app.aaps.core.ui.R.attr.graphGrid)
         binding.graphsLayout.bgGraph.gridLabelRenderer?.reloadStyles()
         binding.graphsLayout.bgGraph.gridLabelRenderer?.labelVerticalWidth = axisWidth
-        binding.graphsLayout.bgGraph.layoutParams?.height = rh.dpToPx(if (usesHealfiOverview) { if (landscape) 180 else 220 } else skinProvider.activeSkin().mainGraphHeight)
+        binding.graphsLayout.bgGraph.layoutParams?.height = rh.dpToPx(if (usesHealfiOverview) 144 else skinProvider.activeSkin().mainGraphHeight)
 
         carbAnimation = binding.infoLayout.carbsIcon.background as AnimationDrawable?
         carbAnimation?.setEnterFadeDuration(1200)
@@ -525,6 +549,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         processAps()
         updateProfile()
         updateTemporaryTarget()
+        updateHealfiState()
     }
 
     @Synchronized
@@ -791,9 +816,9 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             } else if (usesHealfiOverview) {
                 binding.buttonsLayout.insulinButton.apply {
                     text = rh.gs(R.string.overview_enter_insulin)
-                    setTextColor(Color.WHITE)
+                    setTextColor(resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_on_accent, null))
                     backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.healfi_primary_background, null))
-                    iconTint = ColorStateList.valueOf(Color.WHITE)
+                    iconTint = ColorStateList.valueOf(resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_on_accent, null))
                     strokeWidth = 0
                 }
             } else {
@@ -964,6 +989,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             // Uploader status from ns
             binding.uploader.text = processedDeviceStatusData.uploaderStatusSpanned
             binding.uploader.setOnClickListener { activity?.let { OKDialog.show(it, rh.gs(R.string.uploader), processedDeviceStatusData.extendedUploaderStatus) } }
+            updateHealfiState()
         }
     }
 
@@ -1074,6 +1100,71 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 binding.infoLayout.bgQuality.visibility = View.GONE
             }
             binding.infoLayout.simpleMode.visibility = preferences.simpleMode.toVisibility()
+            updateHealfiState()
+        }
+    }
+
+    /** Display existing state only; this method never changes loop or pump state. */
+    private fun updateHealfiState() {
+        if (!usesHealfiOverview) return
+        runOnUiThread {
+            _binding ?: return@runOnUiThread
+            val pump = activePlugin.activePump
+            val mode = loop.runningMode
+            val modeLabel = when (mode) {
+                RM.Mode.SUPER_BOLUS -> app.aaps.core.ui.R.string.superbolus
+                RM.Mode.DISCONNECTED_PUMP -> app.aaps.core.ui.R.string.disconnected
+                RM.Mode.SUSPENDED_BY_PUMP -> app.aaps.core.ui.R.string.pumpsuspended
+                RM.Mode.SUSPENDED_BY_USER -> app.aaps.core.ui.R.string.loopsuspended
+                RM.Mode.SUSPENDED_BY_DST -> app.aaps.core.ui.R.string.loop_suspended_by_dst
+                RM.Mode.CLOSED_LOOP_LGS -> app.aaps.core.ui.R.string.uel_lgs_loop_mode
+                RM.Mode.CLOSED_LOOP -> app.aaps.core.ui.R.string.closedloop
+                RM.Mode.OPEN_LOOP -> app.aaps.core.ui.R.string.openloop
+                RM.Mode.DISABLED_LOOP -> R.string.disabled_loop
+                RM.Mode.RESUME -> R.string.healfi_loop_details
+            }
+            val title = binding.root.findViewById<TextView>(R.id.healfi_state_title)
+            title.text = rh.gs(modeLabel)
+            val details = mutableListOf<String>()
+            if (profileFunction.getProfile() == null) details += rh.gs(R.string.healfi_state_no_profile)
+            if (!pump.isInitialized()) details += rh.gs(R.string.healfi_state_pump_initializing)
+            if (pump.isSuspended() && mode != RM.Mode.SUSPENDED_BY_PUMP) details += rh.gs(R.string.healfi_state_pump_suspended)
+            val modeDescription = when (mode) {
+                RM.Mode.SUPER_BOLUS -> R.string.healfi_state_superbolus
+                RM.Mode.DISCONNECTED_PUMP -> R.string.healfi_state_pump_disconnected
+                RM.Mode.SUSPENDED_BY_PUMP -> R.string.healfi_state_pump_suspended
+                RM.Mode.SUSPENDED_BY_USER, RM.Mode.SUSPENDED_BY_DST -> R.string.healfi_state_loop_paused
+                RM.Mode.OPEN_LOOP -> R.string.healfi_state_open_loop
+                RM.Mode.DISABLED_LOOP -> R.string.healfi_state_loop_disabled
+                RM.Mode.CLOSED_LOOP_LGS -> R.string.healfi_state_lgs_loop
+                RM.Mode.CLOSED_LOOP, RM.Mode.RESUME -> null
+            }
+            modeDescription?.let { details += rh.gs(it) }
+            val detail = binding.root.findViewById<TextView>(R.id.healfi_state_detail)
+            detail.text = details.joinToString("\n")
+            detail.visibility = details.isNotEmpty().toVisibility()
+            val stateCard = binding.root.findViewById<MaterialCardView>(R.id.healfi_state_card)
+            stateCard.contentDescription = listOf(rh.gs(R.string.healfi_loop_details), title.text, detail.text).filter { it.isNotEmpty() }.joinToString(". ")
+            val hasStateIssue = profileFunction.getProfile() == null || !pump.isInitialized() || pump.isSuspended() ||
+                mode == RM.Mode.DISABLED_LOOP || mode.isSuspended()
+            stateCard.setCardBackgroundColor(
+                if (hasStateIssue) rh.gac(context, app.aaps.core.ui.R.attr.ribbonWarningColor)
+                else resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_accent_surface, null)
+            )
+            val stateTextColor = if (hasStateIssue) rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor)
+            else resources.getColor(app.aaps.core.ui.R.color.healfi_scenario_ink, null)
+            title.setTextColor(stateTextColor)
+            detail.setTextColor(stateTextColor)
+
+            val dataMessages = mutableListOf<String>()
+            if (lastBgData.lastBg() == null) dataMessages += rh.gs(R.string.healfi_state_no_glucose)
+            else if (!lastBgData.isActualBg()) dataMessages += rh.gs(R.string.healfi_state_stale_glucose)
+            if (bgQualityCheck.icon() != 0) {
+                val qualityMessage = bgQualityCheck.message.ifBlank { bgQualityCheck.stateDescription() }
+                if (qualityMessage.isNotBlank()) dataMessages += qualityMessage
+            }
+            binding.root.findViewById<TextView>(R.id.healfi_data_notice).text = dataMessages.distinct().joinToString("\n")
+            binding.root.findViewById<View>(R.id.healfi_data_notice_card).visibility = dataMessages.isNotEmpty().toVisibility()
         }
     }
 
@@ -1454,6 +1545,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         val status = overviewData.pumpStatus
         binding.pumpStatus.text = status
         binding.pumpStatusLayout.visibility = (status != "").toVisibility()
+        updateHealfiState()
     }
 
     private fun updateNotification() {

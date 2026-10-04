@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Healfi.Main" parent="AppTheme.NoActionBar">
+    <style name="Theme.Healfi.Main" parent="HealfiScenario.Theme.NoActionBar">
         <item name="colorPrimary">@color/healfi_shell_accent</item>
         <item name="colorPrimaryDark">@color/healfi_shell_surface</item>
-        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorOnPrimary">@color/healfi_scenario_on_accent</item>
         <item name="colorSecondary">@color/healfi_shell_accent</item>
-        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorOnSecondary">@color/healfi_scenario_on_accent</item>
         <item name="colorAccent">@color/healfi_shell_accent</item>
         <item name="colorControlNormal">@color/healfi_shell_ink</item>
         <item name="colorSurface">@color/healfi_shell_surface</item>
@@ -24,6 +24,10 @@
         <item name="android:windowLightStatusBar">@bool/healfi_shell_light_system_bars</item>
         <item name="android:windowLightNavigationBar">@bool/healfi_shell_light_system_bars</item>
     </style>
+
+    <!-- Explicit DialogTheme callers keep their original confirmations and
+         semantic warning/error themes, with Healfi's shared neutral shell. -->
+    <style name="DialogTheme" parent="HealfiScenario.DialogTheme" />
 
     <style name="healfi_shell_toolbar_theme" parent="ThemeOverlay.MaterialComponents.ActionBar">
         <item name="android:textColorPrimary">@color/healfi_shell_ink</item>

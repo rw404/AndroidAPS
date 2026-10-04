@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="healfi_nav_now" type="id" />
+    <item name="healfi_nav_history" type="id" />
+    <item name="healfi_nav_settings" type="id" />
+    <item name="healfi_settings_search" type="id" />
+    <string name="healfi_nav_now_label">Now</string>
+    <string name="healfi_nav_history_label">History</string>
+    <string name="healfi_nav_settings_label">Settings</string>
+    <string name="healfi_settings_search_hint">Find a setting</string>
+</resources>

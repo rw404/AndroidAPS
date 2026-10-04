@@ -2,9 +2,14 @@ package app.aaps.ui.dialogs
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.RippleDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -15,11 +20,15 @@ import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import app.aaps.core.data.configuration.Constants
 import app.aaps.core.data.model.GlucoseUnit
 import app.aaps.core.data.time.T
 import app.aaps.core.interfaces.constraints.ConstraintsChecker
+import app.aaps.core.interfaces.configuration.Config
 import app.aaps.core.interfaces.db.PersistenceLayer
 import app.aaps.core.interfaces.iob.IobCobCalculator
 import app.aaps.core.interfaces.logging.AAPSLogger
@@ -66,6 +75,7 @@ class WizardDialog : DaggerDialogFragment() {
     @Inject lateinit var aapsLogger: AAPSLogger
     @Inject lateinit var aapsSchedulers: AapsSchedulers
     @Inject lateinit var constraintChecker: ConstraintsChecker
+    @Inject lateinit var config: Config
     @Inject lateinit var ctx: Context
     @Inject lateinit var preferences: Preferences
     @Inject lateinit var rxBus: RxBus
@@ -91,6 +101,14 @@ class WizardDialog : DaggerDialogFragment() {
     private var disposable: CompositeDisposable = CompositeDisposable()
     private var bolusStep = 0.0
     private var _binding: DialogWizardBinding? = null
+    private val healfiUiHandler = Handler(Looper.getMainLooper())
+    private val healfiContextRefresh = object : Runnable {
+        override fun run() {
+            if (_binding == null || config.FLAVOR != "healfi") return
+            refreshHealfiContext()
+            healfiUiHandler.postDelayed(this, T.secs(30).msecs())
+        }
+    }
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
@@ -120,6 +138,11 @@ class WizardDialog : DaggerDialogFragment() {
         super.onStart()
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         aapsLogger.debug(LTag.APS, "Dialog opened: ${this.javaClass.simpleName}")
+        if (config.FLAVOR == "healfi") {
+            dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (resources.displayMetrics.heightPixels * 0.92).toInt())
+            healfiUiHandler.removeCallbacks(healfiContextRefresh)
+            healfiUiHandler.post(healfiContextRefresh)
+        }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
@@ -134,9 +157,23 @@ class WizardDialog : DaggerDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        if (config.FLAVOR == "healfi")
+            dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         isCancelable = true
         dialog?.setCanceledOnTouchOutside(false)
 
+        if (config.FLAVOR == "healfi") {
+            _binding = DialogWizardBinding.bind(inflater.inflate(R.layout.healfi_dialog_wizard, container, false))
+            // Bind before moving the original actions. Their guards and listeners stay intact.
+            val footer = binding.doneBackground
+            (footer.parent as ViewGroup).removeView(footer)
+            return LinearLayout(inflater.context).apply {
+                orientation = LinearLayout.VERTICAL
+                setBackgroundColor(requireContext().getColor(app.aaps.core.ui.R.color.healfi_scenario_canvas))
+                addView(binding.root, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f))
+                addView(footer, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+            }
+        }
         _binding = DialogWizardBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -291,6 +328,123 @@ class WizardDialog : DaggerDialogFragment() {
             .observeOn(aapsSchedulers.main)
             .subscribe({ calculateInsulin() }, fabricPrivacy::logException)
         setA11yLabels()
+        if (config.FLAVOR == "healfi") configureHealfiPresentation()
+    }
+
+    /** Presentation only: the original calculator and confirmation route remain unchanged. */
+    private fun configureHealfiPresentation() {
+        binding.okcancel.ok.setText(R.string.healfi_wizard_review)
+        val footerPadding = resources.getDimensionPixelSize(app.aaps.core.ui.R.dimen.healfi_scenario_screen_padding)
+        binding.doneBackground.setPadding(footerPadding, footerPadding / 2, footerPadding, footerPadding)
+        binding.doneBackground.setBackgroundColor(requireContext().getColor(app.aaps.core.ui.R.color.healfi_scenario_canvas))
+        binding.okcancel.root.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        binding.okcancel.root.setPadding(0, 0, 0, 0)
+        styleHealfiAction(binding.okcancel.ok, primary = true)
+        styleHealfiAction(binding.okcancel.cancel, primary = false)
+        // Keep both captions whole when the system font is large.
+        binding.okcancel.root.orientation = if (resources.configuration.fontScale >= 1.5f) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
+        for (button in listOf(binding.okcancel.cancel, binding.okcancel.ok)) {
+            button.layoutParams = if (resources.configuration.fontScale >= 1.5f)
+                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            else
+                LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
+        }
+        if (resources.configuration.fontScale < 1.5f)
+            (binding.okcancel.cancel.layoutParams as LinearLayout.LayoutParams).marginEnd = footerPadding / 2
+
+        // The legacy icon-only copies are retained for binding, not as invisible focus stops.
+        listOf(binding.bgCheckboxIcon, binding.ttCheckboxIcon, binding.trendCheckboxIcon, binding.iobCheckboxIcon, binding.cobCheckboxIcon).forEach {
+            it.isFocusable = false
+            it.isClickable = false
+        }
+
+        val options = binding.root.findViewById<View>(R.id.healfi_wizard_options)
+        val toggle = binding.root.findViewById<Button>(R.id.healfi_wizard_options_toggle)
+        fun setOptionsExpanded(expanded: Boolean) {
+            val active = binding.carbTimeInput.value != 0.0 || binding.alarm.isChecked || binding.notesLayout.notes.text?.isNotBlank() == true
+            val show = expanded || active
+            options.visibility = show.toVisibility()
+            toggle.isEnabled = !active
+            toggle.setText(when {
+                active -> R.string.healfi_wizard_options_active
+                show -> R.string.healfi_wizard_options_hide
+                else -> R.string.healfi_wizard_options
+            })
+        }
+        setOptionsExpanded(binding.carbTimeInput.value != 0.0 || binding.alarm.isChecked || binding.notesLayout.notes.text?.isNotBlank() == true)
+        toggle.setOnClickListener { setOptionsExpanded(options.visibility != View.VISIBLE) }
+        val optionsWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+            override fun afterTextChanged(s: Editable?) { setOptionsExpanded(options.visibility == View.VISIBLE) }
+        }
+        binding.notesLayout.notes.addTextChangedListener(optionsWatcher)
+        binding.carbTimeInput.findViewById<TextView>(binding.carbTimeInput.editTextId).addTextChangedListener(optionsWatcher)
+        binding.alarm.setOnCheckedChangeListener { _, _ -> setOptionsExpanded(options.visibility == View.VISIBLE) }
+
+        // Observe the rendered result rather than wrapping or changing the dose calculation.
+        binding.total.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+            override fun afterTextChanged(s: Editable?) { refreshHealfiContext() }
+        })
+        refreshHealfiContext()
+    }
+
+    private fun styleHealfiAction(button: Button, primary: Boolean) {
+        val density = resources.displayMetrics.density
+        val accent = requireContext().getColor(app.aaps.core.ui.R.color.healfi_scenario_accent)
+        val background = GradientDrawable().apply {
+            cornerRadius = 14 * density
+            setColor(requireContext().getColorStateList(if (primary) app.aaps.core.ui.R.color.healfi_scenario_primary_background else app.aaps.core.ui.R.color.healfi_scenario_surface))
+            if (!primary) setStroke(density.toInt().coerceAtLeast(1), requireContext().getColor(app.aaps.core.ui.R.color.healfi_scenario_stroke))
+        }
+        button.background = RippleDrawable(ColorStateList.valueOf((accent and 0x00ffffff) or 0x22000000), background, null)
+        button.backgroundTintList = null
+        button.setTextColor(requireContext().getColorStateList(if (primary) app.aaps.core.ui.R.color.healfi_scenario_primary_text else app.aaps.core.ui.R.color.healfi_scenario_action_text))
+        button.isAllCaps = false
+        button.textSize = 16f
+        button.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+        button.minimumHeight = (56 * density).toInt()
+        button.maxLines = Int.MAX_VALUE
+        button.setPadding((12 * density).toInt(), (12 * density).toInt(), (12 * density).toInt(), (12 * density).toInt())
+    }
+
+    private fun refreshHealfiContext() {
+        val current = _binding ?: return
+        if (config.FLAVOR != "healfi") return
+        current.root.findViewById<TextView>(R.id.healfi_wizard_active_profile).text =
+            rh.gs(R.string.healfi_wizard_profile_active, profileFunction.getProfileName())
+        val selectedName = current.profileList.text.toString()
+        val selectedProfile = if (selectedName == rh.gs(app.aaps.core.ui.R.string.active)) profileFunction.getProfile()
+        else activePlugin.activeProfileSource.profile?.getSpecificProfile(selectedName)?.let { ProfileSealed.Pure(it, activePlugin) }
+        val profileValues = current.root.findViewById<TextView>(R.id.healfi_wizard_profile_values)
+        val calculation = wizard
+        profileValues.text = if (selectedProfile != null && calculation != null)
+            rh.gs(
+                R.string.healfi_wizard_profile_values,
+                decimalFormatter.to1Decimal(calculation.ic), decimalFormatter.to1Decimal(calculation.sens),
+                profileFunction.getUnits().asText, decimalFormatter.to2Decimal(selectedProfile.getBasal())
+            )
+        else rh.gs(R.string.healfi_wizard_profile_pending)
+
+        val latest = persistenceLayer.getLastGlucoseValue()
+        val futureTimestamp = latest != null && latest.timestamp > dateUtil.now() + T.mins(1).msecs()
+        val missingFreshReading = iobCobCalculator.ads.actualBg() == null
+        val age = current.root.findViewById<TextView>(R.id.healfi_wizard_sensor_age)
+        val latestText = latest?.let { rh.gs(R.string.healfi_wizard_sensor_time, dateUtil.dateAndTimeString(it.timestamp), dateUtil.minAgo(rh, it.timestamp)) }
+        val warning = when {
+            futureTimestamp -> rh.gs(R.string.healfi_wizard_sensor_future)
+            missingFreshReading -> rh.gs(R.string.healfi_wizard_sensor_missing)
+            else -> null
+        }
+        age.text = listOfNotNull(warning, latestText).joinToString("\n")
+        age.setTextColor(if (warning != null) rh.gac(app.aaps.core.ui.R.attr.warningColor) else requireContext().getColor(app.aaps.core.ui.R.color.healfi_scenario_muted))
+    }
+
+    override fun onStop() {
+        healfiUiHandler.removeCallbacks(healfiContextRefresh)
+        super.onStop()
     }
 
     private fun setA11yLabels() {
@@ -314,6 +468,7 @@ class WizardDialog : DaggerDialogFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        healfiUiHandler.removeCallbacksAndMessages(null)
         _binding = null
     }
 

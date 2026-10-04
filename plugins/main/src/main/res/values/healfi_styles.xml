@@ -1,101 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="HealfiCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">@color/healfi_surface</item>
-        <item name="cardCornerRadius">22dp</item>
-        <item name="cardElevation">0dp</item>
-        <item name="cardUseCompatPadding">false</item>
+    <style name="HealfiCard" parent="HealfiScenario.Card">
         <item name="contentPadding">0dp</item>
-        <item name="strokeColor">@color/healfi_stroke</item>
-        <item name="strokeWidth">1dp</item>
     </style>
-
-    <style name="HealfiLabel" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textColor">@color/healfi_muted</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="HealfiValue" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/healfi_ink</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="HealfiSectionTitle" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/healfi_ink</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="HealfiPrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:minHeight">56dp</item>
+    <style name="HealfiLabel" parent="HealfiScenario.Label" />
+    <style name="HealfiValue" parent="HealfiScenario.Value" />
+    <style name="HealfiSectionTitle" parent="HealfiScenario.Section" />
+    <style name="HealfiPrimaryButton" parent="HealfiScenario.PrimaryButton">
         <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:elevation">0dp</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="backgroundTint">@color/healfi_primary_background</item>
-        <item name="cornerRadius">18dp</item>
-        <item name="strokeWidth">0dp</item>
-        <item name="iconSize">20dp</item>
-        <item name="iconPadding">8dp</item>
+        <item name="iconSize">18dp</item>
+        <item name="iconPadding">6dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">@android:color/white</item>
+        <item name="iconTint">@color/healfi_scenario_on_accent</item>
     </style>
-
-    <style name="HealfiMealButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:minHeight">56dp</item>
+    <style name="HealfiMealButton" parent="HealfiScenario.SecondaryButton">
         <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/healfi_ink</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:elevation">0dp</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="backgroundTint">@color/healfi_surface</item>
-        <item name="cornerRadius">18dp</item>
-        <item name="strokeColor">@color/healfi_stroke</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="iconSize">20dp</item>
-        <item name="iconPadding">8dp</item>
+        <item name="iconSize">18dp</item>
+        <item name="iconPadding">6dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">@color/healfi_ink</item>
+        <item name="iconTint">@color/healfi_scenario_ink</item>
     </style>
-
-    <style name="HealfiSecondaryButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:minHeight">48dp</item>
+    <style name="HealfiSecondaryButton" parent="HealfiScenario.TertiaryButton">
         <item name="android:minWidth">0dp</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textColor">@color/healfi_muted</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="iconTint">@color/healfi_muted</item>
+        <item name="android:textSize">13sp</item>
+        <item name="iconTint">@color/healfi_scenario_muted</item>
         <item name="iconSize">18dp</item>
     </style>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_history_title">History</string>
+    <string name="healfi_history_food_insulin">Food and insulin</string>
+    <string name="healfi_history_other_events">Other events</string>
+    <string name="healfi_history_glucose_label">Glucose history</string>
+</resources>

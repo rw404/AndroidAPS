@@ -1,0 +1,13 @@
+{
+  "artifact": "HTML concept only, not Android screenshot",
+  "screens": 5,
+  "homeFitsConceptFrame": true,
+  "conditionalCarbIllustrationChanges": true,
+  "changedPortionCannotReuseIllustrativeInsulin": true,
+  "uncheckedPortionBlocksContinue": true,
+  "scenarioNavigationPassed": true,
+  "existingProtectionIsConceptOnly": true,
+  "noPumpOrNetworkConnection": true,
+  "consoleErrors": [],
+  "montageSha256": "49699a2c840d51b3c77404cd03a2ebe05a085a7afd9e701011c105b47623eea3"
+}

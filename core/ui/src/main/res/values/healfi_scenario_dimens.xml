@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="healfi_scenario_space_4">4dp</dimen>
+    <dimen name="healfi_scenario_space_8">8dp</dimen>
+    <dimen name="healfi_scenario_space_12">12dp</dimen>
+    <dimen name="healfi_scenario_space_16">16dp</dimen>
+    <dimen name="healfi_scenario_space_24">24dp</dimen>
+    <dimen name="healfi_scenario_space_32">32dp</dimen>
+    <dimen name="healfi_scenario_screen_padding">16dp</dimen>
+    <dimen name="healfi_scenario_card_padding">16dp</dimen>
+    <dimen name="healfi_scenario_card_radius">20dp</dimen>
+    <dimen name="healfi_scenario_button_radius">14dp</dimen>
+    <dimen name="healfi_scenario_touch_height">48dp</dimen>
+    <dimen name="healfi_scenario_button_height">56dp</dimen>
+    <dimen name="healfi_scenario_text_title">24sp</dimen>
+    <dimen name="healfi_scenario_text_section">18sp</dimen>
+    <dimen name="healfi_scenario_text_body">16sp</dimen>
+    <dimen name="healfi_scenario_text_label">13sp</dimen>
+    <dimen name="healfi_scenario_text_value">28sp</dimen>
+    <dimen name="healfi_scenario_text_glucose">64sp</dimen>
+</resources>

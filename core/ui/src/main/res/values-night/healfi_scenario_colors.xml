@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="healfi_scenario_canvas">#11181D</color>
+    <color name="healfi_scenario_surface">#19232A</color>
+    <color name="healfi_scenario_ink">#F0F4F6</color>
+    <color name="healfi_scenario_muted">#A9B5BD</color>
+    <color name="healfi_scenario_accent">#83C7D0</color>
+    <color name="healfi_scenario_on_accent">#17242E</color>
+    <color name="healfi_scenario_stroke">#34434C</color>
+    <color name="healfi_scenario_accent_surface">#243E45</color>
+    <color name="healfi_scenario_ripple">#3383C7D0</color>
+    <color name="healfi_scenario_disabled_surface">#334047</color>
+    <color name="healfi_scenario_disabled_ink">#8C9AA4</color>
+    <bool name="healfi_scenario_light_system_bars">false</bool>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_history_title">История</string>
+    <string name="healfi_history_food_insulin">Еда и инсулин</string>
+    <string name="healfi_history_other_events">Другие события</string>
+    <string name="healfi_history_glucose_label">История глюкозы</string>
+</resources>

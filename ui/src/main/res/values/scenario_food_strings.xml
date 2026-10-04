@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_food_title">Food</string>
+    <string name="healfi_food_stage_find">Find the exact food</string>
+    <string name="healfi_food_stage_portion">Check the portion</string>
+    <string name="healfi_food_methods_show">Other ways to enter food</string>
+    <string name="healfi_food_methods_hide">Hide other methods</string>
+    <string name="healfi_food_source_show">Source details</string>
+    <string name="healfi_food_source_hide">Hide source details</string>
+    <string name="healfi_food_search_hint">Find the exact food and preparation, then check its portion.</string>
+    <string name="healfi_food_amount_hint">Portion weight or volume</string>
+    <string name="healfi_food_amount_placeholder">Amount</string>
+    <string name="healfi_food_add_another">Add this portion and another food</string>
+    <string name="healfi_food_choose_another">Choose a different food</string>
+    <string name="healfi_food_review">Review calculation</string>
+    <string name="healfi_food_draft_note">Opens the profile calculator. Nothing is recorded or delivered here.</string>
+    <string name="healfi_food_waiting">Check the food and portion to continue</string>
+    <string name="healfi_food_draft_total">Draft: %1$s g carbs</string>
+    <string name="healfi_food_meal_item">%1$s\n%2$s %3$s · %4$s · %5$s g carbs</string>
+</resources>

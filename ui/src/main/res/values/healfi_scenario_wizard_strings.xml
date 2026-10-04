@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_wizard_title">Review calculation</string>
+    <string name="healfi_wizard_step">Meal · insulin calculation</string>
+    <string name="healfi_wizard_result">Suggested insulin and carbohydrates</string>
+    <string name="healfi_wizard_confirmation_hint">Delivery requires confirmation on the next step.</string>
+    <string name="healfi_wizard_review">Continue to confirmation</string>
+    <string name="healfi_wizard_factors">Included in calculation</string>
+    <string name="healfi_wizard_glucose_input">Glucose for calculation</string>
+    <string name="healfi_wizard_profile_active">Loaded active profile: %1$s</string>
+    <string name="healfi_wizard_profile_values">IC %1$s g/U · ISF %2$s %3$s/U\nProfile basal %4$s U/h</string>
+    <string name="healfi_wizard_sensor_time">Latest sensor reading: %1$s · %2$s</string>
+    <string name="healfi_wizard_sensor_missing">No fresh reading for automatic fill. Check the glucose for calculation.</string>
+    <string name="healfi_wizard_sensor_future">The latest reading has a future timestamp. Check the glucose and device time.</string>
+    <string name="healfi_wizard_options">Time, reminder and note</string>
+    <string name="healfi_wizard_options_hide">Hide time, reminder and note</string>
+    <string name="healfi_wizard_options_active">Time, reminder or note is set</string>
+    <string name="healfi_wizard_breakdown">Calculation details</string>
+    <string name="healfi_wizard_profile_pending">Profile calculation is not ready yet.</string>
+</resources>

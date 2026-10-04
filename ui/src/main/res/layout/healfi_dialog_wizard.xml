@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The original binding IDs and view types deliberately remain compatible. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/healfi_scenario_canvas"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/HealfiScenario.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/healfi_wizard_step" />
+
+        <TextView
+            style="@style/HealfiScenario.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/healfi_wizard_title" />
+
+        <TextView
+            android:id="@+id/healfi_wizard_sensor_age"
+            style="@style/HealfiScenario.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:accessibilityLiveRegion="polite" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/HealfiScenario.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/HealfiScenario.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/healfi_wizard_result" />
+
+                <TextView
+                    android:id="@+id/total"
+                    style="@style/HealfiScenario.Value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/healfi_wizard_profile_pending" />
+
+                <TextView
+                    android:id="@+id/percent_used"
+                    style="@style/HealfiScenario.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?attr/bolusColor" />
+
+                <TextView
+                    style="@style/HealfiScenario.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/healfi_wizard_confirmation_hint" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/HealfiScenario.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/carbs_input_label"
+                    style="@style/HealfiScenario.Section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/carbs" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <app.aaps.core.ui.elements.NumberPicker
+                        android:id="@+id/carbs_input"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        app:customContentDescription="@string/carbs" />
+
+                    <TextView
+                        style="@style/HealfiScenario.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/shortgramm" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/HealfiScenario.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/profileList"
+                        style="@style/HealfiScenario.Body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/healfi_wizard_active_profile"
+                    style="@style/HealfiScenario.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/healfi_wizard_profile_values"
+                    style="@style/HealfiScenario.Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/HealfiScenario.Section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/healfi_wizard_factors" />
+
+        <!-- Factors remain visible independently of the calculation-details toggle. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/bg_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/bg_label"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/bg_trend_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="false"
+                android:text="@string/bg_trend_label"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/iob_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/iob"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/cob_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="false"
+                android:text="@string/treatments_wizard_cob_label"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/tt_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="false"
+                android:text="@string/tt_label"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/sb_checkbox"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="false"
+                android:text="@string/superbolus"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bg_input_label"
+            style="@style/HealfiScenario.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/healfi_wizard_glucose_input" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <app.aaps.core.ui.elements.NumberPicker
+                android:id="@+id/bg_input"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                app:customContentDescription="@string/a11y_current_bg" />
+
+            <TextView
+                android:id="@+id/bg_units"
+                style="@style/HealfiScenario.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/mgdl" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/correction_input_label"
+                style="@style/HealfiScenario.Label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/treatments_wizard_correction_label" />
+
+            <CheckBox
+                android:id="@+id/correction_percent"
+                style="@style/Widget.App.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="false"
+                android:text="%" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <app.aaps.core.ui.elements.NumberPicker
+                android:id="@+id/correction_input"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                app:customContentDescription="@string/a11_correction_units" />
+
+            <TextView
+                android:id="@+id/correction_unit"
+                style="@style/HealfiScenario.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/insulin_unit_shortname" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/healfi_wizard_options_toggle"
+            style="@style/HealfiScenario.TertiaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/healfi_wizard_options" />
+
+        <LinearLayout
+            android:id="@+id/healfi_wizard_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/carb_time_input_label"
+                    style="@style/HealfiScenario.Label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/carb_time_label" />
+
+                <CheckBox
+                    android:id="@+id/alarm"
+                    style="@style/Widget.App.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:checked="false"
+                    android:contentDescription="@string/a11y_set_carb_timer"
+                    android:drawableEnd="@drawable/ic_access_alarm_24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <app.aaps.core.ui.elements.NumberPicker
+                    android:id="@+id/carb_time_input"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    app:customContentDescription="@string/carb_time_label" />
+
+                <TextView
+                    style="@style/HealfiScenario.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/unit_minute_short" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/notes_layout"
+                layout="@layout/notes" />
+        </LinearLayout>
+
+        <!-- Retained binding compatibility only; named factors above are always visible. -->
+        <LinearLayout
+            android:id="@+id/checkbox_row"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:importantForAccessibility="noHideDescendants"
+            android:orientation="horizontal">
+            <ToggleButton android:id="@+id/bg_checkbox_icon" style="@style/ToggleBtnStyle" android:contentDescription="@string/bg_label" />
+            <ToggleButton android:id="@+id/tt_checkbox_icon" style="@style/ToggleBtnStyle" android:contentDescription="@string/tt_label" />
+            <ToggleButton android:id="@+id/trend_checkbox_icon" style="@style/ToggleBtnStyle" android:contentDescription="@string/bg_trend_label" />
+            <ToggleButton android:id="@+id/iob_checkbox_icon" style="@style/ToggleBtnStyle" android:contentDescription="@string/iob" />
+            <ToggleButton android:id="@+id/cob_checkbox_icon" style="@style/ToggleBtnStyle" android:contentDescription="@string/treatments_wizard_cob_label" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/spacer" android:layout_width="match_parent" android:layout_height="0dp" />
+
+        <CheckBox
+            android:id="@+id/calculation_checkbox"
+            style="@style/Widget.App.CheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/healfi_wizard_breakdown"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/delimiter"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/healfi_scenario_stroke" />
+
+        <LinearLayout
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:id="@+id/result_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/bg_label" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:id="@+id/bg" style="@style/HealfiScenario.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                        <TextView android:id="@+id/bg_insulin" style="@style/HealfiScenario.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/bg_trend_label" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:id="@+id/bg_trend" style="@style/HealfiScenario.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                        <TextView android:id="@+id/bg_trend_insulin" style="@style/HealfiScenario.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/carbs" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:id="@+id/carbs" style="@style/HealfiScenario.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                        <TextView android:id="@+id/carbs_insulin" style="@style/HealfiScenario.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/iob" />
+                    <TextView android:id="@+id/iob_insulin" style="@style/HealfiScenario.Body" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/treatments_wizard_cob_label" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <TextView android:id="@+id/cob" style="@style/HealfiScenario.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                        <TextView android:id="@+id/cob_insulin" style="@style/HealfiScenario.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TableRow android:id="@+id/super_bolus_row" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                        <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/superbolus" />
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                            <TextView android:id="@+id/sb" style="@style/HealfiScenario.Body" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" />
+                            <TextView android:id="@+id/sb_insulin" style="@style/HealfiScenario.Body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </TableRow>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingBottom="12dp">
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/treatments_wizard_correction_label" />
+                    <TextView android:id="@+id/correction_insulin" style="@style/HealfiScenario.Body" android:layout_width="match_parent" android:layout_height="wrap_content" />
+                </LinearLayout>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- Moved into the fixed outer footer after the original binding is created. -->
+        <LinearLayout
+            android:id="@+id/done_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include android:id="@+id/okcancel" layout="@layout/okcancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

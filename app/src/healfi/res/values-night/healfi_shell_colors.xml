@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="healfi_shell_background">#0F141B</color>
-    <color name="healfi_shell_surface">#171F2B</color>
-    <color name="healfi_shell_ink">#EDF3FA</color>
-    <color name="healfi_shell_muted">#A1AFC1</color>
-    <color name="healfi_shell_accent">#7FABFF</color>
-    <color name="healfi_shell_border">#283243</color>
-    <color name="healfi_shell_ripple">#1F7FABFF</color>
+    <color name="healfi_shell_background">@color/healfi_scenario_canvas</color>
+    <color name="healfi_shell_surface">@color/healfi_scenario_surface</color>
+    <color name="healfi_shell_ink">@color/healfi_scenario_ink</color>
+    <color name="healfi_shell_muted">@color/healfi_scenario_muted</color>
+    <color name="healfi_shell_accent">@color/healfi_scenario_accent</color>
+    <color name="healfi_shell_border">@color/healfi_scenario_stroke</color>
+    <color name="healfi_shell_ripple">@color/healfi_scenario_ripple</color>
     <bool name="healfi_shell_light_system_bars">false</bool>
 </resources>

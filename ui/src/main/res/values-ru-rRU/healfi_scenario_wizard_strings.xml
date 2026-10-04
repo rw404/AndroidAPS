@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_wizard_title">Проверьте расчёт</string>
+    <string name="healfi_wizard_step">Еда · расчёт инсулина</string>
+    <string name="healfi_wizard_result">Предлагаемый инсулин и углеводы</string>
+    <string name="healfi_wizard_confirmation_hint">Подачу нужно подтвердить на следующем шаге.</string>
+    <string name="healfi_wizard_review">К подтверждению</string>
+    <string name="healfi_wizard_factors">Учитывается в расчёте</string>
+    <string name="healfi_wizard_glucose_input">Глюкоза для расчёта</string>
+    <string name="healfi_wizard_profile_active">Загруженный активный профиль: %1$s</string>
+    <string name="healfi_wizard_profile_values">IC %1$s г/Ед · ISF %2$s %3$s/Ед\nБазал профиля %4$s Ед/ч</string>
+    <string name="healfi_wizard_sensor_time">Последнее измерение: %1$s · %2$s</string>
+    <string name="healfi_wizard_sensor_missing">Нет свежего измерения для автоподстановки. Проверьте глюкозу для расчёта.</string>
+    <string name="healfi_wizard_sensor_future">Последнее измерение датировано будущим. Проверьте глюкозу и время устройства.</string>
+    <string name="healfi_wizard_options">Время, напоминание и заметка</string>
+    <string name="healfi_wizard_options_hide">Скрыть время, напоминание и заметку</string>
+    <string name="healfi_wizard_options_active">Указаны время, напоминание или заметка</string>
+    <string name="healfi_wizard_breakdown">Подробности расчёта</string>
+    <string name="healfi_wizard_profile_pending">Расчёт по профилю ещё не готов.</string>
+</resources>

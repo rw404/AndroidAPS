@@ -1,49 +1,68 @@
 <?xml version='1.0' encoding='utf-8'?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/healfi_canvas">
-  <androidx.core.widget.NestedScrollView android:id="@+id/top_part_scrollbar" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:fillViewport="false">
-    <LinearLayout android:id="@+id/inner_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="12dp" android:paddingBottom="24dp">
-      <androidx.recyclerview.widget.RecyclerView android:id="@+id/notifications" android:layout_width="match_parent" android:layout_height="wrap_content" />
-      <com.google.android.material.card.MaterialCardView android:id="@+id/infoCard" style="@style/HealfiCard" app:cardCornerRadius="0dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/healfi_canvas" app:strokeWidth="0dp">
-        <include android:id="@+id/info_layout" layout="@layout/healfi_overview_info_layout" />
-      </com.google.android.material.card.MaterialCardView>
-      <com.google.android.material.card.MaterialCardView android:id="@+id/graphCard" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" app:contentPadding="12dp">
-        <include android:id="@+id/graphs_layout" layout="@layout/healfi_overview_graphs_layout" />
-      </com.google.android.material.card.MaterialCardView>
-      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" android:baselineAligned="false" android:id="@+id/healfi_primary_metrics">
-        <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_iob_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" />
-        <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_cob_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="3dp" android:layout_marginEnd="3dp" />
-        <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_basal_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" />
-      </LinearLayout>
-      <LinearLayout android:id="@+id/loop_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:orientation="vertical">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
-          <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/healfi_profile" android:textAppearance="@style/HealfiLabel" />
-          <TextView android:id="@+id/active_profile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:gravity="center_vertical" android:paddingStart="14dp" android:paddingEnd="14dp" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" android:maxLines="3" android:foreground="?attr/selectableItemBackground" />
+    <androidx.core.widget.NestedScrollView android:id="@+id/top_part_scrollbar" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:clipToPadding="false" android:fillViewport="false">
+        <LinearLayout android:id="@+id/inner_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="8dp" android:paddingBottom="20dp">
+            <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_state_card" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:clickable="true" android:focusable="true" android:foreground="?attr/selectableItemBackground" android:contentDescription="@string/healfi_loop_details" app:cardBackgroundColor="@color/healfi_scenario_accent_surface" app:strokeWidth="0dp">
+                <LinearLayout android:id="@+id/healfi_state_row" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:id="@+id/healfi_state_title" style="@style/HealfiScenario.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_loop_details" android:textSize="15sp" />
+                        <TextView android:id="@+id/healfi_state_detail" style="@style/HealfiScenario.Label" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3dp" android:visibility="gone" />
+                    </LinearLayout>
+                    <TextView style="@style/HealfiScenario.Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="›" android:textSize="24sp" android:importantForAccessibility="no" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/notifications" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" />
+            <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_data_notice_card" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:visibility="gone" app:cardBackgroundColor="?attr/ribbonWarningColor" app:strokeWidth="0dp">
+                <TextView android:id="@+id/healfi_data_notice" style="@style/HealfiScenario.Body" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="12dp" android:textSize="14sp" android:textColor="?attr/ribbonTextWarningColor" />
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout android:id="@+id/healfi_required_actions" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
+            <com.google.android.material.card.MaterialCardView android:id="@+id/infoCard" style="@style/HealfiCard" app:cardCornerRadius="0dp" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/healfi_canvas" app:strokeWidth="0dp" android:layout_marginTop="8dp">
+                <include android:id="@+id/info_layout" layout="@layout/healfi_overview_info_layout" />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView android:id="@+id/graphCard" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:contentPadding="8dp">
+                <include android:id="@+id/graphs_layout" layout="@layout/healfi_overview_graphs_layout" />
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal" android:baselineAligned="false" android:id="@+id/healfi_primary_metrics">
+                <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_iob_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" />
+                <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_cob_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="3dp" android:layout_marginEnd="3dp" />
+                <com.google.android.material.card.MaterialCardView android:id="@+id/healfi_basal_card" style="@style/HealfiCard" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" />
+            </LinearLayout>
+            <LinearLayout android:id="@+id/loop_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="vertical">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="0dp">
+                    <TextView android:layout_width="64dp" android:layout_height="wrap_content" android:text="@string/healfi_profile" android:textAppearance="@style/HealfiLabel" />
+                    <TextView android:id="@+id/active_profile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:gravity="center_vertical" android:paddingStart="12dp" android:paddingEnd="12dp" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" android:maxLines="2147483647" android:foreground="?attr/selectableItemBackground" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="0dp">
+                    <TextView android:layout_width="64dp" android:layout_height="wrap_content" android:text="@string/healfi_target" android:textAppearance="@style/HealfiLabel" />
+                    <TextView android:id="@+id/temp_target" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:gravity="center_vertical" android:paddingStart="12dp" android:paddingEnd="12dp" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" android:maxLines="2147483647" android:foreground="?attr/selectableItemBackground" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView android:id="@+id/statusCard" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:contentPadding="0dp">
+                <include android:id="@+id/status_lights_layout" layout="@layout/healfi_overview_statuslights_layout" />
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton android:id="@+id/healfi_more_controls" style="@style/HealfiSecondaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/healfi_more_controls" app:icon="@drawable/healfi_ic_chevron" app:iconGravity="textEnd" />
+            <LinearLayout android:id="@+id/healfi_secondary_controls" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+                <com.google.android.material.card.MaterialCardView style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:contentPadding="12dp">
+                    <LinearLayout android:id="@+id/healfi_delta_details" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView style="@style/HealfiScenario.Section" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_glucose_changes" android:textSize="14sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+                    <LinearLayout android:id="@+id/healfi_advanced_metrics" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView android:id="@+id/nsclientCard" style="@style/OverviewCard" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <com.google.android.flexbox.FlexboxLayout android:id="@+id/nsclient" android:layout_width="match_parent" android:layout_height="wrap_content" app:alignContent="stretch" app:alignItems="stretch" app:flexDirection="row" app:flexWrap="wrap" app:justifyContent="space_around">
+                    <TextView android:id="@+id/pump" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="Pump: running" android:textSize="16sp" tools:ignore="HardcodedText" />
+                    <TextView android:id="@+id/openaps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="OpenAPS: 3 min ago" android:textSize="16sp" tools:ignore="HardcodedText" />
+                    <TextView android:id="@+id/uploader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="Uploader: 84%" android:textSize="16sp" tools:ignore="HardcodedText" />
+                </com.google.android.flexbox.FlexboxLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-          <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="@string/healfi_target" android:textAppearance="@style/HealfiLabel" />
-          <TextView android:id="@+id/temp_target" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:minHeight="48dp" android:gravity="center_vertical" android:paddingStart="14dp" android:paddingEnd="14dp" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" android:maxLines="3" android:foreground="?attr/selectableItemBackground" />
-        </LinearLayout>
-      </LinearLayout>
-      <com.google.android.material.card.MaterialCardView style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp">
-        <LinearLayout android:id="@+id/healfi_advanced_metrics" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:baselineAligned="false" />
-      </com.google.android.material.card.MaterialCardView>
-      <com.google.android.material.card.MaterialCardView android:id="@+id/statusCard" style="@style/HealfiCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:contentPadding="12dp">
-        <include android:id="@+id/status_lights_layout" layout="@layout/healfi_overview_statuslights_layout" />
-      </com.google.android.material.card.MaterialCardView>
-      <com.google.android.material.button.MaterialButton android:id="@+id/healfi_more_controls" style="@style/HealfiSecondaryButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="@string/healfi_more_controls" app:icon="@drawable/healfi_ic_chevron" app:iconGravity="textEnd" />
-      <LinearLayout android:id="@+id/healfi_secondary_controls" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone" />
-      <com.google.android.material.card.MaterialCardView android:id="@+id/nsclientCard" style="@style/OverviewCard" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <com.google.android.flexbox.FlexboxLayout android:id="@+id/nsclient" android:layout_width="match_parent" android:layout_height="wrap_content" app:alignContent="stretch" app:alignItems="stretch" app:flexDirection="row" app:flexWrap="wrap" app:justifyContent="space_around">
-          <TextView android:id="@+id/pump" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="Pump: running" android:textSize="16sp" tools:ignore="HardcodedText" />
-          <TextView android:id="@+id/openaps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="OpenAPS: 3 min ago" android:textSize="16sp" tools:ignore="HardcodedText" />
-          <TextView android:id="@+id/uploader" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:paddingStart="4sp" android:paddingEnd="4sp" tools:text="Uploader: 84%" android:textSize="16sp" tools:ignore="HardcodedText" />
-        </com.google.android.flexbox.FlexboxLayout>
-      </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:id="@+id/pump_status_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="20dp" android:paddingEnd="20dp" android:visibility="gone">
+        <TextView android:id="@+id/pump_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:gravity="center" android:textAppearance="@style/HealfiLabel" android:background="?attr/pumpStatusBackground" android:text="@string/initializing" />
     </LinearLayout>
-  </androidx.core.widget.NestedScrollView>
-  <LinearLayout android:id="@+id/pump_status_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingStart="20dp" android:paddingEnd="20dp" android:visibility="gone">
-    <TextView android:id="@+id/pump_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:gravity="center" android:textAppearance="@style/HealfiLabel" android:background="?attr/pumpStatusBackground" android:text="@string/initializing" />
-  </LinearLayout>
-  <ProgressBar android:id="@+id/progress_bar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:indeterminate="false" android:max="100" android:progress="100" android:visibility="gone" />
-  <include android:id="@+id/buttons_layout" layout="@layout/healfi_overview_buttons_layout" />
+    <ProgressBar android:id="@+id/progress_bar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="3dp" android:indeterminate="false" android:max="100" android:progress="100" android:visibility="gone" />
+    <include android:id="@+id/buttons_layout" layout="@layout/healfi_overview_buttons_layout" />
 </LinearLayout>

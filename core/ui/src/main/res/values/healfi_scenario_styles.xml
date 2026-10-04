@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Used only by Healfi's named themes/layouts; AppTheme's clinical semantics remain inherited. -->
+    <style name="HealfiScenario.Theme" parent="AppTheme">
+        <item name="colorPrimary">@color/healfi_scenario_accent</item>
+        <item name="colorPrimaryDark">@color/healfi_scenario_surface</item>
+        <item name="colorOnPrimary">@color/healfi_scenario_on_accent</item>
+        <item name="colorSecondary">@color/healfi_scenario_accent</item>
+        <item name="colorOnSecondary">@color/healfi_scenario_on_accent</item>
+        <item name="colorAccent">@color/healfi_scenario_accent</item>
+        <item name="colorControlNormal">@color/healfi_scenario_muted</item>
+        <item name="colorSurface">@color/healfi_scenario_surface</item>
+        <item name="colorOnSurface">@color/healfi_scenario_ink</item>
+        <item name="colorOnBackground">@color/healfi_scenario_ink</item>
+        <item name="android:colorBackground">@color/healfi_scenario_canvas</item>
+        <item name="android:windowBackground">@color/healfi_scenario_canvas</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColorPrimary">@color/healfi_scenario_ink</item>
+        <item name="android:textColorSecondary">@color/healfi_scenario_muted</item>
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+        <item name="defaultTextColor">@color/healfi_scenario_ink</item>
+        <item name="disabledTextColor">@color/healfi_scenario_disabled_ink</item>
+        <item name="defaultBackground">@color/healfi_scenario_canvas</item>
+        <item name="popupWindowBackground">@color/healfi_scenario_surface</item>
+        <item name="dialogTitleBackground">@color/healfi_scenario_surface</item>
+        <item name="dialogTitleColor">@color/healfi_scenario_ink</item>
+        <item name="dialogTitleIconTint">@color/healfi_scenario_accent</item>
+        <item name="android:dialogCornerRadius">@dimen/healfi_scenario_card_radius</item>
+        <item name="graphGrid">@color/healfi_scenario_stroke</item>
+        <item name="viewPortBackgroundColor">@color/healfi_scenario_surface</item>
+        <item name="strokeColor">@color/healfi_scenario_stroke</item>
+        <item name="materialAlertDialogTheme">@style/HealfiScenario.DialogTheme</item>
+        <item name="alertDialogTheme">@style/HealfiScenario.DialogTheme</item>
+        <item name="android:alertDialogTheme">@style/HealfiScenario.DialogTheme</item>
+        <item name="actionBarStyle">@style/HealfiScenario.ActionBar</item>
+        <item name="android:statusBarColor">@color/healfi_scenario_surface</item>
+        <item name="android:navigationBarColor">@color/healfi_scenario_surface</item>
+        <item name="android:windowLightStatusBar">@bool/healfi_scenario_light_system_bars</item>
+        <item name="android:windowLightNavigationBar">@bool/healfi_scenario_light_system_bars</item>
+    </style>
+
+    <style name="HealfiScenario.Theme.NoActionBar" parent="HealfiScenario.Theme">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="HealfiScenario.ActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="background">@color/healfi_scenario_surface</item>
+        <item name="elevation">0dp</item>
+        <item name="titleTextStyle">@style/HealfiScenario.Section</item>
+        <item name="subtitleTextStyle">@style/HealfiScenario.Label</item>
+        <item name="height">@dimen/healfi_scenario_button_height</item>
+    </style>
+
+    <style name="HealfiScenario.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/healfi_scenario_surface</item>
+        <item name="cardCornerRadius">@dimen/healfi_scenario_card_radius</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="contentPadding">@dimen/healfi_scenario_card_padding</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/healfi_scenario_stroke</item>
+    </style>
+
+    <style name="HealfiScenario.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/healfi_scenario_button_height</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">@dimen/healfi_scenario_space_16</item>
+        <item name="android:paddingEnd">@dimen/healfi_scenario_space_16</item>
+        <item name="android:paddingTop">@dimen/healfi_scenario_space_12</item>
+        <item name="android:paddingBottom">@dimen/healfi_scenario_space_12</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/healfi_scenario_primary_text</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="backgroundTint">@color/healfi_scenario_primary_background</item>
+        <item name="cornerRadius">@dimen/healfi_scenario_button_radius</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">@color/healfi_scenario_ripple</item>
+        <item name="iconSize">20dp</item>
+        <item name="iconPadding">@dimen/healfi_scenario_space_8</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@color/healfi_scenario_primary_text</item>
+    </style>
+
+    <style name="HealfiScenario.SecondaryButton" parent="HealfiScenario.PrimaryButton">
+        <item name="android:textColor">@color/healfi_scenario_action_text</item>
+        <item name="backgroundTint">@color/healfi_scenario_surface</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/healfi_scenario_stroke</item>
+        <item name="iconTint">@color/healfi_scenario_action_text</item>
+    </style>
+
+    <style name="HealfiScenario.TertiaryButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minHeight">@dimen/healfi_scenario_touch_height</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">@dimen/healfi_scenario_space_12</item>
+        <item name="android:paddingEnd">@dimen/healfi_scenario_space_12</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/healfi_scenario_action_text</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/healfi_scenario_button_radius</item>
+        <item name="rippleColor">@color/healfi_scenario_ripple</item>
+        <item name="iconTint">@color/healfi_scenario_action_text</item>
+        <item name="iconSize">18dp</item>
+    </style>
+
+    <style name="HealfiScenario.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_body</item>
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="HealfiScenario.Title" parent="HealfiScenario.Body">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_title</item>
+    </style>
+
+    <style name="HealfiScenario.Section" parent="HealfiScenario.Body">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_section</item>
+    </style>
+
+    <style name="HealfiScenario.Label" parent="HealfiScenario.Body">
+        <item name="android:textColor">@color/healfi_scenario_muted</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_label</item>
+    </style>
+
+    <style name="HealfiScenario.Value" parent="HealfiScenario.Body">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_value</item>
+    </style>
+
+    <style name="HealfiScenario.Glucose" parent="HealfiScenario.Value">
+        <item name="android:textSize">@dimen/healfi_scenario_text_glucose</item>
+    </style>
+
+    <style name="HealfiScenario.TextInput" parent="Widget.AppCompat.EditText">
+        <item name="android:minHeight">@dimen/healfi_scenario_touch_height</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_body</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+        <item name="android:textColorHint">@color/healfi_scenario_muted</item>
+        <item name="android:backgroundTint">@color/healfi_scenario_accent</item>
+        <item name="android:paddingTop">@dimen/healfi_scenario_space_12</item>
+        <item name="android:paddingBottom">@dimen/healfi_scenario_space_12</item>
+    </style>
+
+    <style name="HealfiScenario.DialogSurface" parent="">
+        <item name="android:background">@color/healfi_scenario_surface</item>
+        <item name="android:padding">@dimen/healfi_scenario_screen_padding</item>
+        <item name="android:minWidth">280dp</item>
+    </style>
+
+    <style name="HealfiScenario.DialogHeader" parent="">
+        <item name="android:background">@color/healfi_scenario_surface</item>
+        <item name="android:paddingTop">@dimen/healfi_scenario_space_8</item>
+        <item name="android:paddingBottom">@dimen/healfi_scenario_space_16</item>
+    </style>
+
+    <style name="HealfiScenario.DialogShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/healfi_scenario_card_radius</item>
+    </style>
+
+    <style name="HealfiScenario.AlertDialog" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="backgroundTint">@color/healfi_scenario_surface</item>
+        <item name="shapeAppearance">@style/HealfiScenario.DialogShape</item>
+    </style>
+
+    <style name="HealfiScenario.DialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:minHeight">@dimen/healfi_scenario_touch_height</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/healfi_scenario_action_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <style name="HealfiScenario.CancelDialogButton" parent="HealfiScenario.DialogButton">
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+    </style>
+
+    <style name="HealfiScenario.DialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="colorPrimary">@color/healfi_scenario_accent</item>
+        <item name="colorOnPrimary">@color/healfi_scenario_on_accent</item>
+        <item name="colorSurface">@color/healfi_scenario_surface</item>
+        <item name="colorOnSurface">@color/healfi_scenario_ink</item>
+        <item name="android:textColorPrimary">@color/healfi_scenario_ink</item>
+        <item name="android:textColorSecondary">@color/healfi_scenario_muted</item>
+        <item name="defaultTextColor">@color/healfi_scenario_ink</item>
+        <item name="dialogTitleBackground">@color/healfi_scenario_surface</item>
+        <item name="dialogTitleColor">@color/healfi_scenario_ink</item>
+        <item name="dialogTitleIconTint">@color/healfi_scenario_accent</item>
+        <item name="alertDialogStyle">@style/HealfiScenario.AlertDialog</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/HealfiScenario.Body</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/HealfiScenario.Title</item>
+        <item name="buttonBarPositiveButtonStyle">@style/HealfiScenario.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/HealfiScenario.CancelDialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/HealfiScenario.CancelDialogButton</item>
+    </style>
+</resources>

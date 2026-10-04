@@ -21,6 +21,13 @@
             android:theme="@style/Theme.Healfi.Launcher"
             tools:replace="android:theme" />
 
+        <activity android:name="app.aaps.activities.PreferencesActivity"
+            android:theme="@style/HealfiScenario.Theme" tools:replace="android:theme" />
+        <activity android:name="app.aaps.activities.HistoryBrowseActivity"
+            android:theme="@style/HealfiScenario.Theme" tools:replace="android:theme" />
+        <activity android:name="app.aaps.ui.activities.TreatmentsActivity"
+            android:theme="@style/HealfiScenario.Theme.NoActionBar" tools:replace="android:theme" />
+
         <receiver
             android:name="app.aaps.plugins.sync.wear.receivers.WearDataReceiver"
             android:enabled="true"

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="healfi_overview_today">Today</string>
     <string name="healfi_glucose">Glucose</string>
@@ -11,7 +11,7 @@
     <string name="healfi_profile">Profile</string>
     <string name="healfi_target">Target</string>
     <string name="healfi_glucose_history">Glucose history</string>
-    <string name="healfi_more_controls">More controls</string>
+    <string name="healfi_more_controls">Details and other actions</string>
     <string name="healfi_reservoir">Reservoir</string>
     <string name="healfi_sensor">Sensor</string>
     <string name="healfi_pump_battery">Pump battery</string>
@@ -19,4 +19,21 @@
     <string name="healfi_insulin_age">Insulin age</string>
     <string name="healfi_controls_expanded">Additional controls expanded</string>
     <string name="healfi_controls_collapsed">Additional controls collapsed</string>
+    <string name="healfi_iob_short">IOB</string>
+    <string name="healfi_cob_short">COB</string>
+    <string name="healfi_basal_short">Basal</string>
+    <string name="healfi_loop_details">Loop status</string>
+    <string name="healfi_state_no_profile">No active profile.</string>
+    <string name="healfi_state_no_glucose">No glucose readings received.</string>
+    <string name="healfi_state_stale_glucose">Glucose reading is outdated. Check the glucose source.</string>
+    <string name="healfi_state_pump_initializing">Pump is not initialized.</string>
+    <string name="healfi_state_pump_suspended">Pump delivery is suspended.</string>
+    <string name="healfi_state_loop_disabled">Automatic loop is disabled.</string>
+    <string name="healfi_state_open_loop">Basal changes require your confirmation.</string>
+    <string name="healfi_state_closed_loop">Automatic loop is enabled.</string>
+    <string name="healfi_state_lgs_loop">Loop mode: low glucose suspend.</string>
+    <string name="healfi_state_loop_paused">Loop is temporarily suspended.</string>
+    <string name="healfi_state_pump_disconnected">Pump is disconnected in loop settings.</string>
+    <string name="healfi_state_superbolus">Superbolus mode is active.</string>
+    <string name="healfi_glucose_changes">Glucose changes</string>
 </resources>

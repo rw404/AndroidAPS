@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_nav_now_label">Сейчас</string>
+    <string name="healfi_nav_history_label">История</string>
+    <string name="healfi_nav_settings_label">Настройки</string>
+    <string name="healfi_settings_search_hint">Найти настройку</string>
+</resources>

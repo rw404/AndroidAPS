@@ -19,6 +19,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import app.aaps.core.data.model.RM
 import app.aaps.core.interfaces.aps.Loop
+import app.aaps.core.interfaces.configuration.Config
 import app.aaps.core.interfaces.constraints.ConstraintsChecker
 import app.aaps.core.interfaces.logging.AAPSLogger
 import app.aaps.core.interfaces.plugin.ActivePlugin
@@ -56,6 +57,7 @@ import javax.inject.Inject
 /** Builds a checked food draft. Only the existing wizard can record or deliver treatment. */
 class FoodEntryDialog : DaggerDialogFragment() {
 
+    @Inject lateinit var config: Config
     @Inject lateinit var activePlugin: ActivePlugin
     @Inject lateinit var profileFunction: ProfileFunction
     @Inject lateinit var loop: Loop
@@ -83,6 +85,9 @@ class FoodEntryDialog : DaggerDialogFragment() {
     private var draftVersion = 0
     private var confirmation: AlertDialog? = null
     private val spinnerSelections = mutableMapOf<Int, Int>()
+    private val usesHealfiScenario: Boolean get() = config.FLAVOR == "healfi"
+    private var methodsExpanded = false
+    private var sourceExpanded = false
 
     // The URI and image are deliberately never written into saved state or app storage.
     private val photoPicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -91,6 +96,8 @@ class FoodEntryDialog : DaggerDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        methodsExpanded = savedInstanceState?.getBoolean(STATE_METHODS_OPEN) ?: false
+        sourceExpanded = savedInstanceState?.getBoolean(STATE_SOURCE_OPEN) ?: false
         selected = savedInstanceState?.getBundle(STATE_SELECTED)?.let(::readProduct)
         labelSource = savedInstanceState?.getBundle(STATE_LABEL_SOURCE)?.let(::readProduct)
         barcode = savedInstanceState?.getString(STATE_BARCODE)?.takeIf { it.matches(Regex("[0-9]{8,14}")) }
@@ -116,7 +123,9 @@ class FoodEntryDialog : DaggerDialogFragment() {
         dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         dialog?.setCanceledOnTouchOutside(false)
-        _binding = DialogFoodEntryBinding.inflate(inflater, container, false)
+        _binding = if (usesHealfiScenario) {
+            DialogFoodEntryBinding.bind(inflater.inflate(R.layout.healfi_dialog_food_entry, container, false))
+        } else DialogFoodEntryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -161,9 +170,19 @@ class FoodEntryDialog : DaggerDialogFragment() {
         binding.useLabelButton.setOnClickListener { useLabel() }
         binding.barcodeButton.setOnClickListener { lookupBarcode() }
         binding.addButton.setOnClickListener { addPortion() }
-        binding.continueButton.setOnClickListener { reviewMeal() }
+        binding.continueButton.setOnClickListener { if (usesHealfiScenario) continueWithCheckedPortion() else reviewMeal() }
         binding.manualButton.setOnClickListener { openProtectedCarbWizard() }
         binding.cancelButton.setOnClickListener { dismiss() }
+        if (usesHealfiScenario) {
+            binding.root.findViewById<View>(R.id.healfi_food_methods_toggle).setOnClickListener {
+                methodsExpanded = !methodsExpanded
+                renderHealfiDisclosure()
+            }
+            binding.root.findViewById<View>(R.id.healfi_food_source_toggle).setOnClickListener {
+                sourceExpanded = !sourceExpanded
+                renderHealfiDisclosure()
+            }
+        }
         renderMode()
         renderSelected()
         renderMeal()
@@ -213,6 +232,8 @@ class FoodEntryDialog : DaggerDialogFragment() {
             }
         }))
         outState.putInt(STATE_MODE, mode)
+        outState.putBoolean(STATE_METHODS_OPEN, methodsExpanded)
+        outState.putBoolean(STATE_SOURCE_OPEN, sourceExpanded)
         _binding?.let { view ->
             outState.putString(STATE_QUERY, view.query.text.toString())
             outState.putString(STATE_AMOUNT, view.amount.text.toString())
@@ -263,8 +284,14 @@ class FoodEntryDialog : DaggerDialogFragment() {
 
     private fun renderMode() {
         binding.photoButton.visibility = if (mode == MODE_PHOTO) View.VISIBLE else View.GONE
-        binding.modeHint.setText(when (mode) { MODE_PHOTO -> R.string.food_entry_photo_hint; MODE_TEXT -> R.string.food_entry_text_hint; else -> R.string.food_entry_search_hint })
+        binding.modeHint.setText(when {
+            mode == MODE_PHOTO -> R.string.food_entry_photo_hint
+            mode == MODE_TEXT -> R.string.food_entry_text_hint
+            usesHealfiScenario -> R.string.healfi_food_search_hint
+            else -> R.string.food_entry_search_hint
+        })
         renderPending()
+        renderHealfiDisclosure()
     }
 
     private fun renderPending() {
@@ -332,6 +359,8 @@ class FoodEntryDialog : DaggerDialogFragment() {
     private fun selectProduct(food: FoodProduct) {
         if (handingOff) return
         selected = food
+        sourceExpanded = false
+        if (usesHealfiScenario) binding.status.text = ""
         binding.searchResults.visibility = View.GONE
         binding.dishSuggestions.visibility = View.GONE
         binding.labelEditor.visibility = View.GONE
@@ -366,14 +395,50 @@ class FoodEntryDialog : DaggerDialogFragment() {
         binding.selectedCard.visibility = if (selected == null) View.GONE else View.VISIBLE
         selected?.let { food ->
             binding.foodName.text = food.name
-            binding.foodSource.text = getString(R.string.food_entry_source, sourceLabel(food), listOfNotNull(food.id, food.dataType, food.sourceUrl).joinToString("\n"))
+            val sourceDetails = listOfNotNull(food.id, food.dataType, food.sourceUrl).joinToString("\n")
+            if (usesHealfiScenario) {
+                binding.foodSource.text = sourceLabel(food)
+                binding.root.findViewById<TextView>(R.id.healfi_food_source_details).text = sourceDetails
+            } else binding.foodSource.text = getString(R.string.food_entry_source, sourceLabel(food), sourceDetails)
             binding.foodPreparation.text = getString(R.string.food_entry_preparation, preparationLabel(food.preparation))
             binding.foodBasis.text = listOf(
                 getString(R.string.food_entry_basis_note, basisLabel(food.basis), definitionLabel(food.carbohydrateDefinition)),
                 *food.warnings.toTypedArray()
             ).filter { it.isNotBlank() }.joinToString("\n")
         }
+        renderHealfiDisclosure()
         renderPreview()
+    }
+
+    /** Changes presentation only; the checked draft and the existing handoff remain authoritative. */
+    private fun renderHealfiDisclosure() {
+        if (!usesHealfiScenario || _binding == null) return
+        val choosingFood = selected == null
+        binding.root.findViewById<View>(R.id.healfi_food_find_panel).visibility = if (choosingFood) View.VISIBLE else View.GONE
+        binding.root.findViewById<View>(R.id.healfi_food_methods_panel).visibility = if (methodsExpanded) View.VISIBLE else View.GONE
+        binding.root.findViewById<MaterialButton>(R.id.healfi_food_methods_toggle).apply {
+            setText(if (methodsExpanded) R.string.healfi_food_methods_hide else R.string.healfi_food_methods_show)
+            isEnabled = !busy && !handingOff
+        }
+        binding.root.findViewById<MaterialButton>(R.id.healfi_food_source_toggle).apply {
+            setText(if (sourceExpanded) R.string.healfi_food_source_hide else R.string.healfi_food_source_show)
+            isEnabled = !handingOff
+        }
+        binding.root.findViewById<View>(R.id.healfi_food_source_details).visibility = if (sourceExpanded) View.VISIBLE else View.GONE
+        binding.root.findViewById<TextView>(R.id.healfi_food_stage).setText(
+            if (choosingFood) R.string.healfi_food_stage_find else R.string.healfi_food_stage_portion
+        )
+        binding.root.findViewById<View>(R.id.healfi_food_meal_panel).visibility = if (portions.isEmpty()) View.GONE else View.VISIBLE
+    }
+
+    /** One navigation tap can add a checked last portion and open the unchanged meal review. */
+    private fun continueWithCheckedPortion() {
+        if (busy || handingOff || confirmation?.isShowing == true) return
+        if (selected != null) {
+            if (!binding.addButton.isEnabled || pending.size > 1) return
+            addPortion()
+        }
+        if (selected == null && pending.isEmpty()) reviewMeal()
     }
 
     private fun invalidatePortion() {
@@ -425,6 +490,18 @@ class FoodEntryDialog : DaggerDialogFragment() {
             else -> getString(R.string.food_entry_carbs_preview, number(total))
         }
         binding.continueButton.isEnabled = !busy && !handingOff && selected == null && pending.isEmpty() && total != null && total <= maximum
+        if (usesHealfiScenario && selected != null) {
+            binding.continueButton.isEnabled = binding.addButton.isEnabled && pending.size <= 1
+            binding.mealTotal.text = when {
+                pending.size > 1 -> getString(R.string.food_entry_pending)
+                mixedDefinitions -> getString(R.string.food_entry_mixed_definitions)
+                candidateTotal == null -> getString(R.string.healfi_food_waiting)
+                candidateTotal > maximum -> getString(R.string.food_entry_native_limit)
+                else -> getString(R.string.healfi_food_draft_total, number(candidateTotal))
+            }
+        } else if (usesHealfiScenario && portions.isEmpty() && pending.isEmpty()) {
+            binding.mealTotal.setText(R.string.healfi_food_waiting)
+        }
         binding.manualButton.isEnabled = !handingOff
         binding.useLabelButton.isEnabled = !busy && !handingOff
         binding.amount.isEnabled = !handingOff
@@ -437,6 +514,7 @@ class FoodEntryDialog : DaggerDialogFragment() {
         binding.labelPreparation.isEnabled = !busy && !handingOff
         binding.resetDescription.isEnabled = !handingOff
         binding.discardSelection.isEnabled = !handingOff
+        renderHealfiDisclosure()
     }
 
     private fun addPortion() {
@@ -462,6 +540,25 @@ class FoodEntryDialog : DaggerDialogFragment() {
     private fun renderMeal() {
         binding.mealItems.removeAllViews()
         portions.forEachIndexed { index, portion ->
+            if (usesHealfiScenario) {
+                val row = layoutInflater.inflate(R.layout.healfi_food_entry_meal_item, binding.mealItems, false)
+                row.findViewById<TextView>(R.id.healfi_meal_summary).text = getString(
+                    R.string.healfi_food_meal_item, portion.product.name, number(portion.amount), unitLabel(portion.unit),
+                    preparationLabel(portion.product.preparation), number(portion.carbohydrate()!!)
+                )
+                row.findViewById<MaterialButton>(R.id.healfi_meal_remove).apply {
+                    contentDescription = getString(R.string.food_entry_remove_description, portion.product.name)
+                    isEnabled = !handingOff
+                    setOnClickListener {
+                        if (handingOff) return@setOnClickListener
+                        portions.removeAt(index)
+                        draftVersion++
+                        renderMeal()
+                    }
+                }
+                binding.mealItems.addView(row)
+                return@forEachIndexed
+            }
             binding.mealItems.addView(TextView(requireContext()).apply { text = portionSummary(portion); setPadding(0, 12, 0, 0) })
             binding.mealItems.addView(resultButton(getString(R.string.food_entry_remove)) {
                 if (handingOff) return@resultButton
@@ -658,7 +755,7 @@ class FoodEntryDialog : DaggerDialogFragment() {
     }
 
     private fun resultButton(label: String, action: () -> Unit): MaterialButton =
-        (layoutInflater.inflate(R.layout.food_entry_result_button, binding.searchResults, false) as MaterialButton).apply {
+        (layoutInflater.inflate(if (usesHealfiScenario) R.layout.healfi_food_entry_result_button else R.layout.food_entry_result_button, binding.searchResults, false) as MaterialButton).apply {
             text = label
             setOnClickListener { if (!handingOff) action() }
         }
@@ -755,5 +852,7 @@ class FoodEntryDialog : DaggerDialogFragment() {
         private const val STATE_LABEL_DEFINITION = "food.label.definition"
         private const val STATE_LABEL_PREPARATION = "food.label.preparation"
         private const val STATE_LABEL_OPEN = "food.label.open"
+        private const val STATE_METHODS_OPEN = "food.methods.open"
+        private const val STATE_SOURCE_OPEN = "food.source.open"
     }
 }

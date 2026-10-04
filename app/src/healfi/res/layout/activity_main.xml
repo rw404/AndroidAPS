@@ -94,6 +94,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:visibility="gone"
         android:background="@color/healfi_shell_surface">
 
         <com.google.android.material.tabs.TabLayout
@@ -134,5 +135,39 @@
             app:tabTextColor="@color/healfi_shell_muted" />
 
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:paddingHorizontal="8dp"
+        android:background="@color/healfi_scenario_surface">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/healfi_nav_now"
+            style="@style/HealfiScenario.TertiaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/healfi_scenario_nav_text"
+            android:text="@string/healfi_nav_now_label" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/healfi_nav_history"
+            style="@style/HealfiScenario.TertiaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/healfi_scenario_nav_text"
+            android:text="@string/healfi_nav_history_label" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/healfi_nav_settings"
+            style="@style/HealfiScenario.TertiaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/healfi_scenario_nav_text"
+            android:text="@string/healfi_nav_settings_label" />
+    </LinearLayout>
 
 </LinearLayout>

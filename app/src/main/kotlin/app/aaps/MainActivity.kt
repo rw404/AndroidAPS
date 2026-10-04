@@ -70,6 +70,7 @@ import app.aaps.ui.activities.StatsActivity
 import app.aaps.ui.activities.TreatmentsActivity
 import app.aaps.ui.tabs.TabPageAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.joanzapata.iconify.Iconify
@@ -381,6 +382,7 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
                 ) pageAdapter.registerNewFragment(p)
                 // Add to menu if not visible
                 if (
+                    config.FLAVOR == "healfi" && !p.pluginDescription.neverVisible ||
                     preferences.simpleMode && !p.pluginDescription.neverVisible && p.pluginDescription.simpleModePosition == PluginDescription.Position.MENU ||
                     !preferences.simpleMode && !p.pluginDescription.neverVisible && !p.isFragmentVisible()
                 ) {
@@ -401,6 +403,11 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
             }
         binding.mainPager.adapter = pageAdapter
         binding.mainPager.offscreenPageLimit = 8 // This may cause more memory consumption
+
+        if (config.FLAVOR == "healfi") {
+            setupHealfiNavigation(pageAdapter)
+            return
+        }
 
         // Tabs
         if (preferences.get(BooleanKey.OverviewShortTabTitles)) {
@@ -424,6 +431,33 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
             TabLayoutMediator(binding.tabsNormal, binding.mainPager) { tab, position ->
                 tab.text = (binding.mainPager.adapter as TabPageAdapter).getPluginAt(position).name
             }.attach()
+        }
+    }
+
+    private fun setupHealfiNavigation(pageAdapter: TabPageAdapter) {
+        // All enabled plugin pages remain available in the drawer. The everyday
+        // destinations are stable, regardless of which plugins are configured.
+        binding.tabsNormal.visibility = View.GONE
+        binding.tabsCompact.visibility = View.GONE
+        binding.mainPager.isUserInputEnabled = false
+        val overviewIndex = (0 until pageAdapter.itemCount).firstOrNull {
+            pageAdapter.getPluginAt(it).pluginDescription.fragmentClass == "app.aaps.plugins.main.general.overview.OverviewFragment"
+        } ?: 0
+        binding.root.findViewById<MaterialButton>(R.id.healfi_nav_now).isSelected = true
+        binding.root.findViewById<MaterialButton>(R.id.healfi_nav_now).setOnClickListener {
+            binding.mainPager.currentItem = overviewIndex
+        }
+        binding.root.findViewById<MaterialButton>(R.id.healfi_nav_history).setOnClickListener {
+            if (profileFunction.getProfile() == null) {
+                OKDialog.show(this, rh.gs(R.string.healfi_nav_history_label), rh.gs(app.aaps.core.ui.R.string.noprofile))
+            } else {
+                startActivity(Intent(this, TreatmentsActivity::class.java).setAction("info.nightscout.androidaps.MainActivity"))
+            }
+        }
+        binding.root.findViewById<MaterialButton>(R.id.healfi_nav_settings).setOnClickListener {
+            protectionCheck.queryProtection(this, ProtectionCheck.Protection.PREFERENCES, {
+                startActivity(Intent(this, PreferencesActivity::class.java).setAction("info.nightscout.androidaps.MainActivity"))
+            })
         }
     }
 

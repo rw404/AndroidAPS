@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_food_title">Еда</string>
+    <string name="healfi_food_stage_find">Найдите точный продукт</string>
+    <string name="healfi_food_stage_portion">Проверьте порцию</string>
+    <string name="healfi_food_methods_show">Другие способы ввода еды</string>
+    <string name="healfi_food_methods_hide">Скрыть другие способы</string>
+    <string name="healfi_food_source_show">Подробности источника</string>
+    <string name="healfi_food_source_hide">Скрыть подробности источника</string>
+    <string name="healfi_food_search_hint">Найдите точный продукт и приготовление, затем проверьте порцию.</string>
+    <string name="healfi_food_amount_hint">Масса или объём порции</string>
+    <string name="healfi_food_amount_placeholder">Количество</string>
+    <string name="healfi_food_add_another">Добавить порцию и ещё продукт</string>
+    <string name="healfi_food_choose_another">Выбрать другой продукт</string>
+    <string name="healfi_food_review">Проверить расчёт</string>
+    <string name="healfi_food_draft_note">Откроется калькулятор по профилю. Здесь ничего не записывается и не вводится.</string>
+    <string name="healfi_food_waiting">Проверьте продукт и порцию для продолжения</string>
+    <string name="healfi_food_draft_total">Черновик: углеводы %1$s г</string>
+    <string name="healfi_food_meal_item">%1$s\n%2$s %3$s · %4$s · углеводы %5$s г</string>
+</resources>
