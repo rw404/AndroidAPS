@@ -1,8 +1,60 @@
 # Android verification
 
-## Healfi: separate application
+## Healfi: native overview redesign
 
-The current candidate is **Healfi**, package `app.healfi.androidaps`, rather than
+The current native source is `f54bf1b761acb1e9ac77282a159a19d798ae2108`.
+The [design description](../healfi-native-design.md) documents the separate
+Android overview layouts, bottom plugin navigation, pinned insulin/food actions,
+light/dark palettes, Healfi branding and font-size adaptations. The food dialogs
+and other plugin pages retain their existing structure.
+
+The [local build report](healfi-native-local-build-2026-10-04.json) and
+[JUnit report](healfi-native-local-build-2026-10-04.xml) record a successful
+`healfiDebug` build and **572 selected tests with no failures, errors or skips**.
+The APK identity, v2 signature, CRC, 16 KiB ZIP/native alignment and 14 food assets
+passed verification. Dose calculation, command queue, Medtronic/RileyLink drivers
+and APS algorithm sources are unchanged by this native redesign.
+
+The existing-key `healfiRelease` [Actions run](https://github.com/rw404/AndroidAPS/actions/runs/37222859668)
+completed successfully for that exact source. Its [artifact](https://github.com/rw404/AndroidAPS/actions/runs/37222859668/artifacts/11312030679)
+was downloaded and matched GitHub's SHA-256 digest. The [signed report](healfi-native-release-build-2026-10-04.json)
+and [JUnit report](healfi-native-release-build-2026-10-04.xml) preserve the CI output.
+Independent local verification of the downloaded APK's v2 signature, public
+certificate, identity, CRC, 16 KiB ZIP/native alignment and all 14 food assets
+passed. Its signing certificate matches the previous signed Healfi release;
+its package remains separate from AAPS. The signed APK SHA-256 is
+`1f2a13b85faef1721215f5dba3b904c16d420b36de7100874c333539915bde52`.
+
+The [native UI report](healfi-native-ui-2026-10-04.json) records actual rendering
+of the debug APK on an Android 15/API 35 software emulator, with synthetic
+xDrip-compatible broadcasts, a synthetic profile, VirtualPump and the loop
+disabled. [Before](../../design/native/healfi-before-native.png),
+[after](../../design/native/healfi-after-light-native.png),
+[dark mode](../../design/native/healfi-after-dark-native.png) and
+[complete narrow-screen metric headings](../../design/native/f54-light-metrics-settled.png)
+were visually reviewed. Screenshot hashes and exact source commits are preserved.
+The final database snapshot had 45 glucose values, an active test profile,
+**zero boluses and zero carbohydrate events**. The final displayed COB was n/a;
+this value was preserved, rather than substituting the earlier fixture's zero.
+
+The original insulin and food dialogs opened and were cancelled on intermediate
+`3b3b7f7`; those cases retain their own source/APK hashes. The final `f54bf1b`
+layout fixes were checked on the final debug APK. Source review confirmed ten
+existing overview handler bodies and the protected clinical sources are unchanged.
+The 200% font checks are scoped: whole 121 mg/dL and axis labels were readable
+in landscape after scrolling; the graph was reached via native accessibility
+scroll. Conventional touch scrolling in that scenario remains inconclusive on
+TCG. At portrait 200%, outer time-axis labels touch/overlap; whole portrait
+200% glucose and an extra native Wizard 24 g preview were not verified. This
+is not a claim of complete large-font robustness.
+
+The release APK's runtime was not tested separately. No physical OnePlus,
+sensor, radiobridge or pump was attached; no delivery, closed-loop clinical
+validation or phone-performance measurement was performed.
+
+## Earlier Healfi: separate application
+
+The earlier candidate was **Healfi**, package `app.healfi.androidaps`, rather than
 an update of `info.nightscout.androidaps`. The [installation guide](../healfi-installation.md)
 explains separate storage, xDrip broadcasts and why two apps must not control the
 same physical pump.
@@ -67,13 +119,13 @@ the limits of a first device check.
 
 ## Earlier AAPS debug APK
 
-The current native build keeps the two bottom actions visible in all overview skins. “Enter insulin” opens the protected `InsulinDialog`. “Enter carbs” opens the new `FoodEntryDialog`: offline USDA search, local meal-description parsing, local Russian/English OCR and a trained local Food-101 classifier. EAN/UPC recognition is local; the separate Open Food Facts lookup needs network and sends the barcode only. Verified portions enter the existing protected `WizardDialog`. Manual carbohydrate entry inside the food form also opens this calculator, so it recommends insulin from the active loaded profile rather than requiring a manually chosen dose. No recognition result sends a bolus.
+The earlier native food build kept the two bottom actions visible in all overview skins. “Enter insulin” opens the protected `InsulinDialog`. “Enter carbs” opens the new `FoodEntryDialog`: offline USDA search, local meal-description parsing, local Russian/English OCR and a trained local Food-101 classifier. EAN/UPC recognition is local; the separate Open Food Facts lookup needs network and sends the barcode only. Verified portions enter the existing protected `WizardDialog`. Manual carbohydrate entry inside the food form also opens this calculator, so it recommends insulin from the active loaded profile rather than requiring a manually chosen dose. No recognition result sends a bolus.
 
 The food form rejects unknown nutrition, incompatible grams/millilitres, unresolved components and mixed carbohydrate conventions. It sums full-precision portions and rounds once at the existing integer Wizard boundary, checks AAPS limits and pump/profile availability, and invalidates stale confirmations. Wizard input restoration preserves edits, including zero carbs and cleared notes. Sources, limitations and reproduction are documented in [native food entry](../food-entry-native.md).
 
 For Medtronic 722, attempted refreshes, initialization and UI result processing no longer mark failed queries as successful communication. The existing validated radio-response path updates the live and persisted clock. Regression tests cover failed repeated polls, initialization, unsuccessful UI results and transport responses. This makes the existing 20/40/60-minute reminder clock reflect actual communication. The [722 setup guide](../medtronic-722-setup.md) covers OrangeLink / RileyLink and the pump-specific radio band.
 
-The current `fullDebug` build completed successfully with **542 targeted Gradle tests, zero failures, errors or skips**:
+That earlier `fullDebug` build completed successfully with **542 targeted Gradle tests, zero failures, errors or skips**:
 
 | Module | Tests |
 | --- | ---: |

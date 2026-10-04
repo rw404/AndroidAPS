@@ -1,0 +1,443 @@
+{
+  "kind": "actual_android_native_rendering",
+  "device": {
+    "serial": "emulator-5554",
+    "androidApi": 35,
+    "systemImage": "AOSP default x86_64",
+    "acceleration": "software TCG, no /dev/kvm",
+    "resolutionPixels": [
+      720,
+      1440
+    ],
+    "densityDpi": 320
+  },
+  "fixture": {
+    "synthetic": true,
+    "patientData": false,
+    "physicalPump": false,
+    "pumpPlugin": "VirtualPump",
+    "loopMode": "Disabled (observed red disabled icon)",
+    "profile": "UI Test Fixture",
+    "profileActivatedThroughNativeDialog": true,
+    "persistedGlucoseReadingsAtInitialAudit": 36,
+    "activeEffectiveProfileSwitchesAtInitialAudit": 2,
+    "insulinCarbRatioGramsPerUnit": 12,
+    "insulinSensitivityMmolPerUnit": 2.5,
+    "basalUnitsPerHour": 0.7,
+    "targetMmol": [
+      5.5,
+      6.0
+    ],
+    "realBoluses": 0,
+    "realCarbs": 0,
+    "displayUnits": "mmol",
+    "notificationsSetup": {
+      "disposableMasterPasswordConfigured": true,
+      "directorySelectedViaSAF": "Documents/HealfiPreview"
+    },
+    "glucoseSource": "xDrip+ explicit synthetic broadcast test helper",
+    "sourceInfoLatest": "G6 Native",
+    "refresh": "latestOnly true, same121mgdlvalue",
+    "latestObservedPersistedGlucoseReadings": 45,
+    "finalObservedBoluses": 0,
+    "finalObservedCarbs": 0,
+    "latestDatabaseAudit": "/workspace/native-preview-tools/final-completed-db/audit.json"
+  },
+  "before": {
+    "sourceCommit": "7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70",
+    "apk": "/workspace/deliverables/Healfi-debug.apk",
+    "sha256": "63bf5cb27d5e925ffea859d8eecccdd107afac23e3290127e02cb1df4ab50efe",
+    "screenshot": "design/native/healfi-before-native.png",
+    "screenshotSha256": "480b1057680678c38c83667a597f7f9860736b3bba2e1cbfcc672623bb7e8c8a",
+    "theme": "light",
+    "fontScale": 1.0,
+    "orientation": "portrait",
+    "observed": "6.7mmol/L; IOB0.00U; COB0g; basal0.70U/h; AS100%; insulin and food primarybuttons active"
+  },
+  "afterCandidate": {
+    "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "apk": "/workspace/deliverables/Healfi-native-redesign-debug.apk",
+    "sha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+    "status": "Actual native comparison and scoped runtime UI checks verified; limitations recorded",
+    "installation": "pm install -r -g Success; fixture retained",
+    "startup": "Actual final native Main loaded and screenshot visually reviewed",
+    "screenshot": "design/native/f54-light-main-settled.png",
+    "screenshotSha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+    "theme": "light",
+    "fontScale": 1.0,
+    "orientation": "portrait"
+  },
+  "cases": [
+    {
+      "name": "insulinButton",
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "observed": "Native InsulinDialog opened from pinned primaryaction; cancelled; no dose submitted",
+      "result": "pass",
+      "screenshot": "design/native/healfi-insulin-dialog.png",
+      "sha256": "9bcda93098133182660b202ec03c2c5fd39611ab8dc3b49add20f58505431bb6",
+      "apkSha256AtCapture": "040edc815d32171b0b348b55cb720acfdbbb6cd2d22f41db82de5aa8e6e52563"
+    },
+    {
+      "name": "foodButton",
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "observed": "Native FoodEntryDialog opened from pinned primaryaction; cancelled; no meal persisted",
+      "result": "pass",
+      "screenshot": "design/native/healfi-food-dialog.png",
+      "sha256": "b8f899aaec4c667faa6949e39bc303f9229fc74acc20c028cc2106531041e303",
+      "apkSha256AtCapture": "040edc815d32171b0b348b55cb720acfdbbb6cd2d22f41db82de5aa8e6e52563"
+    },
+    {
+      "name": "profileAndMetrics",
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "observed": "IOB0.00U, COB0g, basal0.70U/h, UI Test Fixture and target5.5–6.0 retained afterupdate",
+      "result": "pass",
+      "screenshot": "design/native/healfi-after-metrics.png",
+      "sha256": "3b82cb90e148c8309f0566e434db9da2cf1438a0e1dc1f6c56676bb107fac124",
+      "apkSha256AtCapture": "040edc815d32171b0b348b55cb720acfdbbb6cd2d22f41db82de5aa8e6e52563"
+    },
+    {
+      "name": "darkTheme",
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "result": "pass",
+      "observed": "Native dark mode shows readable metricvalues, activeprofile, pinnedactions, footer",
+      "screenshot": "design/native/healfi-dark-settled.png",
+      "sha256": "67812aedb99796faaf38c45cee2d8cc9bbf21230e3293019890212b12b16d817",
+      "apkSha256AtCapture": "040edc815d32171b0b348b55cb720acfdbbb6cd2d22f41db82de5aa8e6e52563"
+    },
+    {
+      "name": "finalDarkMain",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "pass",
+      "observed": "Dark nativeMain loaded with6.7mmol/L, actualsyntheticGraphView andactiveprimaryactions; glucosecaption fullyvisible",
+      "screenshot": "design/native/f54-main-loaded.png",
+      "sha256": "746976fd433da3d8c51aeb97ab48dbab57d9265ffc4066251bd981dad4d62c23"
+    },
+    {
+      "name": "landscapeFont200ThreeDigitGlucose",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "passWithScroll",
+      "resolutionPixels": [
+        1440,
+        720
+      ],
+      "fontScale": 2.0,
+      "units": "mg/dl",
+      "theme": "dark",
+      "observed": "After verticalscroll whole121 is simultaneouslyvisible; pinnedinsulin/foodbuttons fullyreadable. Initialviewport showscaption andnumbertop; requiresScroll.",
+      "screenshot": "design/native/f54-font200-land-bg.png",
+      "sha256": "c9ae40eb32d7c62e0213bc208b7c23dbe08706a662c1f565c473d44654c74f3d"
+    },
+    {
+      "name": "landscapeFont200GraphAxis",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "passWithScroll",
+      "fontScale": 2.0,
+      "units": "mg/dl",
+      "theme": "dark",
+      "resolutionPixels": [
+        1440,
+        720
+      ],
+      "observed": "Actual native GraphView reached via official accessibility scroll; three-digit axis label180 and80/40/0 entirely visible horizontally, lower time-axis13–19 readable; chart top remains above viewport due to scroll. Pinned buttons remain readable.",
+      "screenshot": "design/native/f54-font200-land-axis-native.png",
+      "sha256": "484ad3b6771a4f0d075fed341e7d85331579aadedef3da6d99c981e05ae0182d"
+    },
+    {
+      "name": "portraitFont200MetricsButtonsAxis",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "scopedPassWithMinorLimitation",
+      "fontScale": 2.0,
+      "units": "mg/dl",
+      "theme": "dark",
+      "resolutionPixels": [
+        720,
+        1440
+      ],
+      "observed": "Vertical axis200/160/120/80/40/0 fully visible horizontally; IOB0.00 and full Russian metric headings readable; both fixed primary actions stacked with full labels. Narrow native GraphView adjacent outer time ticks13–14 and18–19 touch/overlap at200% font. This does not establish full largefont robustness.",
+      "screenshot": "design/native/f54-font200-portrait.png",
+      "sha256": "d1b5fd9db17b0c2e092a19f18eabf22db968c0a1e59c89894419c595a6db755f"
+    },
+    {
+      "name": "nativeWizard24gProposal",
+      "result": "notRun",
+      "observed": "Optional bonus skipped to prioritize final normal native comparison; no meal or dose submitted."
+    },
+    {
+      "name": "finalLightMainComparison",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "pass",
+      "fontScale": 1.0,
+      "units": "mmol",
+      "theme": "light",
+      "resolutionPixels": [
+        720,
+        1440
+      ],
+      "observed": "Actual native Main shows6.7mmol/L, reading5minold, delta0, real GraphView with synthetic readings, whole glucose caption, both pinned primary buttons active. Orange qualityindicator reflects synthetic gaps; loop disabled.",
+      "screenshot": "design/native/f54-light-main-settled.png",
+      "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff"
+    },
+    {
+      "name": "finalNarrowMetricLabels",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256AtCapture": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "result": "passWithScroll",
+      "fontScale": 1.0,
+      "units": "mmol",
+      "theme": "light",
+      "resolutionPixels": [
+        720,
+        1440
+      ],
+      "observed": "All three stacked metriccards simultaneouslyvisible: full Russian Active Insulin/Active Carbohydrates/Basal Rate headings; IOB0.00U, COBn/a (actual unavailablevalue, not overwritten), basal0.70U/h. Active profile UI Test Fixture visible below, both pinned primaryactions remain readable.",
+      "screenshot": "design/native/f54-light-metrics.png",
+      "sha256": "e142bbd2c2ffe2b579c50728554a3b184aabfa326857cf03595c775cf99b18dc",
+      "settledScreenshot": "design/native/f54-light-metrics-settled.png"
+    },
+    {
+      "name": "portraitFont200WholeGlucose",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "result": "notRun",
+      "observed": "No confirmed frame showing the whole glucose value at portrait200%; no full portrait large-font coverage claimed."
+    }
+  ],
+  "limitations": [
+    "No physical pump or sensor connected.",
+    "No insulin delivery or clinical closedloop validation.",
+    "TCG startup/UI latency cannot represent phone performance.",
+    "Images are raw adb screencap with no postprocessing.",
+    "Synthetic readings aged during setup; displayed quality warning is valid for fixture gap.",
+    "At portrait200% font the adjacent outer GraphView time ticks touch/overlap; current3digitBG landscape required verticalscroll. No full largefontrobustness claim.",
+    "Final light metrics show actual COB unavailable (n/a) in synthetic disabled-loop fixture; no numericCOB equivalence claimed for that snapshot.",
+    "Conventional touch scrolling in the landscape200% scenario was inconclusive on software TCG; official Android accessibility scrolling reached the graph. This is not a touch-behavior validation on a phone."
+  ],
+  "observedIssues": [
+    {
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "issue": "Rounded hero card clips top-left of glucose caption",
+      "screenshot": "design/native/healfi-after-current.png",
+      "resolution": "Resolved in f54: cardCornerRadius0; full glucose caption observed in f54-main-loaded.png"
+    },
+    {
+      "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+      "issue": "Three metriccolumns at360dp cause Russian headings to wrap within words; values preserved",
+      "screenshot": "design/native/healfi-after-metrics.png",
+      "resolution": "Resolved in f54: metrics stack at width<400dp; all3whole Russian headings observed in final f54-light-metrics.png"
+    }
+  ],
+  "intermediateCandidate": {
+    "sourceCommit": "3b3b7f71ab449128696543da20958341558e35c6",
+    "sha256AtCapture": "040edc815d32171b0b348b55cb720acfdbbb6cd2d22f41db82de5aa8e6e52563",
+    "installedApkAtCapture": "/data/local/tmp/healfi-after.apk",
+    "note": "Intermediate3b appusedforforms/dark/investigation; currenthostAPKpath nowcontainsf54"
+  },
+  "fixtureAdjustments": [
+    {
+      "timeUTC": "2026-10-04T18:24:33.328408+00:00",
+      "method": "Direct isolatedemulator preference edit between forcestop/restart",
+      "reason": "Restore nonsimpleRUfixture after asynchronousTCGtouch changed Simplemode; set mg/dl/font200%/landscape cornercase",
+      "keys": {
+        "units": "mg/dl",
+        "language": "ru",
+        "simple_mode": false,
+        "use_dark_mode": "dark"
+      },
+      "sourceChanged": false,
+      "masterPasswordAndSAFGrantPreserved": true,
+      "BGhistoryAlreadyPersisted": true
+    },
+    {
+      "timeUTC": "2026-10-04T18:51:41.493755+00:00",
+      "method": "Direct isolatedemulator preference edit between forcestop/restart",
+      "reason": "Restore final comparison fixture to RU non-simple, mmol, light, portrait font100% after accessibility cases",
+      "keys": {
+        "units": "mmol",
+        "language": "ru",
+        "simple_mode": false,
+        "use_dark_mode": "light"
+      },
+      "sourceChanged": false,
+      "masterPasswordAndSAFGrantPreserved": true,
+      "BGhistoryAlreadyPersisted": true
+    }
+  ],
+  "testTooling": {
+    "uiAutomationHelperPackage": "app.healfi.preview.test",
+    "instrumentationTarget": "app.healfi.preview.sender",
+    "sourceOutsideRepository": "/workspace/native-preview-tools/ui-instrumentation",
+    "method": "Official accessibility ACTION_SCROLL_FORWARD/BACKWARD on real foreground Android view; no rendering replacement, no patientdata, no delivery action",
+    "actualHealfiProcessRestartedByInstrumentation": false
+  },
+  "finalDatabaseAudit": {
+    "timeUTC": "2026-10-04T19:01:14.133862+00:00",
+    "tables": {
+      "glucoseValues": 45,
+      "profileSwitches": 1,
+      "effectiveProfileSwitches": 2,
+      "boluses": 0,
+      "carbs": 0
+    },
+    "glucoseValuesColumns": [
+      "id",
+      "version",
+      "dateCreated",
+      "isValid",
+      "referenceId",
+      "timestamp",
+      "utcOffset",
+      "raw",
+      "value",
+      "trendArrow",
+      "noise",
+      "sourceSensor",
+      "nightscoutSystemId",
+      "nightscoutId",
+      "pumpType",
+      "pumpSerial",
+      "temporaryId",
+      "pumpId",
+      "startId",
+      "endId"
+    ],
+    "effectiveProfileSwitchesColumns": [
+      "id",
+      "version",
+      "dateCreated",
+      "isValid",
+      "referenceId",
+      "timestamp",
+      "utcOffset",
+      "basalBlocks",
+      "isfBlocks",
+      "icBlocks",
+      "targetBlocks",
+      "glucoseUnit",
+      "originalProfileName",
+      "originalCustomizedName",
+      "originalTimeshift",
+      "originalPercentage",
+      "originalDuration",
+      "originalEnd",
+      "nightscoutSystemId",
+      "nightscoutId",
+      "pumpType",
+      "pumpSerial",
+      "temporaryId",
+      "pumpId",
+      "startId",
+      "endId",
+      "insulinLabel",
+      "insulinEndTime",
+      "peak"
+    ],
+    "latestGlucose": {
+      "timestamp": 1791140347242,
+      "value": 121.0,
+      "isValid": 1,
+      "sourceSensor": "DEXCOM_G6_NATIVE_XDRIP",
+      "timestampUTC": "2026-10-04T18:59:07.242000+00:00"
+    },
+    "latestEffectiveProfile": {
+      "timestamp": 1791134430174,
+      "isValid": 1,
+      "originalProfileName": "UI Test Fixture",
+      "glucoseUnit": "MMOL",
+      "basalBlocks": "[{\"duration\":86400000,\"amount\":0.7}]",
+      "isfBlocks": "[{\"duration\":86400000,\"amount\":2.5}]",
+      "icBlocks": "[{\"duration\":86400000,\"amount\":12}]",
+      "targetBlocks": "[{\"duration\":86400000,\"lowTarget\":5.5,\"highTarget\":6}]",
+      "insulinEndTime": 18000000,
+      "timestampUTC": "2026-10-04T17:20:30.174000+00:00"
+    }
+  },
+  "completionTimeUTC": "2026-10-04T19:03:51.756778+00:00",
+  "pathsRelativeTo": "repository root",
+  "recordedScreenshotFiles": {
+    "design/native/healfi-before-native.png": {
+      "sha256": "480b1057680678c38c83667a597f7f9860736b3bba2e1cbfcc672623bb7e8c8a",
+      "bytes": 89677
+    },
+    "design/native/f54-light-main-settled.png": {
+      "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+      "bytes": 81158
+    },
+    "design/native/healfi-insulin-dialog.png": {
+      "sha256": "9bcda93098133182660b202ec03c2c5fd39611ab8dc3b49add20f58505431bb6",
+      "bytes": 80762
+    },
+    "design/native/healfi-food-dialog.png": {
+      "sha256": "b8f899aaec4c667faa6949e39bc303f9229fc74acc20c028cc2106531041e303",
+      "bytes": 114603
+    },
+    "design/native/healfi-after-metrics.png": {
+      "sha256": "3b82cb90e148c8309f0566e434db9da2cf1438a0e1dc1f6c56676bb107fac124",
+      "bytes": 89706
+    },
+    "design/native/healfi-dark-settled.png": {
+      "sha256": "67812aedb99796faaf38c45cee2d8cc9bbf21230e3293019890212b12b16d817",
+      "bytes": 86614
+    },
+    "design/native/f54-main-loaded.png": {
+      "sha256": "746976fd433da3d8c51aeb97ab48dbab57d9265ffc4066251bd981dad4d62c23",
+      "bytes": 76280
+    },
+    "design/native/f54-font200-land-bg.png": {
+      "sha256": "c9ae40eb32d7c62e0213bc208b7c23dbe08706a662c1f565c473d44654c74f3d",
+      "bytes": 61803
+    },
+    "design/native/f54-font200-land-axis-native.png": {
+      "sha256": "484ad3b6771a4f0d075fed341e7d85331579aadedef3da6d99c981e05ae0182d",
+      "bytes": 99027
+    },
+    "design/native/f54-font200-portrait.png": {
+      "sha256": "d1b5fd9db17b0c2e092a19f18eabf22db968c0a1e59c89894419c595a6db755f",
+      "bytes": 117144
+    },
+    "design/native/f54-light-metrics.png": {
+      "sha256": "e142bbd2c2ffe2b579c50728554a3b184aabfa326857cf03595c775cf99b18dc",
+      "bytes": 76758
+    },
+    "design/native/healfi-after-current.png": {
+      "sha256": "6ba9a33a50309c89bd35365cc15c62b3c19d461004e53f6020553cd4a3a571bc",
+      "bytes": 86208
+    },
+    "design/native/healfi-after-light-native.png": {
+      "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+      "bytes": 81158,
+      "aliasOf": "design/native/f54-light-main-settled.png"
+    },
+    "design/native/healfi-after-dark-native.png": {
+      "sha256": "746976fd433da3d8c51aeb97ab48dbab57d9265ffc4066251bd981dad4d62c23",
+      "bytes": 76280,
+      "aliasOf": "design/native/f54-main-loaded.png"
+    },
+    "design/native/f54-light-metrics-settled.png": {
+      "sha256": "db1be06835d1981694281eeaf4092e6ffdc3f6557be5925e4bfb56a7adcf377a",
+      "bytes": 77138,
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108"
+    }
+  },
+  "sourceAudit": {
+    "baselineCommit": "66dcf66c9f5925155505c5acb1433a62d0fe3041",
+    "productionCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "unchangedClinicalDirectories": [
+      "implementation/src/main/kotlin/app/aaps/implementation/wizard",
+      "implementation/src/main/kotlin/app/aaps/implementation/queue",
+      "pump/medtronic",
+      "pump/rileylink",
+      "plugins/aps"
+    ],
+    "originalOverviewHandlersComparedByIndependentReviewer": 10,
+    "bindingContract": "All required IDs/types preserved in MainActivity, both overview orientations and four included legacy bindings",
+    "knownTextLimit": "Profile/target rows have maxLines3; unusually long profile text can truncate at large font"
+  },
+  "releaseRuntimeTested": false,
+  "releaseBuildVerification": "docs/verification/healfi-native-release-build-2026-10-04.json",
+  "debugBuildVerification": "docs/verification/healfi-native-local-build-2026-10-04.json",
+  "finalDatabaseAuditVerifiedAgainstSavedSnapshot": true
+}
