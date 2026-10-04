@@ -1,72 +1,74 @@
 <?xml version='1.0' encoding='utf-8'?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/info_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="4dp" android:paddingBottom="8dp">
-    <TextView android:id="@+id/glucose_heading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/healfi_glucose" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-    <TextView android:id="@+id/bg_units" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:textAppearance="@style/HealfiLabel" app:layout_constraintStart_toEndOf="@id/glucose_heading" app:layout_constraintBaseline_toBaselineOf="@id/glucose_heading" tools:text="mmol/l" />
-    <LinearLayout android:id="@+id/aps_mode_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
-        <ImageView android:id="@+id/aps_mode" android:layout_width="48dp" android:layout_height="48dp" android:padding="6dp" android:contentDescription="@string/aps_mode_title" android:background="?attr/selectableItemBackgroundBorderless" android:visibility="gone" app:srcCompat="@drawable/ic_loop_closed" />
-        <TextView android:id="@+id/aps_mode_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:gravity="center" android:visibility="gone" />
+  <LinearLayout android:id="@+id/healfi_glucose_caption" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/bg_quality" app:layout_constraintTop_toTopOf="parent">
+    <TextView android:id="@+id/glucose_heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_glucose" android:textAppearance="@style/HealfiLabel" android:textSize="14sp" />
+    <TextView android:id="@+id/bg_units" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" tools:text="mmol/l" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/aps_mode_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
+    <ImageView android:id="@+id/aps_mode" android:layout_width="48dp" android:layout_height="48dp" android:padding="6dp" android:contentDescription="@string/aps_mode_title" android:background="?attr/selectableItemBackgroundBorderless" android:visibility="gone" app:srcCompat="@drawable/ic_loop_closed" />
+    <TextView android:id="@+id/aps_mode_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:gravity="center" android:visibility="gone" />
+  </LinearLayout>
+  <ImageView android:id="@+id/simple_mode" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="8dp" android:contentDescription="@string/simple_mode_enabled" app:srcCompat="@drawable/child_face" app:layout_constraintEnd_toStartOf="@id/aps_mode_layout" app:layout_constraintTop_toTopOf="parent" />
+  <ImageView android:id="@+id/bg_quality" android:layout_width="48dp" android:layout_height="48dp" android:padding="10dp" android:contentDescription="@string/a11y_bg_quality" android:visibility="gone" app:layout_constraintEnd_toStartOf="@id/simple_mode" app:layout_constraintTop_toTopOf="parent" />
+  <androidx.constraintlayout.widget.Barrier android:id="@+id/overview_header_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="bottom" app:constraint_referenced_ids="healfi_glucose_caption,aps_mode_layout,bg_quality,simple_mode" />
+  <TextView android:id="@+id/bg" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textSize="88sp" android:fontFamily="sans-serif-light" android:includeFontPadding="false" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="44sp" android:autoSizeMaxTextSize="88sp" android:autoSizeStepGranularity="1sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/arrows_layout" app:layout_constraintTop_toBottomOf="@id/overview_header_bottom" tools:text="6.4" />
+  <LinearLayout android:id="@+id/arrows_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:focusable="true" android:layout_marginStart="12dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/bg" app:layout_constraintBottom_toBottomOf="@id/bg">
+    <ImageView android:id="@+id/arrow" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="@string/trend_arrow" />
+    <TextView android:id="@+id/time_ago" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textAppearance="@style/HealfiLabel" tools:text="2 min ago" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/deltas_layout" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/bg" app:layout_constraintBottom_toBottomOf="parent">
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_last_delta" />
+      <TextView android:id="@+id/delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
     </LinearLayout>
-    <ImageView android:id="@+id/simple_mode" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="8dp" android:contentDescription="@string/simple_mode_enabled" app:srcCompat="@drawable/child_face" app:layout_constraintEnd_toStartOf="@id/aps_mode_layout" app:layout_constraintTop_toTopOf="parent" />
-    <ImageView android:id="@+id/bg_quality" android:layout_width="48dp" android:layout_height="48dp" android:padding="10dp" android:contentDescription="@string/a11y_bg_quality" android:visibility="gone" app:layout_constraintEnd_toStartOf="@id/simple_mode" app:layout_constraintTop_toTopOf="parent" />
-    <androidx.constraintlayout.widget.Barrier android:id="@+id/overview_header_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="bottom" app:constraint_referenced_ids="glucose_heading,aps_mode_layout,bg_quality,simple_mode" />
-    <TextView android:id="@+id/bg" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textSize="88sp" android:fontFamily="sans-serif-light" android:includeFontPadding="false" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="44sp" android:autoSizeMaxTextSize="88sp" android:autoSizeStepGranularity="1sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/arrows_layout" app:layout_constraintTop_toBottomOf="@id/overview_header_bottom" tools:text="6.4" />
-    <LinearLayout android:id="@+id/arrows_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:focusable="true" android:layout_marginStart="12dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/bg" app:layout_constraintBottom_toBottomOf="@id/bg">
-        <ImageView android:id="@+id/arrow" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="@string/trend_arrow" />
-        <TextView android:id="@+id/time_ago" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textAppearance="@style/HealfiLabel" tools:text="2 min ago" />
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ15" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_fifteen_minute_delta" />
+      <TextView android:id="@+id/avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/deltas_layout" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/bg" app:layout_constraintBottom_toBottomOf="parent">
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_last_delta" />
-            <TextView android:id="@+id/delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ15" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_fifteen_minute_delta" />
-            <TextView android:id="@+id/avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
-        </LinearLayout>
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ40" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_forty_minute_delta" />
-            <TextView android:id="@+id/long_avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
-        </LinearLayout>
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="horizontal" android:gravity="start|center_vertical" android:focusable="true">
+      <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="6dp" android:text="Δ40" android:textAppearance="@style/HealfiLabel" android:contentDescription="@string/overview_forty_minute_delta" />
+      <TextView android:id="@+id/long_avg_delta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:textColor="@color/healfi_ink" />
     </LinearLayout>
-    <TextView android:id="@+id/delta_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
-    <LinearLayout android:id="@+id/time_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
-        <TextView android:id="@+id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:id="@+id/time_ago_short" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+  </LinearLayout>
+  <TextView android:id="@+id/delta_large" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+  <LinearLayout android:id="@+id/time_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone">
+    <TextView android:id="@+id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:id="@+id/time_ago_short" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/iob_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_active_insulin" android:textAppearance="@style/HealfiLabel" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/iob_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_active_insulin" android:textAppearance="@style/HealfiLabel" />
-        </LinearLayout>
-        <TextView android:id="@+id/iob" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:maxLines="4" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+    <TextView android:id="@+id/iob" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/cob_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <ImageView android:id="@+id/carbs_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_carbs_on_board" android:background="@drawable/anim_carbs" />
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_carbs_on_board" android:textAppearance="@style/HealfiLabel" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/cob_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <ImageView android:id="@+id/carbs_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_carbs_on_board" android:background="@drawable/anim_carbs" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_carbs_on_board" android:textAppearance="@style/HealfiLabel" />
-        </LinearLayout>
-        <TextView android:id="@+id/cob" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:maxLines="4" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+    <TextView android:id="@+id/cob" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/basal_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <ImageView android:id="@+id/base_basal_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_hourly_basal" />
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_hourly_basal" android:textAppearance="@style/HealfiLabel" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/basal_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <ImageView android:id="@+id/base_basal_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_hourly_basal" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_hourly_basal" android:textAppearance="@style/HealfiLabel" />
-        </LinearLayout>
-        <TextView android:id="@+id/base_basal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:maxLines="4" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+    <TextView android:id="@+id/base_basal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/extended_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/extended_bolus" android:textAppearance="@style/HealfiLabel" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/extended_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/extended_bolus" android:textAppearance="@style/HealfiLabel" />
-        </LinearLayout>
-        <TextView android:id="@+id/extended_bolus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:maxLines="4" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+    <TextView android:id="@+id/extended_bolus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/as_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+      <ImageView android:id="@+id/sensitivity_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_sensitivity" />
+      <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_sensitivity" android:textAppearance="@style/HealfiLabel" />
     </LinearLayout>
-    <LinearLayout android:id="@+id/as_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:minHeight="96dp" android:background="?attr/selectableItemBackground" android:visibility="gone">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <ImageView android:id="@+id/sensitivity_icon" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="6dp" android:contentDescription="@string/healfi_sensitivity" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_sensitivity" android:textAppearance="@style/HealfiLabel" />
-        </LinearLayout>
-        <TextView android:id="@+id/sensitivity" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:maxLines="4" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
-        <TextView android:id="@+id/variable_sensitivity" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" />
-    </LinearLayout>
-    <TextView android:id="@+id/version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:visibility="gone" />
-    <androidx.constraintlayout.helper.widget.Flow android:id="@+id/overview_metrics" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+    <TextView android:id="@+id/sensitivity" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textAppearance="@style/HealfiValue" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="14sp" android:autoSizeMaxTextSize="22sp" android:autoSizeStepGranularity="1sp" />
+    <TextView android:id="@+id/variable_sensitivity" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" />
+  </LinearLayout>
+  <TextView android:id="@+id/version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/HealfiLabel" android:visibility="gone" />
+  <androidx.constraintlayout.helper.widget.Flow android:id="@+id/overview_metrics" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

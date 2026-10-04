@@ -218,6 +218,16 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         moveMetric(binding.infoLayout.cobLayout, R.id.healfi_cob_card)
         moveMetric(binding.infoLayout.basalLayout, R.id.healfi_basal_card)
 
+        val metrics = binding.root.findViewById<LinearLayout>(R.id.healfi_primary_metrics)
+        if (resources.configuration.fontScale >= 1.3f || resources.configuration.screenWidthDp < 340) {
+            metrics.orientation = LinearLayout.VERTICAL
+            for (index in 0 until metrics.childCount) {
+                metrics.getChildAt(index).layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+                    if (index > 0) it.topMargin = rh.dpToPx(8)
+                }
+            }
+        }
+
         val advanced = binding.root.findViewById<LinearLayout>(R.id.healfi_advanced_metrics)
         for (metric in listOf(binding.infoLayout.asLayout, binding.infoLayout.extendedLayout)) {
             (metric.parent as ViewGroup).removeView(metric)
@@ -1071,6 +1081,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             cannulaOrPatch.setImageResource(if (isPatchPump) app.aaps.core.objects.R.drawable.ic_patch_pump_outline else R.drawable.ic_cp_age_cannula)
             cannulaOrPatch.contentDescription = rh.gs(if (isPatchPump) R.string.statuslights_patch_pump_age else R.string.statuslights_cannula_age)
             insulinAge.visibility = isPatchPump.not().toVisibility()
+            if (usesHealfiOverview) binding.root.findViewById<View>(R.id.healfi_insulin_age_row).visibility = insulinAge.visibility
             batteryLayout.visibility = (!isPatchPump || pump.pumpDescription.useHardwareLink).toVisibility()
             pbAge.visibility = (pump.pumpDescription.isBatteryReplaceable || pump.isBatteryChangeLoggingEnabled()).toVisibility()
             val useBatteryLevel = (pump.model() == PumpType.OMNIPOD_EROS)

@@ -10,4 +10,5 @@
     <color name="healfi_accent_surface">#EEF4FF</color>
     <!-- This darker blue keeps small white action labels readable. -->
     <color name="healfi_primary_background">#346BE5</color>
+    <color name="healfi_link">#346BE5</color>
 </resources>

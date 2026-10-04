@@ -35,7 +35,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:textAllCaps="false"
-            android:textColor="@color/healfi_accent"
+            android:textColor="@color/healfi_link"
             android:textSize="13sp" />
 
         <ImageButton

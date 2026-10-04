@@ -8,4 +8,5 @@
     <color name="healfi_accent">#80AEFF</color>
     <color name="healfi_accent_surface">#223149</color>
     <color name="healfi_primary_background">#346BE5</color>
+    <color name="healfi_link">#80AEFF</color>
 </resources>

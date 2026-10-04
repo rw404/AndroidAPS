@@ -1,178 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/status_lights_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingStart="12dp"
-    android:paddingEnd="12dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    app:alignContent="stretch"
-    app:alignItems="stretch"
-    app:flexDirection="row"
-    app:flexWrap="wrap"
-    app:justifyContent="flex_start">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="132dp"
-        android:minHeight="64dp"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_flexBasisPercent="50%"
-        app:layout_flexGrow="1">
-
-        <TextView
-            style="@style/HealfiLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/healfi_reservoir" />
-
-        <TextView
-            android:id="@+id/reservoir_level"
-            style="@style/HealfiValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="17sp"
-            tools:text="140 U" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/HealfiLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/healfi_insulin_age"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/insulin_age"
-                style="@style/HealfiLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textSize="11sp"
-                tools:text="1d 12h" />
-
-        </LinearLayout>
-
+<?xml version='1.0' encoding='utf-8'?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/status_lights_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp" app:alignContent="stretch" app:alignItems="stretch" app:flexDirection="row" app:flexWrap="wrap" app:justifyContent="flex_start">
+  <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="132dp" android:minHeight="64dp" android:orientation="vertical" android:padding="8dp" app:layout_flexBasisPercent="50%" app:layout_flexGrow="1">
+    <TextView style="@style/HealfiLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_reservoir" />
+    <TextView android:id="@+id/reservoir_level" style="@style/HealfiValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textSize="17sp" tools:text="140 U" />
+    <com.google.android.flexbox.FlexboxLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:id="@+id/healfi_insulin_age_row" app:flexWrap="wrap">
+      <TextView style="@style/HealfiLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/healfi_insulin_age" android:textSize="11sp" />
+      <TextView android:id="@+id/insulin_age" style="@style/HealfiLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:textSize="11sp" tools:text="1d 12h" />
+    </com.google.android.flexbox.FlexboxLayout>
+  </LinearLayout>
+  <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="132dp" android:minHeight="64dp" android:orientation="vertical" android:padding="8dp" app:layout_flexBasisPercent="50%" app:layout_flexGrow="1">
+    <TextView style="@style/HealfiLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_sensor" />
+    <TextView android:id="@+id/sensor_age" style="@style/HealfiValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textSize="17sp" tools:text="5d 2h" />
+  </LinearLayout>
+  <LinearLayout android:id="@+id/battery_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="132dp" android:minHeight="64dp" android:orientation="vertical" android:padding="8dp" app:layout_flexBasisPercent="50%" app:layout_flexGrow="1">
+    <TextView style="@style/HealfiLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/healfi_pump_battery" />
+    <TextView android:id="@+id/pb_level" style="@style/HealfiValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textSize="17sp" tools:text="80%" />
+    <TextView android:id="@+id/pb_age" style="@style/HealfiLabel" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/value_unavailable_short" android:textSize="11sp" tools:text="3d 8h" />
+  </LinearLayout>
+  <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="132dp" android:minHeight="64dp" android:orientation="vertical" android:padding="8dp" app:layout_flexBasisPercent="50%" app:layout_flexGrow="1">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+      <TextView style="@style/HealfiLabel" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/healfi_cannula" />
+      <ImageView android:id="@+id/cannula_or_patch" android:layout_width="18dp" android:layout_height="18dp" android:layout_marginStart="4dp" android:contentDescription="@string/statuslights_cannula_age" app:srcCompat="@drawable/ic_cp_age_cannula" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="132dp"
-        android:minHeight="64dp"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_flexBasisPercent="50%"
-        app:layout_flexGrow="1">
-
-        <TextView
-            style="@style/HealfiLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/healfi_sensor" />
-
-        <TextView
-            android:id="@+id/sensor_age"
-            style="@style/HealfiValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="17sp"
-            tools:text="5d 2h" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/battery_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="132dp"
-        android:minHeight="64dp"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_flexBasisPercent="50%"
-        app:layout_flexGrow="1">
-
-        <TextView
-            style="@style/HealfiLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/healfi_pump_battery" />
-
-        <TextView
-            android:id="@+id/pb_level"
-            style="@style/HealfiValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="17sp"
-            tools:text="80%" />
-
-        <TextView
-            android:id="@+id/pb_age"
-            style="@style/HealfiLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/value_unavailable_short"
-            android:textSize="11sp"
-            tools:text="3d 8h" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="132dp"
-        android:minHeight="64dp"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_flexBasisPercent="50%"
-        app:layout_flexGrow="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/HealfiLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/healfi_cannula" />
-
-            <ImageView
-                android:id="@+id/cannula_or_patch"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="4dp"
-                android:contentDescription="@string/statuslights_cannula_age"
-                app:srcCompat="@drawable/ic_cp_age_cannula" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/cannula_age"
-            style="@style/HealfiValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="17sp"
-            tools:text="1d 12h" />
-
-    </LinearLayout>
-
+    <TextView android:id="@+id/cannula_age" style="@style/HealfiValue" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:textSize="17sp" tools:text="1d 12h" />
+  </LinearLayout>
 </com.google.android.flexbox.FlexboxLayout>
