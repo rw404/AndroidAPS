@@ -426,7 +426,7 @@
     "baselineCommit": "66dcf66c9f5925155505c5acb1433a62d0fe3041",
     "productionCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
     "unchangedClinicalDirectories": [
-      "implementation/src/main/kotlin/app/aaps/implementation/wizard",
+      "core/objects/src/main/kotlin/app/aaps/core/objects/wizard",
       "implementation/src/main/kotlin/app/aaps/implementation/queue",
       "pump/medtronic",
       "pump/rileylink",
