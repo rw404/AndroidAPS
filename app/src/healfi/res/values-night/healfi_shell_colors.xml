@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="healfi_shell_background">#0F141B</color>
+    <color name="healfi_shell_surface">#171F2B</color>
+    <color name="healfi_shell_ink">#EDF3FA</color>
+    <color name="healfi_shell_muted">#A1AFC1</color>
+    <color name="healfi_shell_accent">#7FABFF</color>
+    <color name="healfi_shell_border">#283243</color>
+    <color name="healfi_shell_ripple">#1F7FABFF</color>
+    <bool name="healfi_shell_light_system_bars">false</bool>
+</resources>

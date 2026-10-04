@@ -117,7 +117,8 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(config.FLAVOR == "healfi")
+        if (config.FLAVOR == "healfi") supportActionBar?.title = rh.gs(R.string.app_name)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.mainDrawerLayout, R.string.open_navigation, R.string.close_navigation).also {
@@ -405,7 +406,8 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
         if (preferences.get(BooleanKey.OverviewShortTabTitles)) {
             binding.tabsNormal.visibility = View.GONE
             binding.tabsCompact.visibility = View.VISIBLE
-            binding.toolbar.layoutParams = LinearLayout.LayoutParams(Toolbar.LayoutParams.MATCH_PARENT, resources.getDimension(app.aaps.core.ui.R.dimen.compact_height).toInt())
+            if (config.FLAVOR != "healfi")
+                binding.toolbar.layoutParams = LinearLayout.LayoutParams(Toolbar.LayoutParams.MATCH_PARENT, resources.getDimension(app.aaps.core.ui.R.dimen.compact_height).toInt())
             TabLayoutMediator(binding.tabsCompact, binding.mainPager) { tab, position ->
                 tab.text = (binding.mainPager.adapter as TabPageAdapter).getPluginAt(position).nameShort
             }.attach()
@@ -413,7 +415,7 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
             binding.tabsNormal.visibility = View.VISIBLE
             binding.tabsCompact.visibility = View.GONE
             val typedValue = TypedValue()
-            if (theme.resolveAttribute(android.R.attr.actionBarSize, typedValue, true)) {
+            if (config.FLAVOR != "healfi" && theme.resolveAttribute(android.R.attr.actionBarSize, typedValue, true)) {
                 binding.toolbar.layoutParams = LinearLayout.LayoutParams(
                     Toolbar.LayoutParams.MATCH_PARENT,
                     TypedValue.complexToDimensionPixelSize(typedValue.data, resources.displayMetrics)

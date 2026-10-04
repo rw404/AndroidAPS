@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/graphs_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            style="@style/HealfiSectionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/healfi_glucose_history" />
+
+        <Button
+            android:id="@+id/scale_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="64dp"
+            android:minHeight="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/a11y_graph_scale"
+            android:fontFamily="sans-serif-medium"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textAllCaps="false"
+            android:textColor="@color/healfi_accent"
+            android:textSize="13sp" />
+
+        <ImageButton
+            android:id="@+id/chart_menu_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/chart_menu"
+            android:padding="13dp"
+            app:srcCompat="@drawable/healfi_ic_chart_settings"
+            app:tint="@color/healfi_muted" />
+
+    </LinearLayout>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/bg_graph"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/a11y_graph" />
+
+    <LinearLayout
+        android:id="@+id/secondary_graphs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_overview_today">Today</string>
+    <string name="healfi_glucose">Glucose</string>
+    <string name="healfi_active_insulin">Active insulin</string>
+    <string name="healfi_carbs_on_board">Active carbs</string>
+    <string name="healfi_delivery">Insulin delivery</string>
+    <string name="healfi_hourly_basal">Basal rate</string>
+    <string name="healfi_sensitivity">Sensitivity</string>
+    <string name="healfi_pump_status">Pump</string>
+    <string name="healfi_profile">Profile</string>
+    <string name="healfi_target">Target</string>
+    <string name="healfi_glucose_history">Glucose history</string>
+    <string name="healfi_more_controls">More controls</string>
+    <string name="healfi_reservoir">Reservoir</string>
+    <string name="healfi_sensor">Sensor</string>
+    <string name="healfi_pump_battery">Pump battery</string>
+    <string name="healfi_cannula">Cannula</string>
+    <string name="healfi_insulin_age">Insulin age</string>
+    <string name="healfi_controls_expanded">Additional controls expanded</string>
+    <string name="healfi_controls_collapsed">Additional controls collapsed</string>
+</resources>

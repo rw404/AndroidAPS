@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="healfi_overview_today">Сегодня</string>
+    <string name="healfi_glucose">Глюкоза</string>
+    <string name="healfi_active_insulin">Активный инсулин</string>
+    <string name="healfi_carbs_on_board">Активные углеводы</string>
+    <string name="healfi_delivery">Подача инсулина</string>
+    <string name="healfi_hourly_basal">Базальная скорость</string>
+    <string name="healfi_sensitivity">Чувствительность</string>
+    <string name="healfi_pump_status">Помпа</string>
+    <string name="healfi_profile">Профиль</string>
+    <string name="healfi_target">Цель</string>
+    <string name="healfi_glucose_history">История глюкозы</string>
+    <string name="healfi_more_controls">Другие действия</string>
+    <string name="healfi_reservoir">Резервуар</string>
+    <string name="healfi_sensor">Сенсор</string>
+    <string name="healfi_pump_battery">Батарея помпы</string>
+    <string name="healfi_cannula">Канюля</string>
+    <string name="healfi_insulin_age">Инсулин</string>
+    <string name="healfi_controls_expanded">Дополнительные действия открыты</string>
+    <string name="healfi_controls_collapsed">Дополнительные действия скрыты</string>
+</resources>

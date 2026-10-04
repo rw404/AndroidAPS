@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dedicated overview palette. Semantic alert colors remain in the app theme. -->
+    <color name="healfi_canvas">#F7F8FA</color>
+    <color name="healfi_surface">#FFFFFF</color>
+    <color name="healfi_ink">#192331</color>
+    <color name="healfi_muted">#657184</color>
+    <color name="healfi_stroke">#EBEEF3</color>
+    <color name="healfi_accent">#4285F4</color>
+    <color name="healfi_accent_surface">#EEF4FF</color>
+    <!-- This darker blue keeps small white action labels readable. -->
+    <color name="healfi_primary_background">#346BE5</color>
+</resources>

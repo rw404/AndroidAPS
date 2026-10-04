@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/healfi_shell_background"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/healfi_shell_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="-0.02"
+            android:text="@string/app_name"
+            android:textColor="@color/healfi_shell_ink"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/loading"
+            android:textColor="@color/healfi_shell_muted"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/healfi_shell_surface"
+        android:elevation="0dp"
+        android:minHeight="56dp"
+        android:theme="@style/healfi_shell_toolbar_theme"
+        app:contentInsetEnd="12dp"
+        app:contentInsetEndWithActions="8dp"
+        app:contentInsetStart="20dp"
+        app:contentInsetStartWithNavigation="16dp"
+        app:navigationIconTint="@color/healfi_shell_ink"
+        app:title="@string/app_name"
+        app:titleTextAppearance="@style/healfi_shell_toolbar_title"
+        app:titleTextColor="@color/healfi_shell_ink" />
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/main_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/healfi_shell_background">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/main_navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/healfi_shell_surface"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            app:itemBackground="?attr/selectableItemBackground"
+            app:itemHorizontalPadding="20dp"
+            app:itemIconSize="20dp"
+            app:itemIconTint="@color/healfi_shell_muted"
+            app:itemTextAppearance="@style/healfi_shell_drawer_text"
+            app:itemTextColor="@color/healfi_shell_ink"
+            app:itemVerticalPadding="12dp" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/healfi_shell_border"
+        android:importantForAccessibility="no" />
+
+    <!-- Keep the native plugin pager and both title modes, in a fixed bottom row. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/healfi_shell_surface">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_normal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/healfi_shell_accent"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabMinWidth="80dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="20dp"
+            app:tabPaddingStart="20dp"
+            app:tabRippleColor="@color/healfi_shell_ripple"
+            app:tabSelectedTextColor="@color/healfi_shell_ink"
+            app:tabTextAppearance="@style/healfi_shell_tab_text"
+            app:tabTextColor="@color/healfi_shell_muted" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_compact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/healfi_shell_accent"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabMinWidth="64dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="16dp"
+            app:tabPaddingStart="16dp"
+            app:tabRippleColor="@color/healfi_shell_ripple"
+            app:tabSelectedTextColor="@color/healfi_shell_ink"
+            app:tabTextAppearance="@style/healfi_shell_tab_text"
+            app:tabTextColor="@color/healfi_shell_muted" />
+
+    </FrameLayout>
+
+</LinearLayout>

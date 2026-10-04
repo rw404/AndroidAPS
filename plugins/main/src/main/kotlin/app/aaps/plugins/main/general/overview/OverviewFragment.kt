@@ -11,6 +11,7 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
@@ -20,10 +21,13 @@ import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.text.toSpanned
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import app.aaps.core.data.configuration.Constants
 import app.aaps.core.data.model.GlucoseUnit
 import app.aaps.core.data.model.RM
@@ -184,10 +188,71 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
     private val binding get() = _binding!!
 
     //@SuppressLint("NewApi")
+    private val usesHealfiOverview: Boolean get() = config.FLAVOR == "healfi"
+    private var healfiMoreExpanded = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        OverviewFragmentBinding.inflate(inflater, container, false).also {
+        (if (usesHealfiOverview)
+            OverviewFragmentBinding.bind(inflater.inflate(R.layout.healfi_overview_fragment, container, false))
+        else OverviewFragmentBinding.inflate(inflater, container, false)).also {
             _binding = it
+            healfiMoreExpanded = savedInstanceState?.getBoolean("healfi_more_expanded") ?: false
         }.root
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (usesHealfiOverview) outState.putBoolean("healfi_more_expanded", healfiMoreExpanded)
+    }
+
+    private fun configureHealfiOverview() {
+        // Bind the original data views before moving them: all live updates and
+        // protected click handlers keep the same instances and clinical values.
+        fun moveMetric(metric: LinearLayout, cardId: Int) {
+            (metric.parent as ViewGroup).removeView(metric)
+            binding.root.findViewById<MaterialCardView>(cardId).addView(
+                metric, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            )
+            metric.visibility = View.VISIBLE
+        }
+        moveMetric(binding.infoLayout.iobLayout, R.id.healfi_iob_card)
+        moveMetric(binding.infoLayout.cobLayout, R.id.healfi_cob_card)
+        moveMetric(binding.infoLayout.basalLayout, R.id.healfi_basal_card)
+
+        val advanced = binding.root.findViewById<LinearLayout>(R.id.healfi_advanced_metrics)
+        for (metric in listOf(binding.infoLayout.asLayout, binding.infoLayout.extendedLayout)) {
+            (metric.parent as ViewGroup).removeView(metric)
+            advanced.addView(metric, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
+        }
+        binding.infoLayout.asLayout.visibility = View.VISIBLE
+
+        // Open-loop approval and user automation controls stay directly available.
+        for (action in listOf(binding.buttonsLayout.acceptTempButton, binding.buttonsLayout.userButtonsLayout)) {
+            (action.parent as ViewGroup).removeView(action)
+            binding.innerLayout.addView(action, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        }
+        val secondary = binding.root.findViewById<LinearLayout>(R.id.healfi_secondary_controls)
+        val actions = binding.buttonsLayout.secondaryActionsLayout
+        (actions.parent as ViewGroup).removeView(actions)
+        secondary.addView(actions, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+        val more = binding.root.findViewById<MaterialButton>(R.id.healfi_more_controls)
+        fun updateMore() {
+            secondary.visibility = healfiMoreExpanded.toVisibility()
+            more.isSelected = healfiMoreExpanded
+            more.stateDescription = rh.gs(if (healfiMoreExpanded) R.string.healfi_controls_expanded else R.string.healfi_controls_collapsed)
+        }
+        more.setOnClickListener {
+            healfiMoreExpanded = !healfiMoreExpanded
+            updateMore()
+        }
+        updateMore()
+
+        val version = binding.infoLayout.version
+        (version.parent as ViewGroup).removeView(version)
+        binding.innerLayout.addView(version, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT).also {
+            it.topMargin = rh.dpToPx(12)
+        })
+        version.visibility = View.VISIBLE
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -209,7 +274,8 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
 
         overview.setVersionView(binding.infoLayout.version)
 
-        skinProvider.activeSkin().preProcessLandscapeOverviewLayout(binding, landscape, rh.gb(app.aaps.core.ui.R.bool.isTablet), smallHeight)
+        if (usesHealfiOverview) configureHealfiOverview()
+        else skinProvider.activeSkin().preProcessLandscapeOverviewLayout(binding, landscape, rh.gb(app.aaps.core.ui.R.bool.isTablet), smallHeight)
         binding.nsclientCard.visibility = config.AAPSCLIENT.toVisibility()
 
         binding.notifications.setHasFixedSize(false)
@@ -222,10 +288,11 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             resources.displayMetrics.densityDpi <= 560 -> 70
             else                                       -> 80
         }
+        if (usesHealfiOverview) axisWidth = rh.dpToPx(36)
         binding.graphsLayout.bgGraph.gridLabelRenderer?.gridColor = rh.gac(context, app.aaps.core.ui.R.attr.graphGrid)
         binding.graphsLayout.bgGraph.gridLabelRenderer?.reloadStyles()
         binding.graphsLayout.bgGraph.gridLabelRenderer?.labelVerticalWidth = axisWidth
-        binding.graphsLayout.bgGraph.layoutParams?.height = rh.dpToPx(skinProvider.activeSkin().mainGraphHeight)
+        binding.graphsLayout.bgGraph.layoutParams?.height = rh.dpToPx(if (usesHealfiOverview) { if (landscape) 180 else 220 } else skinProvider.activeSkin().mainGraphHeight)
 
         carbAnimation = binding.infoLayout.carbsIcon.background as AnimationDrawable?
         carbAnimation?.setEnterFadeDuration(1200)
@@ -654,6 +721,14 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 binding.buttonsLayout.insulinButton.backgroundTintList = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonWarningColor))
                 binding.buttonsLayout.insulinButton.iconTint = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor))
                 binding.buttonsLayout.insulinButton.strokeColor = ColorStateList.valueOf(rh.gac(context, app.aaps.core.ui.R.attr.ribbonTextWarningColor))
+            } else if (usesHealfiOverview) {
+                binding.buttonsLayout.insulinButton.apply {
+                    text = rh.gs(R.string.overview_enter_insulin)
+                    setTextColor(Color.WHITE)
+                    backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.healfi_primary_background, null))
+                    iconTint = ColorStateList.valueOf(Color.WHITE)
+                    strokeWidth = 0
+                }
             } else {
                 setRibbon(
                     binding.buttonsLayout.insulinButton,
@@ -838,7 +913,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
 
                 val graph = GraphViewWithCleanup(requireContext())
                 graph.layoutParams =
-                    LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, rh.dpToPx(skinProvider.activeSkin().secondaryGraphHeight)).also { it.setMargins(0, rh.dpToPx(15), 0, rh.dpToPx(10)) }
+                    LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, rh.dpToPx(if (usesHealfiOverview) 120 else skinProvider.activeSkin().secondaryGraphHeight)).also { it.setMargins(0, rh.dpToPx(15), 0, rh.dpToPx(10)) }
                 graph.gridLabelRenderer?.gridColor = rh.gac(context, app.aaps.core.ui.R.attr.graphGrid)
                 graph.gridLabelRenderer?.reloadStyles()
                 graph.gridLabelRenderer?.isHorizontalLabelsVisible = false
@@ -1002,6 +1077,7 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
                 || (pump.model() != PumpType.ACCU_CHEK_COMBO && pump.model() != PumpType.OMNIPOD_DASH)
             pbLevel.visibility = useBatteryLevel.toVisibility()
             statusLightsLayout.visibility = (preferences.get(BooleanKey.OverviewShowStatusLights) || config.AAPSCLIENT).toVisibility()
+            if (usesHealfiOverview) binding.statusCard.visibility = statusLightsLayout.visibility
         }
         statusLightHandler.updateStatusLights(
             binding.statusLightsLayout.cannulaAge,
@@ -1101,8 +1177,17 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
     private fun setRibbon(view: TextView, attrResText: Int, attrResBack: Int, text: String) {
         with(view) {
             setText(text)
-            setBackgroundColor(rh.gac(context, attrResBack))
-            setTextColor(rh.gac(context, attrResText))
+            val neutral = usesHealfiOverview && attrResBack == app.aaps.core.ui.R.attr.ribbonDefaultColor
+            val backgroundColor = if (neutral) resources.getColor(R.color.healfi_surface, null) else rh.gac(context, attrResBack)
+            val textColor = if (neutral) resources.getColor(R.color.healfi_ink, null) else rh.gac(context, attrResText)
+            if (usesHealfiOverview && this !is MaterialButton) {
+                background = GradientDrawable().apply {
+                    cornerRadius = rh.dpToPx(12).toFloat()
+                    setColor(backgroundColor)
+                    if (neutral) setStroke(rh.dpToPx(1), resources.getColor(R.color.healfi_stroke, null))
+                }
+            } else setBackgroundColor(backgroundColor)
+            setTextColor(textColor)
             compoundDrawables[0]?.setTint(rh.gac(context, attrResText))
         }
     }

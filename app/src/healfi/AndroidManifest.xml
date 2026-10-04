@@ -13,6 +13,11 @@
         android:protectionLevel="signature" />
 
     <application>
+        <activity
+            android:name="app.aaps.MainActivity"
+            android:theme="@style/Theme.Healfi.Main"
+            tools:replace="android:theme" />
+
         <receiver
             android:name="app.aaps.plugins.sync.wear.receivers.WearDataReceiver"
             android:enabled="true"
