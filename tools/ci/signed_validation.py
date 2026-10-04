@@ -250,7 +250,8 @@ def verify_healfi_identity(sdk, apk, badging):
     if expected not in permissions or expected not in requested or 'app.aaps.weardata.permission' in permissions + requested:
         raise SystemExit('Healfi Wear permission is not isolated from AAPS.')
     if 'app.healfi.androidaps.fileprovider' not in authorities or any(
-        not authority.startswith('app.healfi.androidaps.') for authority in authorities
+        not (authority.startswith('app.healfi.androidaps.') or authority.endswith('.app.healfi.androidaps'))
+        for authority in authorities
     ):
         raise SystemExit('Healfi provider authorities are not isolated.')
     if any(scheme in ('aaps', 'androidaps') for scheme in schemes):
