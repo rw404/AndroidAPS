@@ -2,7 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- The fallback library manifest has already resolved its placeholders.
+         Remove its legacy permission by name before declaring Healfi's own. -->
+    <uses-permission android:name="app.aaps.weardata.permission" tools:node="remove" />
+    <permission android:name="app.aaps.weardata.permission" tools:node="remove" />
+    <uses-permission android:name="app.healfi.androidaps.weardata.permission" />
+    <permission
+        android:name="app.healfi.androidaps.weardata.permission"
+        android:label="@string/app_name"
+        android:protectionLevel="signature" />
+
     <application>
+        <receiver
+            android:name="app.aaps.plugins.sync.wear.receivers.WearDataReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="app.healfi.androidaps.weardata.permission"
+            tools:node="replace">
+            <intent-filter>
+                <action android:name="app.healfi.androidaps.weardata" />
+            </intent-filter>
+        </receiver>
+
         <!-- Healfi has no Firebase project; startup must not initialize the AAPS project. -->
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
