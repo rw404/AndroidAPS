@@ -1,6 +1,34 @@
 # Android verification
 
-## Update candidate for the existing 3.4.2.6 installation
+## Healfi: separate application
+
+The current candidate is **Healfi**, package `app.healfi.androidaps`, rather than
+an update of `info.nightscout.androidaps`. The [installation guide](../healfi-installation.md)
+explains separate storage, xDrip broadcasts and why two apps must not control the
+same physical pump.
+
+The [local build report](healfi-local-build-2026-10-04.json) records source commit
+`7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`, a successful `healfiDebug` APK build,
+and **572 selected tests with no failures, errors or skips**. These include the
+previous food/profile/radio suites, command-queue tests, two Firebase-absence
+tests and five actual Wear receiver routing tests. The [sanitized JUnit report](healfi-local-build-2026-10-04.xml)
+contains the results. A later verifier-only commit accepts LeakCanary's unique
+package suffix; compiled BuildConfig confirms the APK was built at `7545cba`.
+
+The APK label, package, separate permissions and provider authorities passed.
+The APK v2 signature, ZIP CRC, 16 KiB ZIP alignment, all 18 arm64/x86_64 native
+library load alignments and all 14 bundled food asset hashes passed. Firebase
+initialization and the original app's fixed OAuth callback schemes are absent.
+The debug APK uses the environment's debug certificate, not the Actions key.
+
+GitHub writes now work and the feature branch is published. The existing-key
+`healfiRelease` [Actions run](https://github.com/rw404/AndroidAPS/actions/runs/37212384583)
+uses the same production source commit; its verified public artifact is the
+source of truth for that signed candidate. APK identity checks establish separate
+Android packages; installation alongside AAPS, native rendering, xDrip reception,
+Bluetooth behavior and physical delivery have not been tested on a phone.
+
+## Earlier update candidate for the existing 3.4.2.6 installation
 
 The [local CI test report](android-update-readiness-2026-10-04.json) records **565
 selected tests with no failures, errors or skips** at source commit `edcf1d5`.
@@ -14,10 +42,10 @@ The earlier 542-test APK report below remains tied to its original binary.
 An isolated [signed validation workflow](../../tools/ci/README.md) now uses the
 existing Actions key, verifies its public certificate, and uploads only a uniquely
 named candidate and public reports. It neither uploads to Google Drive nor
-replaces the original APK. On 2026-10-04 both available GitHub write paths returned
-HTTP 403, so the workflow was **not dispatched** and an Actions-signed update
-candidate is **not available** from this session. The complete source patch and
-workflow are ready for a checkout with the required GitHub write access.
+replaces the original APK. The earlier report records HTTP 403 before the Codex
+GitHub connection was completed; that historical access failure no longer
+describes the current session. The current build is the separate Healfi variant
+described above, rather than this earlier AAPS update candidate.
 
 The supplied phone/pump configuration is AAPS 3.4.2.6, OnePlus 15, xDrip+ BG,
 OrangePro (RileyLink), and Medtronic 722 in an existing closed loop. Source
@@ -26,7 +54,7 @@ installed-APK certificate comparison or physical delivery test was available.
 The [722 guide](../medtronic-722-setup.md) describes backup, update identity and
 the limits of a first device check.
 
-## Existing local debug APK
+## Earlier AAPS debug APK
 
 The current native build keeps the two bottom actions visible in all overview skins. “Enter insulin” opens the protected `InsulinDialog`. “Enter carbs” opens the new `FoodEntryDialog`: offline USDA search, local meal-description parsing, local Russian/English OCR and a trained local Food-101 classifier. EAN/UPC recognition is local; the separate Open Food Facts lookup needs network and sends the barcode only. Verified portions enter the existing protected `WizardDialog`. Manual carbohydrate entry inside the food form also opens this calculator, so it recommends insulin from the active loaded profile rather than requiring a manually chosen dose. No recognition result sends a bolus.
 
@@ -51,7 +79,7 @@ The final APK is `AndroidAPS-food-profile-debug.apk`, SHA-256 `43a9c29e696e96364
 
 This APK has the same package and signing certificate as the preceding food APK. The environment debug certificate may differ from another existing AAPS installation. An update requires the same signing key. If signatures differ, apply the source patch and build with the existing key; do not remove a working therapy installation to try this APK. No physical pump or phone was connected, and no insulin delivery was performed. Native rendering, camera lifecycle, notification delivery and Bluetooth behavior still require device verification. The insulin formulas, dosing settings, command queue and Medtronic bolus/profile delivery section are unchanged.
 
-## Reproduce the current build
+## Reproduce the earlier AAPS build
 
 Use JDK 21, Android SDK 36 and Build Tools 35.0.0 from a committed checkout. Dependencies must first be available; the verified run used `--offline` after resolving them.
 

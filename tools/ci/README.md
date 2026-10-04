@@ -8,8 +8,31 @@ The `full` variant still uses `info.nightscout.androidaps`. Dispatch it with the
 It does not access Google Drive, delete previous APKs, create releases or change
 the stable branch's workflow.
 
-After applying the delivered patch to a checkout of the baseline commit, publish
-the feature branch and dispatch the existing registered workflow on that ref:
+## Current build
+
+GitHub REST writes and Actions dispatch work. The feature branch
+`improve/quiet-pump-overview` has been published, and
+[run 37212384583](https://github.com/rw404/AndroidAPS/actions/runs/37212384583)
+is building **healfiRelease** from source commit
+`7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`. At the time of this check the run is
+in progress; a signed release APK is not yet a verified output. Download it only
+after the run succeeds and confirm its source SHA in `validation.json`.
+
+The local **HealfiDebug** APK from the same source commit has passed package,
+signature, bundled-asset and alignment checks, and 572 JVM tests have passed.
+Its package is `app.healfi.androidaps`, so it installs separately from the
+existing AAPS. Physical phone, sensor, radio bridge, pump operation and clinical
+response remain unverified.
+
+Earlier Git push and connected-API attempts returned HTTP 403; those failures
+describe the initial credentials, not the current working REST connection.
+No additional access request is needed for this dispatched build.
+
+## Reproduce the feature branch
+
+For a new checkout, apply the delivered patch to the baseline commit, publish
+the feature branch if needed, and dispatch the existing registered workflow on
+that ref:
 
 ```sh
 git switch -c improve/quiet-pump-overview
@@ -25,12 +48,6 @@ before these commands. A later checkout with overlapping changes requires a
 reviewed rebase instead of blindly applying the patch. Download the artifact only
 from the successful run whose source commit matches the feature branch. No merge
 into the stable branch is needed to build it.
-
-On 2026-10-04 both the workspace Git push and the connected GitHub branch-write
-API returned HTTP 403. Consequently this candidate workflow has been prepared
-locally but has not been dispatched, and no APK signed with the Actions key has
-been produced in this session. Repository-owner rights reported by GitHub do not
-guarantee that the active integration has contents/workflow write permissions.
 
 The workflow tests native food parsing/calculation, profile-based bolus
 calculation, the command queue (including repeated status/SMB/cancellation

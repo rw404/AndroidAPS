@@ -1,0 +1,657 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites tests="572" failures="0" errors="0" skipped="0">
+  <testsuite name="app.aaps.ui.dialogs.FoodEntryCalculationTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:17.842Z" hostname="89637a327f7c" time="0.18" module="ui">
+    <testcase name="unknown carbohydrate convention prevents handoff()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.067" />
+    <testcase name="fiber is not subtracted or added for either known source convention()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.103" />
+    <testcase name="too many parts are rejected and unspecified preparation stays explicitly usable()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.001" />
+    <testcase name="milliliter sources require milliliters and retain portion scaling()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.001" />
+    <testcase name="unknown and per serving denominators are not silently treated as 100 grams()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.0" />
+    <testcase name="unrounded limit violation cannot be hidden by rounding()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.001" />
+    <testcase name="unresolved parts and a selected unadded food prevent partial handoff()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.001" />
+    <testcase name="known zero is valid while unknown is never zero()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.001" />
+    <testcase name="meal is summed before it is rounded once()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.0" />
+    <testcase name="nonfinite negative and oversized inputs are rejected()" classname="app.aaps.ui.dialogs.FoodEntryCalculationTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.dialogs.WizardInputPrefillTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.026Z" hostname="89637a327f7c" time="0.005" module="ui">
+    <testcase name="cleared carbohydrates and notes stay cleared after recreation()" classname="app.aaps.ui.dialogs.WizardInputPrefillTest" time="0.002" />
+    <testcase name="missing saved fields independently fall back to arguments()" classname="app.aaps.ui.dialogs.WizardInputPrefillTest" time="0.001" />
+    <testcase name="dialog without any prefill starts with empty inputs()" classname="app.aaps.ui.dialogs.WizardInputPrefillTest" time="0.0" />
+    <testcase name="new dialog receives the requested food and note()" classname="app.aaps.ui.dialogs.WizardInputPrefillTest" time="0.001" />
+    <testcase name="recreated dialog uses edited values instead of original food arguments()" classname="app.aaps.ui.dialogs.WizardInputPrefillTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.FoodCatalogParserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.033Z" hostname="89637a327f7c" time="0.095" module="ui">
+    <testcase name="missing nutrients on an actual Foundation food stay unknown()" classname="app.aaps.ui.food.FoodCatalogParserTest" time="0.075" />
+    <testcase name="real USDA fixtures retain nutrient source and preparation metadata()" classname="app.aaps.ui.food.FoodCatalogParserTest" time="0.001" />
+    <testcase name="raw and cooked rice remain different foods and values()" classname="app.aaps.ui.food.FoodCatalogParserTest" time="0.002" />
+    <testcase name="source URL identity mismatch and unknown schema are rejected()" classname="app.aaps.ui.food.FoodCatalogParserTest" time="0.007" />
+    <testcase name="invalid or physically impossible gram nutrient is unknown rather than clamped()" classname="app.aaps.ui.food.FoodCatalogParserTest" time="0.008" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.FoodCatalogTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.130Z" hostname="89637a327f7c" time="0.205" module="ui">
+    <testcase name="offline searches load once off caller thread and never query barcode service()" classname="app.aaps.ui.food.FoodCatalogTest" time="0.186" />
+    <testcase name="explicit valid barcodes are cached while descriptions never reach barcode service()" classname="app.aaps.ui.food.FoodCatalogTest" time="0.005" />
+    <testcase name="Russian aliases find real foods without changing original names()" classname="app.aaps.ui.food.FoodCatalogTest" time="0.002" />
+    <testcase name="common inflections and with connector find actual composite names but not excluded ingredients()" classname="app.aaps.ui.food.FoodCatalogTest" time="0.003" />
+    <testcase name="the requested food ranks before another food containing the same ingredient()" classname="app.aaps.ui.food.FoodCatalogTest" time="0.007" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.FoodProductTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.336Z" hostname="89637a327f7c" time="0.003" module="ui">
+    <testcase name="unknown basis serving size and invalid portions cannot produce a total()" classname="app.aaps.ui.food.FoodProductTest" time="0.001" />
+    <testcase name="US total carbohydrate is never silently reduced by fiber()" classname="app.aaps.ui.food.FoodProductTest" time="0.001" />
+    <testcase name="known zero is distinct from missing or invalid carbohydrate()" classname="app.aaps.ui.food.FoodProductTest" time="0.0" />
+    <testcase name="grams and milliliters are not interchangeable()" classname="app.aaps.ui.food.FoodProductTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.MealDescriptionParserTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.340Z" hostname="89637a327f7c" time="0.046" module="ui">
+    <testcase name="empty description has no ready components()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.004" />
+    <testcase name="split conjunction only when each component has its own portion()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.028" />
+    <testcase name="multiple numbers are ambiguous rather than silently added or chosen()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.002" />
+    <testcase name="a weight alone does not identify a food()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="negative zero and scientific portions never become positive quantities()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="multiplication notation requires a measured total instead of silently choosing one portion()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.0" />
+    <testcase name="missing portions remain unknown and no component disappears()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="amount can precede identity and kilograms and liters convert separately()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="attached or Unicode minus is never discarded to infer a positive portion()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="Russian meal separates components and preserves decimal portions()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+    <testcase name="estimated portion needs explicit checking()" classname="app.aaps.ui.food.MealDescriptionParserTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.OpenFoodFactsProductParserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.387Z" hostname="89637a327f7c" time="0.085" module="ui">
+    <testcase name="invalid responses fail without producing guessed nutrient values()" classname="app.aaps.ui.food.OpenFoodFactsProductParserTest" time="0.041" />
+    <testcase name="a different or missing barcode can never prefill another product()" classname="app.aaps.ui.food.OpenFoodFactsProductParserTest" time="0.017" />
+    <testcase name="missing carbohydrate is never replaced by zero()" classname="app.aaps.ui.food.OpenFoodFactsProductParserTest" time="0.024" />
+    <testcase name="actual barcode response preserves values but does not invent label convention or basis()" classname="app.aaps.ui.food.OpenFoodFactsProductParserTest" time="0.002" />
+  </testsuite>
+  <testsuite name="app.aaps.ui.food.recognition.NutritionLabelParserTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:01:18.473Z" hostname="89637a327f7c" time="0.061" module="ui">
+    <testcase name="a split OCR row is supported without consuming protein as carbohydrate()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.024" />
+    <testcase name="garbled digits negative or physically invalid amounts remain unresolved()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.004" />
+    <testcase name="millilitres and serving amounts are not treated as per100 grams()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.002" />
+    <testcase name="a local denominator does not become another numeric carbohydrate candidate()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.002" />
+    <testcase name="explicit zero is valid but absent carbohydrate is never zero()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.002" />
+    <testcase name="inequalities and approximate amounts are not silently turned into exact zero()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="dual nutrition columns and conflicting duplicate amounts need manual resolution()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="English total carbohydrate does not subtract fibre or copy daily value percent()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="available carbohydrate needs an explicit definition()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.0" />
+    <testcase name="Russian product suffix is not mistaken for a per100 preposition()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="Russian label distinguishes carbs from sugars and net package weight()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="fragmented digits or separated negative sign are not dropped from an OCR amount()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.002" />
+    <testcase name="full gram units are recognised and oversized text cannot hide conflicts()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="package weight does not provide a missing nutrition denominator()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+    <testcase name="net carbohydrate is not equated with verified available carbohydrate()" classname="app.aaps.ui.food.recognition.NutritionLabelParserTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.implementation.queue.CommandQueueImplementationTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:02:09.929Z" hostname="89637a327f7c" time="11.043" module="implementation">
+    <testcase name="isUpdateTimeCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="6.932" />
+    <testcase name="isStopCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.024" />
+    <testcase name="sameCustomCommandNotAllowed()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.019" />
+    <testcase name="smbIsRejectedIfABolusIsQueued()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.084" />
+    <testcase name="isSetTbrNotificationCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.018" />
+    <testcase name="repeatedSmbRequestsAreRejectedWhileManualBolusIsQueuedOrPerforming()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.164" />
+    <testcase name="isSetUserOptionsCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.017" />
+    <testcase name="repeatedRecoveryStatusRequestsPreserveQueuedBolusAndCoalesce()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.138" />
+    <testcase name="differentCustomCommandsAllowed()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.037" />
+    <testcase name="isLoadEventsCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.015" />
+    <testcase name="repeatedClearCancelsEachPendingCommandOnceAndDoesNotReplayIt()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.2" />
+    <testcase name="isStarCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.016" />
+    <testcase name="isCustomCommandRunning()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.012" />
+    <testcase name="isDeactivateCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.014" />
+    <testcase name="isLoadTDDsCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.039" />
+    <testcase name="isLoadHistoryCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.011" />
+    <testcase name="callingCancelAllBolusesClearsQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.017" />
+    <testcase name="isProfileSetCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.024" />
+    <testcase name="commandIsPickedUp()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="3.122" />
+    <testcase name="isClearAlarmsCommandInQueue()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.031" />
+    <testcase name="smbIsRejectedIfLastKnownBolusIsOutdated()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.024" />
+    <testcase name="doTests()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.034" />
+    <testcase name="readStatusTwiceIsNotAllowed()" classname="app.aaps.implementation.queue.CommandQueueImplementationTest" time="0.036" />
+  </testsuite>
+  <testsuite name="app.aaps.implementation.utils.fabric.FabricPrivacyImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:02:20.978Z" hostname="89637a327f7c" time="0.147" module="implementation">
+    <testcase name="reportingCallsPreserveLocalErrorLoggingWithoutFirebase()" classname="app.aaps.implementation.utils.fabric.FabricPrivacyImplTest" time="0.142" />
+    <testcase name="unconfiguredFirebaseDoesNotBreakStartupRegardlessOfTelemetryPreference()" classname="app.aaps.implementation.utils.fabric.FabricPrivacyImplTest" time="0.004" />
+  </testsuite>
+  <testsuite name="app.aaps.implementation.wizard.BolusWizardTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:02:21.130Z" hostname="89637a327f7c" time="0.952" module="implementation">
+    <testcase name="calculatingMealRecommendationDoesNotSendTreatmentToPump()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.818" />
+    <testcase name="accountsForBolusAndBasalActiveInsulinWhenEnabled()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.026" />
+    <testcase name="shouldCalculateHigherBolusWhenHighBG()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.015" />
+    <testcase name="usesLoadedProfileCarbRatioAndSensitivityForMealAndGlucoseCorrection()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.016" />
+    <testcase name="doesNotAddScheduledBasalToMealBolusWhenSuperBolusIsOff()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.018" />
+    <testcase name="retainsConfiguredBolusConstraintsOnProfileRecommendation()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.016" />
+    <testcase name="shouldCalculateLowerBolusWhenLowBG()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.024" />
+    <testcase name="shouldCalculateTheSameBolusWhenBGsInRange()" classname="app.aaps.implementation.wizard.BolusWizardTest" time="0.014" />
+  </testsuite>
+  <testsuite name="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:02:46.212Z" hostname="89637a327f7c" time="8.029" module="plugins/sync">
+    <testcase name="healfiIgnoresLegacyAapsDatasetBroadcast()" classname="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" time="7.683" />
+    <testcase name="existingAapsKeepsReceivingLegacyDatasetBroadcast()" classname="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" time="0.235" />
+    <testcase name="healfiAcceptsItsOwnDatasetBroadcast()" classname="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" time="0.036" />
+    <testcase name="existingAapsIgnoresHealfiDatasetBroadcast()" classname="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" time="0.033" />
+    <testcase name="healfiDatasetRouteDoesNotForwardPumpCommands()" classname="app.aaps.plugins.sync.wear.receivers.WearDataReceiverTest" time="0.03" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.MedtronicPumpPluginCommunicationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:03.977Z" hostname="89637a327f7c" time="7.455" module="pump/medtronic">
+    <testcase name="initialization without successful replies retains last successful communication time()" classname="app.aaps.pump.medtronic.MedtronicPumpPluginCommunicationTest" time="7.422" />
+    <testcase name="failed scheduled polls retain last successful communication time()" classname="app.aaps.pump.medtronic.MedtronicPumpPluginCommunicationTest" time="0.03" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.MedtronicCommunicationTimeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:11.437Z" hostname="89637a327f7c" time="0.842" module="pump/medtronic">
+    <testcase name="validated pump response updates actual pump contact and persisted time()" classname="app.aaps.pump.medtronic.comm.MedtronicCommunicationTimeTest" time="0.737" />
+    <testcase name="history timeout wrapper cannot reset contact during post processing()" classname="app.aaps.pump.medtronic.comm.MedtronicCommunicationTimeTest" time="0.069" />
+    <testcase name="radio timeouts during status polling preserve last contact()" classname="app.aaps.pump.medtronic.comm.MedtronicCommunicationTimeTest" time="0.035" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.281Z" hostname="89637a327f7c" time="0.255" module="pump/medtronic">
+    <testcase name="test decodeModel with valid 523 pump()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.02" />
+    <testcase name="test decodeRemainingInsulin with 10 stroke pump()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.018" />
+    <testcase name="test decodeSettings with 522 pump configuration()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.015" />
+    <testcase name="test decodeTime with short data returns null()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.012" />
+    <testcase name="test decodeTime with invalid date returns null()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.013" />
+    <testcase name="test decodeModel with short data returns Unknown()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.012" />
+    <testcase name="test decodeBatteryStatus with low battery()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.019" />
+    <testcase name="test decodeBatteryStatus with only status byte()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.01" />
+    <testcase name="test decodeSettingsLoop for simple configuration()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.01" />
+    <testcase name="test decodeTime with valid pump time()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.011" />
+    <testcase name="test decodeBasalProfile with invalid data returns null()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.026" />
+    <testcase name="test decodeBasalProfile with valid data()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.015" />
+    <testcase name="test decodeSettings with alarm mode silent()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.01" />
+    <testcase name="test decodeModel with valid 554 pump()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.011" />
+    <testcase name="test decodeRemainingInsulin with 40 stroke pump()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.011" />
+    <testcase name="test decodeBatteryStatus with 2-byte voltage()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.008" />
+    <testcase name="test decodeSettings with percent temp basal type()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.009" />
+    <testcase name="test decodeModel with valid 722 pump()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.008" />
+    <testcase name="test decodeBatteryStatus with normal status()" classname="app.aaps.pump.medtronic.comm.MedtronicConverterUTest" time="0.008" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.MedtronicHistoryDataUTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.538Z" hostname="89637a327f7c" time="0.09" module="pump/medtronic">
+    <testcase name="test_1724()" classname="app.aaps.pump.medtronic.comm.MedtronicHistoryDataUTest" time="0.09" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.history.pump.MedtronicPumpHistoryDecoderUTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.631Z" hostname="89637a327f7c" time="0.058" module="pump/medtronic">
+    <testcase name="historyProblem_476_OpossumGit()" classname="app.aaps.pump.medtronic.comm.history.pump.MedtronicPumpHistoryDecoderUTest" time="0.024" />
+    <testcase name="historyProblem_423_duzy78()" classname="app.aaps.pump.medtronic.comm.history.pump.MedtronicPumpHistoryDecoderUTest" time="0.021" />
+    <testcase name="historyProblem_148_amunhateb()" classname="app.aaps.pump.medtronic.comm.history.pump.MedtronicPumpHistoryDecoderUTest" time="0.012" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.history.pump.PumpHistoryEntryUTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.695Z" hostname="89637a327f7c" time="0.017" module="pump/medtronic">
+    <testcase name="decodeBgReceived()" classname="app.aaps.pump.medtronic.comm.history.pump.PumpHistoryEntryUTest" time="0.009" />
+    <testcase name="checkIsAfter()" classname="app.aaps.pump.medtronic.comm.history.pump.PumpHistoryEntryUTest" time="0.007" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.comm.ui.MedtronicUITaskCommunicationTimeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.714Z" hostname="89637a327f7c" time="0.019" module="pump/medtronic">
+    <testcase name="false command result without a radio response preserves last contact()" classname="app.aaps.pump.medtronic.comm.ui.MedtronicUITaskCommunicationTimeTest" time="0.01" />
+    <testcase name="failed status query preserves last contact()" classname="app.aaps.pump.medtronic.comm.ui.MedtronicUITaskCommunicationTimeTest" time="0.009" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.data.MedtronicHistoryDataUTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.734Z" hostname="89637a327f7c" time="0.135" module="pump/medtronic">
+    <testcase name="processBgReceived_WithMgdl()" classname="app.aaps.pump.medtronic.data.MedtronicHistoryDataUTest" time="0.011" />
+    <testcase name="processBgReceived_WithMmol()" classname="app.aaps.pump.medtronic.data.MedtronicHistoryDataUTest" time="0.009" />
+    <testcase name="createTBRProcessList_SpecialCase()" classname="app.aaps.pump.medtronic.data.MedtronicHistoryDataUTest" time="0.063" />
+    <testcase name="createTBRProcessList()" classname="app.aaps.pump.medtronic.data.MedtronicHistoryDataUTest" time="0.051" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.871Z" hostname="89637a327f7c" time="0.073" module="pump/medtronic">
+    <testcase name="test basal profile from history format()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.009" />
+    <testcase name="test getProfilesByHour with complex basal profile()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.008" />
+    <testcase name="test simple basal profile with two rates()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.013" />
+    <testcase name="test empty basal profile with single zero entry()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.007" />
+    <testcase name="test verify accepts valid basal profile()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.017" />
+    <testcase name="test empty basal profile with terminator()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.007" />
+    <testcase name="test basal profile entries are correctly parsed()" classname="app.aaps.pump.medtronic.data.dto.BasalProfileUTest" time="0.007" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:12.946Z" hostname="89637a327f7c" time="0.257" module="pump/medtronic">
+    <testcase name="test BatteryStatusDTO with low status and null voltage()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test TempBasalPair with two byte rate()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test TempBasalPair toString()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test ClockDTO creation and properties()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.009" />
+    <testcase name="test ClockDTO with time difference()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BatteryStatusDTO with all battery status types()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test TempBasalPair with absolute rate from single byte()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.01" />
+    <testcase name="test BasalProfileEntry with half hour interval()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BatteryStatusDTO percent clamped to 1-100 range()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BasalProfileEntry from strokes()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BatteryStatusDTO calculated percent for lithium battery()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BasalProfileEntry with rate and time()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test TempBasalPair from pump response with absolute rate()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.009" />
+    <testcase name="test BasalProfileEntry from byte with odd interval()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BasalProfileEntry time calculation for noon()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test TempBasalPair from pump response with percent rate()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test BatteryStatusDTO calculated percent for alkaline battery()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.006" />
+    <testcase name="test BasalProfileEntry default constructor()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BasalProfileEntry time calculation for midnight()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BolusDTO toString()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.009" />
+    <testcase name="test BatteryStatusDTO with normal status and voltage()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test BolusDTO displayable value formatting()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test TempBasalPair zero TBR detection()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BolusDTO with extended bolus()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test TempBasalPair cancel TBR detection()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test BasalProfileEntry from byte with even interval()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BatteryStatusDTO with None battery type returns default()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test BatteryStatusDTO with null voltage returns default percent()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.009" />
+    <testcase name="test BatteryStatusDTO toString includes all battery types()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test BolusDTO with multiwave bolus()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.008" />
+    <testcase name="test BolusDTO with normal bolus()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+    <testcase name="test TempBasalPair with percent rate()" classname="app.aaps.pump.medtronic.data.dto.MedtronicDTOUTest" time="0.007" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:13.205Z" hostname="89637a327f7c" time="0.248" module="pump/medtronic">
+    <testcase name="test verifyConfiguration with exception returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.05" />
+    <testcase name="test verifyConfiguration with invalid pump type format returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.01" />
+    <testcase name="test verifyConfiguration with non-numeric serial number returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.011" />
+    <testcase name="test verifyConfiguration with all supported pump types()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.014" />
+    <testcase name="test verifyConfiguration with empty pump type returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.014" />
+    <testcase name="test verifyConfiguration sets target frequency correctly()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.011" />
+    <testcase name="test verifyConfiguration clears error description on success()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.009" />
+    <testcase name="test verifyConfiguration with valid configuration returns true()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.009" />
+    <testcase name="722 worldwide configuration uses its own radio frequency()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration with unknown pump type returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration updates max bolus when value changes()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.007" />
+    <testcase name="722 configuration selects the real driver and US radio frequency()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration with pump type containing extra text()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.011" />
+    <testcase name="test verifyConfiguration with empty RileyLink address returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration sets reservoir size based on pump type()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.009" />
+    <testcase name="test verifyConfiguration with valid RileyLink MAC address variations()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.009" />
+    <testcase name="test verifyConfiguration updates max basal when value changes()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration sets show battery level flag()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.009" />
+    <testcase name="test verifyConfiguration with invalid RileyLink MAC address format returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.008" />
+    <testcase name="test verifyConfiguration with all supported battery types()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.011" />
+    <testcase name="test verifyConfiguration with invalid serial number format returns false()" classname="app.aaps.pump.medtronic.service.RileyLinkMedtronicServiceUTest" time="0.007" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:13.455Z" hostname="89637a327f7c" time="0.275" module="pump/medtronic">
+    <testcase name="test getCurrentCommand initially returns null()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.062" />
+    <testcase name="test buildCommandPayload with single parameter()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.009" />
+    <testcase name="test setCurrentCommand with null frame number()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.009" />
+    <testcase name="test getBolusStrokes for 40-stroke pump with medium amount uses scroll rate 2()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test setCurrentCommand with page and frame numbers()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test getBasalProfileFrames with empty data()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test setCurrentCommand can be set to null()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test gsonInstance is properly initialized()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.009" />
+    <testcase name="test buildCommandPayload with no parameters()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.009" />
+    <testcase name="test getBolusStrokes for 40-stroke pump with small amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test settings can be set and retrieved()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test medtronicPumpModel getter()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test medtronicPumpModel setter()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.008" />
+    <testcase name="test getBasalProfileFrames with all zero data()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test getBolusStrokes for 10-stroke pump with larger amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.009" />
+    <testcase name="test setCurrentCommand does not change if same command()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.008" />
+    <testcase name="test setCurrentCommand stores command()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.006" />
+    <testcase name="test getBolusStrokes for 40-stroke pump with large amount uses scroll rate 4()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.008" />
+    <testcase name="test getBasalProfileFrames with small data()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.012" />
+    <testcase name="test getBolusStrokes for 10-stroke pump with small amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.008" />
+    <testcase name="test dismissNotification sends event()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.018" />
+    <testcase name="test getBasalProfileFrames with exactly 64 bytes()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.006" />
+    <testcase name="test getBasalProfileFrames with data requiring two frames()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.006" />
+    <testcase name="test pumpTime can be set and retrieved()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test isModelSet flag can be set and read()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.007" />
+    <testcase name="test buildCommandPayload with multiple parameters()" classname="app.aaps.pump.medtronic.util.MedtronicUtilInstanceUTest" time="0.008" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.medtronic.util.MedtronicUtilUTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:13.732Z" hostname="89637a327f7c" time="0.192" module="pump/medtronic">
+    <testcase name="test getByteArrayFromUnsignedShort with max value()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getBasalStrokes for very small amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.008" />
+    <testcase name="test makeUnsignedShort with signed byte values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test getBasalStrokes for small amount not fixed size()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getByteArrayFromUnsignedShort with zero()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test createByteArray with list()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.009" />
+    <testcase name="test createByteArray with single byte()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.008" />
+    <testcase name="test createByteArray with varargs()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test isSame with identical values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test createByteArray with empty list()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.012" />
+    <testcase name="test getBasalStrokes for small amount fixed size()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getBasalStrokes for larger amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test makeUnsignedShort with zero()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test isSame with negative values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test getBasalStrokes for medium amount()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test isSame with different values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getByteArrayFromUnsignedShort with small value not fixed size()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getByteArrayFromUnsignedShort with small value fixed size()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test getIntervalFromMinutes with half hours()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test isSame with null values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test isSame with mixed sign values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test isSame with very close values within epsilon()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+    <testcase name="test getIntervalFromMinutes with even hours()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test makeUnsignedShort with positive values()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getByteArrayFromUnsignedShort with large value()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.007" />
+    <testcase name="test getIntervalFromMinutes with odd minutes rounds down()" classname="app.aaps.pump.medtronic.util.MedtronicUtilUTest" time="0.006" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.RFSpyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:16.152Z" hostname="89637a327f7c" time="1.329" module="pump/rileylink">
+    <testcase name="testGetFirmwareVersion()" classname="app.aaps.pump.common.hw.rileylink.ble.RFSpyTest" time="1.329" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:17.485Z" hostname="89637a327f7c" time="0.024" module="pump/rileylink">
+    <testcase name="errorCode property is accessible()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.009" />
+    <testcase name="realistic Timeout scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with Interrupted has correct message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with Timeout has correct message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="stack trace is preserved()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="realistic TooShortOrNullResponse scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with CodingErrors has correct message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="realistic CodingErrors scenario with extended text()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception is instance of Exception()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with NoResponse has correct message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with extended text still has correct error message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="different error codes create different exceptions()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="exception with empty extended text()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with TooShortOrNullResponse has correct message()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception can be re-thrown()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="exception without extended text has null extendedErrorText()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.002" />
+    <testcase name="exception with extended text stores it correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="exception can be thrown and caught()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+    <testcase name="exception with long extended text()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.001" />
+    <testcase name="exception can be created with all error types()" classname="app.aaps.pump.common.hw.rileylink.ble.RileyLinkCommunicationExceptionTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:17.511Z" hostname="89637a327f7c" time="0.51" module="pump/rileylink">
+    <testcase name="getRaw with firmware v2 uses 16-bit for delay()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.439" />
+    <testcase name="command with repeat count sends multiple times()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.006" />
+    <testcase name="command with different send and listen channels()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="getRaw firmware v2 structure is correct size()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.004" />
+    <testcase name="getRaw with firmware v2 includes preamble extension()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="getRaw encodes timeout as 4 bytes big-endian()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="realistic pump communication scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.006" />
+    <testcase name="getCommandType returns SendAndListen()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="getRaw with maximum values()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.005" />
+    <testcase name="getRaw with zero values()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="getRaw with firmware v1 uses byte for delay()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.003" />
+    <testcase name="getRaw appends encoded packet data()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.01" />
+    <testcase name="getRaw with null firmware version defaults to v2 format()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.005" />
+    <testcase name="getRaw firmware v1 structure is correct size()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SendAndListenTest" time="0.004" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.025Z" hostname="89637a327f7c" time="0.036" module="pump/rileylink">
+    <testcase name="command type is always first byte()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.006" />
+    <testcase name="FourByteSixByteLocal encoding has value 0x00()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="None and FourByteSixByteLocal have same value but different semantics()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="realistic scenario - set encoding for Medtronic with local encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw returns 2 bytes for Manchester()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="command format is consistent across encoding types()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw returns 2 bytes for FourByteSixByteLocal()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="realistic scenario - disable encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getCommandType returns SetHardwareEncoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="FourByteSixByteRileyLink encoding has value 0x02()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="all encoding types can be set()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw returns 2 bytes for None()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.0" />
+    <testcase name="realistic scenario - set encoding for Medtronic with RileyLink encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="switching between encodings creates different commands()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw returns 2 bytes for FourByteSixByteRileyLink()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="Manchester encoding has value 0x01()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.0" />
+    <testcase name="getRaw with None encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw with Manchester encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="getRaw with FourByteSixByteLocal encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.0" />
+    <testcase name="getRaw with FourByteSixByteRileyLink encoding()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="None encoding has value 0x00()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="realistic scenario - set encoding for Omnipod()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="Manchester and FourByteSixByteRileyLink have different values()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.0" />
+    <testcase name="encoding property is accessible()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+    <testcase name="encoding value is always second byte()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetHardwareEncodingTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.066Z" hostname="89637a327f7c" time="0.052" module="pump/rileylink">
+    <testcase name="realistic scenario - typical preamble extension()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.004" />
+    <testcase name="constructor throws NotImplementedException for firmware v1()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.004" />
+    <testcase name="getRaw returns correct format for large preamble value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="boundary value - one below minimum invalid()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="boundary value - exactly at maximum()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getRaw returns correct format for zero preamble()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getRaw with firmware v2_0()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getRaw with firmware v2_2()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="constructor throws IllegalArgumentException for negative preamble()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getRaw returns correct format for medium preamble value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getCommandType returns SetPreamble()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="constructor accepts preamble value 0()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="getRaw with firmware v3()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="getRaw returns correct format for maximum preamble value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="preamble value 257 encodes correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="works with all v2 and higher firmware versions()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.003" />
+    <testcase name="boundary value - one above maximum invalid()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="getRaw returns correct format for small preamble value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="constructor throws IllegalArgumentException for preamble greater than 0xFFFF()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+    <testcase name="constructor accepts preamble value 0xFFFF()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="preamble value 256 encodes correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.001" />
+    <testcase name="realistic scenario - disable preamble extension()" classname="app.aaps.pump.common.hw.rileylink.ble.command.SetPreambleTest" time="0.002" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.119Z" hostname="89637a327f7c" time="0.031" module="pump/rileylink">
+    <testcase name="getCommandType returns UpdateRegister()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.004" />
+    <testcase name="getRaw with sync0 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with pktctrl1 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with maximum byte value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw with pktctrl0 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="realistic scenario - update frequency register for 916 MHz()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with zero value()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with deviatn register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="realistic scenario - update sync word()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="realistic scenario - update packet length()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw with paTable0 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw with test1 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with test0 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw returns correct format with freq2 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with mdmcfg4 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw returns correct format with freq1 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="realistic scenario - update power amplifier()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with mdmcfg3 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw returns 3 bytes total()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw returns correct format with freq0 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw with mdmcfg2 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="command format is consistent()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="register property is accessible()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with mdmcfg1 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="registerValue property is accessible()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="getRaw with agcctrl2 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+    <testcase name="all registers can be updated()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.0" />
+    <testcase name="getRaw with sync1 register()" classname="app.aaps.pump.common.hw.rileylink.ble.command.UpdateRegisterTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.153Z" hostname="89637a327f7c" time="0.028" module="pump/rileylink">
+    <testcase name="sort handles empty list()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.004" />
+    <testcase name="can set best frequency()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="sort uses frequency as tiebreaker when RSSI is equal with large differences()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="initial state has empty trials list()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="sort orders by average RSSI ascending()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="realistic US pump frequency scan()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="trials list is mutable()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="complete scan workflow()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.002" />
+    <testcase name="initial state has zero dateTime()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.0" />
+    <testcase name="can add multiple trials()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="can set dateTime()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+    <testcase name="initial state has zero best frequency()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.0" />
+    <testcase name="sort handles single trial()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.004" />
+    <testcase name="can add trial to results()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.0" />
+    <testcase name="sort with negative and positive frequencies()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyScanResultsTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.183Z" hostname="89637a327f7c" time="0.028" module="pump/rileylink">
+    <testcase name="calculateAverage handles positive RSSI values()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.002" />
+    <testcase name="complete trial workflow()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="averageRSSI2 property exists and can be set()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="can set frequency()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="can manually set average RSSI()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="initial state has zero successes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="calculateAverage with multiple RSSI values()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="initial state has empty RSSI list()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="success rate calculation()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="calculateAverage does not modify rssiList()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="can set successes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="initial state has zero tries()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage with very strong signals()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="rssi list is mutable()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage handles mixed positive and negative RSSI()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="zero tries avoids division by zero()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="realistic pump frequency trial scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage with single RSSI value()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage with empty list returns -99()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.002" />
+    <testcase name="initial state has zero average RSSI()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage uses absolute values correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="initial state has zero frequency()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+    <testcase name="can set tries()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.001" />
+    <testcase name="calculateAverage with very weak signals()" classname="app.aaps.pump.common.hw.rileylink.ble.data.FrequencyTrialTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" tests="47" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.215Z" hostname="89637a327f7c" time="0.295" module="pump/rileylink">
+    <testcase name="isOK returns true for 0xDD Success()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.053" />
+    <testcase name="toString returns response description for interrupted()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.004" />
+    <testcase name="looksLikeRadioPacket returns false for 2 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.002" />
+    <testcase name="isInvalidParam returns false for other byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="realistic radio packet scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.181" />
+    <testcase name="with returns self for chaining()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasTimeout returns true for 0xaa single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasInterrupted returns true for 0xbb single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="multiple response code checks are mutually exclusive for invalid param()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="looksLikeRadioPacket returns true for many bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="realistic timeout scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.002" />
+    <testcase name="wasInterrupted returns true for 0xbb two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="realistic unknown command scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isOK returns true for 0x01 OldSuccess()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isOK returns false for more than 2 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="looksLikeRadioPacket returns false for empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="realistic invalid param scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasInterrupted returns false for other single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="looksLikeRadioPacket returns true for 3 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="toString returns empty for unknown response code()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="realistic success scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="multiple response code checks are mutually exclusive for success()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="toString returns response description for success()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="getRadioResponse returns RadioResponse for radio packet()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.005" />
+    <testcase name="toString returns response description for old success()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasNoResponseFromRileyLink returns true for empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.002" />
+    <testcase name="wasTimeout returns true for 0xaa two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="multiple response code checks are mutually exclusive for timeout()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasTimeout returns false for other single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="toString returns response description for timeout()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isUnknownCommand returns false for other byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="with sets command and raw data()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="looksLikeRadioPacket returns false for 1 byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="getRadioResponse returns RadioResponse for non-radio packet()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isOK returns true for 0x01 with two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasInterrupted returns false for more than 2 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isInvalidParam returns true for 0x11 single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="multiple response code checks are mutually exclusive for interrupted()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isOK returns true for 0xDD with two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="isUnknownCommand returns true for 0x22 two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="isOK returns false for other codes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.0" />
+    <testcase name="multiple response code checks are mutually exclusive for unknown command()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isUnknownCommand returns true for 0x22 single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasNoResponseFromRileyLink returns false for non-empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="toString returns Radio packet for data longer than 2 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="wasTimeout returns false for more than 2 bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+    <testcase name="isInvalidParam returns true for 0x11 two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RFSpyResponseTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:18.511Z" hostname="89637a327f7c" time="0.922" module="pump/rileylink">
+    <testcase name="getEncoded with FourByteSixByteRileyLink returns packet with CRC()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.047" />
+    <testcase name="radioPacket with single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.001" />
+    <testcase name="getEncoded with unsupported encoding throws NotImplementedException()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.002" />
+    <testcase name="getEncoded with Manchester encoding returns original packet()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.002" />
+    <testcase name="radioPacket with empty data()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.002" />
+    <testcase name="radioPacket with maximum size data()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.001" />
+    <testcase name="getEncoded with FourByteSixByteLocal encodes and adds terminator()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.861" />
+    <testcase name="pkt property returns original data()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioPacketTest" time="0.002" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.434Z" hostname="89637a327f7c" time="0.115" module="pump/rileylink">
+    <testcase name="getPayload returns empty array initially()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.076" />
+    <testcase name="init with empty payload()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.003" />
+    <testcase name="init with null data does nothing()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="init with FourByteSixByteRileyLink returns raw payload()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="init with too short data does nothing()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="with sets command correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.001" />
+    <testcase name="init with FourByteSixByteLocal decodes payload()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.003" />
+    <testcase name="isValid returns false when decoding fails()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.01" />
+    <testcase name="init with firmware v1 parses rssi correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="init handles negative byte values correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="isValid returns true for non-SendAndListen command()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.001" />
+    <testcase name="init with Manchester encoding returns payload correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="init with firmware v2 parses rssi correctly()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+    <testcase name="isValid returns true when CRC matches()" classname="app.aaps.pump.common.hw.rileylink.ble.data.RadioResponseTest" time="0.002" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.553Z" hostname="89637a327f7c" time="0.148" module="pump/rileylink">
+    <testcase name="encode two zero bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode three bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode zero bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="[1] &quot;5555&quot;, &quot;00&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.011" />
+    <testcase name="[2] &quot;555555&quot;, &quot;0000&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="[3] &quot;A96C726996A694D5552CE5&quot;, &quot;A71289865D00BE&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[4] &quot;A96C726996A6566555C655&quot;, &quot;A7128986060015&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[5] &quot;A96C726996A6C655599665&quot;, &quot;A7128986150956&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[6] &quot;A96C726996A668D5552D55&quot;, &quot;A71289868D00B0&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="decode too short data may throw exception()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="decode single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[1] &quot;A7&quot;, &quot;A965&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="[2] &quot;A712&quot;, &quot;A96C72&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[3] &quot;A712A7&quot;, &quot;A96C72A965&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[4] &quot;00&quot;, &quot;5555&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[5] &quot;0000&quot;, &quot;555555&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="[6] &quot;A71289865D00BE&quot;, &quot;A96C726996A694D5552CE5&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="[7] &quot;A7128986060015&quot;, &quot;A96C726996A6566555C655&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[8] &quot;A7128986150956&quot;, &quot;A96C726996A6C655599665&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="[9] &quot;A71289868D00B0&quot;, &quot;A96C726996A668D5552D55&quot;" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode max size pump packet()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="decode three bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="decode empty array returns empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="encode all possible byte values()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode large packet()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="encode then decode returns original()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="encode then decode complex data()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.0" />
+    <testcase name="decode two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode single byte()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="encode two bytes()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.001" />
+    <testcase name="decode with invalid coding should throw exception()" classname="app.aaps.pump.common.hw.rileylink.ble.data.encoding.Encoding4b6bGeoffTest" time="0.003" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.defs.RileyLinkFirmwareVersionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.702Z" hostname="89637a327f7c" time="0.004" module="pump/rileylink">
+    <testcase name="defaultToLowestMajorVersionTest()" classname="app.aaps.pump.common.hw.rileylink.ble.defs.RileyLinkFirmwareVersionTest" time="0.003" />
+    <testcase name="testIsSameVersion()" classname="app.aaps.pump.common.hw.rileylink.ble.defs.RileyLinkFirmwareVersionTest" time="0.0" />
+    <testcase name="getFamilyMembersRecursiveTest()" classname="app.aaps.pump.common.hw.rileylink.ble.defs.RileyLinkFirmwareVersionTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.709Z" hostname="89637a327f7c" time="0.016" module="pump/rileylink">
+    <testcase name="initial state has RESULT_NONE code()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="can overwrite existing value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="initial state has null value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="realistic interrupted scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="can create successful result with value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="realistic timeout scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="can set result code to SUCCESS()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="RESULT_BUSY constant has value 3()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="realistic busy scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="can set result code to BUSY()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="can set result code to TIMEOUT()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="realistic success scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="RESULT_SUCCESS constant has value 1()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="value can be empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="can set result code to INTERRUPTED()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="RESULT_NOT_CONFIGURED constant has value 5()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="RESULT_NONE constant has value 0()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="can overwrite existing result code()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="can create timeout result without value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="can set result code to NOT_CONFIGURED()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="realistic not configured scenario()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="multiple instances are independent()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="RESULT_INTERRUPTED constant has value 4()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="RESULT_TIMEOUT constant has value 2()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+    <testcase name="value can be large array()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.001" />
+    <testcase name="can set value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationResultTest" time="0.0" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.727Z" hostname="89637a327f7c" time="0.222" module="pump/rileylink">
+    <testcase name="multiple operations have independent semaphores()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.103" />
+    <testcase name="value can be null()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operation can be reused after completion()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="gattOperationCompletionCallback can be called()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="semaphore is fair()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operation can store value()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.0" />
+    <testcase name="gatt operation timeout is 22 seconds()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.0" />
+    <testcase name="operation can be marked as interrupted()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operationComplete semaphore blocks when not released()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.101" />
+    <testcase name="value can be empty array()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operationComplete semaphore can be acquired()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operation can be marked as timed out()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operationComplete semaphore can be released()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="execute must be implemented by subclass()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="operation starts with default values()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+    <testcase name="value can be large array()" classname="app.aaps.pump.common.hw.rileylink.ble.operations.BLECommOperationTest" time="0.001" />
+  </testsuite>
+  <testsuite name="app.aaps.pump.common.utils.CRCTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2026-10-04T15:03:19.952Z" hostname="89637a327f7c" time="0.031" module="pump/rileylink">
+    <testcase name="crc8 is deterministic()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 realistic pump message scenario()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="calculate16CCITT of single byte()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of all ones()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT returns 2 bytes()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 with partial length calculation()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8lookup table second entry is 155()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT of null returns valid CRC()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 with zero length returns 0()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 of known values for pump data()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT of large packet()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8lookup table last entry is 123()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of sequential bytes()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of multiple bytes()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT changes with different data()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8lookup table first entry is 0()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT of typical pump packet()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT is deterministic()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT handles negative byte values correctly()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 with length longer than array uses full array()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 handles negative byte values correctly()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 of single non-zero byte()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT of empty array returns initial CRC()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 with specified length shorter than array()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8lookup table has 256 entries()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 matches lookup table for single byte()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="calculate16CCITT realistic packet scenario()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 changes with different data()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of null data returns 0()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of single byte()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+    <testcase name="crc8 of empty array returns 0()" classname="app.aaps.pump.common.utils.CRCTest" time="0.0" />
+    <testcase name="crc8 of all zeros()" classname="app.aaps.pump.common.utils.CRCTest" time="0.001" />
+  </testsuite>
+</testsuites>
