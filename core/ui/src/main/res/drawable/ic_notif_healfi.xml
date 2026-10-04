@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- A white alpha-only mark; the system supplies notification icon colors. -->
+    <group android:pivotX="54" android:pivotY="54" android:scaleX="1.85" android:scaleY="1.85">
+        <path
+            android:fillColor="@android:color/transparent"
+            android:pathData="M38,36 L38,72 M38,54 L70,54 M70,36 L70,72"
+            android:strokeColor="@android:color/white"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:strokeWidth="8" />
+    </group>
+</vector>

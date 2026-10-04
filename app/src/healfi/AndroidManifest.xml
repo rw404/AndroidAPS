@@ -12,10 +12,13 @@
         android:label="@string/app_name"
         android:protectionLevel="signature" />
 
-    <application>
+    <application
+        android:icon="@mipmap/healfi_shell_launcher"
+        android:roundIcon="@mipmap/healfi_shell_launcher_round"
+        tools:replace="android:icon,android:roundIcon">
         <activity
             android:name="app.aaps.MainActivity"
-            android:theme="@style/Theme.Healfi.Main"
+            android:theme="@style/Theme.Healfi.Launcher"
             tools:replace="android:theme" />
 
         <receiver

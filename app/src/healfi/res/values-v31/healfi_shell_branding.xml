@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ reads these framework attributes before the activity starts.
+         No splash-screen library or theme-switch call is required. -->
+    <style name="Theme.Healfi.Launcher" parent="Theme.Healfi.Main">
+        <item name="android:windowSplashScreenBackground">@color/healfi_shell_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/healfi_shell_launcher_foreground</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/healfi_shell_brand_blue</item>
+    </style>
+</resources>

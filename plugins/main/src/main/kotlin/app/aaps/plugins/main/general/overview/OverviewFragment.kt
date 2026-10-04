@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PorterDuff
@@ -16,6 +17,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLongClickListener
@@ -24,6 +26,7 @@ import android.widget.LinearLayout
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.text.toSpanned
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.button.MaterialButton
@@ -262,6 +265,60 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             it.topMargin = rh.dpToPx(12)
         })
         version.visibility = View.VISIBLE
+        configureHealfiAccessibility()
+    }
+
+    private fun configureHealfiAccessibility() {
+        if (!usesHealfiOverview) return
+        val configuration = resources.configuration
+        if (configuration.fontScale < 1.3f) return
+
+        fun stackRows(container: LinearLayout, gapDp: Int) {
+            container.orientation = LinearLayout.VERTICAL
+            for (index in 0 until container.childCount) {
+                container.getChildAt(index).layoutParams = LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+                ).also { if (index > 0) it.topMargin = rh.dpToPx(gapDp) }
+            }
+        }
+
+        // Portrait has no shared hero row. In landscape give both sections the
+        // full available width before laying out the larger glucose number.
+        binding.root.findViewById<LinearLayout>(R.id.healfi_hero_graph_row)?.let { stackRows(it, 20) }
+        stackRows(binding.root.findViewById(R.id.healfi_advanced_metrics), 8)
+
+        val info = binding.infoLayout
+        info.arrowsLayout.orientation = LinearLayout.HORIZONTAL
+        info.arrowsLayout.gravity = Gravity.START or Gravity.CENTER_VERTICAL
+        info.timeAgo.layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f).also {
+            it.marginStart = rh.dpToPx(8)
+        }
+        ConstraintSet().apply {
+            clone(info.root)
+            connect(info.bg.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
+            clear(info.arrowsLayout.id, ConstraintSet.BOTTOM)
+            connect(info.arrowsLayout.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START)
+            connect(info.arrowsLayout.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END)
+            connect(info.arrowsLayout.id, ConstraintSet.TOP, info.bg.id, ConstraintSet.BOTTOM, rh.dpToPx(8))
+            constrainWidth(info.arrowsLayout.id, 0)
+            connect(info.deltasLayout.id, ConstraintSet.TOP, info.arrowsLayout.id, ConstraintSet.BOTTOM, rh.dpToPx(12))
+            applyTo(info.root)
+        }
+        stackRows(info.deltasLayout, 8)
+        for (value in listOf(info.delta, info.avgDelta, info.longAvgDelta)) {
+            value.layoutParams = LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
+            value.maxLines = Int.MAX_VALUE
+        }
+
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT &&
+            configuration.fontScale >= 1.5f && configuration.screenWidthDp < 400
+        ) {
+            stackRows(binding.buttonsLayout.primaryActionsLayout, 8)
+            for (button in listOf(
+                binding.buttonsLayout.insulinButton, binding.buttonsLayout.insulinUnavailableButton,
+                binding.buttonsLayout.mealEntryButton, binding.buttonsLayout.mealUnavailableButton
+            )) button.maxLines = Int.MAX_VALUE
+        }
     }
 
     @SuppressLint("SetTextI18n")
