@@ -26,6 +26,7 @@
     <string name="healfi_state_no_profile">No active profile.</string>
     <string name="healfi_state_no_glucose">No glucose readings received.</string>
     <string name="healfi_state_stale_glucose">Glucose reading is outdated. Check the glucose source.</string>
+    <string name="healfi_state_future_glucose">Glucose reading has a future timestamp. Check the phone clock and glucose source.</string>
     <string name="healfi_state_pump_initializing">Pump is not initialized.</string>
     <string name="healfi_state_pump_suspended">Pump delivery is suspended.</string>
     <string name="healfi_state_loop_disabled">Automatic loop is disabled.</string>

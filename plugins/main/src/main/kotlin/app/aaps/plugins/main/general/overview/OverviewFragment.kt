@@ -1157,7 +1157,9 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
             detail.setTextColor(stateTextColor)
 
             val dataMessages = mutableListOf<String>()
-            if (lastBgData.lastBg() == null) dataMessages += rh.gs(R.string.healfi_state_no_glucose)
+            val lastReading = lastBgData.lastBg()
+            if (lastReading == null) dataMessages += rh.gs(R.string.healfi_state_no_glucose)
+            else if (lastReading.timestamp > dateUtil.now() + 60_000L) dataMessages += rh.gs(R.string.healfi_state_future_glucose)
             else if (!lastBgData.isActualBg()) dataMessages += rh.gs(R.string.healfi_state_stale_glucose)
             if (bgQualityCheck.icon() != 0) {
                 val qualityMessage = bgQualityCheck.message.ifBlank { bgQualityCheck.stateDescription() }

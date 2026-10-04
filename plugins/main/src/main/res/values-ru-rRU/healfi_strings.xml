@@ -26,6 +26,7 @@
     <string name="healfi_state_no_profile">Нет активного профиля.</string>
     <string name="healfi_state_no_glucose">Показания глюкозы ещё не получены.</string>
     <string name="healfi_state_stale_glucose">Показание глюкозы устарело. Проверьте источник глюкозы.</string>
+    <string name="healfi_state_future_glucose">Время показания глюкозы находится в будущем. Проверьте часы телефона и источник глюкозы.</string>
     <string name="healfi_state_pump_initializing">Помпа ещё не инициализирована.</string>
     <string name="healfi_state_pump_suspended">Подача помпы приостановлена.</string>
     <string name="healfi_state_loop_disabled">Автоматический loop отключён.</string>

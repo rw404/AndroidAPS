@@ -376,9 +376,11 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
         for (p in activePlugin.getPluginsList())
             if (p.isEnabled() && p.hasFragment() && p.showInList(p.getType())) {
                 // Add to tabs if visible
+                val isOverview = p.pluginDescription.fragmentClass == "app.aaps.plugins.main.general.overview.OverviewFragment"
                 if (
-                    preferences.simpleMode && p.pluginDescription.simpleModePosition == PluginDescription.Position.TAB ||
-                    !preferences.simpleMode && p.isFragmentVisible()
+                    if (config.FLAVOR == "healfi") isOverview
+                    else preferences.simpleMode && p.pluginDescription.simpleModePosition == PluginDescription.Position.TAB ||
+                        !preferences.simpleMode && p.isFragmentVisible()
                 ) pageAdapter.registerNewFragment(p)
                 // Add to menu if not visible
                 if (
@@ -391,18 +393,22 @@ class MainActivity : DaggerAppCompatActivityWithResult() {
                     if (p.menuIcon != -1) menuItem.setIcon(p.menuIcon)
                     else menuItem.setIcon(app.aaps.core.ui.R.drawable.ic_settings)
                     menuItem.setOnMenuItemClickListener {
-                        startActivity(
-                            Intent(this, SingleFragmentActivity::class.java)
-                                .setAction(this::class.simpleName)
-                                .putExtra("plugin", activePlugin.getPluginsList().indexOf(p))
-                        )
+                        if (config.FLAVOR == "healfi" && isOverview) {
+                            binding.mainPager.currentItem = 0
+                        } else {
+                            startActivity(
+                                Intent(this, SingleFragmentActivity::class.java)
+                                    .setAction(this::class.simpleName)
+                                    .putExtra("plugin", activePlugin.getPluginsList().indexOf(p))
+                            )
+                        }
                         binding.mainDrawerLayout.closeDrawers()
                         true
                     }
                 }
             }
         binding.mainPager.adapter = pageAdapter
-        binding.mainPager.offscreenPageLimit = 8 // This may cause more memory consumption
+        binding.mainPager.offscreenPageLimit = if (config.FLAVOR == "healfi") 1 else 8
 
         if (config.FLAVOR == "healfi") {
             setupHealfiNavigation(pageAdapter)
