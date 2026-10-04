@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-04T11:53:48.839Z",
-  "prototype_sha256": "cec63d11845a71b743fe2e79e72fed9c820c5a8ec3b21d13efdf105ae188acfd",
+  "checked_at": "2026-10-04T15:34:34.813Z",
+  "prototype_sha256": "7cdf7b222b618826fc0d030500155f3ae727ed70c119e13104295a2e1ccaa099",
   "scope": "Offline food-entry HTML concept in Chromium. Synthetic food fixtures and local image preview only; no image recognition, external nutrition lookup, Android rendering, insulin calculation, carb delivery, pump behavior, or persistent treatment recording tested.",
   "checks": [
     "initial food draft and saved demo meals are empty",
