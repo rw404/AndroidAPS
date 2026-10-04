@@ -13,14 +13,19 @@ the stable branch's workflow.
 GitHub REST writes and Actions dispatch work. The feature branch
 `improve/quiet-pump-overview` has been published, and
 [run 37212384583](https://github.com/rw404/AndroidAPS/actions/runs/37212384583)
-is building **healfiRelease** from source commit
-`7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`. At the time of this check the run is
-in progress; a signed release APK is not yet a verified output. Download it only
-after the run succeeds and confirm its source SHA in `validation.json`.
+successfully built and verified **healfiRelease** from source commit
+`7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`. Tests, signing, APK verification,
+private-file cleanup and upload all succeeded. Download the
+[public artifact](https://github.com/rw404/AndroidAPS/actions/runs/37212384583/artifacts/11307448913)
+and confirm its source SHA in `validation.json`.
+The [signed release report](../../docs/verification/healfi-release-build-2026-10-04.json)
+preserves the verified artifact metadata. Its ZIP digest matched GitHub, and
+the downloaded APK passed independent local signature, identity, asset and
+alignment verification.
 
 The local **HealfiDebug** APK from the same source commit has passed package,
 signature, bundled-asset and alignment checks, and 572 JVM tests have passed.
-Its package is `app.healfi.androidaps`, so it installs separately from the
+Both APKs use `app.healfi.androidaps`, so Healfi installs separately from the
 existing AAPS. Physical phone, sensor, radio bridge, pump operation and clinical
 response remain unverified.
 

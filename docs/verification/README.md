@@ -24,9 +24,20 @@ The debug APK uses the environment's debug certificate, not the Actions key.
 GitHub writes now work and the feature branch is published. The existing-key
 `healfiRelease` [Actions run](https://github.com/rw404/AndroidAPS/actions/runs/37212384583)
 uses the same production source commit; its verified public artifact is the
-source of truth for that signed candidate. APK identity checks establish separate
+source of truth for that signed candidate. This run completed successfully:
+tests, signed build, signature/assets/alignment checks, private-file cleanup and
+[artifact upload](https://github.com/rw404/AndroidAPS/actions/runs/37212384583/artifacts/11307448913)
+all passed. APK identity checks establish separate
 Android packages; installation alongside AAPS, native rendering, xDrip reception,
 Bluetooth behavior and physical delivery have not been tested on a phone.
+
+The [signed release report](healfi-release-build-2026-10-04.json) and
+[sanitized JUnit report](healfi-release-build-2026-10-04.xml) preserve that exact
+Actions output. The downloaded artifact ZIP matched GitHub's digest. Independent
+local checks of its APK hash, v2 signature/public certificate, package and provider
+identity, ZIP CRC, 16 KiB alignment, 14 assets, 18 native libraries and 572 test
+results also passed. The signed APK SHA-256 is
+`1bad799037c5e2d20406446f1951535baf09eeb6efabc85745a5433dab02217e`.
 
 ## Earlier update candidate for the existing 3.4.2.6 installation
 

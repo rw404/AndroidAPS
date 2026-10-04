@@ -1,11 +1,12 @@
 # Пуш и Actions для rw404/AndroidAPS
 
 Запись через GitHub REST API работает: ветка `improve/quiet-pump-overview`
-опубликована, подписанная сборка **healfiRelease** запущена в
+опубликована, подписанная сборка **healfiRelease** успешно завершена в
 [Actions № 37212384583](https://github.com/rw404/AndroidAPS/actions/runs/37212384583).
-Исходный коммит — `7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`. На момент
-проверки workflow выполняется; готовый подписанный APK следует брать только из
-успешного запуска с этим source SHA.
+Исходный коммит — `7545cba1bf53ea85f4aa04a7cda2a6b9818d2b70`. Тесты, сборка,
+проверка APK и загрузка артефакта прошли. Готовый подписанный APK находится в
+[артефакте запуска](https://github.com/rw404/AndroidAPS/actions/runs/37212384583/artifacts/11307448913);
+source SHA записан в `validation.json`.
 
 Локальный **HealfiDebug** с package `app.healfi.androidaps` проверен; 572
 программных теста прошли. Он устанавливается отдельно от AAPS. Эти проверки не
