@@ -361,7 +361,9 @@ class WizardDialog : DaggerDialogFragment() {
         val options = binding.root.findViewById<View>(R.id.healfi_wizard_options)
         val toggle = binding.root.findViewById<Button>(R.id.healfi_wizard_options_toggle)
         fun setOptionsExpanded(expanded: Boolean) {
-            val active = binding.carbTimeInput.value != 0.0 || binding.alarm.isChecked || binding.notesLayout.notes.text?.isNotBlank() == true
+            val hasNotes = binding.notesLayout.notes.text?.isNotBlank() == true
+            val active = SafeParse.stringToDouble(binding.carbTimeInput.text) != 0.0 || binding.alarm.isChecked || hasNotes
+            binding.notesLayout.root.visibility = (hasNotes || preferences.get(BooleanKey.OverviewShowNotesInDialogs)).toVisibility()
             val show = expanded || active
             options.visibility = show.toVisibility()
             toggle.isEnabled = !active
@@ -371,7 +373,7 @@ class WizardDialog : DaggerDialogFragment() {
                 else -> R.string.healfi_wizard_options
             })
         }
-        setOptionsExpanded(binding.carbTimeInput.value != 0.0 || binding.alarm.isChecked || binding.notesLayout.notes.text?.isNotBlank() == true)
+        setOptionsExpanded(SafeParse.stringToDouble(binding.carbTimeInput.text) != 0.0 || binding.alarm.isChecked || binding.notesLayout.notes.text?.isNotBlank() == true)
         toggle.setOnClickListener { setOptionsExpanded(options.visibility != View.VISIBLE) }
         val optionsWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
