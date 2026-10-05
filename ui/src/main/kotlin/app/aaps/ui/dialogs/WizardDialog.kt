@@ -408,6 +408,8 @@ class WizardDialog : DaggerDialogFragment() {
         button.textSize = 16f
         button.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
         button.minimumHeight = (56 * density).toInt()
+        button.setSingleLine(false)
+        button.ellipsize = null
         button.maxLines = Int.MAX_VALUE
         button.setPadding((12 * density).toInt(), (12 * density).toInt(), (12 * density).toInt(), (12 * density).toInt())
     }
