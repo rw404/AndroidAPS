@@ -341,16 +341,12 @@ class WizardDialog : DaggerDialogFragment() {
         binding.okcancel.root.setPadding(0, 0, 0, 0)
         styleHealfiAction(binding.okcancel.ok, primary = true)
         styleHealfiAction(binding.okcancel.cancel, primary = false)
-        // Keep both captions whole when the system font is large.
-        binding.okcancel.root.orientation = if (resources.configuration.fontScale >= 1.5f) LinearLayout.VERTICAL else LinearLayout.HORIZONTAL
+        // Give the original actions enough width for complete, readable captions.
+        binding.okcancel.root.orientation = LinearLayout.VERTICAL
         for (button in listOf(binding.okcancel.cancel, binding.okcancel.ok)) {
-            button.layoutParams = if (resources.configuration.fontScale >= 1.5f)
-                LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            else
-                LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
+            button.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
-        if (resources.configuration.fontScale < 1.5f)
-            (binding.okcancel.cancel.layoutParams as LinearLayout.LayoutParams).marginEnd = footerPadding / 2
+        (binding.okcancel.cancel.layoutParams as LinearLayout.LayoutParams).bottomMargin = footerPadding / 2
 
         // The legacy icon-only copies are retained for binding, not as invisible focus stops.
         listOf(binding.bgCheckboxIcon, binding.ttCheckboxIcon, binding.trendCheckboxIcon, binding.iobCheckboxIcon, binding.cobCheckboxIcon).forEach {
