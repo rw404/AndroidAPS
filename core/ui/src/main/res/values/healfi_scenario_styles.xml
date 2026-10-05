@@ -194,7 +194,34 @@
         <item name="android:textColor">@color/healfi_scenario_ink</item>
     </style>
 
-    <style name="HealfiScenario.DialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+    <!-- Material's alert title layout obtains LayoutParams from these widget styles.
+         A TextAppearance is typography only and must not replace the widget parent. -->
+    <style name="HealfiScenario.DialogBody" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textAppearance">@style/HealfiScenario.Body</item>
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_body</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="HealfiScenario.DialogTitle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textAppearance">@style/HealfiScenario.Title</item>
+        <item name="android:textColor">@color/healfi_scenario_ink</item>
+        <item name="android:textSize">@dimen/healfi_scenario_text_title</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <!-- This MaterialAlertDialog overlay supplies the title panel/icon dimensions,
+         button spacer and message defaults required by mtrl_alert_dialog.xml. -->
+    <style name="HealfiScenario.DialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="colorPrimary">@color/healfi_scenario_accent</item>
         <item name="colorOnPrimary">@color/healfi_scenario_on_accent</item>
         <item name="colorSurface">@color/healfi_scenario_surface</item>
@@ -206,8 +233,8 @@
         <item name="dialogTitleColor">@color/healfi_scenario_ink</item>
         <item name="dialogTitleIconTint">@color/healfi_scenario_accent</item>
         <item name="alertDialogStyle">@style/HealfiScenario.AlertDialog</item>
-        <item name="materialAlertDialogBodyTextStyle">@style/HealfiScenario.Body</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/HealfiScenario.Title</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/HealfiScenario.DialogBody</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/HealfiScenario.DialogTitle</item>
         <item name="buttonBarPositiveButtonStyle">@style/HealfiScenario.DialogButton</item>
         <item name="buttonBarNegativeButtonStyle">@style/HealfiScenario.CancelDialogButton</item>
         <item name="buttonBarNeutralButtonStyle">@style/HealfiScenario.CancelDialogButton</item>
