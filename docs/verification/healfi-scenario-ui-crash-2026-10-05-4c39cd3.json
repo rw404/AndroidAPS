@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+  "apkSha256": "01b8b4c638f695027a997f4d9c7c664bba8f22b5b61453f9aab0e19b0473aa03",
+  "variant": "healfiRelease",
+  "nativeLogTime": "10-05 00:24:52.367–00:24:52.371",
+  "package": "app.healfi.androidaps",
+  "runtimeResult": "FAIL",
+  "trigger": "Food primary Continue with checked portion → existing reviewMeal confirmation",
+  "exception": "android.view.InflateException / UnsupportedOperationException: You must supply a layout_width attribute",
+  "layout": "mtrl_alert_dialog / mtrl_alert_dialog_title",
+  "sanitizedLog": {
+    "file": "docs/verification/healfi-scenario-ui-crash-2026-10-05-4c39cd3.txt",
+    "sha256": "6b097300b90460c21d724ef20b7d4e9b18de16ffefe419ce685595b98995f08d",
+    "lines": 44,
+    "selection": "Only contiguous 10-05 00:24:52 AndroidRuntime lines for Healfi PID 6455. Other app/system crashes and surrounding logs excluded.",
+    "sanitization": "PID/TID logcat prefixes removed; Process PID redacted; exception and stack content retained."
+  },
+  "fixedSourceCommit": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "fixScope": "Named core/ui HealfiScenario Material dialog XML styles only; no dose math, queue, confirmation payload or pump commands changed.",
+  "staticRegression": {
+    "beforeResult": "FAIL",
+    "beforeErrorCount": 5,
+    "afterResult": "PASS",
+    "nativeLayoutNodesChecked": 22,
+    "afterErrorCount": 0,
+    "afterSharedStylesSha256": "51b54a882e62031ff345585d548775e5f1b7d5dda35e1924ea9d891088049832",
+    "notAnAndroidRuntimePass": true
+  },
+  "fixedCandidateRuntime": "pending",
+  "physicalPumpConnected": false,
+  "clinicalValidation": false,
+  "databaseAudit": "docs/verification/healfi-scenario-ui-crash-db-2026-10-05-4c39cd3.json",
+  "treatmentRowsAfterCrash": {
+    "boluses": 0,
+    "carbs": 0
+  }
+}

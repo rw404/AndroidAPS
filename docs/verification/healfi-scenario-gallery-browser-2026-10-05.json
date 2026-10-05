@@ -1,0 +1,584 @@
+{
+  "result": "PASS",
+  "gallery": "/workspace/AndroidAPS/design/scenario/android-comparison.html",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "images": [
+        {
+          "src": "before/home.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-fresh.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-stale.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-keyboard-normal.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-results.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-portion105g.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/meal-review.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-24g.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-profile.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-profile-details.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-final-confirmation-cancel.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-metrics.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-final-confirmation-virtual.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-history-virtual.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-settings.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-settings-search.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-home-dark.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-home-font200-dark.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "pageGeometryStates": [
+        {
+          "provenanceDetailsOpen": false,
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "overflowingElements": []
+        },
+        {
+          "provenanceDetailsOpen": true,
+          "clientWidth": 1440,
+          "scrollWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "overflowingElements": []
+        }
+      ]
+    },
+    {
+      "name": "mobile",
+      "width": 360,
+      "height": 800,
+      "images": [
+        {
+          "src": "before/home.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-fresh.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-stale.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-keyboard-normal.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-results.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/food-portion105g.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/meal-review.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-24g.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-profile.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/wizard-profile-details.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-final-confirmation-cancel.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/home-metrics.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-final-confirmation-virtual.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-history-virtual.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-settings.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-settings-search.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-home-dark.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        },
+        {
+          "src": "after/native-home-font200-dark.png",
+          "complete": true,
+          "naturalWidth": 720,
+          "naturalHeight": 1440,
+          "declaredWidth": 720,
+          "declaredHeight": 1440
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "pageGeometryStates": [
+        {
+          "provenanceDetailsOpen": false,
+          "clientWidth": 360,
+          "scrollWidth": 360,
+          "bodyScrollWidth": 360,
+          "overflowingElements": []
+        },
+        {
+          "provenanceDetailsOpen": true,
+          "clientWidth": 360,
+          "scrollWidth": 360,
+          "bodyScrollWidth": 360,
+          "overflowingElements": []
+        }
+      ]
+    }
+  ],
+  "rawCaptures": [
+    {
+      "file": "after/food-keyboard-normal.png",
+      "sha256": "f283737d4deb53e092dc06c1880d9a6d197420363c2be16f57ea211f88184009",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "food-keyboard-normal",
+          "sha256": "f283737d4deb53e092dc06c1880d9a6d197420363c2be16f57ea211f88184009",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/food-portion105g.png",
+      "sha256": "86bf0279d6042b7aa4a1ee3c8a6892ec7f49eca0bba8492d692ffa3ab75164f3",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "food-portion105g",
+          "sha256": "86bf0279d6042b7aa4a1ee3c8a6892ec7f49eca0bba8492d692ffa3ab75164f3",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/food-results.png",
+      "sha256": "8269a6f74fffe612252d0c4a5164c01468170079a07f32af60272b1e74d85f1c",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "food-results",
+          "sha256": "8269a6f74fffe612252d0c4a5164c01468170079a07f32af60272b1e74d85f1c",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/home-fresh.png",
+      "sha256": "949effedb4d40cd71cb37edc40aff9d12e6095b41e1cd6c36dacb0f9ac0c59fd",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "home-fresh",
+          "sha256": "949effedb4d40cd71cb37edc40aff9d12e6095b41e1cd6c36dacb0f9ac0c59fd",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/home-metrics.png",
+      "sha256": "02bbf58c6ae6e928445cf051c1a6ab91732d14eac68c7184ef0e3097ef58d6b4",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "home-metrics",
+          "sha256": "02bbf58c6ae6e928445cf051c1a6ab91732d14eac68c7184ef0e3097ef58d6b4",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/home-stale.png",
+      "sha256": "e2ba71d9ef44e38588b81db62980fab646ec9c1b2a74fa58ded3bc58836f49d5",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "home-stale",
+          "sha256": "e2ba71d9ef44e38588b81db62980fab646ec9c1b2a74fa58ded3bc58836f49d5",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/meal-review.png",
+      "sha256": "0f1d6bffa3fe11c9ff12baeb9210aa82885753ca8ed8c483024b5bad7e4a2129",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "meal-review",
+          "sha256": "0f1d6bffa3fe11c9ff12baeb9210aa82885753ca8ed8c483024b5bad7e4a2129",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-final-confirmation-cancel.png",
+      "sha256": "37df192964ff64fbdcf558778f71224f74bfc7e15983c801b93f0ccc259832db",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-final-confirmation-cancel",
+          "sha256": "37df192964ff64fbdcf558778f71224f74bfc7e15983c801b93f0ccc259832db",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-final-confirmation-virtual.png",
+      "sha256": "843b99e4d2725cc78d594c133e0a2f177708c0150cef222e90a01d70113d6200",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-final-confirmation-virtual",
+          "sha256": "843b99e4d2725cc78d594c133e0a2f177708c0150cef222e90a01d70113d6200",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-history-virtual.png",
+      "sha256": "c314093a287dd1664ecc8fb9086d3452ce7fdd1a749f34ae86eb61e200bdd0c6",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-history-virtual",
+          "sha256": "c314093a287dd1664ecc8fb9086d3452ce7fdd1a749f34ae86eb61e200bdd0c6",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-home-dark.png",
+      "sha256": "2eb4d18394c6dbcafbe767d10294232f44f25016467edb1ac7a3b542c081a330",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-home-dark",
+          "sha256": "2eb4d18394c6dbcafbe767d10294232f44f25016467edb1ac7a3b542c081a330",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-home-font200-dark.png",
+      "sha256": "07b747840bcbeda6eecff248da258f1c0c403b817acbc0f1f54d9af345c9a24c",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-home-font200-dark",
+          "sha256": "07b747840bcbeda6eecff248da258f1c0c403b817acbc0f1f54d9af345c9a24c",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-settings-search.png",
+      "sha256": "2e5e1cb4ca6253a94f3edc3defda69561f002544ef7b15b0045de1078ff7150e",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-settings-search",
+          "sha256": "2e5e1cb4ca6253a94f3edc3defda69561f002544ef7b15b0045de1078ff7150e",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/native-settings.png",
+      "sha256": "8d2e3d014bbcdea302ff0d75a64d091af354c0dd138bd85e2add73dcb5a58273",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "native-settings",
+          "sha256": "8d2e3d014bbcdea302ff0d75a64d091af354c0dd138bd85e2add73dcb5a58273",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/wizard-24g.png",
+      "sha256": "c765b592dfc511425cb17d056276aadc68b2292e478c9c0876f0fb5a7be48494",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "wizard-24g",
+          "sha256": "c765b592dfc511425cb17d056276aadc68b2292e478c9c0876f0fb5a7be48494",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/wizard-profile-details.png",
+      "sha256": "cd16c4bd1358974cfa6507609ea22d5f63558a81c678903e937352515d19c684",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "wizard-profile-details",
+          "sha256": "cd16c4bd1358974cfa6507609ea22d5f63558a81c678903e937352515d19c684",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "after/wizard-profile.png",
+      "sha256": "59a5ccca7397070e3d0a0445059567f50bfa325b789632e87810dfdd6f6610fb",
+      "matchingEvidence": [
+        {
+          "category": "after",
+          "name": "wizard-profile",
+          "sha256": "59a5ccca7397070e3d0a0445059567f50bfa325b789632e87810dfdd6f6610fb",
+          "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+          "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9"
+        }
+      ]
+    },
+    {
+      "file": "before/home.png",
+      "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+      "matchingEvidence": [
+        {
+          "category": "before",
+          "name": "home",
+          "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+          "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+          "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "nativePixelsChanged": false,
+  "scope": "Gallery browser behavior and raw PNG hashes, not Android scenario/device/pump validation.",
+  "expectedAfterSource": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b"
+}

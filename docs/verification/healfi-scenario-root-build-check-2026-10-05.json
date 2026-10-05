@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "runUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37254928995",
+  "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+  "apkBytes": 214959167,
+  "signatureV2": "PASS",
+  "certificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+  "zipAlignment16KiB": "PASS",
+  "zipCRC": "PASS",
+  "separatePackage": "app.healfi.androidaps",
+  "version": "3.4.2.6",
+  "versionCode": 1500,
+  "junitCases": 572,
+  "failuresErrorsSkipped": 0,
+  "scope": "Independent root binary/report checks; no physical phone or pump validation",
+  "result": "PASS"
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "recordedUTC": "2026-10-05T00:17:53.678354+00:00",
+  "sourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+  "sourceTree": "ea854c352847a0d6b6de162df404edbb59a1c0f3",
+  "baselineCommit": "baeced857d7fc841f75556357222bd592fb3b181",
+  "builds": {
+    "release": {
+      "fileName": "Healfi-scenario-4c39cd3-release.apk",
+      "sha256": "01b8b4c638f695027a997f4d9c7c664bba8f22b5b61453f9aab0e19b0473aa03",
+      "bytes": 214958807,
+      "package": "app.healfi.androidaps",
+      "variant": "healfiRelease",
+      "signerCertificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+      "validationReport": "docs/verification/healfi-scenario-release-build-2026-10-05-4c39cd3.json",
+      "junitReport": "docs/verification/healfi-scenario-release-build-2026-10-05-4c39cd3.xml",
+      "totalTests": 572,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "originalFriendlyFileName": "Healfi-scenario-release.apk"
+    },
+    "local": {
+      "fileName": "Healfi-scenario-4c39cd3-debug.apk",
+      "sha256": "d078f973703b6d92ec0da4905c1ebf9f8d1187d6fb296d4301dc3df9bee83137",
+      "bytes": 274699072,
+      "package": "app.healfi.androidaps",
+      "variant": "healfiDebug",
+      "signerCertificateSha256": "13f89e6999abe5598e527153017c41aeffd85aff18da32f26ae11b5707274c98",
+      "validationReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.json",
+      "junitReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.xml",
+      "totalTests": 572,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "originalFriendlyFileName": "Healfi-scenario-debug.apk"
+    }
+  },
+  "independentFileChecks": {
+    "apkBytesAndSha256MatchReports": true,
+    "junitSha256And572CasesMatchReports": true,
+    "junitPropertiesAndCapturedOutputAbsent": true,
+    "actionsZipSha256MatchesGithubDigest": true,
+    "sourceAuditExactFinalCommit": true,
+    "previousSignedHealfiCertificateMatches": true,
+    "installedPhoneCertificateCompared": false
+  },
+  "sourceAudit": {
+    "unchangedTrackedFiles": 585,
+    "auditedMethodsAndRegions": 26,
+    "result": "PASS",
+    "scope": "Source and binding comparison, not clinical or runtime validation.",
+    "recordedSourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+    "summaryStatus": "Historical 4c39cd3 source-review summary. The detailed latest audit concerns 377f and is not substituted for this previous snapshot."
+  },
+  "runtime": {
+    "status": "failed at food review; no completed scenario",
+    "buildReportsAreNotRuntimeEvidence": true,
+    "afterScreenshotsNotCopiedYet": true,
+    "finalCandidateAndroidValidationComplete": false,
+    "physicalPhoneConnected": false,
+    "physicalPumpConnected": false,
+    "clinicalValidation": false,
+    "failureEvidence": "docs/verification/healfi-scenario-ui-crash-2026-10-05-4c39cd3.json"
+  },
+  "beforeScreenshot": {
+    "file": "design/scenario/before/home.png",
+    "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+    "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+    "notNewCapture": true
+  },
+  "status": "previous candidate; native food-review crash detected after these successful builds",
+  "galleryHelperAtSnapshot": {
+    "fileAtSnapshot": "design/scenario/make-android-comparison.py",
+    "sha256AtSnapshot": "e2bd86d6fa1d9d9a7b43f6a4b6e5746fb696fde9ec784e59e400b6c3efc74507",
+    "currentHelperIsDifferent": true,
+    "scope": "Historical local generator metadata only; no completed after gallery was published for this candidate."
+  }
+}

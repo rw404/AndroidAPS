@@ -1,0 +1,35 @@
+{
+  "helperSha256": "b7b07320c1cba9195f4a96e2a18c85ac78bc15ec94c97153984d72f6bc323281",
+  "expectedAfterSource": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "negativeChecks": {
+    "wrong_source": {
+      "rejected": true,
+      "published": false,
+      "reason": "Gallery not generated: After report belongs to a different source; previous candidate screenshots cannot become final evidence"
+    },
+    "wrong_apk": {
+      "rejected": true,
+      "published": false,
+      "reason": "Gallery not generated: Capture APK differs from report APK: after/home-stale.png"
+    },
+    "no_application_evidence": {
+      "rejected": true,
+      "published": false,
+      "reason": "Gallery not generated: After capture has no verified native Healfi evidence: home-stale.png"
+    },
+    "launcher_foreground": {
+      "rejected": true,
+      "published": false,
+      "reason": "Gallery not generated: After capture foreground is outside Healfi: home-stale.png"
+    },
+    "unstable_capture": {
+      "rejected": true,
+      "published": false,
+      "reason": "Gallery not generated: After capture was not verified stable during collection: home-stale.png"
+    }
+  },
+  "previousReport": "docs/verification/healfi-scenario-gallery-guards-2026-10-05-pre-font-labels.json",
+  "previousReportSha256": "9584b5386d9557268f05c9f2e5fd74ba6330932126127ccabcba3c1e43750567",
+  "inputScope": "Snapshot of eight stable exact007d captures for provenance rejection checks; not a complete Android scenario test.",
+  "scope": "Gallery provenance/native-foreground guards only, not Android validation."
+}

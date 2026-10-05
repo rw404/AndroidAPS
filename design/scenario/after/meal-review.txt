@@ -1,0 +1,31 @@
+INSTRUMENTATION_RESULT: matched=0
+INSTRUMENTATION_RESULT: tree=null | android.widget.FrameLayout | null | Rect(18, 48 - 702, 1344) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 208 - 654, 1184) | scroll=false
+null | android.widget.FrameLayout | null | Rect(66, 208 - 654, 1184) | scroll=false
+app.healfi.androidaps:id/action_bar_root | android.widget.FrameLayout | null | Rect(66, 208 - 654, 1184) | scroll=false
+android:id/content | android.widget.FrameLayout | null | Rect(66, 208 - 654, 1184) | scroll=false
+app.healfi.androidaps:id/parentPanel | androidx.appcompat.widget.LinearLayoutCompat | null | Rect(66, 208 - 654, 1184) | scroll=false
+app.healfi.androidaps:id/topPanel | android.widget.LinearLayout | null | Rect(66, 208 - 654, 302) | scroll=false
+app.healfi.androidaps:id/title_template | android.widget.LinearLayout | null | Rect(66, 208 - 654, 286) | scroll=false
+app.healfi.androidaps:id/alertTitle | android.widget.TextView | Проверьте сводку еды | Rect(114, 244 - 499, 286) | scroll=false
+app.healfi.androidaps:id/titleDividerNoCustom | android.view.View | null | Rect(66, 286 - 654, 302) | scroll=false
+app.healfi.androidaps:id/contentPanel | android.widget.FrameLayout | null | Rect(66, 302 - 654, 986) | scroll=false
+app.healfi.androidaps:id/scrollView | android.widget.ScrollView | null | Rect(66, 302 - 654, 986) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 302 - 654, 986) | scroll=false
+android:id/message | android.widget.TextView | Bananas, raw
+Сырой продукт
+105 г
+USDA FoodData Central · usda:173944
+Общие углеводы США, включая клетчатку
+Углеводы: 23,982 г
+
+Рассчитанные углеводы: 23,982 г
+В калькулятор: 24 г
+
+Правила источников сохраняются; клетчатка не пересчитывается. Здесь только откроется калькулятор. Ничего не записывается и не вводится. | Rect(66, 302 - 654, 986) | scroll=false
+app.healfi.androidaps:id/buttonPanel | android.widget.ScrollView | null | Rect(66, 986 - 654, 1184) | scroll=true
+null | android.widget.LinearLayout | null | Rect(66, 986 - 654, 1184) | scroll=false
+android:id/button1 | android.widget.Button | Рассчитать инсулин по профилю | Rect(142, 990 - 638, 1086) | scroll=false
+android:id/button2 | android.widget.Button | Отмена | Rect(498, 1086 - 638, 1182) | scroll=false
+
+INSTRUMENTATION_CODE: 0

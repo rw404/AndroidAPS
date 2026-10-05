@@ -1,0 +1,20 @@
+{
+  "timeUTC": "2026-10-05T04:14:58.564875+00:00",
+  "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+  "softwareOnly": true,
+  "physicalPump": false,
+  "loopEnabled": false,
+  "pump": "VirtualPump",
+  "profile": "UI Test Fixture",
+  "latestNativeBgTimestamp": 1791173294615,
+  "bgAgeSecondsImmediatelyBeforeUiConfirm": 403.385,
+  "newWizardNativeBgInputMmol": 6.7,
+  "newWizardWasOpenedAfterLatestOfficialSamplePersisted": true,
+  "cacheAutoRefreshClaimed": false,
+  "originalFinalShownInsulinU": 2.3,
+  "originalFinalShownCarbsG": 24,
+  "beforeBoluses": 0,
+  "beforeCarbs": 0,
+  "route": "Original UI android:id/button1 -> original command queue -> VirtualPump; no direct therapy DB writes"
+}

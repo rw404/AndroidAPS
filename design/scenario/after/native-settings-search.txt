@@ -1,0 +1,36 @@
+INSTRUMENTATION_RESULT: matched=0
+INSTRUMENTATION_RESULT: tree=null | android.widget.FrameLayout | null | Rect(0, 0 - 720, 1440) | scroll=false
+null | android.widget.LinearLayout | null | Rect(0, 0 - 720, 1344) | scroll=false
+null | android.widget.FrameLayout | null | Rect(0, 48 - 720, 1344) | scroll=false
+app.healfi.androidaps:id/decor_content_parent | android.view.ViewGroup | null | Rect(0, 48 - 720, 1344) | scroll=false
+null | android.view.View | null | Rect(0, 48 - 0, 48) | scroll=false
+app.healfi.androidaps:id/action_bar_container | android.widget.FrameLayout | null | Rect(0, 48 - 720, 160) | scroll=false
+app.healfi.androidaps:id/action_bar | android.view.ViewGroup | null | Rect(0, 48 - 720, 160) | scroll=false
+null | android.widget.ImageButton | null | Rect(0, 48 - 112, 160) | scroll=false
+null | android.widget.TextView | Настройки | Rect(144, 79 - 328, 128) | scroll=false
+null | androidx.appcompat.widget.LinearLayoutCompat | null | Rect(720, 48 - 720, 160) | scroll=false
+android:id/content | android.widget.FrameLayout | null | Rect(0, 160 - 720, 1344) | scroll=false
+null | android.view.ViewGroup | null | Rect(0, 160 - 720, 1344) | scroll=false
+app.healfi.androidaps:id/healfi_settings_search | androidx.appcompat.widget.LinearLayoutCompat | null | Rect(32, 184 - 688, 280) | scroll=false
+app.healfi.androidaps:id/search_bar | android.widget.LinearLayout | null | Rect(32, 184 - 688, 280) | scroll=false
+app.healfi.androidaps:id/search_edit_frame | android.widget.LinearLayout | null | Rect(48, 184 - 672, 280) | scroll=false
+app.healfi.androidaps:id/search_mag_icon | android.widget.ImageView | null | Rect(64, 208 - 128, 256) | scroll=false
+app.healfi.androidaps:id/search_plate | android.widget.LinearLayout | null | Rect(128, 184 - 672, 280) | scroll=false
+app.healfi.androidaps:id/search_src_text | android.widget.AutoCompleteTextView | Language | Rect(128, 195 - 592, 267) | scroll=false
+app.healfi.androidaps:id/search_close_btn | android.widget.ImageView | null | Rect(592, 184 - 672, 278) | scroll=false
+app.healfi.androidaps:id/frame_layout | android.widget.FrameLayout | null | Rect(0, 296 - 720, 1260) | scroll=false
+null | android.widget.LinearLayout | null | Rect(0, 296 - 720, 1260) | scroll=false
+android:id/list_container | android.widget.FrameLayout | null | Rect(0, 296 - 720, 1260) | scroll=false
+app.healfi.androidaps:id/recycler_view | androidx.recyclerview.widget.RecyclerView | null | Rect(0, 296 - 720, 1260) | scroll=false
+null | android.widget.LinearLayout | null | Rect(0, 328 - 720, 398) | scroll=false
+null | android.widget.RelativeLayout | null | Rect(32, 328 - 688, 398) | scroll=false
+android:id/title | android.widget.TextView | Общее | Rect(32, 344 - 688, 382) | scroll=false
+null | android.widget.LinearLayout | null | Rect(0, 398 - 720, 543) | scroll=false
+null | android.widget.RelativeLayout | null | Rect(32, 398 - 688, 543) | scroll=false
+android:id/title | android.widget.TextView | Language | Rect(32, 430 - 172, 473) | scroll=false
+android:id/summary | android.widget.TextView | Russian | Rect(32, 473 - 129, 511) | scroll=false
+app.healfi.androidaps:id/version | android.widget.TextView | 3.4.2.6 (007d) | Rect(0, 1260 - 720, 1344) | scroll=false
+android:id/statusBarBackground | android.view.View | null | Rect(0, 0 - 720, 48) | scroll=false
+android:id/navigationBarBackground | android.view.View | null | Rect(0, 1344 - 720, 1440) | scroll=false
+
+INSTRUMENTATION_CODE: 0

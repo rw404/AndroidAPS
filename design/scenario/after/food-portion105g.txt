@@ -1,0 +1,35 @@
+INSTRUMENTATION_RESULT: matched=0
+INSTRUMENTATION_RESULT: tree=null | android.widget.FrameLayout | null | Rect(0, 91 - 720, 1300) | scroll=false
+null | android.widget.FrameLayout | null | Rect(32, 123 - 688, 1268) | scroll=false
+android:id/content | android.widget.FrameLayout | null | Rect(32, 123 - 688, 1268) | scroll=false
+null | android.widget.LinearLayout | null | Rect(32, 123 - 688, 1268) | scroll=false
+null | android.widget.LinearLayout | null | Rect(64, 155 - 656, 251) | scroll=false
+null | android.widget.TextView | Еда | Rect(64, 174 - 478, 231) | scroll=false
+app.healfi.androidaps:id/cancel_button | android.widget.Button | Отменить | Rect(478, 155 - 656, 251) | scroll=false
+app.healfi.androidaps:id/healfi_food_stage | android.widget.TextView | Проверьте порцию | Rect(64, 251 - 656, 281) | scroll=false
+app.healfi.androidaps:id/food_scroll | android.widget.ScrollView | null | Rect(64, 297 - 656, 986) | scroll=true
+null | android.widget.LinearLayout | null | Rect(64, 297 - 656, 986) | scroll=false
+app.healfi.androidaps:id/status | android.widget.TextView | null | Rect(64, 297 - 656, -57) | scroll=false
+app.healfi.androidaps:id/selected_card | androidx.cardview.widget.CardView | null | Rect(64, 297 - 656, 954) | scroll=false
+null | android.widget.LinearLayout | null | Rect(96, 297 - 624, 922) | scroll=false
+app.healfi.androidaps:id/food_name | android.widget.TextView | Bananas, raw | Rect(96, 297 - 624, 17) | scroll=false
+app.healfi.androidaps:id/food_preparation | android.widget.TextView | Приготовление: Сырой продукт | Rect(96, 297 - 624, 55) | scroll=false
+app.healfi.androidaps:id/food_source | android.widget.TextView | USDA FoodData Central | Rect(96, 297 - 624, 93) | scroll=false
+app.healfi.androidaps:id/healfi_food_source_toggle | android.widget.Button | Подробности источника | Rect(96, 297 - 624, 189) | scroll=false
+app.healfi.androidaps:id/food_basis | android.widget.TextView | На 100 г · Общие углеводы США, включая клетчатку
+Клетчатка автоматически не вычитается и не добавляется. | Rect(96, 297 - 624, 317) | scroll=false
+null | android.widget.TextView | Масса или объём порции | Rect(96, 349 - 624, 379) | scroll=false
+null | android.widget.LinearLayout | null | Rect(96, 387 - 624, 511) | scroll=false
+app.healfi.androidaps:id/amount | android.widget.EditText | 105 | Rect(96, 387 - 416, 511) | scroll=false
+app.healfi.androidaps:id/portion_unit | android.widget.Spinner | null | Rect(432, 401 - 624, 497) | scroll=true
+android:id/text1 | android.widget.TextView | г | Rect(432, 428 - 528, 469) | scroll=false
+app.healfi.androidaps:id/portion_preview | android.widget.TextView | Углеводы: 23,982 г | Rect(96, 535 - 624, 582) | scroll=false
+app.healfi.androidaps:id/source_checked | android.widget.CheckBox | Я проверил точный продукт, приготовление, источник и порцию | Rect(96, 598 - 624, 702) | scroll=false
+app.healfi.androidaps:id/add_button | android.widget.Button | Добавить порцию и ещё продукт | Rect(96, 702 - 624, 826) | scroll=false
+app.healfi.androidaps:id/discard_selection | android.widget.Button | Выбрать другой продукт | Rect(96, 826 - 624, 922) | scroll=false
+null | android.widget.LinearLayout | null | Rect(64, 986 - 656, 1236) | scroll=false
+app.healfi.androidaps:id/meal_total | android.widget.TextView | Черновик: углеводы 23,982 г | Rect(64, 1002 - 656, 1040) | scroll=false
+null | android.widget.TextView | Откроется калькулятор по профилю. Здесь ничего не записывается и не вводится. | Rect(64, 1048 - 656, 1108) | scroll=false
+app.healfi.androidaps:id/continue_button | android.widget.Button | Проверить расчёт | Rect(64, 1124 - 656, 1236) | scroll=false
+
+INSTRUMENTATION_CODE: 0

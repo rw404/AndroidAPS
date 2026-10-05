@@ -1,0 +1,146 @@
+{
+  "timeUTC": "2026-10-05T04:32:52.137620+00:00",
+  "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+  "overallStatus": "corePassedWithKnownLayoutLimitations",
+  "caseCounts": {
+    "passed": 11,
+    "failed": 4,
+    "notRun": 12
+  },
+  "runtimeMetadata": "/workspace/native-preview-tools/scenario-after.json",
+  "beforeMetadata": "/workspace/native-preview-tools/scenario-before.json",
+  "nativeCaptures": [
+    {
+      "name": "home-stale",
+      "file": "/workspace/native-preview-tools/scenario/after/home-stale.png",
+      "sha256": "e2ba71d9ef44e38588b81db62980fab646ec9c1b2a74fa58ded3bc58836f49d5",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "home-fresh",
+      "file": "/workspace/native-preview-tools/scenario/after/home-fresh.png",
+      "sha256": "949effedb4d40cd71cb37edc40aff9d12e6095b41e1cd6c36dacb0f9ac0c59fd",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "food-keyboard-normal",
+      "file": "/workspace/native-preview-tools/scenario/after/food-keyboard-normal.png",
+      "sha256": "f283737d4deb53e092dc06c1880d9a6d197420363c2be16f57ea211f88184009",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "food-results",
+      "file": "/workspace/native-preview-tools/scenario/after/food-results.png",
+      "sha256": "8269a6f74fffe612252d0c4a5164c01468170079a07f32af60272b1e74d85f1c",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "food-portion105g",
+      "file": "/workspace/native-preview-tools/scenario/after/food-portion105g.png",
+      "sha256": "86bf0279d6042b7aa4a1ee3c8a6892ec7f49eca0bba8492d692ffa3ab75164f3",
+      "nativeXmlAvailable": false
+    },
+    {
+      "name": "meal-review",
+      "file": "/workspace/native-preview-tools/scenario/after/meal-review.png",
+      "sha256": "0f1d6bffa3fe11c9ff12baeb9210aa82885753ca8ed8c483024b5bad7e4a2129",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "wizard-24g",
+      "file": "/workspace/native-preview-tools/scenario/after/wizard-24g.png",
+      "sha256": "c765b592dfc511425cb17d056276aadc68b2292e478c9c0876f0fb5a7be48494",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "wizard-profile",
+      "file": "/workspace/native-preview-tools/scenario/after/wizard-profile.png",
+      "sha256": "59a5ccca7397070e3d0a0445059567f50bfa325b789632e87810dfdd6f6610fb",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "wizard-profile-details",
+      "file": "/workspace/native-preview-tools/scenario/after/wizard-profile-details.png",
+      "sha256": "cd16c4bd1358974cfa6507609ea22d5f63558a81c678903e937352515d19c684",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-final-confirmation-cancel",
+      "file": "/workspace/native-preview-tools/scenario/after/native-final-confirmation-cancel.png",
+      "sha256": "37df192964ff64fbdcf558778f71224f74bfc7e15983c801b93f0ccc259832db",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "home-metrics",
+      "file": "/workspace/native-preview-tools/scenario/after/home-metrics.png",
+      "sha256": "02bbf58c6ae6e928445cf051c1a6ab91732d14eac68c7184ef0e3097ef58d6b4",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-final-confirmation-virtual",
+      "file": "/workspace/native-preview-tools/scenario/after/native-final-confirmation-virtual.png",
+      "sha256": "843b99e4d2725cc78d594c133e0a2f177708c0150cef222e90a01d70113d6200",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-history-virtual",
+      "file": "/workspace/native-preview-tools/scenario/after/native-history-virtual.png",
+      "sha256": "c314093a287dd1664ecc8fb9086d3452ce7fdd1a749f34ae86eb61e200bdd0c6",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-settings",
+      "file": "/workspace/native-preview-tools/scenario/after/native-settings.png",
+      "sha256": "8d2e3d014bbcdea302ff0d75a64d091af354c0dd138bd85e2add73dcb5a58273",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-settings-search",
+      "file": "/workspace/native-preview-tools/scenario/after/native-settings-search.png",
+      "sha256": "2e5e1cb4ca6253a94f3edc3defda69561f002544ef7b15b0045de1078ff7150e",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-home-dark",
+      "file": "/workspace/native-preview-tools/scenario/after/native-home-dark.png",
+      "sha256": "2eb4d18394c6dbcafbe767d10294232f44f25016467edb1ac7a3b542c081a330",
+      "nativeXmlAvailable": true
+    },
+    {
+      "name": "native-home-font200-dark",
+      "file": "/workspace/native-preview-tools/scenario/after/native-home-font200-dark.png",
+      "sha256": "07b747840bcbeda6eecff248da258f1c0c403b817acbc0f1f54d9af345c9a24c",
+      "nativeXmlAvailable": true
+    }
+  ],
+  "cancelDatabaseAudit": "/workspace/native-preview-tools/scenario-007d-cancel-db.json",
+  "positiveBeforeDatabaseAudit": "/workspace/native-preview-tools/scenario-007d-positive-before-db.json",
+  "positiveAfterDatabaseAudit": "/workspace/native-preview-tools/scenario-007d-positive-after-db.json",
+  "positiveGuardProvenance": "/workspace/native-preview-tools/scenario-007d-positive-confirm-provenance.json",
+  "finalDatabaseAudit": "/workspace/native-preview-tools/scenario-007d-final-db.json",
+  "finalFixtureAudit": "/workspace/native-preview-tools/scenario-007d-final-fixture.json",
+  "restoredDisplayAudit": "/workspace/native-preview-tools/scenario-007d-display-restored.json",
+  "visualFailures": [
+    "stockGraphEventLabelVisualNoise",
+    "keyboardLayoutNormal100",
+    "homeCobHeadingTypographyNormal100",
+    "homeTypographyFont200Dark"
+  ],
+  "notRun": [
+    "foodPortionNativeXmlSnapshot",
+    "font200FullMealWizardScenario",
+    "rotationLandscape",
+    "talkBackContrastAccessibility",
+    "realPhonePerformanceLoad",
+    "physicalPumpSensorDeliveryClosedLoop",
+    "physicalXdripSensorIntegration",
+    "photoOcrBarcodeFlow",
+    "configuredPinChallenge",
+    "futureTimestampAndMgdlVariants",
+    "fullDarkMealWizardScenario",
+    "fullBeforeScenario"
+  ],
+  "simulationOnly": true,
+  "physicalDeliveryValidated": false
+}

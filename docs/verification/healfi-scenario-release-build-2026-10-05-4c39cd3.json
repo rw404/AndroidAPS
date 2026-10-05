@@ -1,0 +1,307 @@
+{
+  "sourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+  "runUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37244248681",
+  "variant": "healfiRelease",
+  "apk": {
+    "file": "aaps-validation-healfiRelease-4c39cd326905.apk",
+    "bytes": 214958807,
+    "sha256": "01b8b4c638f695027a997f4d9c7c664bba8f22b5b61453f9aab0e19b0473aa03",
+    "package": "app.healfi.androidaps",
+    "versionCode": "1500",
+    "versionName": "3.4.2.6",
+    "signerCertificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+    "matchesConfiguredKeystore": true,
+    "v2Signature": "passed",
+    "zipCrc": "passed",
+    "zipAlignment16KiB": "passed"
+  },
+  "tests": {
+    "ui": {
+      "tests": 59,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reportFiles": 8
+    },
+    "implementation": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reportFiles": 3
+    },
+    "plugins/sync": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reportFiles": 1
+    },
+    "pump/medtronic": {
+      "tests": 148,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reportFiles": 13
+    },
+    "pump/rileylink": {
+      "tests": 327,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reportFiles": 16
+    }
+  },
+  "totalTests": 572,
+  "junitSha256": "da68e68176de1215f5028ae99b179f28df6d1e2fc0c8f8ca17ec48ad977eec23",
+  "bundledFoodAssets": {
+    "assets/food/classifier/LICENSE-APACHE-2.0.txt": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "assets/food/classifier/LICENSE-ONNXRUNTIME-MIT.txt": {
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    "assets/food/classifier/README.md": {
+      "bytes": 5540,
+      "sha256": "852a046fd74806c6a44a688151b8337838c403486d35c70c6dfee9dc6731ea10"
+    },
+    "assets/food/classifier/inference-smoke-report.json": {
+      "bytes": 3595,
+      "sha256": "493c82b3a26af745c4ede6cf2d46499ed47910c0bcc450d78e71730bda7a49d4"
+    },
+    "assets/food/classifier/labels.txt": {
+      "bytes": 1184,
+      "sha256": "eb6b396455a281445a698d8af22b2142be9a6eb9401520ee702746545f1c8820"
+    },
+    "assets/food/classifier/mobilenet_v2_food101.onnx": {
+      "bytes": 9385783,
+      "sha256": "ed386d53e69bb71f637dc9794429a5332e1c7dde4481ad177934ca0cc8aaa444"
+    },
+    "assets/food/classifier/reproduce-model.py": {
+      "bytes": 2058,
+      "sha256": "56c59484484458f1d0cdff41306f810049556db6c28c78a4bef86b049b82e25c"
+    },
+    "assets/food/manifest.json": {
+      "bytes": 7393,
+      "sha256": "863b58b2b34d4619f5556c341bef66a23d7e0e2c869de0474db36bee29d0340e"
+    },
+    "assets/food/ocr/LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "assets/food/ocr/SOURCE.json": {
+      "bytes": 777,
+      "sha256": "326de249cf436624ff866108ae36e866b27f49f056460e58eef029591aa705cd"
+    },
+    "assets/food/ocr/eng.traineddata": {
+      "bytes": 4113088,
+      "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+    },
+    "assets/food/ocr/ocr-model-smoke-report.json": {
+      "bytes": 1130,
+      "sha256": "b9efd4506cae9f842499a81af0c415951d6e379e77cabac31e299d1c5c34aa34"
+    },
+    "assets/food/ocr/rus.traineddata": {
+      "bytes": 3861738,
+      "sha256": "e16e5e036cce1d9ec2b00063cf8b54472625b9e14d893a169e2b0dedeb4df225"
+    },
+    "assets/food/usda_foods.tsv": {
+      "bytes": 2129048,
+      "sha256": "8c05047351a0cfe9c2279a8c34a31e84ed30dec340df601973e5ccd378a30b47"
+    }
+  },
+  "nativeElf16KiB": [
+    {
+      "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libdatastore_shared_counter.so",
+      "sha256": "83075d475735b5c095534d52365a8d4d983b48b48604dc0e2121a91e97245030",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libjpeg.so",
+      "sha256": "0e751fcd26f2a60e8b87c2da274473c6c2a26352e5a9071033f1f88a93b39308",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libleptonica.so",
+      "sha256": "00436d8562bc833a22111a1451cf46147f05aecf8a257751e127689a1ee6e3c4",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libonnxruntime.so",
+      "sha256": "e40f09d07dc53726b8bfbf48a7907673b8f86718a057655a62790a39874a7302",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libonnxruntime4j_jni.so",
+      "sha256": "2cc3f16ab527959a81b572adebcfb71a25ea4b8547c9b92d705b423e9c822d39",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libpngx.so",
+      "sha256": "e70d48e405b56f1df06921c4ebbee0612140a8f2c7b0a2641fbbf6fea53eda4c",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libtesseract.so",
+      "sha256": "bce8dcca1544d9f8708ac126c1e920bfa92481509672d8472470e8c2eebcd43c",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/arm64-v8a/libtoolChecker.so",
+      "sha256": "eeb2317e649e287b836b5e5c30cb07700f9eb900a53c297a3823592f15aa6352",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libandroidx.graphics.path.so",
+      "sha256": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libdatastore_shared_counter.so",
+      "sha256": "ae83eabf68d35b80b3f63939d6d5bfbb4dc08c9f9a9f85ef8b5d7621f46bd547",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libjpeg.so",
+      "sha256": "2621f8760a4dda288c7efe14db8be19f8c86ec7bf1e1a3a768fd99ab82e0a296",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libleptonica.so",
+      "sha256": "f53676b54a1206de049fdb9f2944b49e548468acafe015501867c5768b78aa92",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libonnxruntime.so",
+      "sha256": "972c17c056eaae946a415d9efdd8018b729639974df075e495f0092441478fb7",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libonnxruntime4j_jni.so",
+      "sha256": "b8d1b251b7d5606cf5caa7db9738353c08efc4090ac90ca2aaab449bc263a10b",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libpngx.so",
+      "sha256": "efbba9d3d9b6fbf688d6027b976406822dacca8d81f67972a3378a5fd30769f0",
+      "loadAlignments": [
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libtesseract.so",
+      "sha256": "29a5f2fb99af2ed00c93537191b4ff7af50993b7c578ab32e9f49435ee857b2e",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "path": "lib/x86_64/libtoolChecker.so",
+      "sha256": "d45212dc93e3e488802906f9dbbd1698bcf70fb30a12d2d108b1e60211ea3cc9",
+      "loadAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    }
+  ],
+  "toolchain": {
+    "jdk": 21,
+    "compileSdk": 36,
+    "buildTools": "35.0.0",
+    "gradleHeapGiB": 3,
+    "workers": 2,
+    "kotlinCompiler": "in-process"
+  },
+  "separateApplicationIdentity": {
+    "label": "Healfi",
+    "customPermissions": [
+      "app.healfi.androidaps.weardata.permission",
+      "app.healfi.androidaps.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "providerAuthorities": [
+      "app.healfi.androidaps.fileprovider",
+      "app.healfi.androidaps.androidx-startup"
+    ],
+    "oauthSchemes": [
+      "https",
+      "wear",
+      "wear",
+      "wear"
+    ],
+    "installsSeparatelyFromAaps": true,
+    "physicalSideBySideInstallationTested": false
+  },
+  "scope": {
+    "physicalPumpConnected": false,
+    "nativeRenderingTested": false,
+    "installedPhoneCertificateCompared": false,
+    "clinicalValidation": false,
+    "note": "Signed software candidate; JVM and APK checks do not validate real radio, phone operation or clinical dosing."
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "result": "FAIL",
+  "materialAarSha256": "6d5e1cbb67c05bcdcbbf84005787dafd354a155f59a4d3800fd45fa7eb3689f5",
+  "sharedStylesSha256": "62fb63f326c373b46e47d22d11ad6e2104803e156b5524dcd66d54944d01ac20",
+  "namedOverlay": "HealfiScenario.DialogTheme",
+  "overlayLineage": [
+    "HealfiScenario.DialogTheme",
+    "ThemeOverlay.MaterialComponents.Dialog.Alert",
+    "Base.ThemeOverlay.MaterialComponents.Dialog.Alert",
+    "Base.V14.ThemeOverlay.MaterialComponents.Dialog.Alert",
+    "ThemeOverlay.AppCompat.Dialog.Alert"
+  ],
+  "layoutsChecked": [
+    "res/layout/mtrl_alert_dialog.xml",
+    "res/layout/mtrl_alert_dialog_title.xml",
+    "res/layout/mtrl_alert_dialog_actions.xml"
+  ],
+  "layoutNodeCount": 22,
+  "nativeLayoutNodes": [
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "androidx.appcompat.widget.AlertDialogLayout",
+      "id": "@+id/parentPanel",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "view": "LinearLayout",
+      "id": "@+id/topPanel",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "view": "LinearLayout",
+      "id": "@+id/title_template",
+      "sourceStyle": "?attr/materialAlertDialogTitlePanelStyle",
+      "resolvedStyle": null,
+      "layoutWidth": null,
+      "layoutHeight": null
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "view": "ImageView",
+      "id": "@android:id/icon",
+      "sourceStyle": "?attr/materialAlertDialogTitleIconStyle",
+      "resolvedStyle": null,
+      "layoutWidth": null,
+      "layoutHeight": null
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "view": "androidx.appcompat.widget.DialogTitle",
+      "id": "@+id/alertTitle",
+      "sourceStyle": "?attr/materialAlertDialogTitleTextStyle",
+      "resolvedStyle": "@style/HealfiScenario.Title",
+      "layoutWidth": null,
+      "layoutHeight": null
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "view": "android.widget.Space",
+      "id": "@+id/titleDividerNoCustom",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "@dimen/abc_dialog_title_divider_material"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "FrameLayout",
+      "id": "@+id/contentPanel",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "View",
+      "id": "@+id/scrollIndicatorUp",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "1dp"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "androidx.core.widget.NestedScrollView",
+      "id": "@+id/scrollView",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "LinearLayout",
+      "id": null,
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "android.widget.Space",
+      "id": "@+id/textSpacerNoTitle",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "@dimen/abc_dialog_padding_top_material"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "TextView",
+      "id": "@android:id/message",
+      "sourceStyle": "?attr/materialAlertDialogBodyTextStyle",
+      "resolvedStyle": "@style/HealfiScenario.Body",
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "android.widget.Space",
+      "id": "@+id/textSpacerNoButtons",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "@dimen/abc_dialog_padding_top_material"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "View",
+      "id": "@+id/scrollIndicatorDown",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "1dp"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "FrameLayout",
+      "id": "@+id/customPanel",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog.xml",
+      "view": "FrameLayout",
+      "id": "@+id/custom",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "ScrollView",
+      "id": "@+id/buttonPanel",
+      "sourceStyle": "?attr/buttonBarStyle",
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "androidx.appcompat.widget.ButtonBarLayout",
+      "id": null,
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "match_parent",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "Button",
+      "id": "@android:id/button3",
+      "sourceStyle": "?attr/buttonBarNeutralButtonStyle",
+      "resolvedStyle": "@style/HealfiScenario.CancelDialogButton",
+      "layoutWidth": "wrap_content",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "android.widget.Space",
+      "id": "@+id/spacer",
+      "sourceStyle": null,
+      "resolvedStyle": null,
+      "layoutWidth": "0dp",
+      "layoutHeight": "0dp"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "Button",
+      "id": "@android:id/button2",
+      "sourceStyle": "?attr/buttonBarNegativeButtonStyle",
+      "resolvedStyle": "@style/HealfiScenario.CancelDialogButton",
+      "layoutWidth": "wrap_content",
+      "layoutHeight": "wrap_content"
+    },
+    {
+      "layout": "res/layout/mtrl_alert_dialog_actions.xml",
+      "view": "Button",
+      "id": "@android:id/button1",
+      "sourceStyle": "?attr/buttonBarPositiveButtonStyle",
+      "resolvedStyle": "@style/HealfiScenario.DialogButton",
+      "layoutWidth": "wrap_content",
+      "layoutHeight": "wrap_content"
+    }
+  ],
+  "typographyWidgetStyles": [
+    {
+      "themeAttribute": "materialAlertDialogBodyTextStyle",
+      "resolvedStyle": "HealfiScenario.Body",
+      "lineage": [
+        "HealfiScenario.Body",
+        "TextAppearance.MaterialComponents.Body1",
+        "TextAppearance.AppCompat.Body2"
+      ],
+      "textAppearance": null,
+      "effectiveFontProperties": {
+        "android:textSize": "16sp",
+        "android:fontFamily": "sans-serif",
+        "android:letterSpacing": "0",
+        "android:includeFontPadding": "false"
+      },
+      "intendedFontProperties": {
+        "android:textSize": "16sp",
+        "android:fontFamily": "sans-serif",
+        "android:letterSpacing": "0",
+        "android:includeFontPadding": "false"
+      }
+    },
+    {
+      "themeAttribute": "materialAlertDialogTitleTextStyle",
+      "resolvedStyle": "HealfiScenario.Title",
+      "lineage": [
+        "HealfiScenario.Title",
+        "HealfiScenario.Body",
+        "TextAppearance.MaterialComponents.Body1",
+        "TextAppearance.AppCompat.Body2"
+      ],
+      "textAppearance": null,
+      "effectiveFontProperties": {
+        "android:textSize": "24sp",
+        "android:fontFamily": "sans-serif-medium",
+        "android:letterSpacing": "0",
+        "android:includeFontPadding": "false"
+      },
+      "intendedFontProperties": {
+        "android:textSize": "24sp",
+        "android:fontFamily": "sans-serif-medium",
+        "android:letterSpacing": "0",
+        "android:includeFontPadding": "false"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "view": "@+id/title_template",
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "missing": [
+        "layout_width",
+        "layout_height"
+      ]
+    },
+    {
+      "view": "@android:id/icon",
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "missing": [
+        "layout_width",
+        "layout_height"
+      ]
+    },
+    {
+      "view": "@+id/alertTitle",
+      "layout": "res/layout/mtrl_alert_dialog_title.xml",
+      "missing": [
+        "layout_width",
+        "layout_height"
+      ]
+    },
+    {
+      "themeAttribute": "materialAlertDialogBodyTextStyle",
+      "missingWidgetParent": "MaterialAlertDialog.MaterialComponents.Body.Text"
+    },
+    {
+      "themeAttribute": "materialAlertDialogTitleTextStyle",
+      "missingWidgetParent": "MaterialAlertDialog.MaterialComponents.Title.Text"
+    }
+  ],
+  "scope": "Actual vendor XML plus named shared style inheritance; Android runtime still required."
+}

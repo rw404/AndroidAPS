@@ -1,0 +1,50 @@
+{
+  "timeUTC": "2026-10-05T04:15:38.716347+00:00",
+  "synthetic": true,
+  "patientData": false,
+  "method": "Android native sqlite3 -readonly; each query is a read transaction; no app restart and no database mutations",
+  "latestGlucose": [
+    {
+      "timestamp": 1791173294615,
+      "value": 121.0,
+      "isValid": 1,
+      "sourceSensor": "DEXCOM_G6_NATIVE_XDRIP"
+    }
+  ],
+  "latestProfile": [
+    {
+      "timestamp": 1791134430174,
+      "isValid": 1,
+      "originalProfileName": "UI Test Fixture",
+      "glucoseUnit": "MMOL",
+      "basalBlocks": "[{\"duration\":86400000,\"amount\":0.7}]",
+      "isfBlocks": "[{\"duration\":86400000,\"amount\":2.5}]",
+      "icBlocks": "[{\"duration\":86400000,\"amount\":12}]",
+      "targetBlocks": "[{\"duration\":86400000,\"lowTarget\":5.5,\"highTarget\":6}]"
+    }
+  ],
+  "boluses": [
+    {
+      "id": 1,
+      "timestamp": 1791173712710,
+      "isValid": 1,
+      "amount": 2.3,
+      "type": "NORMAL"
+    }
+  ],
+  "carbs": [
+    {
+      "id": 1,
+      "timestamp": 1791173590533,
+      "isValid": 1,
+      "amount": 24.0
+    }
+  ],
+  "tables": {
+    "glucoseValues": 67,
+    "profileSwitches": 1,
+    "effectiveProfileSwitches": 2,
+    "boluses": 1,
+    "carbs": 1
+  }
+}

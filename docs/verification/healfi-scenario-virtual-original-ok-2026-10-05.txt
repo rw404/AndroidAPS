@@ -1,0 +1,26 @@
+INSTRUMENTATION_RESULT: action=true
+INSTRUMENTATION_RESULT: matched=1
+INSTRUMENTATION_RESULT: tree=null | android.widget.FrameLayout | null | Rect(18, 360 - 702, 1032) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 520 - 654, 872) | scroll=false
+null | android.widget.FrameLayout | null | Rect(66, 520 - 654, 872) | scroll=false
+app.healfi.androidaps:id/action_bar_root | android.widget.FrameLayout | null | Rect(66, 520 - 654, 872) | scroll=false
+android:id/content | android.widget.FrameLayout | null | Rect(66, 520 - 654, 872) | scroll=false
+app.healfi.androidaps:id/parentPanel | androidx.appcompat.widget.LinearLayoutCompat | null | Rect(66, 520 - 654, 872) | scroll=false
+app.healfi.androidaps:id/topPanel | android.widget.LinearLayout | null | Rect(66, 520 - 654, 672) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 520 - 654, 656) | scroll=false
+null | android.widget.RelativeLayout | null | Rect(66, 520 - 654, 636) | scroll=false
+app.healfi.androidaps:id/alertdialog_icon | android.widget.ImageView | null | Rect(76, 530 - 172, 626) | scroll=false
+app.healfi.androidaps:id/alertdialog_title | android.widget.TextView | Мастер Болюса | Rect(176, 548 - 564, 607) | scroll=false
+app.healfi.androidaps:id/spacer | android.widget.LinearLayout | null | Rect(66, 636 - 654, 656) | scroll=false
+app.healfi.androidaps:id/titleDividerNoCustom | android.view.View | null | Rect(66, 656 - 654, 672) | scroll=false
+app.healfi.androidaps:id/contentPanel | android.widget.FrameLayout | null | Rect(66, 672 - 654, 768) | scroll=false
+app.healfi.androidaps:id/scrollView | android.widget.ScrollView | null | Rect(66, 672 - 654, 748) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 672 - 654, 748) | scroll=false
+android:id/message | android.widget.TextView | Болюс: 2,30 ед
+Углеводы: 24 гр | Rect(66, 672 - 654, 748) | scroll=false
+app.healfi.androidaps:id/buttonPanel | android.widget.ScrollView | null | Rect(66, 768 - 654, 872) | scroll=false
+null | android.widget.LinearLayout | null | Rect(66, 768 - 654, 872) | scroll=false
+android:id/button2 | android.widget.Button | Отмена | Rect(354, 772 - 494, 868) | scroll=false
+android:id/button1 | android.widget.Button | ОК | Rect(510, 772 - 638, 868) | scroll=false
+
+INSTRUMENTATION_CODE: 0

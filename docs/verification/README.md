@@ -1,8 +1,83 @@
 # Android verification
 
-## Healfi: native overview redesign
+## Healfi: один нативный сценарий (2026-10-05)
 
-The current native source is `f54bf1b761acb1e9ac77282a159a19d798ae2108`.
+Текущий source: `007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b`.
+[Результат и непройденные проверки](../healfi-scenario-results.md) описывают
+«Сейчас → еда/порция → штатный Wizard → отдельное подтверждение → история».
+
+**PASS — исходники и сборка.**
+[Source audit](healfi-scenario-source-audit-2026-10-05.json) сохраняет
+585 файлов защищённых разделов, 26 методов/участков, 11 binding layouts
+и пять прежних клинических resource-файлов.
+[CI 37254928995](https://github.com/rw404/AndroidAPS/actions/runs/37254928995)
+завершился SUCCESS: **572 выбранных теста, 0 failures/errors/skips**.
+[Build](healfi-scenario-release-build-2026-10-05.json),
+[JUnit](healfi-scenario-release-build-2026-10-05.xml),
+[artifact](healfi-scenario-artifact-2026-10-05.json) и
+[provenance](healfi-scenario-build-provenance-2026-10-05.json)
+сохраняют exact signed release.
+APK: 214959167 bytes, SHA-256
+`9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9`.
+v2/certificate/CRC, ZIP/native 16 KiB, 18 native libraries, 14 food assets
+и GitHub ZIP digest прошли проверку.
+[Независимая binary-проверка](healfi-scenario-root-build-check-2026-10-05.json)
+подтверждает фактические apksigner/zipalign/aapt2/SHA/CRC/JUnit результаты.
+Local debug для current source не заявлен. Алгоритмы дозирования не изменены.
+
+**PASS — scoped native Android exact 007d.**
+[Native-протокол](healfi-scenario-ui-2026-10-05.json) фиксирует свежие/старые BG,
+USDA → 105 г → 23,982 г → Wizard 24 г и original confirmation/cancel.
+[Read-only база](healfi-scenario-cancel-db-2026-10-05.json) от 04:06:16 UTC
+подтверждает **0 boluses / 0 carbs** после отмены.
+Отдельный положительный проход использовал новый Wizard и свежее фиктивное BG.
+[Штатное подтверждение](healfi-scenario-virtual-confirm-2026-10-05.json)
+приняло 2,30 Ед / 24 г на VirtualPump:
+[до](healfi-scenario-virtual-before-db-2026-10-05.json) — 0/0,
+[после](healfi-scenario-virtual-after-db-2026-10-05.json) — 1 valid bolus / 1 valid carbs.
+Фактическая native history показывает эти тестовые записи.
+Это проверка виртуальных команд/записей.
+Настройки/Search и главная Dark при 100% также прошли; весь Dark-сценарий не проверялся.
+Native total: **11 PASS / 4 visual FAILED / 12 NOT RUN**, 17 стабильных снимков.
+[Virtual guard](healfi-scenario-virtual-guard-2026-10-05.json) фиксирует
+только VirtualPump, loop OFF и UI Test Fixture. Full-width подпись Wizard
+при 100%/360 dp прошла проверку; этот PASS не распространяется на 200%.
+
+**FAILED — visual acceptance exact 007d.**
+Food IME при 100% закрывает нижнюю часть формы/основное действие;
+COB «Активные» переносится внутри слова; штатные graph event annotations
+перекрываются; главная Dark при 200% переносит названия состояния/навигации
+внутри слов. Явный Search и Android Back функционально прошли,
+но полной IME-адаптации нет.
+
+**NOT RUN** и ограничения перечислены в
+[основном отчёте](../healfi-scenario-results.md): Food/Wizard/IME при 200%,
+полный Dark-сценарий, Light при 200%, поворот, TalkBack/контраст, PIN,
+будущее BG/мг/дл, реальные телефон/сенсор/помпа/доставка, камера/OCR,
+импорт, длительная эксплуатация и полный повтор before.
+TCG с увеличенными deadlines не измеряет производительность телефона.
+
+[Raw Android gallery](../../design/scenario/android-comparison.html)
+содержит архивный f54/debug before от 2026-10-04 и exact 007d signed after.
+[Before metadata](healfi-scenario-before-2026-10-05.json) сохраняют отдельную
+сессию/хеши. Нестабильный initial-loading кадр исключён.
+[Browser gallery report](healfi-scenario-gallery-browser-2026-10-05.json) —
+**PASS**: 1440×1000 и 360×800, 18 raw PNG, 0 overflow/errors,
+исходные PNG-хеши сохранены. Область проверки — HTML-галерея.
+[Текущие negative guards](healfi-scenario-gallery-guards-2026-10-05.json)
+прошли 5/5 проверок source/APK/evidence/foreground/stability metadata.
+Пиксели PNG сохранены без изменений.
+
+Ранние кандидаты остаются архивом:
+[a0f](healfi-scenario-archive-2026-10-05-a0f44f5.json),
+[377](healfi-scenario-archive-2026-10-05-377f6ec.json),
+[4c crash](healfi-scenario-ui-crash-2026-10-05-4c39cd3.json)
+и [Material regression](healfi-scenario-dialog-regression-2026-10-05.json).
+Их результаты не входят в Android PASS 007d.
+
+## Previous Healfi: native overview redesign (2026-10-04)
+
+The preceding native source is `f54bf1b761acb1e9ac77282a159a19d798ae2108`.
 The [design description](../healfi-native-design.md) documents the separate
 Android overview layouts, bottom plugin navigation, pinned insulin/food actions,
 light/dark palettes, Healfi branding and font-size adaptations. The food dialogs

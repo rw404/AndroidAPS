@@ -1,0 +1,199 @@
+{
+  "recordedUTC": "2026-10-05T02:22:12.594859+00:00",
+  "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+  "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec",
+  "installedApkVerified": true,
+  "apkBuildType": "signed release",
+  "androidApi": 35,
+  "synthetic": true,
+  "patientData": false,
+  "pump": "VirtualPump",
+  "loopEnabled": false,
+  "physicalPump": false,
+  "physicalSensor": false,
+  "scope": "Archived partial native a0f runtime; food/profile/confirmation-cancel functionally completed, two visual failures. Not final 007d evidence or clinical validation.",
+  "overallResult": "functional_scenario_pass_two_visual_failures",
+  "cases": [
+    {
+      "name": "keyboardLayoutNormal100",
+      "status": "failed",
+      "evidence": "food-keyboard-normal",
+      "detail": "LatinIME covers the fixed lower meal total/note/primary at font100%; query, explicit Search and Cancel remain visible. No adaptive IME layout pass is claimed.",
+      "timeUTC": "2026-10-05T02:09:30.904334+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "homeFreshStaleState",
+      "status": "passed",
+      "evidence": [
+        "home-fresh",
+        "home-stale"
+      ],
+      "detail": "Actual signed a0f home shows mmol/L, native data age, loop disabled, both bottom actions and preserved quality warning. Stale state adds struck value and full stale warning; fresh state follows official synthetic xDrip worker persistence.",
+      "timeUTC": "2026-10-05T02:09:52.035922+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "nativeCatalogSearchAndKeyboardBack",
+      "status": "passed",
+      "evidence": [
+        "food-keyboard-normal",
+        "food-results"
+      ],
+      "detail": "Explicit Search runs while IME is visible; Android Back hides IME without closing Food. Native results show 5 matches of 13694, exact raw Bananas and USDA source; unconfirmed food keeps primary disabled.",
+      "timeUTC": "2026-10-05T02:10:47.289720+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "foodPortionUnitsAndUnconfirmedGate",
+      "status": "passed",
+      "evidence": "food-portion105g",
+      "detail": "Selected raw USDA Bananas portion105g yields23.982g. Gram unit, carbohydrate gram unit and original unchecked confirmation are visible; primary stays disabled before the exact-product/source/portion checkbox.",
+      "timeUTC": "2026-10-05T02:13:17.607692+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "mealReviewSourceRoundingAndNativeMaterial",
+      "status": "passed",
+      "evidence": "meal-review",
+      "detail": "Actual signed review opens without the old Material inflation crash and shows exact product/preparation/USDA173944/105g/23.982g, unchanged source fiber rule and rounded24g to the profile calculator. Native Cancel and calculate actions are both readable; this step writes or delivers nothing.",
+      "timeUTC": "2026-10-05T02:14:10.306257+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "wizardFullCaptionTypography",
+      "status": "failed",
+      "evidence": [
+        "wizard-24g",
+        "wizard-profile"
+      ],
+      "detail": "The final native primary has all characters and no ellipsis, but wraps to three lines and breaks the last word before its final letter at font100%. Functional caption completeness is fixed; aesthetic typography acceptance remains failed.",
+      "timeUTC": "2026-10-05T02:15:57.441023+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "nativeWizardProfileCarbsAndConfirmCaption",
+      "status": "passed",
+      "evidence": [
+        "wizard-24g",
+        "wizard-profile"
+      ],
+      "detail": "The original protected Wizard receives rounded24g and shows actual native2.30U, fresh data age and loaded active UI Test Fixture with IC12g/U, ISF2.5mmol/U and basal0.70U/h. Cancel and complete primary caption remain reachable; next step separately confirms delivery. Typography is recorded separately as failed.",
+      "timeUTC": "2026-10-05T02:16:06.184365+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "originalFinalConfirmationCancelWritesNothing",
+      "status": "passed",
+      "evidence": "native-final-confirmation-cancel",
+      "databaseAudit": "docs/verification/healfi-scenario-cancel-db-2026-10-05-a0f44f5.json",
+      "detail": "Original separate native final dialog shows2.30U/24g; native Cancel action=true. Android sqlite3 readonly audit after cancellation confirms boluses0/carbs0. Positive confirmation was not executed on a0f; loop remains disabled and fake profile unchanged.",
+      "timeUTC": "2026-10-05T02:18:32.518270+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "virtualPumpPositiveSimulation",
+      "status": "notRun",
+      "detail": "Parent halted positive a0f simulation after actual100% primary typography failure. Zero-treatment baseline retained for the next signed artifact; no insulin or carbs records were created.",
+      "timeUTC": "2026-10-05T02:18:43.911269+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    }
+  ],
+  "capturesAtSnapshot": [
+    {
+      "name": "home-stale",
+      "sha256": "10f577bf8dcd3bd5bd6029e975805edf39d81e990dd25921d97ad94cda4d97a2",
+      "timeUTC": "2026-10-05T02:00:52.359097+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "home-fresh",
+      "sha256": "2312bbf56e2fcd088b7cf11dd8f620fd37a574b154e22ecdc254bc187d6f6d72",
+      "timeUTC": "2026-10-05T02:02:53.456665+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "food-keyboard-normal",
+      "sha256": "a7a03673d875f411294e0fca0c691d6e2b148547290c7a2503d91d7c8970009a",
+      "timeUTC": "2026-10-05T02:08:32.315684+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "food-results",
+      "sha256": "b6c47631de68bd018ecad645f471553dfb3e5ab6260cffccb2498e5b34ac5983",
+      "timeUTC": "2026-10-05T02:09:52.977115+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "food-portion105g",
+      "sha256": "448e263d5274197c57dcee9448cbb75f40bbfc8daced4ead6ee2a246792d7fce",
+      "timeUTC": "2026-10-05T02:11:52.621559+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "meal-review",
+      "sha256": "cef66738ffd965a55eb64235132a5f6946f960b8040408c54b5c5f3ad5620124",
+      "timeUTC": "2026-10-05T02:13:30.019202+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "wizard-24g",
+      "sha256": "57ffc02a5d7e2236ed7e5d93bb437575289ad0bd0489024dbf68268b5b93af9b",
+      "timeUTC": "2026-10-05T02:14:37.193637+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "wizard-profile",
+      "sha256": "a2a0fb76784b22139d819431a6384fda6ebab7eb7f6da272cd750de6a3035815",
+      "timeUTC": "2026-10-05T02:15:28.124210+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "native-final-confirmation-cancel",
+      "sha256": "4f4aeb261afc6fb16b75987e50c054ec32ab75f71f2fe2309717be6aa011ce4d",
+      "timeUTC": "2026-10-05T02:17:04.595845+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "diagnostic-settings-a0f",
+      "sha256": "ebb429cea7d2ba54c788b8712348294a195c916bf41f4b3e7c949cfb5aa89a7a",
+      "timeUTC": "2026-10-05T02:19:35.703076+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    },
+    {
+      "name": "diagnostic-settings-search-a0f",
+      "sha256": "a09c4c0a898d9e31180067b9734f6f3b9772747fbcfd4b5de5ef1be9d5ea83a1",
+      "timeUTC": "2026-10-05T02:20:43.272374+00:00",
+      "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+      "apkSha256": "9b02ff21bcc76fd24ff2ca10f142f56b74a1107e75c08d3de8d8a189407c39ec"
+    }
+  ],
+  "rawRuntimeMetadataSha256AtSnapshot": "c1dcc539a1d099cd9124bdcbdc81231bbc76e1392395b7bb945d4c3d1250b1c8",
+  "screenshotsPublishedAsFinalAfter": false,
+  "positiveConfirmationExecuted": false,
+  "nativeDeliveryValidated": false,
+  "pinChallengeRuntimeExercised": false,
+  "limitations": [
+    "Software TCG without KVM; Android watchdog and foreground startup deadlines increased for this emulator. Startup latency and phone performance were not validated.",
+    "Synthetic UI fixture only; no physical pump or sensor and no delivery or clinical closed-loop validation."
+  ]
+}

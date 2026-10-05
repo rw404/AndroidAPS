@@ -1,0 +1,24 @@
+{
+  "sourceBefore": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+  "sourceAfter": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "materialAarSha256": "6d5e1cbb67c05bcdcbbf84005787dafd354a155f59a4d3800fd45fa7eb3689f5",
+  "before": {
+    "report": "docs/verification/healfi-scenario-dialog-resources-2026-10-05-before.json",
+    "result": "FAIL",
+    "errors": 5,
+    "sharedStylesSha256": "62fb63f326c373b46e47d22d11ad6e2104803e156b5524dcd66d54944d01ac20"
+  },
+  "after": {
+    "report": "docs/verification/healfi-scenario-dialog-resources-2026-10-05-after.json",
+    "result": "PASS",
+    "errors": 0,
+    "nodesChecked": 22,
+    "sharedStylesSha256": "51b54a882e62031ff345585d548775e5f1b7d5dda35e1924ea9d891088049832"
+  },
+  "checker": {
+    "file": "docs/verification/helpers/check-healfi-alert-dialog-resources.py",
+    "sha256": "f68d9a80fcd415e7f8a74af0c7dfad68a6913fccf5617dc6e7972a4c927a1457"
+  },
+  "runtimeCrash": "docs/verification/healfi-scenario-ui-crash-2026-10-05-4c39cd3.json",
+  "scope": "Static inheritance/dimensions/typography check against the actual Material AAR. No final Android runtime PASS inferred."
+}

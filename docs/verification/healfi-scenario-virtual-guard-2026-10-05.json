@@ -1,0 +1,13 @@
+{
+  "timeUTC": "2026-10-05T04:06:17.943698+00:00",
+  "synthetic": true,
+  "patientData": false,
+  "pump": "VirtualPump",
+  "enabledPumpPlugins": [
+    "VirtualPumpPlugin"
+  ],
+  "loopEnabled": false,
+  "fixtureProfile": "UI Test Fixture",
+  "method": "Read-only original native shared preferences; only enabled pump/loop and synthetic fixture name inspected",
+  "originalAapsUnaffected": true
+}

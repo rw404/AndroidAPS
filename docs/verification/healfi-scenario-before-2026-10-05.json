@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+  "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+  "device": "emulator-5554",
+  "androidApi": 35,
+  "synthetic": true,
+  "physicalPump": false,
+  "loopEnabled": false,
+  "pump": "VirtualPump",
+  "captures": [
+    {
+      "name": "home",
+      "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+      "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+      "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+      "captureSession": "Earlier actual Android rendering on 2026-10-04, exact f54 debug APK; raw image copied unchanged for this comparison.",
+      "observed": "6.7 mmol/L, reading 5 minutes old, synthetic native GraphView, pinned insulin and food buttons, VirtualPump, loop disabled.",
+      "notNewCapture": true,
+      "file": "design/scenario/before/home.png",
+      "relativeFile": "before/home.png",
+      "priorEvidence": "docs/verification/healfi-native-ui-2026-10-04.json#finalLightMainComparison"
+    }
+  ],
+  "comparisonCaveat": "This unchanged raw Android PNG was captured in the previous 2026-10-04 session. It is not a new capture; new candidate screenshots have different timestamps.",
+  "baselineCurrentAttemptCrash": {
+    "timeUTC": "2026-10-04T23:00:23Z",
+    "sourceApkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+    "exception": "android.app.RemoteServiceException$ForegroundServiceDidNotStartInTimeException",
+    "service": "app.aaps.plugins.main.general.persistentNotification.DummyService",
+    "sourceChanged": false,
+    "scenarioTreatmentActionInvoked": false
+  },
+  "scope": {
+    "newBaselineCapture": false,
+    "clinicalValidation": false,
+    "actualPumpDelivery": false
+  },
+  "currentBaselineAttemptEmulatorAdjustments": {
+    "watchdogSettingMs": 600000,
+    "hardwareTimeoutMultiplier": 20,
+    "method": "AOSP adb root; absent ro.hw_timeout_multiplier set once to 20; zygote restarted to refresh Android Build cache",
+    "reason": "Software TCG initial boot: OS Watchdog killed system_server during Java class loading before Healfi launched. This does not measure phone performance.",
+    "timeUTC": "2026-10-04T22:39:52.944492+00:00",
+    "androidAppSourcesChanged": false,
+    "profileChanged": false,
+    "serviceStartForegroundTimeoutMs": 3600000,
+    "serviceTimeoutReason": "The baseline DummyService foreground startup deadline expired while cold ART verification and layout inflation occupied the Android main thread. Only the emulator DeviceConfig service_start_foreground_timeout_ms was increased.",
+    "appliesTo": "current failed re-run; not archived screenshot session"
+  }
+}

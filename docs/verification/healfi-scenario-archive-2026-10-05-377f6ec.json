@@ -1,0 +1,51 @@
+{
+  "recordedUTC": "2026-10-05T01:33:20.850848+00:00",
+  "sourceCommit": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "sourceTree": "c496181be6c4820cdcc60408a51c04f9ff9f8896",
+  "replacedBySource": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+  "sourceAndApkProvenanceVerified": true,
+  "apkSha256": "0a2e1c38aacae6bd4da78a90c23ba026c60c6a25cbeff49bee0f316575173dea",
+  "totalTests": 572,
+  "sourceAuditResult": "PASS",
+  "runtimeResult": "partial_functional_pass_visual_fail",
+  "runtimeReport": "docs/verification/healfi-scenario-ui-2026-10-05-377f6ec.json",
+  "files": [
+    {
+      "originalFile": "docs/verification/healfi-scenario-release-build-2026-10-05.json",
+      "archiveFile": "docs/verification/healfi-scenario-release-build-2026-10-05-377f6ec.json",
+      "originalSha256": "0ee8daca931885bb2f493f1d509af5ce079714f7d0aadc2afebdf52bd9aacc68",
+      "archivedSha256": "0ee8daca931885bb2f493f1d509af5ce079714f7d0aadc2afebdf52bd9aacc68",
+      "byteExact": true
+    },
+    {
+      "originalFile": "docs/verification/healfi-scenario-release-build-2026-10-05.xml",
+      "archiveFile": "docs/verification/healfi-scenario-release-build-2026-10-05-377f6ec.xml",
+      "originalSha256": "0235a94d8ff0cfca9e72604255e48732a764bc5b08c9f52d98e3824fd2d3438c",
+      "archivedSha256": "0235a94d8ff0cfca9e72604255e48732a764bc5b08c9f52d98e3824fd2d3438c",
+      "byteExact": true
+    },
+    {
+      "originalFile": "docs/verification/healfi-scenario-artifact-2026-10-05.json",
+      "archiveFile": "docs/verification/healfi-scenario-artifact-2026-10-05-377f6ec.json",
+      "originalSha256": "c779237052edf45cd5572916bd5f02adcbfe21c82f8a542d2c8dc1e47007f099",
+      "archivedSha256": "eec2cbc5b3f112dfb362cc924b73a046fee70d981a2550b386705bb3d612263d",
+      "byteExact": false,
+      "metadataChanges": "Archive file references and archive note only; original SHA preserved."
+    },
+    {
+      "originalFile": "docs/verification/healfi-scenario-build-provenance-2026-10-05.json",
+      "archiveFile": "docs/verification/healfi-scenario-build-provenance-2026-10-05-377f6ec.json",
+      "originalSha256": "f1318339cac278a29e9da900bd8f76ebee6e022515bd241a111f0f7c26b04c48",
+      "archivedSha256": "76af403e46c55f36d575b4a9f0cbec57a2660d66e7d40704f02eac6e5303b5db",
+      "byteExact": false,
+      "metadataChanges": "Archive file references and archive note only; original SHA preserved."
+    },
+    {
+      "originalFile": "docs/verification/healfi-scenario-source-audit-2026-10-05.json",
+      "archiveFile": "docs/verification/healfi-scenario-source-audit-2026-10-05-377f6ec.json",
+      "originalSha256": "a454fb971e2d74e69824243ef1b24beb5a46e798b8f350aad72413c19d96d842",
+      "archivedSha256": "a454fb971e2d74e69824243ef1b24beb5a46e798b8f350aad72413c19d96d842",
+      "byteExact": true
+    }
+  ]
+}

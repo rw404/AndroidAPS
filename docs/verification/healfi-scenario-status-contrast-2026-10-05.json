@@ -1,0 +1,22 @@
+{
+  "values": {
+    "warning": {
+      "textContrast": 6.13,
+      "borderContrast": 3.34
+    },
+    "stopped": {
+      "textContrast": 6.28,
+      "borderContrast": 3.25
+    }
+  },
+  "values-night": {
+    "warning": {
+      "textContrast": 9.17,
+      "borderContrast": 5.02
+    },
+    "stopped": {
+      "textContrast": 8.33,
+      "borderContrast": 4.22
+    }
+  }
+}

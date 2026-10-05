@@ -1,0 +1,33 @@
+{
+  "runId": 37254928995,
+  "runUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37254928995",
+  "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "artifactId": 11322887823,
+  "artifactName": "aaps-signed-validation-healfiRelease-007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "artifactBytes": 215066705,
+  "githubDigest": "sha256:f68b31f9eb1026a0e496edfbe9e8eca2b4d08cc51a963d92e09cf17c84c3611f",
+  "downloadedZipBytes": 215066705,
+  "downloadedZipSha256": "f68b31f9eb1026a0e496edfbe9e8eca2b4d08cc51a963d92e09cf17c84c3611f",
+  "digestMatches": true,
+  "zipCrcValid": true,
+  "apkBytes": 214959167,
+  "packageName": "app.healfi.androidaps",
+  "versionCode": "1500",
+  "versionName": "3.4.2.6",
+  "reportFiles": [
+    "docs/verification/healfi-scenario-release-build-2026-10-05.json",
+    "docs/verification/healfi-scenario-release-build-2026-10-05.xml"
+  ],
+  "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+  "apkDigestMatchesCiReport": true,
+  "ciReportSourceMatches": true,
+  "totalTests": 572,
+  "testFailures": 0,
+  "testErrors": 0,
+  "testSkipped": 0,
+  "signerCertificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+  "artifactUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37254928995/artifacts/11322887823",
+  "apkFileName": "Healfi-scenario-release.apk",
+  "buildResult": "SUCCESS",
+  "nativeScenarioValidation": "pending"
+}

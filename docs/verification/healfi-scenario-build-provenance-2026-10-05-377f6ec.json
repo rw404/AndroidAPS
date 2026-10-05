@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "recordedUTC": "2026-10-05T01:06:54.255044+00:00",
+  "sourceCommit": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "sourceTree": "c496181be6c4820cdcc60408a51c04f9ff9f8896",
+  "baselineCommit": "baeced857d7fc841f75556357222bd592fb3b181",
+  "status": "Signed current release built and verified; final native retest pending",
+  "builds": {
+    "release": {
+      "status": "PASS",
+      "runUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37248182432",
+      "artifactUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37248182432/artifacts/11320238040",
+      "variant": "healfiRelease",
+      "fileName": "Healfi-scenario-release.apk",
+      "apkSha256": "0a2e1c38aacae6bd4da78a90c23ba026c60c6a25cbeff49bee0f316575173dea",
+      "bytes": 214959167,
+      "package": "app.healfi.androidaps",
+      "signerCertificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+      "totalTests": 572,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "validationReport": "docs/verification/healfi-scenario-release-build-2026-10-05-377f6ec.json",
+      "junitReport": "docs/verification/healfi-scenario-release-build-2026-10-05-377f6ec.xml",
+      "artifactReport": "docs/verification/healfi-scenario-artifact-2026-10-05-377f6ec.json",
+      "v2Signature": "passed",
+      "zipCrc": "passed",
+      "zipAlignment16KiB": "passed",
+      "nativeLibrariesChecked": 18,
+      "foodAssetsChecked": 14
+    },
+    "local": {
+      "status": "not_run_for_current_source",
+      "apkSha256": null,
+      "totalTests": null,
+      "previousSourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+      "previousValidationReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.json",
+      "previousJUnitReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.xml",
+      "note": "Existing d078f9 debug binary and 572 local results belong to 4c39cd3 only."
+    }
+  },
+  "sourceAudit": {
+    "report": "docs/verification/healfi-scenario-source-audit-2026-10-05-377f6ec.json",
+    "sha256": "a454fb971e2d74e69824243ef1b24beb5a46e798b8f350aad72413c19d96d842",
+    "unchangedTrackedFiles": 585,
+    "auditedMethodsAndRegions": 26,
+    "bindingLayouts": 11,
+    "result": "PASS",
+    "scope": "Source and binding comparison, not clinical or runtime validation."
+  },
+  "dialogRegression": {
+    "report": "docs/verification/healfi-scenario-dialog-regression-2026-10-05.json",
+    "staticResult": "PASS",
+    "layoutNodesChecked": 22,
+    "finalAndroidRuntime": "pending"
+  },
+  "previousCandidate": {
+    "sourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+    "buildProvenance": "docs/verification/healfi-scenario-build-provenance-2026-10-05-4c39cd3.json",
+    "runtimeResult": "FAIL",
+    "crash": "docs/verification/healfi-scenario-ui-crash-2026-10-05-4c39cd3.json"
+  },
+  "runtime": {
+    "status": "pending",
+    "afterScreenshotsNotCopiedYet": true,
+    "finalCandidateAndroidValidationComplete": false,
+    "physicalPhoneConnected": false,
+    "physicalPumpConnected": false,
+    "clinicalValidation": false
+  },
+  "beforeScreenshot": {
+    "file": "design/scenario/before/home.png",
+    "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+    "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+    "notNewCapture": true
+  },
+  "galleryHelper": {
+    "file": "design/scenario/make-android-comparison.py",
+    "sha256": "1b3e685560eef21199660f5cef6616ae5999a31799be68af1279ddee47056122",
+    "requiresActualHashCheckedAfterHome": true,
+    "preferredAfterHome": "home-fresh",
+    "pixelsEdited": false,
+    "expectedAfterSource": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+    "guardReport": "docs/verification/healfi-scenario-gallery-guards-2026-10-05.json",
+    "finalReleaseApkSha256": "0a2e1c38aacae6bd4da78a90c23ba026c60c6a25cbeff49bee0f316575173dea"
+  },
+  "independentFileChecks": {
+    "actualApkSha256AndBytesMatchFinalReleaseReport": true,
+    "junitSha256And572CasesMatchFinalReleaseReport": true,
+    "junitPropertiesAndCapturedOutputAbsent": true,
+    "actionsZipSha256MatchesGithubDigest": true,
+    "previousSignedHealfiCertificateMatches": true,
+    "installedPhoneCertificateCompared": false
+  },
+  "archive": {
+    "recordedUTC": "2026-10-05T01:33:20.850848+00:00",
+    "sourceCommit": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+    "currentSourceAtArchive": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+    "originalMetadataSha256": "f1318339cac278a29e9da900bd8f76ebee6e022515bd241a111f0f7c26b04c48",
+    "changes": "Report references renamed to archived files; source/build facts preserved. Runtime pending in this original snapshot; later scoped 377 runtime findings are recorded separately."
+  }
+}

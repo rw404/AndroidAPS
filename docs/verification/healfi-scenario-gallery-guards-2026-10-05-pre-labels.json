@@ -1,0 +1,42 @@
+{
+  "helperSha256": "031cc0fe1d315a08dae1a717bcd5ea13a4895f77b26e283380cfc211c2cea528",
+  "negativeChecks": {
+    "wrong_source": {
+      "rejected": true,
+      "reason": "After report belongs to a different source; previous candidate screenshots cannot become final evidence",
+      "published": false
+    },
+    "wrong_apk": {
+      "rejected": true,
+      "reason": "Capture APK differs from report APK: after/home-fresh.png",
+      "published": false
+    },
+    "no_application_evidence": {
+      "rejected": true,
+      "reason": "After capture has no verified native Healfi evidence: home-fresh.png",
+      "published": false
+    },
+    "launcher_foreground": {
+      "rejected": true,
+      "reason": "After capture foreground is outside Healfi: home-fresh.png",
+      "published": false
+    },
+    "unstable_capture": {
+      "rejected": true,
+      "reason": "After capture was not verified stable during collection: home-fresh.png",
+      "published": false
+    }
+  },
+  "positiveTemporaryCheck": {
+    "beforeCaptures": 1,
+    "afterCaptures": 1,
+    "pending": false,
+    "publishableComparison": true,
+    "pixelsChanged": false,
+    "beforeSource": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "afterSource": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+    "scope": "Temporary helper check on archived377 captures, not final a0f gallery or Android runtime test",
+    "temporaryOutputRemoved": true
+  },
+  "scope": "Gallery provenance/native-foreground guards only, not Android validation."
+}

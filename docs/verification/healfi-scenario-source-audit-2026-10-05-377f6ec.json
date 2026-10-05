@@ -1,0 +1,342 @@
+{
+  "baseline": "baeced857d7fc841f75556357222bd592fb3b181",
+  "worktreeHead": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "clinicalDirectories": {
+    "core/objects/src/main/kotlin/app/aaps/core/objects/wizard": {
+      "trackedFiles": 3,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "implementation/src/main/kotlin/app/aaps/implementation/queue": {
+      "trackedFiles": 23,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "plugins/aps": {
+      "trackedFiles": 138,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "plugins/constraints": {
+      "trackedFiles": 151,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "pump/medtronic": {
+      "trackedFiles": 124,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "pump/rileylink": {
+      "trackedFiles": 134,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    },
+    "ui/src/main/kotlin/app/aaps/ui/food": {
+      "trackedFiles": 12,
+      "byteUnchanged": true,
+      "changedOrUntrackedSourcePaths": []
+    }
+  },
+  "unchangedMethods": {
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryCalculation.kt": {
+      "wholeFileByteUnchanged": true,
+      "sha256": "82a3327c175dc6fa32034154f6f6f821c62e50c6345c13901c0247177281caa4"
+    },
+    "ui/src/test/kotlin/app/aaps/ui/dialogs/FoodEntryCalculationTest.kt": {
+      "wholeFileByteUnchanged": true,
+      "sha256": "fa46178006e9a116bb813d212544cd01c22c75791d0d3ef4c5e3c1a400b913b7"
+    },
+    "ui/src/test/kotlin/app/aaps/ui/dialogs/WizardInputPrefillTest.kt": {
+      "wholeFileByteUnchanged": true,
+      "sha256": "e9f75214960636201e189d4a35e6d07bdf800112f5c4f095e5c931fd5f27ad16"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::reviewMeal": {
+      "byteUnchanged": true,
+      "sha256": "14c8bdab2c186e1708d6a680f116a6c5fe42c48cfb7338dc70297f22d656694b"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::nativeCarbsAllowed": {
+      "byteUnchanged": true,
+      "sha256": "7305ba5a3c2f87af6ceb7735eb3555049a76982780c6343d3498fd32c4cfb11f"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::readyForWizard": {
+      "byteUnchanged": true,
+      "sha256": "84cd23fc1f1748e057cd4e67969422a318592358a6d6bd5c9a075f9805be3827"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::openProtectedWizard": {
+      "byteUnchanged": true,
+      "sha256": "2586d8b17a09ac014ad4dd190e7d5d5eddacd05d789605cbb4161de6123be6ca"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::openProtectedCarbWizard": {
+      "byteUnchanged": true,
+      "sha256": "bcdeb2ecb53d2a67f5100a058d5da5d2577e4775c94d92b029c55db0afd24f4a"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::currentPortion": {
+      "byteUnchanged": true,
+      "sha256": "3033fc64912dacdb5822bed45e308602035fe8d460c3d72ef7d9e99c959e6cdf"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::invalidatePortion": {
+      "byteUnchanged": true,
+      "sha256": "2e83c33670dab5753123805db7e24052e08308858af0f8b56acce7418e1545f5"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::invalidateLabel": {
+      "byteUnchanged": true,
+      "sha256": "5cd6dddf7cf98061d67a48876a100ff47ff83888f8a303d23bae9bb6e9913117"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::addPortion": {
+      "byteUnchanged": true,
+      "sha256": "31b3e763e9a8e23916e073846d02e9c49d60ed3ad9f2dbf6b4bd8659daac4aab"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::initDialog": {
+      "byteUnchanged": true,
+      "sha256": "ea44cf6645d9967a3a0f675cb7c5d409459cc1e251d66737393223bee88b37d5"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::calculateInsulin": {
+      "byteUnchanged": true,
+      "sha256": "a14d9ee579d2d0984cf85d9997798aa15d7e73996858e2c447b72923a792dc2d"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::saveCheckedStates": {
+      "byteUnchanged": true,
+      "sha256": "7d043f4233df23f479b50956e2b790b6e3dc0d127cabed8e515b4f7f217ef5c5"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::loadCheckedStates": {
+      "byteUnchanged": true,
+      "sha256": "b13eb6a64f2635d518a35d25add922d6198e2c40e0075e5ee62d1d2a4134cf71"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::onResume": {
+      "byteUnchanged": true,
+      "sha256": "388284d32073d961c92ce5f657c74301b985ee3d90540623cd06d637dd0a9c1c"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::processIobCheckBox": {
+      "byteUnchanged": true,
+      "sha256": "2824fd3ae0fe1ad8bdc8b43e59de73f1c4c9d192cc1b911d6433805ecac9f2c8"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::processCobCheckBox": {
+      "byteUnchanged": true,
+      "sha256": "8b1fa8e6c6f971258cb67f7570a732cf21844cbcecd1b0c01fbf76a04d8f625c"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::processEnabledIcons": {
+      "byteUnchanged": true,
+      "sha256": "38c45b2374f9f0fbed5525751445bdf24d73d6ef65595735cbc95a4ebb2471a6"
+    },
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/OverviewFragment.kt::onClick": {
+      "byteUnchanged": true,
+      "sha256": "d7c922f5942bf5e6821ef1eda8cd03488868cf2837ad9ba34b52d1b9dc08dda9"
+    },
+    "plugins/main/src/main/kotlin/app/aaps/plugins/main/general/overview/OverviewFragment.kt::onLongClick": {
+      "byteUnchanged": true,
+      "sha256": "191435dd831bb01f77d914429cec156c851780dacb06a3ccbe230f87cacb2d25"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::finalConfirmAndExecuteHandler": {
+      "byteUnchanged": true,
+      "sha256": "db8073174750fb9515d5b73685d22a1b5f80e3d4cd0a7e4c80318d4b88e1a0fc"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::WizardInputPrefillAndResolver": {
+      "byteUnchanged": true,
+      "sha256": "8bc4d94fab9f164d02b653f676d79ae29e665a3147952e6e75c3d298f73b980f"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/FoodEntryDialog.kt::totalCarbohydrate": {
+      "byteUnchanged": true,
+      "sha256": "28368925a292c44bdaff1e61fda16d82e34ed7a0b1a73cb21af476911afc9562"
+    },
+    "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt::onViewCreatedCalculationSetup": {
+      "byteUnchangedExceptOnePresentationCall": true,
+      "sha256": "a557287c141ab0860d3a4afd114b9d6afcc8c5d28298f361f665b598dda618af"
+    }
+  },
+  "bindingCompatibility": {
+    "ui/src/main/res/layout/healfi_dialog_food_entry.xml": {
+      "reference": "ui/src/main/res/layout/dialog_food_entry.xml",
+      "requiredIds": 42,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "ui/src/main/res/layout/healfi_dialog_wizard.xml": {
+      "reference": "ui/src/main/res/layout/dialog_wizard.xml",
+      "requiredIds": 48,
+      "missingOrWrongTypes": {},
+      "originalRoot": "ScrollView",
+      "actualRoot": "ScrollView"
+    },
+    "ui/src/main/res/layout/healfi_treatments_fragment.xml": {
+      "reference": "ui/src/main/res/layout/treatments_fragment.xml",
+      "requiredIds": 3,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "app/src/healfi/res/layout/activity_preferences.xml": {
+      "reference": "app/src/main/res/layout/activity_preferences.xml",
+      "requiredIds": 2,
+      "missingOrWrongTypes": {},
+      "originalRoot": "androidx.constraintlayout.widget.ConstraintLayout",
+      "actualRoot": "androidx.constraintlayout.widget.ConstraintLayout"
+    },
+    "app/src/healfi/res/layout/activity_main.xml": {
+      "reference": "app/src/healfi/res/layout/activity_main.xml",
+      "requiredIds": 7,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "plugins/main/src/main/res/layout/healfi_overview_fragment.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_fragment.xml",
+      "requiredIds": 21,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "plugins/main/src/main/res/layout/healfi_overview_info_layout.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_info_layout.xml",
+      "requiredIds": 37,
+      "missingOrWrongTypes": {},
+      "originalRoot": "androidx.constraintlayout.widget.ConstraintLayout",
+      "actualRoot": "androidx.constraintlayout.widget.ConstraintLayout"
+    },
+    "plugins/main/src/main/res/layout/healfi_overview_graphs_layout.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_graphs_layout.xml",
+      "requiredIds": 5,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "plugins/main/src/main/res/layout/healfi_overview_buttons_layout.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_buttons_layout.xml",
+      "requiredIds": 16,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    },
+    "plugins/main/src/main/res/layout/healfi_overview_statuslights_layout.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_statuslights_layout.xml",
+      "requiredIds": 9,
+      "missingOrWrongTypes": {},
+      "originalRoot": "com.google.android.flexbox.FlexboxLayout",
+      "actualRoot": "com.google.android.flexbox.FlexboxLayout"
+    },
+    "plugins/main/src/main/res/layout-land/healfi_overview_fragment.xml": {
+      "reference": "plugins/main/src/main/res/layout/overview_fragment.xml",
+      "requiredIds": 21,
+      "missingOrWrongTypes": {},
+      "originalRoot": "LinearLayout",
+      "actualRoot": "LinearLayout"
+    }
+  },
+  "scope": "Read-only source and XML comparison; no clinical or real pump validation.",
+  "presentationReview": {
+    "readOnlyClinicalStateObservers": [
+      "refreshHealfiContext",
+      "updateHealfiState"
+    ],
+    "checkedLastPortionUsesExistingAddAndReview": true,
+    "noAutomaticFoodSelection": true,
+    "preferencesEntryProtected": true,
+    "allEnabledVisiblePluginsRemainInDrawer": true,
+    "freshnessNoticeFutureGap": "Resolved in source: display-only notice when timestamp >now+60s before stale-data branch; core LastBgData and dosing unchanged."
+  },
+  "healfiPagerReview": {
+    "onlyOverviewRegisteredInHealfi": true,
+    "nonHealfiElseUsesOriginalCompleteBooleanExpression": true,
+    "overviewDrawerReturnsToMainPager0": true,
+    "otherDrawerIntentsAndEligibilityPreserved": true,
+    "offscreenLimitHealfi1Other8": true,
+    "pluginServiceStartupUnchanged": true,
+    "branchReview": "Kotlin if-expression: else consumes the original complete simpleMode/TAB || advancedMode/visible expression; build verification delegated to root.",
+    "runtimeMeasuredPerformance": false
+  },
+  "sourceCandidate": "377f6ec367b0ef2f95c3221f3326a844c354e575",
+  "productionWorktreeEqualsCandidate": true,
+  "concurrentDocumentationPathsAllowed": true,
+  "paletteReview": {
+    "sourcePrevious": "610a132ef7bb03faf1706a44d801864633a94984",
+    "stateAndQualityWarningTextBranchesByteUnchanged": true,
+    "legacyClinicalResourceFiles": [
+      {
+        "path": "core/ui/src/main/res/values/styles.xml",
+        "byteUnchanged": true,
+        "sha256": "b55e111e18d7fe93e2b6478a1d1a8c271fad68ee883a79f556ef68cb81ba6bd4"
+      },
+      {
+        "path": "core/ui/src/main/res/values-night/styles.xml",
+        "byteUnchanged": true,
+        "sha256": "50f229ad08be8b7e785d00b3a4ec6e1340548ddd601d2b864c966b1d08697391"
+      },
+      {
+        "path": "core/ui/src/main/res/values/colors.xml",
+        "byteUnchanged": true,
+        "sha256": "e23c24a065a226bf5af3958d3697a12abb699769b5f3491f1b75bd7f7c137077"
+      },
+      {
+        "path": "core/ui/src/main/res/values-night/colors.xml",
+        "byteUnchanged": true,
+        "sha256": "57ae6ec7a6114c7c8a126c4d855017ec27cd9af56b96be9c4919c06d7a475584"
+      },
+      {
+        "path": "core/ui/src/main/res/values/attrs.xml",
+        "byteUnchanged": true,
+        "sha256": "68ab3f4e92a786db671f2e6cf4665d942f4f3d866891e84538c4678b0230878d"
+      }
+    ],
+    "newThemeDoesNotOverrideLegacyClinicalAttrs": [
+      "ribbonWarningColor",
+      "ribbonCriticalColor",
+      "ribbonTextWarningColor",
+      "ribbonTextCriticalColor",
+      "warningColor",
+      "bgLow",
+      "highColor",
+      "bgInRange",
+      "bolusColor",
+      "carbsColor",
+      "pumpStatusBackground"
+    ],
+    "namedStatusTokenUsesOnlyHealfiOverview": true,
+    "showStoppedStateReadOnly": true,
+    "independentlyComputedContrast": {
+      "values": {
+        "warning": {
+          "textContrast": 6.13,
+          "borderContrast": 3.34
+        },
+        "stopped": {
+          "textContrast": 6.28,
+          "borderContrast": 3.25
+        }
+      },
+      "values-night": {
+        "warning": {
+          "textContrast": 9.17,
+          "borderContrast": 5.02
+        },
+        "stopped": {
+          "textContrast": 8.33,
+          "borderContrast": 4.22
+        }
+      }
+    },
+    "runtimeRecaptureRequired": true
+  },
+  "materialDialogRepairReview": {
+    "parentSource": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+    "changedPaths": [
+      "core/ui/src/main/res/values/healfi_scenario_styles.xml"
+    ],
+    "themeAndWidgetParents": {
+      "HealfiScenario.DialogBody": "MaterialAlertDialog.MaterialComponents.Body.Text",
+      "HealfiScenario.DialogTitle": "MaterialAlertDialog.MaterialComponents.Title.Text",
+      "HealfiScenario.DialogTheme": "ThemeOverlay.MaterialComponents.MaterialAlertDialog"
+    },
+    "wrappersPreserveWidgetLayoutInheritance": true,
+    "clinicalHandlersUnchanged": true,
+    "androidCrashResolutionNotIndependentlyValidatedBySourceAudit": true
+  },
+  "notRunInThisSourceAudit": [
+    "Android runtime/layout rendering",
+    "Font 200% or landscape or IME",
+    "Rotation or process death",
+    "Real sensor/bridge/pump",
+    "Clinical or delivery validation"
+  ],
+  "result": "PASS"
+}

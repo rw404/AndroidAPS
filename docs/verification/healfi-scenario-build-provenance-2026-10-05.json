@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "recordedUTC": "2026-10-05T04:38:28.625Z",
+  "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+  "sourceTree": "ba557734f59d3f85605aa11eb8484d47aa0cf855",
+  "baselineCommit": "baeced857d7fc841f75556357222bd592fb3b181",
+  "status": "Signed exact 007d release and scoped native core scenario complete; visual acceptance FAILED; physical and clinical validation NOT RUN",
+  "builds": {
+    "release": {
+      "status": "PASS",
+      "runUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37254928995",
+      "artifactUrl": "https://github.com/rw404/AndroidAPS/actions/runs/37254928995/artifacts/11322887823",
+      "variant": "healfiRelease",
+      "fileName": "Healfi-scenario-release.apk",
+      "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+      "bytes": 214959167,
+      "package": "app.healfi.androidaps",
+      "signerCertificateSha256": "10ce555cb4598386e2671199d03f149eb0aba814b4d67c591e19bd3c985bccc5",
+      "totalTests": 572,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "validationReport": "docs/verification/healfi-scenario-release-build-2026-10-05.json",
+      "junitReport": "docs/verification/healfi-scenario-release-build-2026-10-05.xml",
+      "artifactReport": "docs/verification/healfi-scenario-artifact-2026-10-05.json",
+      "v2Signature": "passed",
+      "zipCrc": "passed",
+      "zipAlignment16KiB": "passed",
+      "nativeLibrariesChecked": 18,
+      "foodAssetsChecked": 14
+    },
+    "local": {
+      "status": "not_run_for_current_source",
+      "apkSha256": null,
+      "totalTests": null,
+      "previousSourceCommit": "4c39cd326905c250ae0e628a7a8a27966d1e589c",
+      "previousValidationReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.json",
+      "previousJUnitReport": "docs/verification/healfi-scenario-local-build-2026-10-05-4c39cd3.xml",
+      "note": "Existing d078f9 debug binary and 572 local results belong to 4c39cd3 only."
+    }
+  },
+  "sourceAudit": {
+    "report": "docs/verification/healfi-scenario-source-audit-2026-10-05.json",
+    "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+    "sha256": "cb0ea4ac009b4adf3a0f3017010771c068d838b7fdd895649e44782bd3b463df",
+    "result": "PASS",
+    "unchangedTrackedFiles": 585,
+    "auditedMethodsAndRegions": 26,
+    "bindingLayouts": 11,
+    "legacyClinicalResourceFiles": 5,
+    "scope": "Exact source comparison; no clinical or Android runtime validation."
+  },
+  "dialogRegression": {
+    "report": "docs/verification/healfi-scenario-dialog-regression-2026-10-05.json",
+    "staticResult": "PASS",
+    "layoutNodesChecked": 22,
+    "finalAndroidRuntime": "PASS for actual exact007d meal review and original separate final confirmation; 22 static nodes are not 22 native tests"
+  },
+  "previousCandidate": {
+    "sourceCommit": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+    "buildProvenance": "docs/verification/healfi-scenario-build-provenance-2026-10-05-a0f44f5.json",
+    "sourceAudit": "docs/verification/healfi-scenario-source-audit-2026-10-05-a0f44f5.json",
+    "runtimeResult": "functional_scenario_pass_two_visual_failures",
+    "runtimeReport": "docs/verification/healfi-scenario-ui-2026-10-05-a0f44f5.json",
+    "archiveIndex": "docs/verification/healfi-scenario-archive-2026-10-05-a0f44f5.json"
+  },
+  "runtime": {
+    "status": "core_passed_visual_failed",
+    "overallNativeResult": "corePassedWithKnownLayoutLimitations",
+    "scopedNativeValidationComplete": true,
+    "fullDeviceValidationComplete": false,
+    "clinicalReady": false,
+    "report": "docs/verification/healfi-scenario-ui-2026-10-05.json",
+    "sha256": "1fddaa7e4c6c24246a20271c4f44d90bab63ab6a44b7c9b052b9d2a493a79551",
+    "rawNativeJournal": {
+      "report": "docs/verification/healfi-scenario-ui-raw-2026-10-05.json",
+      "sha256": "f8613d3768d62f63c5ee3e893cee6d4515adb623dfba83f18e4914e7ced1d5c3"
+    },
+    "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+    "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+    "installedApkVerified": true,
+    "stableAfterCaptures": 17,
+    "unstableInitialCaptureExcluded": true,
+    "screenshotsCopiedByteExact": true,
+    "caseTotals": {
+      "passed": 11,
+      "visualFailed": 4,
+      "notRun": 12
+    },
+    "passedCases": [
+      "homeFreshStaleState",
+      "nativeCatalogSearchAndKeyboardBack",
+      "foodPortionUnitsAndUnconfirmedGate",
+      "mealReviewSourceRoundingAndNativeMaterial",
+      "wizardFooterTypographyNormal100",
+      "nativeWizardProfileCarbsAndGuardedRoute",
+      "originalFinalConfirmationCancelWritesNothing",
+      "virtualPumpPositiveQueuePersistence",
+      "nativeHistoryShowsVirtualMealAndBolus",
+      "nativeSettingsCollapsedAndSearch",
+      "nativeDarkHomeDisplayOnly"
+    ],
+    "failedCases": [
+      "stockGraphEventLabelVisualNoise",
+      "keyboardLayoutNormal100",
+      "homeCobHeadingTypographyNormal100",
+      "homeTypographyFont200Dark"
+    ],
+    "notRunCases": [
+      "foodPortionNativeXmlSnapshot",
+      "font200FullMealWizardScenario",
+      "rotationLandscape",
+      "talkBackContrastAccessibility",
+      "realPhonePerformanceLoad",
+      "physicalPumpSensorDeliveryClosedLoop",
+      "physicalXdripSensorIntegration",
+      "photoOcrBarcodeFlow",
+      "configuredPinChallenge",
+      "futureTimestampAndMgdlVariants",
+      "fullDarkMealWizardScenario",
+      "fullBeforeScenario"
+    ],
+    "cancellation": {
+      "report": "docs/verification/healfi-scenario-cancel-db-2026-10-05.json",
+      "sha256": "55c991a5efde13ba475756c605ad65d5a6260322ed9a4d79b917160069403498",
+      "timeUTC": "2026-10-05T04:06:16.810957+00:00",
+      "boluses": 0,
+      "carbs": 0,
+      "scope": "Read-only audit at 04:06 before the later virtual positive flow"
+    },
+    "virtualPositive": {
+      "status": "PASS",
+      "before": {
+        "report": "docs/verification/healfi-scenario-virtual-before-db-2026-10-05.json",
+        "sha256": "e9befdb9b27b5c0b6d8abb93705260c3c2a70f092d31a7f4cc5e79e63ce9a8e6",
+        "timeUTC": "2026-10-05T04:14:26.395038+00:00",
+        "boluses": 0,
+        "carbs": 0
+      },
+      "after": {
+        "report": "docs/verification/healfi-scenario-virtual-after-db-2026-10-05.json",
+        "sha256": "3504d9304131d8b5f13dd7b7aefe3b94b2b567d5ab311dc385706310a3a87db9",
+        "timeUTC": "2026-10-05T04:15:38.716347+00:00",
+        "boluses": 1,
+        "carbs": 1,
+        "normalBolusU": 2.3,
+        "carbsG": 24
+      },
+      "confirmation": {
+        "report": "docs/verification/healfi-scenario-virtual-confirm-2026-10-05.json",
+        "sha256": "3558835c74a491ba9c1aefcd9fcd3163eaa5d2c8c35406c269d114b287064279",
+        "timeUTC": "2026-10-05T04:14:58.564875+00:00"
+      },
+      "originalGuardedRoute": "Original native OK -> original command queue -> VirtualPump; no direct therapy DB writes",
+      "newWizardAfterOfficialSample": true,
+      "newWizardInputBgMmolL": 6.7,
+      "latestSourceBgAgeSecondsAtConfirmation": 403.385,
+      "cacheAutoRefreshClaimed": false,
+      "nativeHistoryRowsVerified": true,
+      "scope": "Two synthetic records and native Food/insulin history view; no physical delivery"
+    },
+    "finalDatabase": {
+      "report": "docs/verification/healfi-scenario-final-db-2026-10-05.json",
+      "sha256": "2560bc00a5e682a5a26aab9ece583f131d0a797ec5a3d7828230c7c30f9b51bb",
+      "timeUTC": "2026-10-05T04:30:13.030282+00:00",
+      "boluses": 1,
+      "carbs": 1
+    },
+    "finalFixture": {
+      "report": "docs/verification/healfi-scenario-final-fixture-2026-10-05.json",
+      "sha256": "4eb747dcc03014c6d924c5a8f9712c5e3525df154fa88ceef14d5f34feee4408",
+      "timeUTC": "2026-10-05T04:30:17.186219+00:00",
+      "pump": "VirtualPump",
+      "loopEnabled": false,
+      "profile": "UI Test Fixture"
+    },
+    "displayRestored": {
+      "report": "docs/verification/healfi-scenario-display-restored-2026-10-05.json",
+      "sha256": "d61acb9be411894334a0f042094da108fc15e540aea109d8d54b3ad6a37f4866",
+      "timeUTC": "2026-10-05T04:32:02.914710+00:00",
+      "appTheme": "light",
+      "fontScale": 1,
+      "osNight": false
+    },
+    "keyboardNormal100": {
+      "status": "FAILED",
+      "searchAndHeaderCancelReachable": true,
+      "nativeBackHidesKeyboard": true,
+      "globalImeAdaptationPassClaimed": false
+    },
+    "wizardFooterNormal100": {
+      "status": "PASS",
+      "portraitWidthDp": 360,
+      "fullCaptionOneLine": true,
+      "font200Wizard": "NOT_RUN"
+    },
+    "darkHomeNormal100": {
+      "status": "PASS",
+      "fullDarkScenario": "NOT_RUN"
+    },
+    "darkHomeFont200Typography": {
+      "status": "FAILED",
+      "fullFont200Scenario": "NOT_RUN"
+    },
+    "physicalPhoneConnected": false,
+    "physicalPumpConnected": false,
+    "physicalSensorConnected": false,
+    "actualInsulinDelivery": false,
+    "clinicalValidation": false,
+    "phonePerformanceValidation": false,
+    "auditIdentityScope": "DB/preference audits are correlated with the verified installed APK, original confirmation and source/APK-proven native captures; the audit files themselves do not embed source/APK",
+    "note": "Exact007d core food -> review -> original Wizard -> original confirmation -> VirtualPump queue/persistence -> original Food and insulin history completed; four observed visual failures remain. Cancellation 0/0 is timestamped separately from later 1/1."
+  },
+  "beforeScreenshot": {
+    "file": "design/scenario/before/home.png",
+    "sourceCommit": "f54bf1b761acb1e9ac77282a159a19d798ae2108",
+    "apkSha256": "575060d91c18ac8e18310c085618a9c5f0614246456e7c11360e2562dfcb2773",
+    "sha256": "25318db6462ef01ddd88dc671e376920b7e29fd19983f852f4fbe5cc0b3acbff",
+    "notNewCapture": true
+  },
+  "galleryHelper": {
+    "file": "design/scenario/make-android-comparison.py",
+    "sha256": "b7b07320c1cba9195f4a96e2a18c85ac78bc15ec94c97153984d72f6bc323281",
+    "requiresActualHashCheckedAfterHome": true,
+    "preferredAfterHome": "home-fresh",
+    "pixelsEdited": false,
+    "expectedAfterSource": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+    "guardReport": "docs/verification/healfi-scenario-gallery-guards-2026-10-05.json",
+    "finalReleaseApkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+    "requiresNativeHealfiForegroundBeforeAndAfter": true,
+    "requiresApplicationEvidenceAndStableCaptureState": true,
+    "portability": "HTML plus relative raw PNG files; not self-contained HTML.",
+    "guardReportSha256": "35d2e6ced83ecae9e7229bee06fda4cd2f80cd1fe894ad01d4c56a628d25a966",
+    "guardReportHelperSha256": "b7b07320c1cba9195f4a96e2a18c85ac78bc15ec94c97153984d72f6bc323281",
+    "negativeGuardsPassed": 5,
+    "guardScope": "Gallery provenance/native-foreground guards only, not Android validation.",
+    "gallery": "design/scenario/android-comparison.html",
+    "gallerySha256": "bd006016e45f77cee185bd695e31a2128966d7b78225bab6f056e5ea692b8c7e",
+    "rawAfterCaptures": 17,
+    "unstableInitialCaptureExcluded": true
+  },
+  "independentFileChecks": {
+    "actualApkSha256AndBytesMatchFinalReleaseReport": true,
+    "junitSha256And572CasesMatchFinalReleaseReport": true,
+    "junitPropertiesAndCapturedOutputAbsent": true,
+    "actionsZipSha256MatchesGithubDigest": true,
+    "previousSignedHealfiCertificateMatches": true,
+    "installedPhoneCertificateCompared": false
+  },
+  "uiOnlyCaptionChange": {
+    "previousSource": "a0f44f51b80df4fdea58a41689fd35d1d55f300e",
+    "changedFile": "ui/src/main/kotlin/app/aaps/ui/dialogs/WizardDialog.kt",
+    "addedLines": 4,
+    "removedLines": 8,
+    "presentationChange": "Existing large-font vertical full-width footer now applies at every font scale.",
+    "nativeRetest": "PASS at font100, portrait360dp; actual caption fits one line and both original actions are full width",
+    "dosingAlgorithmsChanged": false,
+    "font200Wizard": "NOT_RUN"
+  },
+  "browserGalleryValidation": {
+    "status": "PASS",
+    "report": "docs/verification/healfi-scenario-gallery-browser-2026-10-05.json",
+    "sha256": "570880f128f86fdfa01b5aecf24c50c959ac7597ee926dee33f37ddfbcd82504",
+    "helper": "docs/verification/helpers/check-healfi-android-gallery.py",
+    "helperSha256": "7199779315bae653f13c52b007f664c0fb7c0e5277e7997ec85b41d08a770b17",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "provenanceDetailsStatesChecked": [
+      "closed",
+      "open"
+    ],
+    "rawCapturesChecked": 18,
+    "nativePixelsChanged": false,
+    "overflowCount": 0,
+    "consoleOrPageErrors": 0,
+    "scope": "Gallery browser behavior and raw PNG hashes, not Android scenario/device/pump validation."
+  },
+  "independentRootBinaryCheck": {
+    "report": "docs/verification/healfi-scenario-root-build-check-2026-10-05.json",
+    "sha256": "a9420363d5fdac9a7c6dca8ec1d76a49f7955c5e500dd80768520de25433ab71",
+    "sourceCommit": "007d5c5c20f0c2bf43a4ad62d4c1c51fef1c440b",
+    "apkSha256": "9bfdc549f20f7d17951e973da80c78e00c4dba3450722f8e367e2a1e211bd9d9",
+    "result": "PASS",
+    "actualBinaryChecks": [
+      "apksigner v2 and certificate",
+      "zipalign 16 KiB",
+      "aapt2 package/version identity",
+      "SHA and size",
+      "ZIP CRC",
+      "JUnit 572 and zero failures/errors/skips"
+    ],
+    "scope": "Independent root binary/report checks; no physical phone or pump validation"
+  }
+}
